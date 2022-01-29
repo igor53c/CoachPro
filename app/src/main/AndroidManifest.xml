@@ -3,6 +3,7 @@
     package="com.ipcoding.coachpro">
 
     <application
+        android:name=".CoachProApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,9 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoachPro">
         <activity
-            android:name=".MainActivity"
+            android:name=".feature.presentation.MainActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.CoachPro">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
