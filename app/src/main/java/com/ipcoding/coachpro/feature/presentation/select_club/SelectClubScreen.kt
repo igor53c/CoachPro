@@ -1,4 +1,4 @@
-package com.ipcoding.coachpro.feature.presentation.start
+package com.ipcoding.coachpro.feature.presentation.select_club
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -6,9 +6,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 
 @Composable
-fun StartScreen (
+fun SelectClubScreen (
     navController: NavController,
-    viewModel: StartViewModel = hiltViewModel()
+    viewModel: SelectClubViewModel = hiltViewModel()
 ) {
-    Text(text = "Hello ${viewModel.loadClubName()}!")
+    Text(text = viewModel.league.value)
 }

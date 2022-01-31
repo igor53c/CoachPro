@@ -14,7 +14,18 @@ class DefaultPreferences (
             .apply()
     }
 
+    override fun saveSelecktedLeague(name: String) {
+        sharedPreferences
+            .edit()
+            .putString(Preferences.SELECKTED_LEAGUE, name)
+            .apply()
+    }
+
     override fun loadClubName(): String? {
         return sharedPreferences.getString(Preferences.CLUB_NAME, null)
+    }
+
+    override fun loadSelecktedLeague(): String? {
+        return sharedPreferences.getString(Preferences.SELECKTED_LEAGUE, null)
     }
 }
