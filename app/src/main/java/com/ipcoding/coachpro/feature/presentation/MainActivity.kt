@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.SelectLeagueScreen.route
+                        startDestination = Screen.ChooseColorJerseyScreen.route
                     ) {
                         composable(route = Screen.SelectLeagueScreen.route) {
                             SelectLeagueScreen(navController = navController)
