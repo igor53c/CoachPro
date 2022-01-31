@@ -8,6 +8,7 @@ import androidx.compose.material.Surface
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.ChooseColorJerseyScreen
 import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.select_league.SelectLeagueScreen
 import com.ipcoding.coachpro.feature.presentation.util.Screen
@@ -33,6 +34,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screen.SelectClubScreen.route) {
                             SelectClubScreen(navController = navController)
+                        }
+                        composable(route = Screen.ChooseColorJerseyScreen.route) {
+                            ChooseColorJerseyScreen(navController = navController)
                         }
                     }
                 }

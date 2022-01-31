@@ -8,7 +8,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -34,14 +33,14 @@ fun SelectLeagueScreen (
             style = MaterialTheme.typography.h5
         )
         Spacer(modifier = Modifier.height(16.dp))
-        val leagues = stringArrayResource(id = R.array.leagues)
         LazyColumn (verticalArrangement = Arrangement.Center) {
-            items(leagues.size) { item ->
-                val league = leagues.get(item)
+            items(7) { item ->
+                val league = stringResource(id = R.string.league)
+                val numberLeague = (item + 1).toString()
                 Item(
-                    title = league,
+                    title = league + " " + numberLeague,
                     modifier = Modifier.clickable {
-                        viewModel.saveSelecktedLeague(league)
+                        viewModel.saveSelecktedLeague(numberLeague)
                         navController.navigate(
                             Screen.SelectClubScreen.route
                         )

@@ -5,6 +5,8 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import com.ipcoding.coachpro.core.data.preferences.DefaultPreferences
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
+import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
+import com.ipcoding.coachpro.feature.domain.use_case.GetClubsFromLeague
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,5 +27,13 @@ object AppModule {
     @Singleton
     fun providePreferences(sharedPreferences: SharedPreferences) : Preferences {
         return DefaultPreferences(sharedPreferences)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUseCases(): AllUseCases {
+        return AllUseCases(
+            getClubsFromLeague = GetClubsFromLeague()
+        )
     }
 }

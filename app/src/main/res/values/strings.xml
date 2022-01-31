@@ -2,13 +2,6 @@
     <string name="app_name">CoachPro</string>
 
     <string name="select_league">Select league:</string>
-    <string-array name="leagues">
-        <item>League 1</item>
-        <item>League 2</item>
-        <item>League 3</item>
-        <item>League 4</item>
-        <item>League 5</item>
-        <item>League 6</item>
-        <item>League 7</item>
-    </string-array>
+    <string name="select_club">Select club:</string>
+    <string name="league">League</string>
 </resources>
