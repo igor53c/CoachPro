@@ -9,6 +9,7 @@ import androidx.compose.material.Surface
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.ChooseColorJerseyScreen
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
 import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
@@ -16,11 +17,17 @@ import com.ipcoding.coachpro.feature.presentation.select_league.SelectLeagueScre
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.CoachProTheme
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var preferences: Preferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val shouldShowSelectScreen = preferences.loadClubName()
         setContent {
             CoachProTheme {
                 Surface(
@@ -29,7 +36,9 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.SelectLeagueScreen.route
+                        startDestination = if(shouldShowSelectScreen == null) {
+                            Screen.SelectLeagueScreen.route
+                        } else Screen.MainScreen.route
                     ) {
                         composable(route = Screen.SelectLeagueScreen.route) {
                             SelectLeagueScreen(navController = navController)
