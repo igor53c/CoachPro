@@ -2,6 +2,7 @@ package com.ipcoding.coachpro.feature.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -41,6 +42,7 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screen.MainScreen.route) {
                             MainScreen(navController = navController)
+                            BackHandler(true) {}
                         }
                     }
                 }

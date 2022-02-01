@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import com.ipcoding.coachpro.core.data.preferences.DefaultPreferences
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
+import com.ipcoding.coachpro.feature.domain.use_case.CheckColors
 import com.ipcoding.coachpro.feature.domain.use_case.GetClubsFromLeague
 import dagger.Module
 import dagger.Provides
@@ -33,7 +34,8 @@ object AppModule {
     @Singleton
     fun provideUseCases(): AllUseCases {
         return AllUseCases(
-            getClubsFromLeague = GetClubsFromLeague()
+            getClubsFromLeague = GetClubsFromLeague(),
+            checkColors = CheckColors()
         )
     }
 }

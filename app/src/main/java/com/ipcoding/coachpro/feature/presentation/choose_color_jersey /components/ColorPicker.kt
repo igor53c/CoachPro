@@ -7,16 +7,14 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import com.ipcoding.coachpro.core.util.NewColor
+import com.ipcoding.coachpro.core.util.Colors
 
 @Composable
 fun ColorPicker(
     onColorSelected: (Color) -> Unit
 ) {
     
-    val colorList: List<Color> = listOf(Color.Black, Color.LightGray, Color.Green,
-        Color.Cyan, Color.Blue, NewColor.Navy, NewColor.Purple,
-        Color.Magenta, Color.Red, NewColor.Orange, Color.Yellow, Color.White)
+    val colorList: List<Color> = Colors.ColorList
     
     LazyRow(horizontalArrangement = Arrangement.Center) {
         items(colorList.size) { item ->

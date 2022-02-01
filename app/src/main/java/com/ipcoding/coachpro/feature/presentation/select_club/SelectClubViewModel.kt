@@ -18,7 +18,10 @@ class SelectClubViewModel @Inject constructor(
     val clubs: State<Array<String>> = _clubs
 
     init {
-        _clubs.value = allUseCases.getClubsFromLeague(preferences.loadSelecktedLeague())
+        _clubs.value = allUseCases
+            .getClubsFromLeague(
+                preferences.loadSelecktedLeague()
+            )
     }
 
     fun saveClubName(name: String)  {

@@ -9,8 +9,8 @@ interface Preferences {
 
     fun loadClubName(): String?
     fun loadSelecktedLeague(): String?
-    fun loadColorJersey(): Int?
-    fun loadColorStripes(): Int?
+    fun loadColorJersey(): Int
+    fun loadColorStripes(): Int
 
     companion object {
         const val CLUB_NAME = "club_name"
