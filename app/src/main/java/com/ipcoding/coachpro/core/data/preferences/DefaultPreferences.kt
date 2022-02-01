@@ -21,11 +21,33 @@ class DefaultPreferences (
             .apply()
     }
 
+    override fun saveColorJersey(color: Int) {
+        sharedPreferences
+            .edit()
+            .putInt(Preferences.SELECKTED_COLOR_JERSEY, color)
+            .apply()
+    }
+
+    override fun saveColorStripes(color: Int) {
+        sharedPreferences
+            .edit()
+            .putInt(Preferences.SELECKTED_COLOR_STRIPES, color)
+            .apply()
+    }
+
     override fun loadClubName(): String? {
         return sharedPreferences.getString(Preferences.CLUB_NAME, null)
     }
 
     override fun loadSelecktedLeague(): String? {
         return sharedPreferences.getString(Preferences.SELECKTED_LEAGUE, null)
+    }
+
+    override fun loadColorJersey(): Int {
+        return sharedPreferences.getInt(Preferences.SELECKTED_COLOR_JERSEY, -1)
+    }
+
+    override fun loadColorStripes(): Int {
+        return sharedPreferences.getInt(Preferences.SELECKTED_COLOR_STRIPES, -1)
     }
 }

@@ -29,7 +29,7 @@ fun SelectLeagueScreen (
     ){
         Text(
             text = stringResource(id = R.string.select_league),
-            color = MaterialTheme.colors.secondaryVariant,
+            color = MaterialTheme.colors.primary,
             style = MaterialTheme.typography.h5
         )
         Spacer(modifier = Modifier.height(16.dp))

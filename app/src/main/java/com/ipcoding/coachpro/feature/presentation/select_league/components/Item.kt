@@ -23,12 +23,12 @@ fun Item(
         Text(
             text = title,
             style = MaterialTheme.typography.h6,
-            color = MaterialTheme.colors.secondaryVariant,
+            color = MaterialTheme.colors.primary,
             modifier = Modifier
                 .border(
                     border = BorderStroke(
                         width = 1.dp,
-                        color = MaterialTheme.colors.secondaryVariant
+                        color = MaterialTheme.colors.primary
                     ),
                     shape = RoundedCornerShape(corner = CornerSize(10.dp))
                 )

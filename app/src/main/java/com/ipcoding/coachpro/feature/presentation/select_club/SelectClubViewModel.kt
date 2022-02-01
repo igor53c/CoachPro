@@ -11,7 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SelectClubViewModel @Inject constructor(
     private val preferences: Preferences,
-    private val allUseCases: AllUseCases
+    allUseCases: AllUseCases
 ): ViewModel() {
 
     private var _clubs = mutableStateOf<Array<String>>(emptyArray())

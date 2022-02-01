@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.ChooseColorJerseyScreen
+import com.ipcoding.coachpro.feature.presentation.main.MainScreen
 import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.select_league.SelectLeagueScreen
 import com.ipcoding.coachpro.feature.presentation.util.Screen
@@ -27,7 +28,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = Screen.ChooseColorJerseyScreen.route
+                        startDestination = Screen.SelectLeagueScreen.route
                     ) {
                         composable(route = Screen.SelectLeagueScreen.route) {
                             SelectLeagueScreen(navController = navController)
@@ -37,6 +38,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screen.ChooseColorJerseyScreen.route) {
                             ChooseColorJerseyScreen(navController = navController)
+                        }
+                        composable(route = Screen.MainScreen.route) {
+                            MainScreen(navController = navController)
                         }
                     }
                 }
