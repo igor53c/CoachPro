@@ -18,13 +18,13 @@ interface ClubDao {
 
     @Query("SELECT * FROM clubs_table WHERE " +
             "league = :league ORDER BY points DESC, goalDifference DESC")
-    fun getClubsFromLeague (league: String): Flow<List<Club>>
+    suspend fun getClubsFromLeague (league: String): List<Club>
 
     @Query("SELECT * FROM clubs_table WHERE league = :league ORDER BY position ASC")
-    fun getClubsFromLeagueByPosition(league: String): Flow<List<Club>>
+    suspend fun getClubsFromLeagueByPosition(league: String): List<Club>
 
     @Query("SELECT * FROM clubs_table WHERE league = :league ORDER BY rating DESC")
-    fun getClubsFromLeagueByRating(league: String): Flow<List<Club>>
+    suspend fun getClubsFromLeagueByRating(league: String): List<Club>
 
     @Query("SELECT * FROM clubs_table WHERE name = :club")
     suspend fun getClub(club: String): Club?

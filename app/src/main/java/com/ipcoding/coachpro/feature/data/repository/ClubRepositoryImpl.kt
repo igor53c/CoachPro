@@ -21,15 +21,15 @@ class ClubRepositoryImpl(
         return dao.getRatingFromClub(name)
     }
 
-    override fun getClubsFromLeague(league: String): Flow<List<Club>> {
+    override suspend fun getClubsFromLeague(league: String): List<Club> {
         return dao.getClubsFromLeague(league)
     }
 
-    override fun getClubsFromLeagueByPosition(league: String): Flow<List<Club>> {
+    override suspend fun getClubsFromLeagueByPosition(league: String): List<Club> {
         return dao.getClubsFromLeagueByPosition(league)
     }
 
-    override fun getClubsFromLeagueByRating(league: String): Flow<List<Club>> {
+    override suspend fun getClubsFromLeagueByRating(league: String): List<Club> {
         return dao.getClubsFromLeagueByRating(league)
     }
 

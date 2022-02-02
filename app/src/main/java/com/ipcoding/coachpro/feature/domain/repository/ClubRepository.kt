@@ -11,11 +11,11 @@ interface ClubRepository {
 
     suspend fun getRatingFromClub (name: String): Double
 
-    fun getClubsFromLeague (league: String): Flow<List<Club>>
+    suspend fun getClubsFromLeague (league: String): List<Club>
 
-    fun getClubsFromLeagueByPosition(league: String): Flow<List<Club>>
+    suspend fun getClubsFromLeagueByPosition(league: String): List<Club>
 
-    fun getClubsFromLeagueByRating(league: String): Flow<List<Club>>
+    suspend fun getClubsFromLeagueByRating(league: String): List<Club>
 
     suspend fun getClub(club: String): Club?
 }

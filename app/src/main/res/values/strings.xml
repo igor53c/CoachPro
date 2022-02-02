@@ -15,4 +15,12 @@
     <string name="motivation">Mot</string>
     <string name="fitness">Fit</string>
     <string name="general">General</string>
+    <string name="win">W</string>
+    <string name="draw">D</string>
+    <string name="lose">L</string>
+    <string name="points">P</string>
+    <string name="goals_for">F</string>
+    <string name="goals_against">A</string>
+    <string name="goal_difference">D</string>
+    <string name="goals">Goals</string>
 </resources>

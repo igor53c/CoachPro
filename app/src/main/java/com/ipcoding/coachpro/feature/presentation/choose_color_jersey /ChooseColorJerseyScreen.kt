@@ -31,7 +31,6 @@ fun ChooseColorJerseyScreen (
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    viewModel.createClubDatabase()
                     navController.navigate(
                         Screen.MainScreen.route
                     )

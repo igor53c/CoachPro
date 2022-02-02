@@ -41,6 +41,7 @@ fun SelectClubScreen (
                     title = name,
                     modifier = Modifier.clickable {
                         viewModel.saveClubName(name)
+                        viewModel.createClubDatabase()
                         navController.navigate(
                             Screen.ChooseColorJerseyScreen.route
                         )

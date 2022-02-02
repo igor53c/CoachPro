@@ -7,4 +7,5 @@ sealed class Screen(val route: String) {
     object ChooseColorJerseyScreen: Screen("choose_color_jersey_screen")
     object MainScreen: Screen("main_screen")
     object PlayersScreen: Screen("players_screen")
+    object TableScreen: Screen("table_screen")
 }

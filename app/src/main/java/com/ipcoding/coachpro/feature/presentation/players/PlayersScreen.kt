@@ -24,8 +24,8 @@ fun PlayersScreen (
     viewModel: PlayersViewModel = hiltViewModel()
 ) {
     val players = viewModel.players.value
-    val training = remember { mutableStateOf(false) }
-    val buttonTraining = remember { mutableStateOf("") }
+    val trainingView = remember { mutableStateOf(false) }
+    val buttonTrainingText = remember { mutableStateOf("") }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -46,8 +46,8 @@ fun PlayersScreen (
                 modifier = Modifier
                     .weight(1f)
             )
-            if(!training.value) {
-                buttonTraining.value = stringResource(id = R.string.training)
+            if(!trainingView.value) {
+                buttonTrainingText.value = stringResource(id = R.string.training)
                 Text(
                     text = stringResource(id = R.string.position),
                     color = MaterialTheme.colors.primary,
@@ -81,7 +81,7 @@ fun PlayersScreen (
                         .width(50.dp)
                 )
             } else {
-                buttonTraining.value = stringResource(id = R.string.general)
+                buttonTrainingText.value = stringResource(id = R.string.general)
                 Text(
                     text = stringResource(id = R.string.fitness),
                     color = MaterialTheme.colors.primary,
@@ -111,7 +111,7 @@ fun PlayersScreen (
                 OnePLayer(
                     player = player,
                     color = viewModel.getColor(player.position),
-                    isShowTraining = training.value,
+                    isShowTraining = trainingView.value,
                     playerTraining = player.training.toFloat(),
                     viewModel = viewModel
                 )
@@ -144,11 +144,11 @@ fun PlayersScreen (
                 modifier = Modifier
                     .weight(1f),
                 onClick = {
-                    training.value = !training.value
+                    trainingView.value = !trainingView.value
                 }
             ) {
                 Text(
-                    text = buttonTraining.value,
+                    text = buttonTrainingText.value,
                     color = MaterialTheme.colors.onPrimary,
                     style = MaterialTheme.typography.body1
                 )

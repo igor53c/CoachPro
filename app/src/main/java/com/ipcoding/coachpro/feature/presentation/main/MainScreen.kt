@@ -18,6 +18,7 @@ fun MainScreen(
 ) {
     val colorText = viewModel.colorStripes.value
     val colorBackground = viewModel.colorJersey.value
+    val clubPosition =  viewModel.clubPosition.value
     Column {
         ClubName(
             name = viewModel.clubName.value,
@@ -48,11 +49,15 @@ fun MainScreen(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .clickable {  }
+                    .clickable {
+                        navController.navigate(
+                            Screen.TableScreen.route
+                        )
+                    }
             ) {
                 MainButton(
-                    rowOne = "TRAINING",
-                    rowTwo = "38",
+                    rowOne = viewModel.getStringLeague(),
+                    rowTwo = clubPosition,
                     colorText = colorText,
                     background = colorBackground
                 )

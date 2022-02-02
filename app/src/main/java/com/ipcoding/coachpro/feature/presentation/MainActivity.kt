@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.ChooseColorJerseyScreen
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
+import com.ipcoding.coachpro.feature.presentation.main.table.TableScreen
 import com.ipcoding.coachpro.feature.presentation.players.PlayersScreen
 import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.select_league.SelectLeagueScreen
@@ -46,9 +47,11 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screen.SelectClubScreen.route) {
                             SelectClubScreen(navController = navController)
+                            BackHandler(true) {}
                         }
                         composable(route = Screen.ChooseColorJerseyScreen.route) {
                             ChooseColorJerseyScreen(navController = navController)
+                            BackHandler(true) {}
                         }
                         composable(route = Screen.MainScreen.route) {
                             MainScreen(navController = navController)
@@ -56,6 +59,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screen.PlayersScreen.route) {
                             PlayersScreen(navController = navController)
+                        }
+                        composable(route = Screen.TableScreen.route) {
+                            TableScreen(navController = navController)
                         }
                     }
                 }

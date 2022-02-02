@@ -6,5 +6,9 @@ data class AllUseCases (
     val createClubDatabase: CreateClubDatabase,
     val getPlayers: GetPlayers,
     val getColorDependingOnPosition: GetColorDependingOnPosition,
-    val updatePlayer: UpdatePlayer
+    val updatePlayer: UpdatePlayer,
+    val getStringLeague: GetStringLeague,
+    val getClubs: GetClubs,
+    val getColorOfClubInTable: GetColorOfClubInTable,
+    val getClubPositionString: GetClubPositionString
 )

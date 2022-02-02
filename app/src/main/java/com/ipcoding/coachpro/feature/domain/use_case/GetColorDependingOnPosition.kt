@@ -7,12 +7,12 @@ import com.ipcoding.coachpro.core.util.Colors
 class GetColorDependingOnPosition {
 
     operator fun invoke(position: String): Color {
-        var color = Color.White
+        var color = Color.Transparent
         when(position) {
-            AllPosition.GK -> color = Colors.LightGreen
+            AllPosition.GK -> color = Colors.LightGreen10
             in AllPosition.DEF -> color = Colors.LightBlue
             in AllPosition.MID -> color = Colors.LighYellow
-            in AllPosition.FOR -> color = Colors.LighRed
+            in AllPosition.FOR -> color = Colors.LighRed10
         }
         return color
     }
