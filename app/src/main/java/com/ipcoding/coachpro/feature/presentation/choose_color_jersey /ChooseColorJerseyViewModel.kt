@@ -41,7 +41,7 @@ class ChooseColorJerseyViewModel @Inject constructor(
 
     fun createClubDatabase() {
         viewModelScope.launch {
-            allUseCases.createClubDatabase.invoke(30.0)
+            preferences.loadClubName()?.let { allUseCases.createClubDatabase.invoke(it) }
         }
     }
 }

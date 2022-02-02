@@ -6,9 +6,9 @@ import android.content.SharedPreferences
 import androidx.room.Room
 import com.ipcoding.coachpro.core.data.preferences.DefaultPreferences
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
-import com.ipcoding.coachpro.feature.data.data_source.PlayerDatabase
-import com.ipcoding.coachpro.feature.data.repository.PlayerRepositoryImpl
-import com.ipcoding.coachpro.feature.domain.repository.PlayerRepository
+import com.ipcoding.coachpro.feature.data.data_source.CoachDatabase
+import com.ipcoding.coachpro.feature.data.repository.*
+import com.ipcoding.coachpro.feature.domain.repository.*
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import com.ipcoding.coachpro.feature.domain.use_case.CheckColors
 import com.ipcoding.coachpro.feature.domain.use_case.CreateClubDatabase
@@ -25,18 +25,42 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCoachDatabase(app: Application): PlayerDatabase {
+    fun provideCoachDatabase(app: Application): CoachDatabase {
         return Room.databaseBuilder(
             app,
-            PlayerDatabase::class.java,
-            PlayerDatabase.DATABASE_NAME
+            CoachDatabase::class.java,
+            CoachDatabase.DATABASE_NAME
         ).build()
     }
 
     @Provides
     @Singleton
-    fun providePlayerRepository(db: PlayerDatabase): PlayerRepository {
+    fun providePlayerRepository(db: CoachDatabase): PlayerRepository {
         return PlayerRepositoryImpl(db.playerDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideClubRepository(db: CoachDatabase): ClubRepository {
+        return ClubRepositoryImpl(db.clubDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideHistoryRepository(db: CoachDatabase): HistoryRepository {
+        return HistoryRepositoryImpl(db.historyDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMatchRepository(db: CoachDatabase): MatchRepository {
+        return MatchRepositoryImpl(db.matchDao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMatchesRepository(db: CoachDatabase): MatchesRepository {
+        return MatchesRepositoryImpl(db.matchesDao)
     }
 
     @Provides
@@ -53,11 +77,23 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideUseCases(repository: PlayerRepository): AllUseCases {
+    fun provideUseCases(
+        playerRepository: PlayerRepository,
+        clubRepository: ClubRepository,
+        historyRepository: HistoryRepository,
+        matchRepository: MatchRepository,
+        matchesRepository: MatchesRepository
+    ): AllUseCases {
         return AllUseCases(
             getClubsFromLeague = GetClubsFromLeague(),
             checkColors = CheckColors(),
-            createClubDatabase = CreateClubDatabase(repository)
+            createClubDatabase = CreateClubDatabase(
+                playerRepository,
+                clubRepository,
+                historyRepository,
+                matchRepository,
+                matchesRepository
+            )
         )
     }
 }

@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.ChooseColorJerseyScreen
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
+import com.ipcoding.coachpro.feature.presentation.players.PlayersScreen
 import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.select_league.SelectLeagueScreen
 import com.ipcoding.coachpro.feature.presentation.util.Screen
@@ -52,6 +53,9 @@ class MainActivity : ComponentActivity() {
                         composable(route = Screen.MainScreen.route) {
                             MainScreen(navController = navController)
                             BackHandler(true) {}
+                        }
+                        composable(route = Screen.PlayersScreen.route) {
+                            PlayersScreen(navController = navController)
                         }
                     }
                 }

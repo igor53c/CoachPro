@@ -9,6 +9,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.feature.presentation.main.components.ClubName
 import com.ipcoding.coachpro.feature.presentation.main.components.MainButton
+import com.ipcoding.coachpro.feature.presentation.util.Screen
 
 @Composable
 fun MainScreen(
@@ -31,7 +32,11 @@ fun MainScreen(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .clickable {  }
+                    .clickable {
+                        navController.navigate(
+                            Screen.PlayersScreen.route
+                        )
+                    }
             ) {
                 MainButton(
                     rowOne = "SQUAD",
