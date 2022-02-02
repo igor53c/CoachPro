@@ -2,6 +2,7 @@ package com.ipcoding.coachpro.feature.domain.use_case
 
 import com.ipcoding.coachpro.core.util.AllClubs
 import com.ipcoding.coachpro.core.util.AllPlayers
+import com.ipcoding.coachpro.core.util.AllPosition
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.repository.*
@@ -75,13 +76,10 @@ class CreateClubDatabase(
         for (number in 0..17) {
             var position = ""
             when(number) {
-                in 0..1 -> position = "GK"
-                in 2..7 -> position =
-                    arrayOf("DR", "DC", "DL", "DRC", "DRL", "DLC")[Random.nextInt(6)]
-                in 8..13 -> position =
-                    arrayOf("MR", "MC", "ML", "MRC", "MRL", "MLC")[Random.nextInt(6)]
-                in 14..17 -> position =
-                    arrayOf("FR", "FC", "FL", "FRC", "FRL", "FLC")[Random.nextInt(6)]
+                in 0..1 -> position = AllPosition.GK
+                in 2..7 -> position = AllPosition.DEF[Random.nextInt(6)]
+                in 8..13 -> position = AllPosition.MID[Random.nextInt(6)]
+                in 14..17 -> position = AllPosition.FOR[Random.nextInt(6)]
             }
             val rating = takeRandomNumberFromRange(
                 Math.round(clubRating - 8).toInt(),

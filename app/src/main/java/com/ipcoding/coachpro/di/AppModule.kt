@@ -9,10 +9,7 @@ import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.data.data_source.CoachDatabase
 import com.ipcoding.coachpro.feature.data.repository.*
 import com.ipcoding.coachpro.feature.domain.repository.*
-import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
-import com.ipcoding.coachpro.feature.domain.use_case.CheckColors
-import com.ipcoding.coachpro.feature.domain.use_case.CreateClubDatabase
-import com.ipcoding.coachpro.feature.domain.use_case.GetClubsFromLeague
+import com.ipcoding.coachpro.feature.domain.use_case.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -93,7 +90,10 @@ object AppModule {
                 historyRepository,
                 matchRepository,
                 matchesRepository
-            )
+            ),
+            getPlayers = GetPlayers(playerRepository),
+            getColorDependingOnPosition = GetColorDependingOnPosition(),
+            updatePlayer = UpdatePlayer(playerRepository)
         )
     }
 }

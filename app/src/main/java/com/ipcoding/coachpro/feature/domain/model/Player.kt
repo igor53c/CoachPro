@@ -12,6 +12,6 @@ data class Player(
     val number: Int,
     val motivation: Int,
     val fitness: Int,
-    val training: Int,
+    var training: Int,
     @PrimaryKey val id: Int? = null
 )

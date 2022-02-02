@@ -6,4 +6,13 @@
     <string name="select_color_jersey">Select the color of the jersey:</string>
     <string name="select_color_stripes">Select the color of the stripes:</string>
     <string name="league">League</string>
+    <string name="name">Name</string>
+    <string name="position">Pos</string>
+    <string name="rating">Rat</string>
+    <string name="age">Age</string>
+    <string name="back">Back</string>
+    <string name="training">Training</string>
+    <string name="motivation">Mot</string>
+    <string name="fitness">Fit</string>
+    <string name="general">General</string>
 </resources>

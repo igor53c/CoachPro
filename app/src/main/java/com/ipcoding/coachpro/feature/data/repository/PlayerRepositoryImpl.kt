@@ -28,7 +28,7 @@ class PlayerRepositoryImpl(
         return dao.getPlayers()
     }
 
-    override fun getPlayersSortByNumber(): Flow<List<Player>> {
+    override suspend fun getPlayersSortByNumber(): List<Player> {
         return dao.getPlayersSortByNumber()
     }
 
