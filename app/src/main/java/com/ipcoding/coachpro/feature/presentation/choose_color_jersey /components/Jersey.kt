@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun Jersey(
-    modifier: Modifier = Modifier,
+    modifier: Modifier,
     colorJersey: Color,
     colorStripes: Color,
     colorBorder: Color
@@ -58,22 +58,22 @@ fun Jersey(
         clipPath(clipPath) {
             drawRoundRect(
                 color = colorJersey,
-                size = Size(size.width, size.height)
+                size = Size(size.width, size.width * 1.1071f)
             )
             drawRect(
                 topLeft = Offset(size.width * 0.45715f, 0f),
                 color = colorStripes,
-                size = Size(size.width * 0.0857f, size.height)
+                size = Size(size.width * 0.0857f, size.width * 1.1071f)
             )
             drawRect(
                 topLeft = Offset(size.width * 0.28575f, 0f),
                 color = colorStripes,
-                size = Size(size.width * 0.0857f, size.height)
+                size = Size(size.width * 0.0857f, size.width * 1.1071f)
             )
             drawRect(
                 topLeft = Offset(size.width * 0.62855f, 0f),
                 color = colorStripes,
-                size = Size(size.width * 0.0857f, size.height)
+                size = Size(size.width * 0.0857f, size.width * 1.1071f)
             )
         }
 

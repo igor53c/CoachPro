@@ -74,7 +74,8 @@ fun ChooseColorJerseyScreen (
             Jersey(
                 colorJersey = colorJersey,
                 colorStripes = colorStripes,
-                colorBorder = MaterialTheme.colors.onBackground
+                colorBorder = MaterialTheme.colors.onBackground,
+                modifier = Modifier.fillMaxSize()
             )
         }
     }

@@ -35,6 +35,13 @@ class DefaultPreferences (
             .apply()
     }
 
+    override fun saveTactics(tactics: String) {
+        sharedPreferences
+            .edit()
+            .putString(Preferences.SELECKTED_TACTICS, tactics)
+            .apply()
+    }
+
     override fun loadClubName(): String? {
         return sharedPreferences.getString(Preferences.CLUB_NAME, null)
     }
@@ -49,5 +56,9 @@ class DefaultPreferences (
 
     override fun loadColorStripes(): Int {
         return sharedPreferences.getInt(Preferences.SELECKTED_COLOR_STRIPES, -1)
+    }
+
+    override fun loadTactics(): String? {
+        return sharedPreferences.getString(Preferences.SELECKTED_TACTICS, "4-4-2")
     }
 }
