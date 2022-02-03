@@ -16,7 +16,7 @@ class PlayersViewModel @Inject constructor(
     private val allUseCases: AllUseCases
 ): ViewModel() {
 
-    private var _players = mutableStateOf<List<Player>>(emptyList())
+    private var _players = mutableStateOf<List<Player>>(mutableListOf())
     val players: State<List<Player>> = _players
 
     init {

@@ -13,6 +13,7 @@ import androidx.compose.ui.graphics.drawscope.DrawStyle
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
 import androidx.compose.ui.unit.dp
+import com.ipcoding.coachpro.core.util.Colors
 
 @Composable
 fun FootballField(
@@ -32,9 +33,8 @@ fun FootballField(
 
         clipPath(clipPath) {
             drawRect(
-                color = colorLinie,
-                size = Size(size.width, size.width),
-                style = Stroke(width = 3f)
+                color = Colors.LightGreen10,
+                size = Size(size.width, size.width)
             )
             drawRect(
                 topLeft = Offset(size.width * 0.25f, 0f),
@@ -85,6 +85,8 @@ fun FootballField(
                 size = Size(size.width * 0.15f, size.width * 0.10f),
                 style = Stroke(width = 3f)
             )
+
+            drawPath(path = clipPath, color = colorLinie, style = Stroke(width = 3f))
         }
     }
 }

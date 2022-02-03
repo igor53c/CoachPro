@@ -31,7 +31,9 @@ fun PlayersScreen (
             .fillMaxSize()
             .padding(
                 start = 16.dp,
-                end = 16.dp
+                end = 16.dp,
+                top = 8.dp,
+                bottom = 8.dp
             )
     ) {
         Row(
@@ -70,7 +72,7 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(30.dp)
+                        .width(35.dp)
                 )
                 Text(
                     text = stringResource(id = R.string.motivation),
@@ -119,40 +121,19 @@ fun PlayersScreen (
             }
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Row (
+        Button(
             modifier = Modifier
                 .height(50.dp)
-                .fillMaxWidth()
-        ){
-            Button(
-                modifier = Modifier
-                    .weight(1f),
-                onClick = {
-                    navController.navigate(
-                        Screen.MainScreen.route
-                    )
-                }
-            ) {
-                Text(
-                    text = stringResource(id = R.string.back),
-                    color = MaterialTheme.colors.onPrimary,
-                    style = MaterialTheme.typography.body1
-                )
+                .fillMaxWidth(),
+            onClick = {
+                trainingView.value = !trainingView.value
             }
-            Spacer(modifier = Modifier.width(8.dp))
-            Button(
-                modifier = Modifier
-                    .weight(1f),
-                onClick = {
-                    trainingView.value = !trainingView.value
-                }
-            ) {
-                Text(
-                    text = buttonTrainingText.value,
-                    color = MaterialTheme.colors.onPrimary,
-                    style = MaterialTheme.typography.body1
-                )
-            }
+        ) {
+            Text(
+                text = buttonTrainingText.value,
+                color = MaterialTheme.colors.onPrimary,
+                style = MaterialTheme.typography.body1,
+            )
         }
     }
 }

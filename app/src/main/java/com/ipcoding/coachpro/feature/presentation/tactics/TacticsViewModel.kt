@@ -1,14 +1,18 @@
 package com.ipcoding.coachpro.feature.presentation.tactics
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.util.AllTactics
 import com.ipcoding.coachpro.core.util.Colors
+import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -29,7 +33,11 @@ class TacticsViewModel @Inject constructor(
     private var _allTactics = mutableStateOf<List<List<Any>>>(mutableListOf())
     val allTactics: State<List<List<Any>>> = _allTactics
 
+    private var _players = mutableStateOf<List<Player>>(mutableListOf())
+    val players: State<List<Player>> = _players
+
     init {
+        getPlayers()
         loadColorJersey()
         loadColorStripes()
         loadTactics()
@@ -38,19 +46,25 @@ class TacticsViewModel @Inject constructor(
             allUseCases.checkColors(_colorJersey.value, _colorStripes.value)
     }
 
-    fun loadColorJersey() {
+    private fun getPlayers() {
+        viewModelScope.launch {
+            _players.value = allUseCases.getPlayers.invoke()
+        }
+    }
+
+    private fun loadColorJersey() {
         _colorJersey.value = Colors().indexToColor(preferences.loadColorJersey())
     }
 
-    fun loadColorStripes() {
+    private fun loadColorStripes() {
         _colorStripes.value = Colors().indexToColor(preferences.loadColorStripes())
     }
 
-    fun loadTactics() {
+    private fun loadTactics() {
         _tactics.value = AllTactics().getTactics(preferences.loadTactics().toString())
     }
 
-    fun loadAllTactics() {
+    private fun loadAllTactics() {
         _allTactics.value = AllTactics().allTactics()
     }
 

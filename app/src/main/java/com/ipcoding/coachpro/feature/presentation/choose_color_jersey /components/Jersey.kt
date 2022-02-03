@@ -77,7 +77,7 @@ fun Jersey(
             )
         }
 
-        drawPath(path = clipPath, color = colorBorder, style = Stroke(width = 5f))
+        drawPath(path = clipPath, color = colorBorder, style = Stroke(width = 3f))
     }
 
 }

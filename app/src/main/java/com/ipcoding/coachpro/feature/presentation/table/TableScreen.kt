@@ -45,7 +45,9 @@ fun TableScreen(
             .fillMaxSize()
             .padding(
                 start = 16.dp,
-                end = 16.dp
+                end = 16.dp,
+                top = 8.dp,
+                bottom = 8.dp
             )
     ) {
         Row(
@@ -108,40 +110,19 @@ fun TableScreen(
             }
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Row (
+        Button(
             modifier = Modifier
                 .height(50.dp)
-                .fillMaxWidth()
-        ){
-            Button(
-                modifier = Modifier
-                    .weight(1f),
-                onClick = {
-                    navController.navigate(
-                        Screen.MainScreen.route
-                    )
-                }
-            ) {
-                Text(
-                    text = stringResource(id = R.string.back),
-                    color = MaterialTheme.colors.onPrimary,
-                    style = MaterialTheme.typography.body1
-                )
+                .fillMaxWidth(),
+            onClick = {
+                goalsView.value = !goalsView.value
             }
-            Spacer(modifier = Modifier.width(8.dp))
-            Button(
-                modifier = Modifier
-                    .weight(1f),
-                onClick = {
-                    goalsView.value = !goalsView.value
-                }
-            ) {
-                Text(
-                    text = buttonGoalsText.value,
-                    color = MaterialTheme.colors.onPrimary,
-                    style = MaterialTheme.typography.body1
-                )
-            }
+        ) {
+            Text(
+                text = buttonGoalsText.value,
+                color = MaterialTheme.colors.onPrimary,
+                style = MaterialTheme.typography.body1
+            )
         }
     }
 

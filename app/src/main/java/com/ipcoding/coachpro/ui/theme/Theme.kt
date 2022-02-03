@@ -39,7 +39,7 @@ fun CoachProTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composab
 
     MaterialTheme(
         colors = colors,
-        typography = Typography,
+        typography = appTypography,
         shapes = Shapes,
         content = content
     )

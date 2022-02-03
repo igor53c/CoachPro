@@ -1,5 +1,6 @@
 package com.ipcoding.coachpro.feature.presentation.tactics
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -17,8 +18,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
@@ -31,6 +36,7 @@ fun TacticsScreen(
     navController: NavController,
     viewModel: TacticsViewModel = hiltViewModel()
 ) {
+    val players = viewModel.players.value
     val colorJersey = viewModel.colorJersey.value
     val colorStripes = viewModel.colorStripes.value
     val tactics = viewModel.tactics.value
@@ -38,6 +44,11 @@ fun TacticsScreen(
     val maxWidth = remember { mutableStateOf(0.dp) }
     val colorText = remember { mutableStateOf(Color.Black) }
     val colorTextBackground = remember { mutableStateOf(Color.White) }
+    val numberPlayer = remember { mutableStateOf(-1) }
+    val itemRemember = remember { mutableStateOf(-1) }
+    val item2Remember = remember { mutableStateOf(-1) }
+    val playerInfo = remember { mutableStateOf("") }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -68,18 +79,43 @@ fun TacticsScreen(
                         modifier = Modifier
                             .height(height = maxWidth.value / 4)
                     ) {
-                        items(tactics[item + 1] as Int) {
-                            Box (
+                        items(tactics[item + 1] as Int) { item2 ->
+                            Column (
                                 modifier = Modifier
-                                    .size(maxWidth.value / 5)
+                                    .width(maxWidth.value / 5)
                             ) {
-                                Jersey(
-                                    colorJersey = colorJersey,
-                                    colorStripes = colorStripes,
-                                    colorBorder = MaterialTheme.colors.onBackground,
+                                Box(
                                     modifier = Modifier
-                                        .fillMaxSize()
-                                        .padding(8.dp)
+                                        .height(maxWidth.value / 5)
+                                ) {
+                                    Jersey(
+                                        colorJersey = colorJersey,
+                                        colorStripes = colorStripes,
+                                        colorBorder = MaterialTheme.colors.onBackground,
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .padding(8.dp)
+                                    )
+                                }
+                                if(
+                                    players.size > 0 &&
+                                    (item != itemRemember.value || item2 != item2Remember.value)
+                                )  {
+                                    Log.d("prosao", "numberPlayer: ${numberPlayer.value}")
+                                    if(item == 0 && item2 == 0)
+                                        numberPlayer.value = 0 else numberPlayer.value++
+                                    itemRemember.value = item
+                                    item2Remember.value = item2
+                                    playerInfo.value = players[numberPlayer.value].position +
+                                            " " +  players[numberPlayer.value].rating.toString()
+                                }
+                                Text(
+                                    text = playerInfo.value,
+                                    style = MaterialTheme.typography.overline,
+                                    color = MaterialTheme.colors.primary,
+                                    textAlign = TextAlign.Center,
+                                    modifier = Modifier
+                                        .fillMaxWidth()
                                 )
                             }
                         }

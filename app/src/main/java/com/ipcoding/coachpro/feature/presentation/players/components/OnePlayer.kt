@@ -75,7 +75,7 @@ fun OnePLayer(
                 style = MaterialTheme.typography.body2,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .width(30.dp)
+                    .width(35.dp)
             )
             LinearProgressIndicator(
                 modifier = Modifier
