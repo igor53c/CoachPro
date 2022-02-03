@@ -1,9 +1,6 @@
 package com.ipcoding.coachpro.feature.presentation.choose_color_jersey
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -44,7 +41,11 @@ fun ChooseColorJerseyScreen (
             }
         }
     ){
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .padding(8.dp)
+                .fillMaxSize()
+        ) {
             Text(
                 text = stringResource(id = R.string.select_color_jersey),
                 color = MaterialTheme.colors.secondaryVariant,
@@ -69,6 +70,7 @@ fun ChooseColorJerseyScreen (
             ColorPicker(onColorSelected = { color ->
                 viewModel.saveColorStripes(color)
             })
+            Spacer(modifier = Modifier.height(16.dp))
             Jersey(
                 colorJersey = colorJersey,
                 colorStripes = colorStripes,

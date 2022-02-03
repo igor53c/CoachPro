@@ -21,8 +21,6 @@ fun Jersey(
 ) {
     Canvas(
         modifier = modifier
-            .padding(16.dp)
-            .fillMaxSize()
     ) {
 
         val clipPath = Path().apply {

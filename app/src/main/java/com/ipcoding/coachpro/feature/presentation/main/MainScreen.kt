@@ -63,5 +63,40 @@ fun MainScreen(
                 )
             }
         }
+        Row (
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(12.dp)
+        ) {
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable {
+                        navController.navigate(
+                            Screen.TacticsScreen.route
+                        )
+                    }
+            ) {
+                MainButton(
+                    rowOne = "Tactics",
+                    rowTwo = "38",
+                    colorText = colorText,
+                    background = colorBackground
+                )
+            }
+            Box(
+                modifier = Modifier
+                    .weight(1f)
+                    .clickable {
+                    }
+            ) {
+                MainButton(
+                    rowOne = "Schedule",
+                    rowTwo = "39",
+                    colorText = colorText,
+                    background = colorBackground
+                )
+            }
+        }
     }
 }

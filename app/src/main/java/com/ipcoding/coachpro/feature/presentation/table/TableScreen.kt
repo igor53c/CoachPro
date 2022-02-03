@@ -1,4 +1,4 @@
-package com.ipcoding.coachpro.feature.presentation.main.table
+package com.ipcoding.coachpro.feature.presentation.table
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
-import com.ipcoding.coachpro.feature.presentation.main.table.components.OneClub
+import com.ipcoding.coachpro.feature.presentation.table.components.OneClub
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 
 @Composable

@@ -1,4 +1,4 @@
-package com.ipcoding.coachpro.feature.presentation.main.table.components
+package com.ipcoding.coachpro.feature.presentation.table.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background

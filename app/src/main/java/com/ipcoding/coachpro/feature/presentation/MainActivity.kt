@@ -12,10 +12,11 @@ import androidx.navigation.compose.rememberNavController
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.ChooseColorJerseyScreen
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
-import com.ipcoding.coachpro.feature.presentation.main.table.TableScreen
+import com.ipcoding.coachpro.feature.presentation.table.TableScreen
 import com.ipcoding.coachpro.feature.presentation.players.PlayersScreen
 import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.select_league.SelectLeagueScreen
+import com.ipcoding.coachpro.feature.presentation.tactics.TacticsScreen
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.CoachProTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -62,6 +63,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screen.TableScreen.route) {
                             TableScreen(navController = navController)
+                        }
+                        composable(route = Screen.TacticsScreen.route) {
+                            TacticsScreen(navController = navController)
                         }
                     }
                 }
