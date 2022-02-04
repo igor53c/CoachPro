@@ -30,18 +30,20 @@ import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.components.Jersey
 import com.ipcoding.coachpro.feature.presentation.tactics.components.FootballField
 import com.ipcoding.coachpro.feature.presentation.tactics.components.TacticsPicker
+import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun TacticsScreen(
     navController: NavController,
     viewModel: TacticsViewModel = hiltViewModel()
 ) {
+    val spacing = LocalSpacing.current
     val players = viewModel.players.value
     val colorJersey = viewModel.colorJersey.value
     val colorStripes = viewModel.colorStripes.value
     val tactics = viewModel.tactics.value
     val allTactics = viewModel.allTactics.value
-    val maxWidth = remember { mutableStateOf(0.dp) }
+    val maxWidth = remember { mutableStateOf(spacing.default) }
     val colorText = remember { mutableStateOf(Color.Black) }
     val colorTextBackground = remember { mutableStateOf(Color.White) }
     val numberPlayer = remember { mutableStateOf(-1) }
@@ -52,7 +54,7 @@ fun TacticsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(8.dp)
+            .padding(spacing.spaceSmall)
     ) {
         TacticsPicker(
             allTactics = allTactics,
@@ -77,7 +79,7 @@ fun TacticsScreen(
                 items(4) { item ->
                     LazyRow(
                         modifier = Modifier
-                            .height(height = maxWidth.value / 4)
+                            .height(height = maxWidth.value / 4f)
                     ) {
                         items(tactics[item + 1] as Int) { item2 ->
                             Column (
@@ -86,7 +88,7 @@ fun TacticsScreen(
                             ) {
                                 Box(
                                     modifier = Modifier
-                                        .height(maxWidth.value / 5)
+                                        .height(maxWidth.value / 5f)
                                 ) {
                                     Jersey(
                                         colorJersey = colorJersey,
@@ -94,14 +96,13 @@ fun TacticsScreen(
                                         colorBorder = MaterialTheme.colors.onBackground,
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .padding(8.dp)
+                                            .padding(spacing.spaceSmall)
                                     )
                                 }
                                 if(
                                     players.size > 0 &&
                                     (item != itemRemember.value || item2 != item2Remember.value)
                                 )  {
-                                    Log.d("prosao", "numberPlayer: ${numberPlayer.value}")
                                     if(item == 0 && item2 == 0)
                                         numberPlayer.value = 0 else numberPlayer.value++
                                     itemRemember.value = item
@@ -109,9 +110,10 @@ fun TacticsScreen(
                                     playerInfo.value = players[numberPlayer.value].position +
                                             " " +  players[numberPlayer.value].rating.toString()
                                 }
+                                Spacer(modifier = Modifier.height(spacing.spaceExtraSmall))
                                 Text(
                                     text = playerInfo.value,
-                                    style = MaterialTheme.typography.overline,
+                                    style = MaterialTheme.typography.caption,
                                     color = MaterialTheme.colors.primary,
                                     textAlign = TextAlign.Center,
                                     modifier = Modifier

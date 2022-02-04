@@ -17,6 +17,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.presentation.players.PlayersViewModel
+import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun OnePLayer(
@@ -26,6 +27,7 @@ fun OnePLayer(
     playerTraining: Float,
     viewModel: PlayersViewModel
 ) {
+    val spacing = LocalSpacing.current
     val valueTraining = remember { mutableStateOf(playerTraining)}
     Row(
         modifier = Modifier
@@ -34,13 +36,13 @@ fun OnePLayer(
                     width = 1.dp,
                     color = MaterialTheme.colors.primary
                 ),
-                shape = RoundedCornerShape(corner = CornerSize(10.dp))
+                shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
             )
             .background(
                 color = color,
-                shape = RoundedCornerShape(corner = CornerSize(10.dp))
+                shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
             )
-            .padding(8.dp)
+            .padding(spacing.spaceSmall)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -59,7 +61,7 @@ fun OnePLayer(
                 style = MaterialTheme.typography.body2,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .width(40.dp)
+                    .width(spacing.spaceLarge)
             )
             Text(
                 text = player.rating.toString(),
@@ -67,7 +69,7 @@ fun OnePLayer(
                 style = MaterialTheme.typography.body2,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .width(40.dp)
+                    .width(spacing.spaceLarge)
             )
             Text(
                 text = player.age.toString(),
@@ -75,11 +77,11 @@ fun OnePLayer(
                 style = MaterialTheme.typography.body2,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .width(35.dp)
+                    .width(spacing.spaceExtraMedium)
             )
             LinearProgressIndicator(
                 modifier = Modifier
-                    .width(50.dp),
+                    .width(spacing.spaceLarge),
                 backgroundColor = Color.LightGray,
                 color = MaterialTheme.colors.primary,
                 progress = player.motivation * 0.01f
@@ -87,12 +89,12 @@ fun OnePLayer(
         } else {
             LinearProgressIndicator(
                 modifier = Modifier
-                    .width(50.dp),
+                    .width(spacing.spaceLarge),
                 backgroundColor = Color.LightGray,
                 color = MaterialTheme.colors.primary,
                 progress = player.fitness * 0.01f
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(spacing.spaceSmall))
             Slider(
                 value = valueTraining.value,
                 onValueChange = {
@@ -110,8 +112,8 @@ fun OnePLayer(
                     inactiveTrackColor = Color.LightGray
                 ),
                 modifier = Modifier
-                    .width(110.dp)
-                    .height(10.dp)
+                    .width(spacing.spaceSuperLarge)
+                    .height(spacing.spaceSmall)
             )
         }
 

@@ -10,12 +10,14 @@ import androidx.navigation.NavController
 import com.ipcoding.coachpro.feature.presentation.main.components.ClubName
 import com.ipcoding.coachpro.feature.presentation.main.components.MainButton
 import com.ipcoding.coachpro.feature.presentation.util.Screen
+import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun MainScreen(
     navController: NavController,
     viewModel: MainViewModel = hiltViewModel()
 ) {
+    val spacing = LocalSpacing.current
     val colorText = viewModel.colorStripes.value
     val colorBackground = viewModel.colorJersey.value
     val clubPosition =  viewModel.clubPosition.value
@@ -28,7 +30,7 @@ fun MainScreen(
         Row (
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(12.dp)
+                .padding(spacing.spaceMedium)
         ) {
             Box(
                 modifier = Modifier
@@ -66,7 +68,7 @@ fun MainScreen(
         Row (
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(12.dp)
+                .padding(spacing.spaceMedium)
         ) {
             Box(
                 modifier = Modifier

@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ipcoding.coachpro.feature.presentation.tactics.TacticsViewModel
+import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun TacticsPicker(
@@ -29,9 +30,10 @@ fun TacticsPicker(
     tactics: List<Any>,
     viewModel: TacticsViewModel
 ) {
+    val spacing = LocalSpacing.current
     LazyRow(
         modifier = Modifier
-            .padding(top = 16.dp, bottom = 16.dp)
+            .padding(top = spacing.spaceMedium, bottom = spacing.spaceMedium)
     ) {
         items(allTactics.size) { item ->
             val currentTactics = allTactics[item][0]
@@ -42,7 +44,7 @@ fun TacticsPicker(
                 colorText.value = MaterialTheme.colors.background
                 colorTextBackground.value = MaterialTheme.colors.primary
             }
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(spacing.spaceSmall))
             Text(
                 text = currentTactics.toString(),
                 style = MaterialTheme.typography.h5,
@@ -53,19 +55,19 @@ fun TacticsPicker(
                     }
                     .background(
                         color = colorTextBackground.value,
-                        shape = RoundedCornerShape(corner = CornerSize(10.dp))
+                        shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
                     )
                     .border(
                         border = BorderStroke(
                             width = 1.dp,
                             color = MaterialTheme.colors.primary
                         ),
-                        shape = RoundedCornerShape(corner = CornerSize(10.dp))
+                        shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
                     )
-                    .padding(8.dp),
+                    .padding(spacing.spaceSmall),
                 textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.width(8.dp))
+            Spacer(modifier = Modifier.width(spacing.spaceSmall))
         }
     }
 }

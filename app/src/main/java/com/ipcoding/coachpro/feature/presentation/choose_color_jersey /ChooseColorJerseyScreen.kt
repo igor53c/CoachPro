@@ -15,12 +15,14 @@ import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.components.ColorPicker
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.components.Jersey
 import com.ipcoding.coachpro.feature.presentation.util.Screen
+import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun ChooseColorJerseyScreen (
     navController: NavController,
     viewModel: ChooseColorJerseyViewModel = hiltViewModel()
 ) {
+    val spacing = LocalSpacing.current
     val colorJersey = viewModel.colorJersey.value
     val colorStripes = viewModel.colorStripes.value
     
@@ -43,7 +45,7 @@ fun ChooseColorJerseyScreen (
     ){
         Column(
             modifier = Modifier
-                .padding(8.dp)
+                .padding(spacing.spaceSmall)
                 .fillMaxSize()
         ) {
             Text(
@@ -53,7 +55,7 @@ fun ChooseColorJerseyScreen (
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(spacing.spaceMedium)
             )
             ColorPicker(onColorSelected = { color ->
                 viewModel.saveColorJersey(color)
@@ -65,12 +67,12 @@ fun ChooseColorJerseyScreen (
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp)
+                    .padding(spacing.spaceMedium)
             )
             ColorPicker(onColorSelected = { color ->
                 viewModel.saveColorStripes(color)
             })
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(spacing.spaceMedium))
             Jersey(
                 colorJersey = colorJersey,
                 colorStripes = colorStripes,

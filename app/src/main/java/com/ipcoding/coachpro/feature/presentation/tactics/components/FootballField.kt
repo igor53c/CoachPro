@@ -26,15 +26,15 @@ fun FootballField(
 
         val clipPath = Path().apply {
             lineTo(size.width, 0f)
-            lineTo(size.width , size.width )
-            lineTo(0f, size.width )
+            lineTo(size.width , size.width * 1.1071f)
+            lineTo(0f, size.width * 1.1071f)
             close()
         }
 
         clipPath(clipPath) {
             drawRect(
                 color = Colors.LightGreen10,
-                size = Size(size.width, size.width)
+                size = Size(size.width, size.width * 1.1071f)
             )
             drawRect(
                 topLeft = Offset(size.width * 0.25f, 0f),
@@ -68,13 +68,13 @@ fun FootballField(
             drawCircle(
                 color = colorLinie,
                 radius = size.width * 0.12f,
-                center = Offset(size.width * 0.5f, size.width),
+                center = Offset(size.width * 0.5f, size.width * 1.1071f),
                 style = Stroke(width = 3f)
             )
             drawCircle(
                 color = colorLinie,
                 radius = 7f,
-                center = Offset(size.width * 0.5f, size.width)
+                center = Offset(size.width * 0.5f, size.width * 1.1071f)
             )
             drawArc(
                 color = colorLinie,
@@ -86,7 +86,7 @@ fun FootballField(
                 style = Stroke(width = 3f)
             )
 
-            drawPath(path = clipPath, color = colorLinie, style = Stroke(width = 3f))
+            drawPath(path = clipPath, color = colorLinie, style = Stroke(width = 5f))
         }
     }
 }

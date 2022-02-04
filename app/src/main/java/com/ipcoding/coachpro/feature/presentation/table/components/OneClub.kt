@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ipcoding.coachpro.feature.domain.model.Club
+import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun OneClub(
@@ -27,6 +28,7 @@ fun OneClub(
     color: Color,
     isShowGoals: Boolean
 ) {
+    val spacing = LocalSpacing.current
     val text1 = remember { mutableStateOf("") }
     val text2 = remember { mutableStateOf("") }
     val text3 = remember { mutableStateOf("") }
@@ -46,13 +48,13 @@ fun OneClub(
                     width = 1.dp,
                     color = MaterialTheme.colors.primary
                 ),
-                shape = RoundedCornerShape(corner = CornerSize(10.dp))
+                shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
             )
             .background(
                 color = color,
-                shape = RoundedCornerShape(corner = CornerSize(10.dp))
+                shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
             )
-            .padding(8.dp)
+            .padding(spacing.spaceSmall)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -71,7 +73,7 @@ fun OneClub(
             style = MaterialTheme.typography.body2,
             textAlign = TextAlign.Center,
             modifier = Modifier
-                .width(30.dp)
+                .width(spacing.spaceExtraMedium)
         )
         Text(
             text = text2.value,
@@ -79,7 +81,7 @@ fun OneClub(
             style = MaterialTheme.typography.body2,
             textAlign = TextAlign.Center,
             modifier = Modifier
-                .width(30.dp)
+                .width(spacing.spaceExtraMedium)
         )
         Text(
             text = text3.value,
@@ -87,7 +89,7 @@ fun OneClub(
             style = MaterialTheme.typography.body2,
             textAlign = TextAlign.Center,
             modifier = Modifier
-                .width(30.dp)
+                .width(spacing.spaceExtraMedium)
         )
         Text(
             text = club.points.toString(),
@@ -95,7 +97,7 @@ fun OneClub(
             style = MaterialTheme.typography.body2,
             textAlign = TextAlign.Center,
             modifier = Modifier
-                .width(30.dp)
+                .width(spacing.spaceExtraMedium)
         )
     }
 }

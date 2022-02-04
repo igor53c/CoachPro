@@ -17,12 +17,14 @@ import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.table.components.OneClub
 import com.ipcoding.coachpro.feature.presentation.util.Screen
+import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun TableScreen(
     navController: NavController,
     viewModel: TableViewModel = hiltViewModel()
 ) {
+    val spacing = LocalSpacing.current
     val clubs = viewModel.clubs.value
     val goalsView = remember { mutableStateOf(false) }
     val buttonGoalsText = remember { mutableStateOf("") }
@@ -44,7 +46,7 @@ fun TableScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(
-                start = 16.dp,
+                start = spacing.spaceMedium,
                 end = 16.dp,
                 top = 8.dp,
                 bottom = 8.dp
@@ -52,7 +54,7 @@ fun TableScreen(
     ) {
         Row(
             modifier = Modifier
-                .padding(8.dp)
+                .padding(spacing.spaceSmall)
                 .fillMaxWidth()
         ) {
             Text(
@@ -68,7 +70,7 @@ fun TableScreen(
                 style = MaterialTheme.typography.body2,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .width(30.dp)
+                    .width(spacing.spaceExtraMedium)
             )
             Text(
                 text = text2.value,
@@ -76,7 +78,7 @@ fun TableScreen(
                 style = MaterialTheme.typography.body2,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .width(30.dp)
+                    .width(spacing.spaceExtraMedium)
             )
             Text(
                 text = text3.value,
@@ -84,7 +86,7 @@ fun TableScreen(
                 style = MaterialTheme.typography.body2,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .width(30.dp)
+                    .width(spacing.spaceExtraMedium)
             )
             Text(
                 text = stringResource(id = R.string.points),
@@ -92,7 +94,7 @@ fun TableScreen(
                 style = MaterialTheme.typography.body2,
                 textAlign = TextAlign.Center,
                 modifier = Modifier
-                    .width(30.dp)
+                    .width(spacing.spaceExtraMedium)
             )
         }
         LazyColumn (
@@ -106,13 +108,13 @@ fun TableScreen(
                     color = viewModel.getColor(club),
                     isShowGoals = goalsView.value
                 )
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(spacing.spaceExtraSmall))
             }
         }
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(spacing.spaceSmall))
         Button(
             modifier = Modifier
-                .height(50.dp)
+                .height(spacing.spaceLarge)
                 .fillMaxWidth(),
             onClick = {
                 goalsView.value = !goalsView.value

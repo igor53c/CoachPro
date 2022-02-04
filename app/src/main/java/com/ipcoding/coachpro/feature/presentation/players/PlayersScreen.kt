@@ -17,12 +17,14 @@ import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.players.components.OnePLayer
 import com.ipcoding.coachpro.feature.presentation.util.Screen
+import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun PlayersScreen (
     navController: NavController,
     viewModel: PlayersViewModel = hiltViewModel()
 ) {
+    val spacing = LocalSpacing.current
     val players = viewModel.players.value
     val trainingView = remember { mutableStateOf(false) }
     val buttonTrainingText = remember { mutableStateOf("") }
@@ -30,15 +32,15 @@ fun PlayersScreen (
         modifier = Modifier
             .fillMaxSize()
             .padding(
-                start = 16.dp,
-                end = 16.dp,
-                top = 8.dp,
-                bottom = 8.dp
+                start = spacing.spaceMedium,
+                end = spacing.spaceMedium,
+                top = spacing.spaceSmall,
+                bottom = spacing.spaceSmall
             )
     ) {
         Row(
             modifier = Modifier
-                .padding(8.dp)
+                .padding(spacing.spaceSmall)
                 .fillMaxWidth()
         ) {
             Text(
@@ -56,7 +58,7 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(40.dp)
+                        .width(spacing.spaceLarge)
                 )
                 Text(
                     text = stringResource(id = R.string.rating),
@@ -64,7 +66,7 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(40.dp)
+                        .width(spacing.spaceLarge)
                 )
                 Text(
                     text = stringResource(id = R.string.age),
@@ -72,7 +74,7 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(35.dp)
+                        .width(spacing.spaceExtraMedium)
                 )
                 Text(
                     text = stringResource(id = R.string.motivation),
@@ -80,7 +82,7 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(50.dp)
+                        .width(spacing.spaceLarge)
                 )
             } else {
                 buttonTrainingText.value = stringResource(id = R.string.general)
@@ -90,16 +92,16 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(50.dp)
+                        .width(spacing.spaceLarge)
                 )
-                Spacer(modifier = Modifier.width(8.dp))
+                Spacer(modifier = Modifier.width(spacing.spaceSmall))
                 Text(
                     text = stringResource(id = R.string.training),
                     color = MaterialTheme.colors.primary,
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(110.dp)
+                        .width(spacing.spaceSuperLarge)
                 )
             }
 
@@ -117,13 +119,13 @@ fun PlayersScreen (
                     playerTraining = player.training.toFloat(),
                     viewModel = viewModel
                 )
-                Spacer(modifier = Modifier.height(4.dp))
+                Spacer(modifier = Modifier.height(spacing.spaceExtraSmall))
             }
         }
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(spacing.spaceSmall))
         Button(
             modifier = Modifier
-                .height(50.dp)
+                .height(spacing.spaceLarge)
                 .fillMaxWidth(),
             onClick = {
                 trainingView.value = !trainingView.value

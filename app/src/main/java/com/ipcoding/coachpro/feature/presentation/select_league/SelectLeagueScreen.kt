@@ -15,16 +15,18 @@ import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.select_league.components.Item
 import com.ipcoding.coachpro.feature.presentation.util.Screen
+import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun SelectLeagueScreen (
     navController: NavController,
     viewModel: SelectLeagueViewModel = hiltViewModel()
 ) {
+    val spacing = LocalSpacing.current
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp),
+            .padding(spacing.spaceMedium),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Text(
@@ -32,7 +34,7 @@ fun SelectLeagueScreen (
             color = MaterialTheme.colors.primary,
             style = MaterialTheme.typography.h5
         )
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(spacing.spaceMedium))
         LazyColumn (verticalArrangement = Arrangement.Center) {
             items(7) { item ->
                 val league = stringResource(id = R.string.league)
@@ -46,7 +48,7 @@ fun SelectLeagueScreen (
                         )
                     }
                 )
-                Spacer(modifier = Modifier.height(8.dp))
+                Spacer(modifier = Modifier.height(spacing.spaceSmall))
             }
         }
     }

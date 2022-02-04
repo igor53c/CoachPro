@@ -13,12 +13,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun Item(
     modifier: Modifier = Modifier,
     title: String
 ) {
+    val spacing = LocalSpacing.current
     Box(modifier = modifier) {
         Text(
             text = title,
@@ -30,9 +32,9 @@ fun Item(
                         width = 1.dp,
                         color = MaterialTheme.colors.primary
                     ),
-                    shape = RoundedCornerShape(corner = CornerSize(10.dp))
+                    shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
                 )
-                .padding(16.dp)
+                .padding(spacing.spaceMedium)
                 .fillMaxWidth(),
             textAlign = TextAlign.Center
         )
