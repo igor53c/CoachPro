@@ -59,10 +59,10 @@ class MainActivity : ComponentActivity() {
                             BackHandler(true) {}
                         }
                         composable(route = Screen.PlayersScreen.route) {
-                            PlayersScreen(navController = navController)
+                            PlayersScreen()
                         }
                         composable(route = Screen.TableScreen.route) {
-                            TableScreen(navController = navController)
+                            TableScreen()
                         }
                         composable(route = Screen.TacticsScreen.route) {
                             TacticsScreen()

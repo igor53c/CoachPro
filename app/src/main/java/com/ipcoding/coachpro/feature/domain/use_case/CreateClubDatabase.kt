@@ -6,6 +6,7 @@ import com.ipcoding.coachpro.core.util.AllPosition
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.repository.*
+import kotlin.math.round
 import kotlin.random.Random
 
 class CreateClubDatabase(
@@ -20,7 +21,7 @@ class CreateClubDatabase(
         insertAllClubsInDatabase(clubName)
     }
 
-    suspend private fun insertAllClubsInDatabase(clubName: String) {
+    private suspend fun insertAllClubsInDatabase(clubName: String) {
 
         clubRepository.deleteAll()
         matchRepository.deleteAll()
@@ -63,13 +64,13 @@ class CreateClubDatabase(
             val currentClubName : String = AllClubs().getClub(i)
             clubRepository.insertClub(Club(currentClubName, league, i % 20 + 1, rating,
                 0, 0, 0, 0, 0, 0, 0))
-            if (currentClubName.equals(clubName)) {
+            if (currentClubName == clubName) {
                 insertAllPlayersInDatabase(rating)
             }
         }
     }
 
-    suspend private fun insertAllPlayersInDatabase(clubRating: Double) {
+    private suspend fun insertAllPlayersInDatabase(clubRating: Double) {
 
         playerRepository.deleteAll()
 
@@ -82,8 +83,8 @@ class CreateClubDatabase(
                 in 14..17 -> position = AllPosition.FOR[Random.nextInt(6)]
             }
             val rating = takeRandomNumberFromRange(
-                Math.round(clubRating - 8).toInt(),
-                Math.round(clubRating + 4).toInt()
+                round(clubRating - 8).toInt(),
+                round(clubRating + 4).toInt()
             )
             val age = if (clubRating - rating < 0) {
                 takeRandomNumberFromRange(31, 36)

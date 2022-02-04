@@ -4,12 +4,7 @@ import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.ipcoding.coachpro.feature.domain.model.*
 
-@Database(entities = arrayOf(
-    Player::class,
-    Club::class,
-    History::class,
-    Match::class,
-    Matches::class),
+@Database(entities = [Player::class, Club::class, History::class, Match::class, Matches::class],
     version = 1)
 abstract class CoachDatabase: RoomDatabase() {
 

@@ -39,8 +39,4 @@ class AllPlayers {
     fun playersSize(): Int {
         return players.size
     }
-
-    fun takePlayer(broj: Int): String {
-        return players[broj]
-    }
 }

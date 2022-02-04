@@ -3,7 +3,6 @@ package com.ipcoding.coachpro.feature.data.repository
 import com.ipcoding.coachpro.feature.data.data_source.ClubDao
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.repository.ClubRepository
-import kotlinx.coroutines.flow.Flow
 
 class ClubRepositoryImpl(
     private val dao: ClubDao

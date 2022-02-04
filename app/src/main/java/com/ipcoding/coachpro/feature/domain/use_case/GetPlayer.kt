@@ -11,7 +11,7 @@ class GetPlayer {
         item2: Int
     ): Player? {
         var player: Player? = null
-        if(players.size > 0) {
+        if(players.isNotEmpty()) {
             var num = 0
             var i = 0
             while (i < item1) {

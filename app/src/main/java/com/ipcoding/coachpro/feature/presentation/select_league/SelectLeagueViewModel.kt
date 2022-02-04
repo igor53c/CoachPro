@@ -10,7 +10,7 @@ class SelectLeagueViewModel @Inject constructor(
     private val preferences: Preferences
 ): ViewModel() {
 
-    fun saveSelecktedLeague(name: String)  {
-        preferences.saveSelecktedLeague(name)
+    fun saveSelectedLeague(name: String)  {
+        preferences.saveSelectedLeague(name)
     }
 }

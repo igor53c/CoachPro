@@ -4,7 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
@@ -37,7 +36,7 @@ fun TacticsPicker(
     ) {
         items(allTactics.size) { item ->
             val currentTactics = allTactics[item][0]
-            if(!tactics[0].equals(currentTactics)) {
+            if(tactics[0] != currentTactics) {
                 colorText.value = MaterialTheme.colors.primary
                 colorTextBackground.value = MaterialTheme.colors.background
             } else {

@@ -2,7 +2,6 @@ package com.ipcoding.coachpro.feature.data.data_source
 
 import androidx.room.*
 import com.ipcoding.coachpro.feature.domain.model.Club
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ClubDao {

@@ -1,9 +1,5 @@
 package com.ipcoding.coachpro.feature.domain.repository
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
 import com.ipcoding.coachpro.feature.domain.model.Player
 import kotlinx.coroutines.flow.Flow
 
@@ -21,5 +17,5 @@ interface PlayerRepository {
 
     fun getPlayersSortByNumber(): Flow<List<Player>>
 
-    fun getPlayersSortbyRating(): Flow<List<Player>>
+    fun getPlayersSortByRating(): Flow<List<Player>>
 }

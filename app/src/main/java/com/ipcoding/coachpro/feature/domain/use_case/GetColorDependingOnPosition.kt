@@ -11,8 +11,8 @@ class GetColorDependingOnPosition {
         when(position) {
             AllPosition.GK -> color = Colors.LightGreen10
             in AllPosition.DEF -> color = Colors.LightBlue
-            in AllPosition.MID -> color = Colors.LighYellow
-            in AllPosition.FOR -> color = Colors.LighRed10
+            in AllPosition.MID -> color = Colors.LightYellow
+            in AllPosition.FOR -> color = Colors.LightRed10
         }
         return color
     }

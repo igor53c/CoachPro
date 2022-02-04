@@ -14,31 +14,31 @@ class DefaultPreferences (
             .apply()
     }
 
-    override fun saveSelecktedLeague(name: String) {
+    override fun saveSelectedLeague(name: String) {
         sharedPreferences
             .edit()
-            .putString(Preferences.SELECKTED_LEAGUE, name)
+            .putString(Preferences.SELECTED_LEAGUE, name)
             .apply()
     }
 
     override fun saveColorJersey(color: Int) {
         sharedPreferences
             .edit()
-            .putInt(Preferences.SELECKTED_COLOR_JERSEY, color)
+            .putInt(Preferences.SELECTED_COLOR_JERSEY, color)
             .apply()
     }
 
     override fun saveColorStripes(color: Int) {
         sharedPreferences
             .edit()
-            .putInt(Preferences.SELECKTED_COLOR_STRIPES, color)
+            .putInt(Preferences.SELECTED_COLOR_STRIPES, color)
             .apply()
     }
 
     override fun saveTactics(tactics: String) {
         sharedPreferences
             .edit()
-            .putString(Preferences.SELECKTED_TACTICS, tactics)
+            .putString(Preferences.SELECTED_TACTICS, tactics)
             .apply()
     }
 
@@ -46,19 +46,19 @@ class DefaultPreferences (
         return sharedPreferences.getString(Preferences.CLUB_NAME, null)
     }
 
-    override fun loadSelecktedLeague(): String? {
-        return sharedPreferences.getString(Preferences.SELECKTED_LEAGUE, null)
+    override fun loadSelectedLeague(): String? {
+        return sharedPreferences.getString(Preferences.SELECTED_LEAGUE, null)
     }
 
     override fun loadColorJersey(): Int {
-        return sharedPreferences.getInt(Preferences.SELECKTED_COLOR_JERSEY, -1)
+        return sharedPreferences.getInt(Preferences.SELECTED_COLOR_JERSEY, -1)
     }
 
     override fun loadColorStripes(): Int {
-        return sharedPreferences.getInt(Preferences.SELECKTED_COLOR_STRIPES, -1)
+        return sharedPreferences.getInt(Preferences.SELECTED_COLOR_STRIPES, -1)
     }
 
     override fun loadTactics(): String? {
-        return sharedPreferences.getString(Preferences.SELECKTED_TACTICS, "4-4-2")
+        return sharedPreferences.getString(Preferences.SELECTED_TACTICS, "4-4-2")
     }
 }

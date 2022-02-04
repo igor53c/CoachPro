@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
@@ -40,9 +39,9 @@ fun SelectLeagueScreen (
                 val league = stringResource(id = R.string.league)
                 val numberLeague = (item + 1).toString()
                 Item(
-                    title = league + " " + numberLeague,
+                    title = "$league $numberLeague",
                     modifier = Modifier.clickable {
-                        viewModel.saveSelecktedLeague(numberLeague)
+                        viewModel.saveSelectedLeague(numberLeague)
                         navController.navigate(
                             Screen.SelectClubScreen.route
                         )

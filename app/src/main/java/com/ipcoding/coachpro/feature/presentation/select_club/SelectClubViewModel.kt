@@ -22,7 +22,7 @@ class SelectClubViewModel @Inject constructor(
     init {
         _clubs.value = allUseCases
             .getClubsFromLeague(
-                preferences.loadSelecktedLeague()
+                preferences.loadSelectedLeague()
             )
     }
 

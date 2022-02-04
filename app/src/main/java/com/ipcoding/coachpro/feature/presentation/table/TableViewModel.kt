@@ -28,7 +28,7 @@ class TableViewModel @Inject constructor(
     fun getColor(club: Club): Color {
         return allUseCases.getColorOfClubInTable.invoke(
             club = club,
-            selecktedClub = preferences.loadClubName().toString()
+            selectedClub = preferences.loadClubName().toString()
         )
     }
 
@@ -39,6 +39,6 @@ class TableViewModel @Inject constructor(
     }
 
     fun getStringLeague(): String {
-        return allUseCases.getStringLeague(preferences.loadSelecktedLeague().toString())
+        return allUseCases.getStringLeague(preferences.loadSelectedLeague().toString())
     }
 }

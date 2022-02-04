@@ -9,7 +9,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
@@ -38,7 +37,7 @@ fun SelectClubScreen (
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         LazyColumn (verticalArrangement = Arrangement.Center) {
             items(clubs.size) { item ->
-                val name = clubs.get(item)
+                val name = clubs[item]
                 Item(
                     title = name,
                     modifier = Modifier.clickable {

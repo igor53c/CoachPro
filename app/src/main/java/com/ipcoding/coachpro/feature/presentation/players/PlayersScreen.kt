@@ -11,17 +11,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.players.components.OnePLayer
-import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun PlayersScreen (
-    navController: NavController,
     viewModel: PlayersViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current

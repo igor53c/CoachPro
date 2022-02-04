@@ -43,20 +43,20 @@ class MainViewModel @Inject constructor(
         getClubPositionString()
     }
 
-    fun loadClubName() {
+    private fun loadClubName() {
         _clubName.value = preferences.loadClubName().toString()
     }
 
-    fun loadColorJersey() {
+    private fun loadColorJersey() {
         _colorJersey.value = Colors().indexToColor(preferences.loadColorJersey())
     }
 
-    fun loadColorStripes() {
+    private fun loadColorStripes() {
         _colorStripes.value = Colors().indexToColor(preferences.loadColorStripes())
     }
 
     fun getStringLeague(): String {
-       return allUseCases.getStringLeague(preferences.loadSelecktedLeague().toString())
+       return allUseCases.getStringLeague(preferences.loadSelectedLeague().toString())
     }
 
     fun getClubPositionString() {

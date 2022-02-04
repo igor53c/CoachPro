@@ -26,5 +26,5 @@ interface PlayerDao {
     fun getPlayersSortByNumber(): Flow<List<Player>>
 
     @Query("SELECT * FROM players_table ORDER BY rating DESC")
-    fun getPlayersSortbyRating(): Flow<List<Player>>
+    fun getPlayersSortByRating(): Flow<List<Player>>
 }

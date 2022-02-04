@@ -32,7 +32,7 @@ class PlayerRepositoryImpl(
         return dao.getPlayersSortByNumber()
     }
 
-    override fun getPlayersSortbyRating(): Flow<List<Player>> {
-        return dao.getPlayersSortbyRating()
+    override fun getPlayersSortByRating(): Flow<List<Player>> {
+        return dao.getPlayersSortByRating()
     }
 }
