@@ -57,6 +57,7 @@ fun MainScreen(
                         )
                     }
             ) {
+                if(clubPosition.equals("nullth")) viewModel.getClubPositionString()
                 MainButton(
                     rowOne = viewModel.getStringLeague(),
                     rowTwo = clubPosition,
