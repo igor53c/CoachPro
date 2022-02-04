@@ -1,7 +1,5 @@
 package com.ipcoding.coachpro.core.util
 
-import android.util.Log
-
 class AllTactics {
     companion object {
         val T_541: List<Any> = listOf("5-4-1", 1, 5, 4, 1)
@@ -19,7 +17,6 @@ class AllTactics {
 
     fun getTactics(name: String): List<Any> {
         var list: List<Any> = emptyList()
-        Log.d("lista", name)
        when(name) {
             "5-4-1" -> list = T_541
             "5-3-2" -> list = T_532
@@ -29,7 +26,6 @@ class AllTactics {
             "3-5-2" -> list = T_352
             "3-4-3" -> list = T_343
         }
-        Log.d("lista", list.toString())
         return  list
     }
 }

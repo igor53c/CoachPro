@@ -10,5 +10,8 @@ data class AllUseCases (
     val getStringLeague: GetStringLeague,
     val getClubs: GetClubs,
     val getColorOfClubInTable: GetColorOfClubInTable,
-    val getClubPositionString: GetClubPositionString
+    val getClubPositionString: GetClubPositionString,
+    val getPlayerInfo: GetPlayerInfo,
+    val replaceTwoPlayers: ReplaceTwoPlayers,
+    val getPlayer: GetPlayer
 )

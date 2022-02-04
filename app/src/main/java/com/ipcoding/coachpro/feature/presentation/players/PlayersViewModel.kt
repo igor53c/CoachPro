@@ -8,6 +8,9 @@ import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -16,8 +19,10 @@ class PlayersViewModel @Inject constructor(
     private val allUseCases: AllUseCases
 ): ViewModel() {
 
-    private var _players = mutableStateOf<List<Player>>(mutableListOf())
-    val players: State<List<Player>> = _players
+    private val _state = mutableStateOf<List<Player>>(emptyList())
+    val state: State<List<Player>> = _state
+
+    private var getPlayersJob: Job? = null
 
     init {
         getPlayers()
@@ -28,9 +33,12 @@ class PlayersViewModel @Inject constructor(
     }
 
     private fun getPlayers() {
-        viewModelScope.launch {
-            _players.value = allUseCases.getPlayers.invoke()
-        }
+        getPlayersJob?.cancel()
+        getPlayersJob = allUseCases.getPlayers.invoke()
+            .onEach { items ->
+                _state.value = items
+            }
+            .launchIn(viewModelScope)
     }
 
     fun updatePlayer(player: Player) {

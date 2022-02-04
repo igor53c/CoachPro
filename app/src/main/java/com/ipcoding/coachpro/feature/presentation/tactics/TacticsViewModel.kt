@@ -9,9 +9,13 @@ import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.util.AllTactics
 import com.ipcoding.coachpro.core.util.Colors
+import com.ipcoding.coachpro.feature.domain.model.MarkedPlayer
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -33,8 +37,13 @@ class TacticsViewModel @Inject constructor(
     private var _allTactics = mutableStateOf<List<List<Any>>>(mutableListOf())
     val allTactics: State<List<List<Any>>> = _allTactics
 
-    private var _players = mutableStateOf<List<Player>>(mutableListOf())
-    val players: State<List<Player>> = _players
+    private val _state = mutableStateOf<List<Player>>(emptyList())
+    val state: State<List<Player>> = _state
+
+    private var _previouslyClickedInfo = mutableStateOf(MarkedPlayer())
+    val previouslyClickedInfo: State<MarkedPlayer> = _previouslyClickedInfo
+
+    private var getPlayersJob: Job? = null
 
     init {
         getPlayers()
@@ -47,9 +56,12 @@ class TacticsViewModel @Inject constructor(
     }
 
     private fun getPlayers() {
-        viewModelScope.launch {
-            _players.value = allUseCases.getPlayers.invoke()
-        }
+        getPlayersJob?.cancel()
+        getPlayersJob = allUseCases.getPlayers.invoke()
+            .onEach { items ->
+                _state.value = items
+            }
+            .launchIn(viewModelScope)
     }
 
     private fun loadColorJersey() {
@@ -71,6 +83,29 @@ class TacticsViewModel @Inject constructor(
     fun saveTactics(tactics: List<Any>) {
         _tactics.value = tactics
         preferences.saveTactics(tactics[0].toString())
+    }
+
+    fun getPlayer(players: List<Player>, tactics: List<Any>, item1: Int, item2: Int): Player? {
+        return allUseCases.getPlayer.invoke(players, tactics, item1, item2)
+    }
+
+    fun getPlayerInfo(players: List<Player>, tactics: List<Any>, item1: Int, item2: Int): String {
+        return allUseCases.getPlayerInfo.invoke(
+            allUseCases.getPlayer.invoke(players, tactics, item1, item2)
+        )
+    }
+
+    fun replaceTwoPlayers(
+        previouslyClickedInfo: MarkedPlayer,
+        item1: Int,
+        item2: Int,
+        color: Color
+    ) {
+        viewModelScope.launch {
+            _previouslyClickedInfo.value =
+                allUseCases.replaceTwoPlayers.invoke(previouslyClickedInfo, item1, item2, color)
+            getPlayers()
+        }
     }
 
 }

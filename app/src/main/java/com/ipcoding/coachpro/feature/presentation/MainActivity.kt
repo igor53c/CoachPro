@@ -65,7 +65,7 @@ class MainActivity : ComponentActivity() {
                             TableScreen(navController = navController)
                         }
                         composable(route = Screen.TacticsScreen.route) {
-                            TacticsScreen(navController = navController)
+                            TacticsScreen()
                         }
                     }
                 }

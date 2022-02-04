@@ -23,7 +23,7 @@ interface PlayerDao {
     fun getPlayers(): Flow<List<Player>>
 
     @Query("SELECT * FROM players_table ORDER BY number ASC")
-    suspend fun getPlayersSortByNumber():List<Player>
+    fun getPlayersSortByNumber(): Flow<List<Player>>
 
     @Query("SELECT * FROM players_table ORDER BY rating DESC")
     fun getPlayersSortbyRating(): Flow<List<Player>>

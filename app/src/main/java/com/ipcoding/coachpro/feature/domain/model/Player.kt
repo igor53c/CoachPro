@@ -9,7 +9,7 @@ data class Player(
     val position: String,
     val rating: Double,
     val age: Int,
-    val number: Int,
+    var number: Int,
     val motivation: Int,
     val fitness: Int,
     var training: Int,

@@ -97,7 +97,10 @@ object AppModule {
             getStringLeague = GetStringLeague(),
             getClubs = GetClubs(clubRepository),
             getColorOfClubInTable = GetColorOfClubInTable(),
-            getClubPositionString = GetClubPositionString(clubRepository)
+            getClubPositionString = GetClubPositionString(clubRepository),
+            getPlayerInfo = GetPlayerInfo(),
+            replaceTwoPlayers = ReplaceTwoPlayers(playerRepository),
+            getPlayer = GetPlayer()
         )
     }
 }
