@@ -36,8 +36,8 @@ class TacticsViewModel @Inject constructor(
     private var _allTactics = mutableStateOf<List<List<Any>>>(mutableListOf())
     val allTactics: State<List<List<Any>>> = _allTactics
 
-    private val _state = mutableStateOf<List<Player>>(emptyList())
-    val state: State<List<Player>> = _state
+    private val _players = mutableStateOf<List<Player>>(emptyList())
+    val players: State<List<Player>> = _players
 
     private var _previouslyClickedInfo = mutableStateOf(MarkedPlayer())
     val previouslyClickedInfo: State<MarkedPlayer> = _previouslyClickedInfo
@@ -58,7 +58,7 @@ class TacticsViewModel @Inject constructor(
         getPlayersJob?.cancel()
         getPlayersJob = allUseCases.getPlayers.invoke()
             .onEach { items ->
-                _state.value = items
+                _players.value = items
             }
             .launchIn(viewModelScope)
     }
@@ -107,4 +107,13 @@ class TacticsViewModel @Inject constructor(
         }
     }
 
+    fun checkPlayerInRightPosition(
+        player: Player?, item1: Int, item2: Int,  tactics: List<Any>
+    ): Boolean {
+        return allUseCases.checkPlayerInRightPosition.invoke(player, item1, item2,  tactics)
+    }
+
+    fun getRating(players: List<Player>, tactics: List<Any>): Double {
+        return allUseCases.getRating.invoke(players, tactics)
+    }
 }

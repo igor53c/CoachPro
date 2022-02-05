@@ -12,7 +12,6 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
@@ -29,7 +28,7 @@ fun Item(
             modifier = Modifier
                 .border(
                     border = BorderStroke(
-                        width = 1.dp,
+                        width = spacing.spaceSuperSmall,
                         color = MaterialTheme.colors.primary
                     ),
                     shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))

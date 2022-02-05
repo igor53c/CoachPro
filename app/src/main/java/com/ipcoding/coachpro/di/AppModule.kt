@@ -100,7 +100,9 @@ object AppModule {
             getClubPositionString = GetClubPositionString(clubRepository),
             getPlayerInfo = GetPlayerInfo(),
             replaceTwoPlayers = ReplaceTwoPlayers(playerRepository),
-            getPlayer = GetPlayer()
+            getPlayer = GetPlayer(),
+            checkPlayerInRightPosition = CheckPlayerInRightPosition(),
+            getRating = GetRating()
         )
     }
 }

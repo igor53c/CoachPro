@@ -14,7 +14,7 @@ import com.ipcoding.coachpro.core.util.Colors
 
 @Composable
 fun FootballField(
-    colorLinie: Color
+    colorLine: Color
 ) {
     Canvas(
         modifier = Modifier
@@ -35,46 +35,46 @@ fun FootballField(
             )
             drawRect(
                 topLeft = Offset(size.width * 0.25f, 0f),
-                color = colorLinie,
+                color = colorLine,
                 size = Size(size.width * 0.5f, size.width * 0.25f),
                 style = Stroke(width = 3f)
             )
             drawRect(
                 topLeft = Offset(size.width * 0.4f, 0f),
-                color = colorLinie,
+                color = colorLine,
                 size = Size(size.width * 0.2f, size.width * 0.08f),
                 style = Stroke(width = 3f)
             )
             drawCircle(
-                color = colorLinie,
+                color = colorLine,
                 radius = 5f,
                 center = Offset(size.width * 0.5f, size.width * 0.16f)
             )
             drawCircle(
-                color = colorLinie,
+                color = colorLine,
                 radius = 20f,
                 center = Offset(0f, 0f),
                 style = Stroke(width = 3f)
             )
             drawCircle(
-                color = colorLinie,
+                color = colorLine,
                 radius = 20f,
                 center = Offset(size.width, 0f),
                 style = Stroke(width = 3f)
             )
             drawCircle(
-                color = colorLinie,
+                color = colorLine,
                 radius = size.width * 0.12f,
                 center = Offset(size.width * 0.5f, size.width * 1.1071f),
                 style = Stroke(width = 3f)
             )
             drawCircle(
-                color = colorLinie,
+                color = colorLine,
                 radius = 7f,
                 center = Offset(size.width * 0.5f, size.width * 1.1071f)
             )
             drawArc(
-                color = colorLinie,
+                color = colorLine,
                 startAngle = 0f,
                 sweepAngle = 180f,
                 useCenter = false,
@@ -83,7 +83,7 @@ fun FootballField(
                 style = Stroke(width = 3f)
             )
 
-            drawPath(path = clipPath, color = colorLinie, style = Stroke(width = 5f))
+            drawPath(path = clipPath, color = colorLine, style = Stroke(width = 5f))
         }
     }
 }

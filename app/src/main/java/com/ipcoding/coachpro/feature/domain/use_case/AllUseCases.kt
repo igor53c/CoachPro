@@ -13,5 +13,7 @@ data class AllUseCases (
     val getClubPositionString: GetClubPositionString,
     val getPlayerInfo: GetPlayerInfo,
     val replaceTwoPlayers: ReplaceTwoPlayers,
-    val getPlayer: GetPlayer
+    val getPlayer: GetPlayer,
+    val checkPlayerInRightPosition: CheckPlayerInRightPosition,
+    val getRating: GetRating
 )
