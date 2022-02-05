@@ -84,7 +84,7 @@ fun ScheduleScreen(
                             }
                         }
                     }
-                    Spacer(modifier = Modifier.width(spacing.spaceExtraMedium))
+                    if(item1 != 37) Spacer(modifier = Modifier.width(spacing.spaceExtraMedium))
                 }
             }
         }
