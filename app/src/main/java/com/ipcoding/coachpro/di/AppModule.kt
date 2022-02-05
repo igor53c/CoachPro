@@ -106,7 +106,9 @@ object AppModule {
             saveFirstTeamRating = SaveFirstTeamRating(clubRepository),
             calculationTeamRating = CalculationTeamRating(),
             getPlayersRating = GetPlayersRating(clubRepository),
-            getClubRating = GetClubRating(clubRepository)
+            getClubRating = GetClubRating(clubRepository),
+            makeSchedule = MakeSchedule(clubRepository, matchRepository),
+            getAllMatches = GetAllMatches(matchRepository)
         )
     }
 }

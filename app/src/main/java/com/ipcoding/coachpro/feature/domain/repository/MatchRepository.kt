@@ -11,5 +11,7 @@ interface MatchRepository {
 
     fun getMatchesFromRound(round: Int): Flow<List<Match>>
 
+    fun getAllMatches(): Flow<List<Match>>
+
     suspend fun getClubMatchFromNextRound (round: Int, club: String?): Match?
 }

@@ -19,5 +19,7 @@ data class AllUseCases (
     val saveFirstTeamRating: SaveFirstTeamRating,
     val calculationTeamRating: CalculationTeamRating,
     val getPlayersRating: GetPlayersRating,
-    val getClubRating: GetClubRating
+    val getClubRating: GetClubRating,
+    val makeSchedule: MakeSchedule,
+    val getAllMatches: GetAllMatches
 )

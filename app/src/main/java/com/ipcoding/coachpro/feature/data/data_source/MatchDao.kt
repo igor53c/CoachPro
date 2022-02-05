@@ -16,6 +16,9 @@ interface MatchDao {
     @Query("SELECT * FROM match_table WHERE round = :round ORDER BY host ASC")
     fun getMatchesFromRound(round: Int): Flow<List<Match>>
 
+    @Query("SELECT * FROM match_table ORDER BY round ASC, host ASC")
+    fun getAllMatches(): Flow<List<Match>>
+
     @Query("SELECT * FROM match_table WHERE " +
             "(round = :round AND (host = :club OR guest = :club))")
     suspend fun getClubMatchFromNextRound (round: Int, club: String?): Match?

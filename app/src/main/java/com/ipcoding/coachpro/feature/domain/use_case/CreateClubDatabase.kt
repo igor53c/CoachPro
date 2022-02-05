@@ -17,7 +17,8 @@ class CreateClubDatabase(
     private val matchRepository: MatchRepository,
     private val matchesRepository: MatchesRepository
 ) {
-    val players = mutableListOf<Player>()
+    private val players = mutableListOf<Player>()
+    private var myLeague = ""
 
     suspend operator fun invoke(clubName: String) {
         insertAllClubsInDatabase(clubName)
@@ -67,6 +68,7 @@ class CreateClubDatabase(
             val club = Club(currentClubName, league, i % 20 + 1, rating, 0,
                 0, 0, 0, 0, 0, 0, rating)
             if (currentClubName == clubName) {
+                myLeague = league
                 insertAllPlayersInDatabase(rating)
                 club.playersRating = CalculationTeamRating().invoke(players)
                 club.rating = CalculationFirstTeamRating().invoke(
@@ -76,6 +78,7 @@ class CreateClubDatabase(
                 clubRepository.insertClub(club)
             } else clubRepository.insertClub(club)
         }
+        MakeSchedule(clubRepository, matchRepository).invoke(myLeague)
     }
 
     private suspend fun insertAllPlayersInDatabase(clubRating: Double) {

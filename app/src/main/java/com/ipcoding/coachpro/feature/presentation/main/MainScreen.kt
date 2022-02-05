@@ -4,8 +4,10 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.main.components.ClubName
 import com.ipcoding.coachpro.feature.presentation.main.components.MainButton
 import com.ipcoding.coachpro.feature.presentation.util.Screen
@@ -38,14 +40,10 @@ fun MainScreen(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .clickable {
-                        navController.navigate(
-                            Screen.PlayersScreen.route
-                        )
-                    }
+                    .clickable { navController.navigate(Screen.PlayersScreen.route) }
             ) {
                 MainButton(
-                    rowOne = "SQUAD",
+                    rowOne = stringResource(id = R.string.squad),
                     rowTwo = round(playersRating).toInt().toString(),
                     colorText = colorText,
                     background = colorBackground
@@ -54,11 +52,7 @@ fun MainScreen(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .clickable {
-                        navController.navigate(
-                            Screen.TableScreen.route
-                        )
-                    }
+                    .clickable { navController.navigate(Screen.TableScreen.route) }
             ) {
                 if(clubPosition == "nullth") viewModel.getClubPositionString()
                 MainButton(
@@ -77,14 +71,10 @@ fun MainScreen(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .clickable {
-                        navController.navigate(
-                            Screen.TacticsScreen.route
-                        )
-                    }
+                    .clickable { navController.navigate(Screen.TacticsScreen.route) }
             ) {
                 MainButton(
-                    rowOne = "Tactics",
+                    rowOne = stringResource(id = R.string.tactics),
                     rowTwo = round(clubRating).toInt().toString(),
                     colorText = colorText,
                     background = colorBackground
@@ -93,11 +83,10 @@ fun MainScreen(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .clickable {
-                    }
+                    .clickable { navController.navigate(Screen.ScheduleScreen.route) }
             ) {
                 MainButton(
-                    rowOne = "Schedule",
+                    rowOne = stringResource(id = R.string.schedule),
                     rowTwo = "39",
                     colorText = colorText,
                     background = colorBackground

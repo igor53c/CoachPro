@@ -19,8 +19,8 @@ class PlayersViewModel @Inject constructor(
     private val allUseCases: AllUseCases
 ): ViewModel() {
 
-    private val _state = mutableStateOf<List<Player>>(emptyList())
-    val state: State<List<Player>> = _state
+    private val _players = mutableStateOf<List<Player>>(emptyList())
+    val players: State<List<Player>> = _players
 
     private var getPlayersJob: Job? = null
 
@@ -36,7 +36,7 @@ class PlayersViewModel @Inject constructor(
         getPlayersJob?.cancel()
         getPlayersJob = allUseCases.getPlayers.invoke()
             .onEach { items ->
-                _state.value = items
+                _players.value = items
             }
             .launchIn(viewModelScope)
     }

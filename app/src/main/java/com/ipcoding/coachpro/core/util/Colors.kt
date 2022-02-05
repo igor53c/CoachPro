@@ -13,7 +13,7 @@ class Colors {
         val LightYellow = Color(0xFFF3F3BD)
         val LightRed10 = Color(0xFFFDC8C8)
         val LightRed20 = Color(0xFFF7A8A8)
-        val LightGray10 = Color(0xFFAFADAD)
+        val LightGray10 = Color(0xFFE2E2E2)
         val ColorList = listOf(Color.Black, Color.LightGray, Color.Green,
             Color.Cyan, Color.Blue, Navy, Purple, Color.Magenta,
             Color.Red, Orange, Color.Yellow, Color.White)

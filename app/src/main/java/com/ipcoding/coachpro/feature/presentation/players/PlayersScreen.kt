@@ -24,7 +24,7 @@ fun PlayersScreen (
     viewModel: PlayersViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
-    val players = viewModel.state.value
+    val players = viewModel.players.value
     val trainingView = remember { mutableStateOf(false) }
     val buttonTrainingText = remember { mutableStateOf("") }
     Column(

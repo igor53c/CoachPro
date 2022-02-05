@@ -21,6 +21,10 @@ class MatchRepositoryImpl(
         return dao.getMatchesFromRound(round)
     }
 
+    override fun getAllMatches(): Flow<List<Match>> {
+        return dao.getAllMatches()
+    }
+
     override suspend fun getClubMatchFromNextRound(round: Int, club: String?): Match? {
         return dao.getClubMatchFromNextRound(round, club)
     }

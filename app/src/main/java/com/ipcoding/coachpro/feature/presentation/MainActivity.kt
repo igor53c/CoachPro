@@ -14,6 +14,7 @@ import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.ChooseColo
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
 import com.ipcoding.coachpro.feature.presentation.table.TableScreen
 import com.ipcoding.coachpro.feature.presentation.players.PlayersScreen
+import com.ipcoding.coachpro.feature.presentation.schedule.ScheduleScreen
 import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.select_league.SelectLeagueScreen
 import com.ipcoding.coachpro.feature.presentation.tactics.TacticsScreen
@@ -69,6 +70,10 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screen.TacticsScreen.route) {
                             TacticsScreen(navController = navController)
+                            BackHandler(true) {}
+                        }
+                        composable(route = Screen.ScheduleScreen.route) {
+                            ScheduleScreen(navController = navController)
                             BackHandler(true) {}
                         }
                     }

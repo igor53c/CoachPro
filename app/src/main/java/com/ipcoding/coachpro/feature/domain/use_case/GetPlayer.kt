@@ -13,10 +13,8 @@ class GetPlayer {
         var player: Player? = null
         if(players.isNotEmpty()) {
             var num = 0
-            var i = 0
-            while (i < item1) {
+            for (i in 0 until item1) {
                 num += tactics[i + 1] as Int
-                i++
             }
             num += item2
             player = players[num]
