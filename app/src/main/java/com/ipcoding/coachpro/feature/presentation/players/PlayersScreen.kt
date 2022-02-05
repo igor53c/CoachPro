@@ -12,12 +12,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.players.components.OnePLayer
+import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun PlayersScreen (
+    navController: NavController,
     viewModel: PlayersViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
@@ -119,19 +122,42 @@ fun PlayersScreen (
             }
         }
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
-        Button(
+        Row(
             modifier = Modifier
                 .height(spacing.spaceLarge)
                 .fillMaxWidth(),
-            onClick = {
-                trainingView.value = !trainingView.value
-            }
         ) {
-            Text(
-                text = buttonTrainingText.value,
-                color = MaterialTheme.colors.onPrimary,
-                style = MaterialTheme.typography.body1,
-            )
+            Button(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .weight(1f),
+                onClick = {
+                    navController.navigate(
+                        Screen.MainScreen.route
+                    )
+                }
+            ) {
+                Text(
+                    text = stringResource(id = R.string.back),
+                    color = MaterialTheme.colors.onPrimary,
+                    style = MaterialTheme.typography.body1,
+                )
+            }
+            Spacer(modifier = Modifier.width(spacing.spaceSmall))
+            Button(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .weight(1f),
+                onClick = {
+                    trainingView.value = !trainingView.value
+                }
+            ) {
+                Text(
+                    text = buttonTrainingText.value,
+                    color = MaterialTheme.colors.onPrimary,
+                    style = MaterialTheme.typography.body1,
+                )
+            }
         }
     }
 }

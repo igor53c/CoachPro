@@ -13,7 +13,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
@@ -30,7 +29,7 @@ fun MainButton(
             .padding(spacing.spaceExtraSmall)
             .border(
                 border = BorderStroke(
-                    width = 3.dp,
+                    width = spacing.spaceSuperSmall,
                     color = MaterialTheme.colors.onBackground
                 ),
                 shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
@@ -39,7 +38,7 @@ fun MainButton(
                 color = background,
                 shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
             )
-            .padding(spacing.spaceExtraSmall),
+            .padding(spacing.spaceMedium),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(

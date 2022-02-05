@@ -2,7 +2,7 @@ package com.ipcoding.coachpro.feature.domain.use_case
 
 import com.ipcoding.coachpro.feature.domain.model.Player
 
-class GetRating {
+class CalculationFirstTeamRating {
 
     operator fun invoke(players: List<Player>, tactics: List<Any>): Double {
         var rating = 0.0

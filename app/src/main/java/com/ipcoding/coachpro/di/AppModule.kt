@@ -102,7 +102,11 @@ object AppModule {
             replaceTwoPlayers = ReplaceTwoPlayers(playerRepository),
             getPlayer = GetPlayer(),
             checkPlayerInRightPosition = CheckPlayerInRightPosition(),
-            getRating = GetRating()
+            CalculationFirstTeamRating = CalculationFirstTeamRating(),
+            saveFirstTeamRating = SaveFirstTeamRating(clubRepository),
+            calculationTeamRating = CalculationTeamRating(),
+            getPlayersRating = GetPlayersRating(clubRepository),
+            getClubRating = GetClubRating(clubRepository)
         )
     }
 }

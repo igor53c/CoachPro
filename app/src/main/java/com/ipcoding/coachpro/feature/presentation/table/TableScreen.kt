@@ -13,12 +13,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.table.components.OneClub
+import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.LocalSpacing
 
 @Composable
 fun TableScreen(
+    navController: NavController,
     viewModel: TableViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
@@ -109,19 +112,42 @@ fun TableScreen(
             }
         }
         Spacer(modifier = Modifier.height(spacing.spaceSmall))
-        Button(
+        Row(
             modifier = Modifier
                 .height(spacing.spaceLarge)
                 .fillMaxWidth(),
-            onClick = {
-                goalsView.value = !goalsView.value
-            }
         ) {
-            Text(
-                text = buttonGoalsText.value,
-                color = MaterialTheme.colors.onPrimary,
-                style = MaterialTheme.typography.body1
-            )
+            Button(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .weight(1f),
+                onClick = {
+                    navController.navigate(
+                        Screen.MainScreen.route
+                    )
+                }
+            ) {
+                Text(
+                    text = stringResource(id = R.string.back),
+                    color = MaterialTheme.colors.onPrimary,
+                    style = MaterialTheme.typography.body1,
+                )
+            }
+            Spacer(modifier = Modifier.width(spacing.spaceSmall))
+            Button(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .weight(1f),
+                onClick = {
+                    goalsView.value = !goalsView.value
+                }
+            ) {
+                Text(
+                    text = buttonGoalsText.value,
+                    color = MaterialTheme.colors.onPrimary,
+                    style = MaterialTheme.typography.body1
+                )
+            }
         }
     }
 

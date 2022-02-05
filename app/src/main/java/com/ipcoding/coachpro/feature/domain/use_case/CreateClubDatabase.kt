@@ -3,6 +3,7 @@ package com.ipcoding.coachpro.feature.domain.use_case
 import com.ipcoding.coachpro.core.util.AllClubs
 import com.ipcoding.coachpro.core.util.AllPlayers
 import com.ipcoding.coachpro.core.util.AllPosition
+import com.ipcoding.coachpro.core.util.AllTactics
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.repository.*
@@ -16,6 +17,7 @@ class CreateClubDatabase(
     private val matchRepository: MatchRepository,
     private val matchesRepository: MatchesRepository
 ) {
+    val players = mutableListOf<Player>()
 
     suspend operator fun invoke(clubName: String) {
         insertAllClubsInDatabase(clubName)
@@ -62,11 +64,17 @@ class CreateClubDatabase(
                 }
             }
             val currentClubName : String = AllClubs().getClub(i)
-            clubRepository.insertClub(Club(currentClubName, league, i % 20 + 1, rating,
-                0, 0, 0, 0, 0, 0, 0))
+            val club = Club(currentClubName, league, i % 20 + 1, rating, 0,
+                0, 0, 0, 0, 0, 0, rating)
             if (currentClubName == clubName) {
                 insertAllPlayersInDatabase(rating)
-            }
+                club.playersRating = CalculationTeamRating().invoke(players)
+                club.rating = CalculationFirstTeamRating().invoke(
+                    players = players,
+                    tactics = AllTactics.T_442
+                )
+                clubRepository.insertClub(club)
+            } else clubRepository.insertClub(club)
         }
     }
 
@@ -95,8 +103,10 @@ class CreateClubDatabase(
                     takeRandomNumberFromRange(18, 23)
                 }
             }
-            playerRepository.insertPlayer(Player(makeName(), position, rating.toDouble(),
-                age, number, 100, 100, 0))
+            val player = Player(makeName(), position, rating.toDouble(),
+                age, number, 100, 100, 0)
+            players.add(player)
+            playerRepository.insertPlayer(player)
         }
     }
 

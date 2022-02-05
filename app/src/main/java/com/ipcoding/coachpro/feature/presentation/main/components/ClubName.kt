@@ -33,7 +33,7 @@ fun ClubName(
             .padding(spacing.spaceMedium)
             .border(
                 border = BorderStroke(
-                    width = 3.dp,
+                    width = spacing.spaceSuperSmall,
                     color = MaterialTheme.colors.onBackground
                 ),
                 shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))

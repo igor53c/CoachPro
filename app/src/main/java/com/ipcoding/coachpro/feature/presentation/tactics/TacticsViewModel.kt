@@ -113,7 +113,15 @@ class TacticsViewModel @Inject constructor(
         return allUseCases.checkPlayerInRightPosition.invoke(player, item1, item2,  tactics)
     }
 
-    fun getRating(players: List<Player>, tactics: List<Any>): Double {
-        return allUseCases.getRating.invoke(players, tactics)
+    fun calculatingFirstTeamRating(players: List<Player>, tactics: List<Any>): Double {
+        val rating = allUseCases.CalculationFirstTeamRating.invoke(players, tactics)
+        saveFirstTeamRating(rating)
+        return rating
+    }
+
+    private fun saveFirstTeamRating(rating: Double) {
+        viewModelScope.launch {
+            allUseCases.saveFirstTeamRating.invoke(preferences.loadClubName(), rating)
+        }
     }
 }

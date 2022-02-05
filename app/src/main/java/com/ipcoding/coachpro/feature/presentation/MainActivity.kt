@@ -45,6 +45,7 @@ class MainActivity : ComponentActivity() {
                     ) {
                         composable(route = Screen.SelectLeagueScreen.route) {
                             SelectLeagueScreen(navController = navController)
+                            BackHandler(true) {}
                         }
                         composable(route = Screen.SelectClubScreen.route) {
                             SelectClubScreen(navController = navController)
@@ -59,13 +60,16 @@ class MainActivity : ComponentActivity() {
                             BackHandler(true) {}
                         }
                         composable(route = Screen.PlayersScreen.route) {
-                            PlayersScreen()
+                            PlayersScreen(navController = navController)
+                            BackHandler(true) {}
                         }
                         composable(route = Screen.TableScreen.route) {
-                            TableScreen()
+                            TableScreen(navController = navController)
+                            BackHandler(true) {}
                         }
                         composable(route = Screen.TacticsScreen.route) {
-                            TacticsScreen()
+                            TacticsScreen(navController = navController)
+                            BackHandler(true) {}
                         }
                     }
                 }

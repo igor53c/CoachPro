@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.util.Colors
 import com.ipcoding.coachpro.feature.domain.model.Club
+import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -34,10 +35,18 @@ class MainViewModel @Inject constructor(
     private var _clubPosition = mutableStateOf("")
     val clubPosition: State<String> = _clubPosition
 
+    private var _clubRating = mutableStateOf(0.0)
+    val clubRating: State<Double> = _clubRating
+
+    private var _playersRating = mutableStateOf(0.0)
+    val playersRating: State<Double> = _playersRating
+
     init {
         loadClubName()
         loadColorJersey()
         loadColorStripes()
+        getPlayersRating()
+        getClubRating()
         _colorStripes.value =
             allUseCases.checkColors(_colorJersey.value, _colorStripes.value)
         getClubPositionString()
@@ -63,6 +72,22 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             _clubPosition.value =
                 allUseCases.getClubPositionString.invoke(_clubName.value)
+        }
+    }
+
+    fun getPlayersRating() {
+        viewModelScope.launch {
+            allUseCases.getPlayersRating.invoke(_clubName.value)?.let {
+                _playersRating.value = it
+            }
+        }
+    }
+
+    fun getClubRating() {
+        viewModelScope.launch {
+            allUseCases.getClubRating.invoke(_clubName.value)?.let {
+                _clubRating.value = it
+            }
         }
     }
 }

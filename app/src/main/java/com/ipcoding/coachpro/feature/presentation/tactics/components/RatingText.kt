@@ -24,8 +24,6 @@ fun RatingText(
         style = MaterialTheme.typography.h5,
         color = MaterialTheme.colors.primary,
         modifier = modifier
-            .padding(bottom = spacing.spaceSmall)
-            .fillMaxWidth()
             .border(
                 border = BorderStroke(
                     width = spacing.spaceSuperSmall,

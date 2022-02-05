@@ -15,5 +15,9 @@ data class AllUseCases (
     val replaceTwoPlayers: ReplaceTwoPlayers,
     val getPlayer: GetPlayer,
     val checkPlayerInRightPosition: CheckPlayerInRightPosition,
-    val getRating: GetRating
+    val CalculationFirstTeamRating: CalculationFirstTeamRating,
+    val saveFirstTeamRating: SaveFirstTeamRating,
+    val calculationTeamRating: CalculationTeamRating,
+    val getPlayersRating: GetPlayersRating,
+    val getClubRating: GetClubRating
 )

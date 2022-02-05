@@ -20,6 +20,10 @@ class ClubRepositoryImpl(
         return dao.getRatingFromClub(name)
     }
 
+    override suspend fun getPlayersRating(name: String): Double {
+        return dao.getPlayersRating(name)
+    }
+
     override suspend fun getClubsFromLeague(league: String): List<Club> {
         return dao.getClubsFromLeague(league)
     }
