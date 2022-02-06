@@ -11,6 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CoachPro">
         <activity
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
             android:name=".feature.presentation.MainActivity"
             android:exported="true"
             android:theme="@style/Theme.CoachPro">

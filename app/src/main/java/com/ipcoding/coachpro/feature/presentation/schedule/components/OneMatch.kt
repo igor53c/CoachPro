@@ -13,7 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import com.ipcoding.coachpro.core.util.Colors
 import com.ipcoding.coachpro.feature.domain.model.Match
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun OneMatch(
@@ -21,7 +21,6 @@ fun OneMatch(
     modifier: Modifier = Modifier,
     clubName: String
 ) {
-    val spacing = LocalSpacing.current
     val colorBackground  = remember { mutableStateOf(Color.Transparent) }
 
     if(clubName == match.host || clubName == match.guest)
@@ -31,11 +30,11 @@ fun OneMatch(
         modifier = modifier
             .background(
                 color = colorBackground.value,
-                shape = RoundedCornerShape(spacing.spaceSmall)
+                shape = RoundedCornerShape(AppTheme.dimens.spaceSmall)
             )
             .padding(
-                top = spacing.spaceExtraSmall,
-                bottom = spacing.spaceExtraSmall
+                top = AppTheme.dimens.spaceExtraSmall,
+                bottom = AppTheme.dimens.spaceExtraSmall
             )
             .fillMaxWidth()
     ) {
@@ -46,23 +45,23 @@ fun OneMatch(
             modifier = Modifier.weight(1f),
             textAlign = TextAlign.End
         )
-        Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
+        Spacer(modifier = Modifier.width(AppTheme.dimens.spaceExtraSmall))
         Text(
             text = match.goalsHost.toString(),
             color = MaterialTheme.colors.primary,
             style = MaterialTheme.typography.body2,
-            modifier = Modifier.width(spacing.spaceMedium),
+            modifier = Modifier.width(AppTheme.dimens.spaceMedium),
             textAlign = TextAlign.Center
         )
-        Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
+        Spacer(modifier = Modifier.width(AppTheme.dimens.spaceExtraSmall))
         Text(
             text = match.goalsGuest.toString(),
             color = MaterialTheme.colors.primary,
             style = MaterialTheme.typography.body2,
-            modifier = Modifier.width(spacing.spaceMedium),
+            modifier = Modifier.width(AppTheme.dimens.spaceMedium),
             textAlign = TextAlign.Center
         )
-        Spacer(modifier = Modifier.width(spacing.spaceExtraSmall))
+        Spacer(modifier = Modifier.width(AppTheme.dimens.spaceExtraSmall))
         Text(
             text = match.guest,
             color = MaterialTheme.colors.primary,

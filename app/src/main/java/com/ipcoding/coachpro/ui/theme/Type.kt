@@ -1,7 +1,6 @@
 package com.ipcoding.coachpro.ui.theme
 
 import androidx.compose.material.Typography
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -9,7 +8,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.ipcoding.coachpro.R
 
-// Set of Material typography styles to start with
+/* Set of Material typography styles to start with
 val Typography = Typography(
     body1 = TextStyle(
         fontFamily = FontFamily.Default,
@@ -26,9 +25,10 @@ val Typography = Typography(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp
-    )
-    */
-)
+    )*/
+
+)*/
+
 private val appFontFamily = FontFamily(
     fonts = listOf(
         Font(R.font.montserrat_black),
@@ -40,7 +40,8 @@ private val appFontFamily = FontFamily(
 )
 
 private val defaultTypography = Typography()
-val appTypography = Typography(
+
+ val normalTypography = Typography(
     h1 = defaultTypography.h1.copy(fontFamily = appFontFamily),
     h2 = defaultTypography.h2.copy(fontFamily = appFontFamily),
     h3 = defaultTypography.h3.copy(fontFamily = appFontFamily),
@@ -54,4 +55,52 @@ val appTypography = Typography(
     button = defaultTypography.button.copy(fontFamily = appFontFamily),
     caption = defaultTypography.caption.copy(fontFamily = appFontFamily),
     overline = defaultTypography.overline.copy(fontFamily = appFontFamily)
+)
+
+val smallTypography = Typography(
+    h1 = normalTypography.h1.copy(fontSize = 70.sp),
+    h2 = normalTypography.h2.copy(fontSize = 50.sp),
+    h3 = normalTypography.h3.copy(fontSize = 40.sp),
+    h4 = normalTypography.h4.copy(fontSize = 30.sp),
+    h5 = normalTypography.h5.copy(fontSize = 20.sp),
+    h6 = normalTypography.h6.copy(fontSize = 16.sp),
+    subtitle1 = normalTypography.subtitle1.copy(fontSize = 12.sp),
+    subtitle2 = normalTypography.subtitle2.copy(fontSize = 10.sp),
+    body1 = normalTypography.body1.copy(fontSize = 12.sp),
+    body2 = normalTypography.body2.copy(fontSize = 10.sp),
+    button = normalTypography.button.copy(fontSize = 10.sp),
+    caption = normalTypography.caption.copy(fontSize = 8.sp),
+    overline = normalTypography.overline.copy(fontSize = 6.sp)
+)
+
+val largeTypography = Typography(
+    h1 = normalTypography.h1.copy(fontSize = 144.sp),
+    h2 = normalTypography.h2.copy(fontSize = 90.sp),
+    h3 = normalTypography.h3.copy(fontSize = 72.sp),
+    h4 = normalTypography.h4.copy(fontSize = 48.sp),
+    h5 = normalTypography.h5.copy(fontSize = 36.sp),
+    h6 = normalTypography.h6.copy(fontSize = 30.sp),
+    subtitle1 = normalTypography.subtitle1.copy(fontSize = 24.sp),
+    subtitle2 = normalTypography.subtitle2.copy(fontSize = 21.sp),
+    body1 = normalTypography.body1.copy(fontSize = 24.sp),
+    body2 = normalTypography.body2.copy(fontSize = 21.sp),
+    button = normalTypography.button.copy(fontSize = 21.sp),
+    caption = normalTypography.caption.copy(fontSize = 18.sp),
+    overline = normalTypography.overline.copy(fontSize = 15.sp)
+)
+
+val extraLargeTypography = Typography(
+    h1 = normalTypography.h1.copy(fontSize = 192.sp),
+    h2 = normalTypography.h2.copy(fontSize = 120.sp),
+    h3 = normalTypography.h3.copy(fontSize = 96.sp),
+    h4 = normalTypography.h4.copy(fontSize = 64.sp),
+    h5 = normalTypography.h5.copy(fontSize = 48.sp),
+    h6 = normalTypography.h6.copy(fontSize = 40.sp),
+    subtitle1 = normalTypography.subtitle1.copy(fontSize = 32.sp),
+    subtitle2 = normalTypography.subtitle2.copy(fontSize = 28.sp),
+    body1 = normalTypography.body1.copy(fontSize = 32.sp),
+    body2 = normalTypography.body2.copy(fontSize = 28.sp),
+    button = normalTypography.button.copy(fontSize = 28.sp),
+    caption = normalTypography.caption.copy(fontSize = 24.sp),
+    overline = normalTypography.overline.copy(fontSize = 20.sp)
 )

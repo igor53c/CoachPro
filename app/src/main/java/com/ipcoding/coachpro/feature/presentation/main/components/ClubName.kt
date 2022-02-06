@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun ClubName(
@@ -22,7 +22,6 @@ fun ClubName(
     colorBackground: Color,
     colorText: Color
 ) {
-    val spacing = LocalSpacing.current
     Text(
         text = name,
         color = colorText,
@@ -30,17 +29,17 @@ fun ClubName(
         textAlign = TextAlign.Center,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(spacing.spaceMedium)
+            .padding(AppTheme.dimens.spaceMedium)
             .border(
                 border = BorderStroke(
-                    width = spacing.spaceSuperSmall,
+                    width = AppTheme.dimens.spaceSuperSmall,
                     color = MaterialTheme.colors.onBackground
                 ),
-                shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
+                shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
             )
             .background(
                 color = colorBackground,
-                shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
+                shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
             )
             .padding(16.dp)
     )

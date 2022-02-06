@@ -3,6 +3,8 @@ package com.ipcoding.coachpro.feature.presentation.tactics
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -13,23 +15,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.ipcoding.coachpro.R
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.feature.presentation.tactics.components.*
 import com.ipcoding.coachpro.feature.presentation.util.Screen
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun TacticsScreen(
     navController: NavController,
     viewModel: TacticsViewModel = hiltViewModel()
 ) {
-    val spacing = LocalSpacing.current
     val players = viewModel.players.value
     val tactics = viewModel.tactics.value
     val allTactics = viewModel.allTactics.value
-    val maxWidth = remember { mutableStateOf(spacing.default) }
+    val maxWidth = remember { mutableStateOf(0.dp) }
     val colorText = remember { mutableStateOf(Color.Black) }
     val rating = remember { mutableStateOf("") }
     val colorTextBackground = remember { mutableStateOf(Color.White) }
@@ -37,7 +39,7 @@ fun TacticsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(spacing.spaceSmall)
+            .padding(AppTheme.dimens.spaceSmall)
     ) {
         TacticsPicker(
             allTactics = allTactics,
@@ -49,12 +51,12 @@ fun TacticsScreen(
         rating.value =
             String.format("%.1f", viewModel.calculatingFirstTeamRating(players, tactics))
 
-        Spacer(modifier = Modifier.height(spacing.spaceSmall))
+        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceSmall))
 
         BoxWithConstraints(
             modifier = Modifier
                 .weight(1f)
-                .padding(bottom = spacing.spaceSmall)
+                .padding(bottom = AppTheme.dimens.spaceSmall)
         )  {
             maxWidth.value = this.maxWidth
 
@@ -83,11 +85,13 @@ fun TacticsScreen(
                 }
             }
         }
-        Spacer(modifier = Modifier.height(spacing.spaceSmall))
+        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceSmall))
         Row(
             modifier = Modifier
-                .height(spacing.spaceLarge)
+                .height(AppTheme.dimens.spaceLarge)
                 .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Button(
                 modifier = Modifier
@@ -105,7 +109,7 @@ fun TacticsScreen(
                     style = MaterialTheme.typography.body1,
                 )
             }
-            Spacer(modifier = Modifier.width(spacing.spaceSmall))
+            Spacer(modifier = Modifier.width(AppTheme.dimens.spaceSmall))
             RatingText(
                 modifier = Modifier
                     .fillMaxHeight()

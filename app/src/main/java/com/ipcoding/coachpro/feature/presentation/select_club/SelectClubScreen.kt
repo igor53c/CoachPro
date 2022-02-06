@@ -14,19 +14,18 @@ import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.select_league.components.Item
 import com.ipcoding.coachpro.feature.presentation.util.Screen
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun SelectClubScreen (
     navController: NavController,
     viewModel: SelectClubViewModel = hiltViewModel()
 ) {
-    val spacing = LocalSpacing.current
     val clubs = viewModel.clubs.value
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(spacing.spaceMedium),
+            .padding(AppTheme.dimens.spaceMedium),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Text(
@@ -34,7 +33,7 @@ fun SelectClubScreen (
             color = MaterialTheme.colors.primary,
             style = MaterialTheme.typography.h5
         )
-        Spacer(modifier = Modifier.height(spacing.spaceMedium))
+        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceMedium))
         LazyColumn (verticalArrangement = Arrangement.Center) {
             items(clubs.size) { item ->
                 val name = clubs[item]
@@ -48,7 +47,7 @@ fun SelectClubScreen (
                         )
                     }
                 )
-                Spacer(modifier = Modifier.height(spacing.spaceSmall))
+                Spacer(modifier = Modifier.height(AppTheme.dimens.spaceSmall))
             }
         }
     }

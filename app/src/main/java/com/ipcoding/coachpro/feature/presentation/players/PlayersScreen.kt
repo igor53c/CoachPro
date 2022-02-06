@@ -16,14 +16,13 @@ import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.players.components.OnePLayer
 import com.ipcoding.coachpro.feature.presentation.util.Screen
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun PlayersScreen (
     navController: NavController,
     viewModel: PlayersViewModel = hiltViewModel()
 ) {
-    val spacing = LocalSpacing.current
     val players = viewModel.players.value
     val trainingView = remember { mutableStateOf(false) }
     val buttonTrainingText = remember { mutableStateOf("") }
@@ -31,15 +30,15 @@ fun PlayersScreen (
         modifier = Modifier
             .fillMaxSize()
             .padding(
-                start = spacing.spaceMedium,
-                end = spacing.spaceMedium,
-                top = spacing.spaceSmall,
-                bottom = spacing.spaceSmall
+                start = AppTheme.dimens.spaceMedium,
+                end = AppTheme.dimens.spaceMedium,
+                top = AppTheme.dimens.spaceSmall,
+                bottom = AppTheme.dimens.spaceSmall
             )
     ) {
         Row(
             modifier = Modifier
-                .padding(spacing.spaceSmall)
+                .padding(AppTheme.dimens.spaceSmall)
                 .fillMaxWidth()
         ) {
             Text(
@@ -57,7 +56,7 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(spacing.spaceLarge)
+                        .width(AppTheme.dimens.spaceExtraLarge)
                 )
                 Text(
                     text = stringResource(id = R.string.rating),
@@ -65,7 +64,7 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(spacing.spaceLarge)
+                        .width(AppTheme.dimens.spaceExtraLarge)
                 )
                 Text(
                     text = stringResource(id = R.string.age),
@@ -73,7 +72,7 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(spacing.spaceExtraMedium)
+                        .width(AppTheme.dimens.spaceLarge)
                 )
                 Text(
                     text = stringResource(id = R.string.motivation),
@@ -81,7 +80,7 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(spacing.spaceLarge)
+                        .width(AppTheme.dimens.spaceExtraLarge)
                 )
             } else {
                 buttonTrainingText.value = stringResource(id = R.string.general)
@@ -91,16 +90,16 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(spacing.spaceLarge)
+                        .width(AppTheme.dimens.spaceExtraLarge)
                 )
-                Spacer(modifier = Modifier.width(spacing.spaceSmall))
+                Spacer(modifier = Modifier.width(AppTheme.dimens.spaceSmall))
                 Text(
                     text = stringResource(id = R.string.training),
                     color = MaterialTheme.colors.primary,
                     style = MaterialTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
-                        .width(spacing.spaceSuperLarge)
+                        .width(AppTheme.dimens.spaceSuperLarge)
                 )
             }
 
@@ -118,13 +117,13 @@ fun PlayersScreen (
                     playerTraining = player.training.toFloat(),
                     viewModel = viewModel
                 )
-                Spacer(modifier = Modifier.height(spacing.spaceExtraSmall))
+                Spacer(modifier = Modifier.height(AppTheme.dimens.spaceExtraSmall))
             }
         }
-        Spacer(modifier = Modifier.height(spacing.spaceSmall))
+        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceSmall))
         Row(
             modifier = Modifier
-                .height(spacing.spaceLarge)
+                .height(AppTheme.dimens.spaceLarge)
                 .fillMaxWidth(),
         ) {
             Button(
@@ -143,7 +142,7 @@ fun PlayersScreen (
                     style = MaterialTheme.typography.body1,
                 )
             }
-            Spacer(modifier = Modifier.width(spacing.spaceSmall))
+            Spacer(modifier = Modifier.width(AppTheme.dimens.spaceSmall))
             Button(
                 modifier = Modifier
                     .fillMaxHeight()

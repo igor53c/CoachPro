@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.Stroke
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun OneColor(
@@ -16,11 +16,10 @@ fun OneColor(
     border: Color,
     modifier: Modifier
 ) {
-    val spacing = LocalSpacing.current
     Box(
         modifier = modifier
-            .size(spacing.spaceExtraLarge, spacing.spaceExtraLarge)
-            .padding(spacing.spaceExtraSmall)
+            .size(AppTheme.dimens.spaceExtraLarge, AppTheme.dimens.spaceExtraLarge)
+            .padding(AppTheme.dimens.spaceExtraSmall)
             .drawBehind {
                 drawCircle(color = color)
                 drawCircle(color = border, style = Stroke(3f))

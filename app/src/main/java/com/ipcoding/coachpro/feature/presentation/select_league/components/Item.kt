@@ -14,7 +14,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun Item(
@@ -23,7 +23,6 @@ fun Item(
     colorText: Color = MaterialTheme.colors.primary,
     colorBackground: Color = MaterialTheme.colors.background
 ) {
-    val spacing = LocalSpacing.current
     Box(modifier = modifier) {
         Text(
             text = title,
@@ -32,16 +31,16 @@ fun Item(
             modifier = Modifier
                 .border(
                     border = BorderStroke(
-                        width = spacing.spaceSuperSmall,
+                        width = AppTheme.dimens.spaceSuperSmall,
                         color = MaterialTheme.colors.primary
                     ),
-                    shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
+                    shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
                 )
                 .background(
                     color = colorBackground,
-                    shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
+                    shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
                 )
-                .padding(spacing.spaceMedium)
+                .padding(AppTheme.dimens.spaceMedium)
                 .fillMaxWidth(),
             textAlign = TextAlign.Center
         )

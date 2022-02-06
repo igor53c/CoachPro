@@ -12,7 +12,7 @@ import androidx.compose.ui.text.style.TextAlign
 import com.ipcoding.coachpro.core.util.Colors
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.presentation.tactics.TacticsViewModel
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun PlayerInfo(
@@ -23,7 +23,6 @@ fun PlayerInfo(
     tactics: List<Any>,
     players: List<Player>
 ) {
-    val spacing = LocalSpacing.current
 
     var colorBackground = MaterialTheme.colors.background
 
@@ -41,9 +40,9 @@ fun PlayerInfo(
         modifier = Modifier
             .background(
                 color = colorBackground,
-                shape = RoundedCornerShape(spacing.spaceSmall)
+                shape = RoundedCornerShape(AppTheme.dimens.spaceSmall)
             )
             .fillMaxWidth()
-            .padding(spacing.spaceExtraSmall)
+            .padding(AppTheme.dimens.spaceExtraSmall)
     )
 }

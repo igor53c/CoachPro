@@ -1,6 +1,8 @@
 package com.ipcoding.coachpro.feature.presentation.choose_color_jersey
 
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
@@ -14,14 +16,13 @@ import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.components.ColorPicker
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.components.Jersey
 import com.ipcoding.coachpro.feature.presentation.util.Screen
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun ChooseColorJerseyScreen (
     navController: NavController,
     viewModel: ChooseColorJerseyViewModel = hiltViewModel()
 ) {
-    val spacing = LocalSpacing.current
     val colorJersey = viewModel.colorJersey.value
     val colorStripes = viewModel.colorStripes.value
     
@@ -44,7 +45,7 @@ fun ChooseColorJerseyScreen (
     ){
         Column(
             modifier = Modifier
-                .padding(spacing.spaceSmall)
+                .padding(AppTheme.dimens.spaceSmall)
                 .fillMaxSize()
         ) {
             Text(
@@ -54,7 +55,7 @@ fun ChooseColorJerseyScreen (
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(spacing.spaceMedium)
+                    .padding(AppTheme.dimens.spaceMedium)
             )
             ColorPicker(onColorSelected = { color ->
                 viewModel.saveColorJersey(color)
@@ -66,18 +67,27 @@ fun ChooseColorJerseyScreen (
                 textAlign = TextAlign.Center,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(spacing.spaceMedium)
+                    .padding(AppTheme.dimens.spaceMedium)
             )
             ColorPicker(onColorSelected = { color ->
                 viewModel.saveColorStripes(color)
             })
-            Spacer(modifier = Modifier.height(spacing.spaceMedium))
-            Jersey(
-                colorJersey = colorJersey,
-                colorStripes = colorStripes,
-                colorBorder = MaterialTheme.colors.onBackground,
-                modifier = Modifier.fillMaxSize()
-            )
+            Spacer(modifier = Modifier.height(AppTheme.dimens.spaceMedium))
+            BoxWithConstraints(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(bottom = AppTheme.dimens.spaceSmall)
+            ) {
+                Box(modifier = Modifier.height(this.maxWidth * 1.2f)) {
+                    Jersey(
+                        colorJersey = colorJersey,
+                        colorStripes = colorStripes,
+                        colorBorder = MaterialTheme.colors.onBackground,
+                        modifier = Modifier
+                            .fillMaxSize()
+                    )
+                }
+            }
         }
     }
 }

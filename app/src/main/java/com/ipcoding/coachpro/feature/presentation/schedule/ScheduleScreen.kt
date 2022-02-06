@@ -12,21 +12,21 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.schedule.components.OneMatch
 import com.ipcoding.coachpro.feature.presentation.select_league.components.Item
 import com.ipcoding.coachpro.feature.presentation.util.Screen
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun ScheduleScreen(
     navController: NavController,
     viewModel: ScheduleViewModel = hiltViewModel()
 ) {
-    val spacing = LocalSpacing.current
-    val maxWidth = remember { mutableStateOf(spacing.default) }
+    val maxWidth = remember { mutableStateOf(0.dp) }
     val matches = viewModel.matches.value
     val clubName = viewModel.clubName.value
 
@@ -34,18 +34,18 @@ fun ScheduleScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(
-                start = spacing.spaceMedium,
-                end = spacing.spaceMedium,
-                top = spacing.spaceSmall,
-                bottom = spacing.spaceSmall
+                start = AppTheme.dimens.spaceMedium,
+                end = AppTheme.dimens.spaceMedium,
+                top = AppTheme.dimens.spaceSmall,
+                bottom = AppTheme.dimens.spaceSmall
             )
     ) {
         Item(title = viewModel.getStringLeague())
-        Spacer(modifier = Modifier.height(spacing.spaceMedium))
+        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceMedium))
         BoxWithConstraints(
             modifier = Modifier
                 .weight(1f)
-                .padding(bottom = spacing.spaceSmall)
+                .padding(bottom = AppTheme.dimens.spaceSmall)
         ) {
             maxWidth.value = this.maxWidth
 
@@ -64,13 +64,13 @@ fun ScheduleScreen(
                             colorBackground = MaterialTheme.colors.primary,
                             modifier = Modifier.fillMaxWidth()
                         )
-                        Spacer(modifier = Modifier.height(spacing.spaceSmall))
+                        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceSmall))
                         LazyColumn(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(
-                                    top = spacing.spaceSmall,
-                                    bottom = spacing.spaceSmall
+                                    top = AppTheme.dimens.spaceSmall,
+                                    bottom = AppTheme.dimens.spaceSmall
                                 )
                         ) {
                             items(10) { item2 ->
@@ -84,13 +84,14 @@ fun ScheduleScreen(
                             }
                         }
                     }
-                    if(item1 != 37) Spacer(modifier = Modifier.width(spacing.spaceExtraMedium))
+                    if(item1 != 37)
+                        Spacer(modifier = Modifier.width(AppTheme.dimens.spaceExtraMedium))
                 }
             }
         }
         Button(
             modifier = Modifier
-                .height(spacing.spaceLarge)
+                .height(AppTheme.dimens.spaceLarge)
                 .fillMaxWidth(),
             onClick = {
                 navController.navigate(

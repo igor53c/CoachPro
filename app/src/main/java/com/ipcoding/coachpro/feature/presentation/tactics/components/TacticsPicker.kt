@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import com.ipcoding.coachpro.feature.presentation.tactics.TacticsViewModel
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun TacticsPicker(
@@ -28,10 +28,12 @@ fun TacticsPicker(
     tactics: List<Any>,
     viewModel: TacticsViewModel
 ) {
-    val spacing = LocalSpacing.current
     LazyRow(
         modifier = Modifier
-            .padding(top = spacing.spaceMedium, bottom = spacing.spaceMedium)
+            .padding(
+                top = AppTheme.dimens.spaceSmall,
+                bottom = AppTheme.dimens.spaceSmall
+            )
     ) {
         items(allTactics.size) { item ->
             val currentTactics = allTactics[item][0]
@@ -42,7 +44,7 @@ fun TacticsPicker(
                 colorText.value = MaterialTheme.colors.background
                 colorTextBackground.value = MaterialTheme.colors.primary
             }
-            Spacer(modifier = Modifier.width(spacing.spaceSmall))
+            Spacer(modifier = Modifier.width(AppTheme.dimens.spaceSmall))
             Text(
                 text = currentTactics.toString(),
                 style = MaterialTheme.typography.h5,
@@ -53,19 +55,23 @@ fun TacticsPicker(
                     }
                     .background(
                         color = colorTextBackground.value,
-                        shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
+                        shape = RoundedCornerShape(
+                            corner = CornerSize(AppTheme.dimens.spaceSmall)
+                        )
                     )
                     .border(
                         border = BorderStroke(
-                            width = spacing.spaceSuperSmall,
+                            width = AppTheme.dimens.spaceSuperSmall,
                             color = MaterialTheme.colors.primary
                         ),
-                        shape = RoundedCornerShape(corner = CornerSize(spacing.spaceSmall))
+                        shape = RoundedCornerShape(
+                            corner = CornerSize(AppTheme.dimens.spaceSmall)
+                        )
                     )
-                    .padding(spacing.spaceSmall),
+                    .padding(AppTheme.dimens.spaceSmall),
                 textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.width(spacing.spaceSmall))
+            Spacer(modifier = Modifier.width(AppTheme.dimens.spaceSmall))
         }
     }
 }

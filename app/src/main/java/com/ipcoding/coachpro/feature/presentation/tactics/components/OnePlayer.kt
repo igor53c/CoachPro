@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.Dp
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.components.Jersey
 import com.ipcoding.coachpro.feature.presentation.tactics.TacticsViewModel
-import com.ipcoding.coachpro.ui.theme.LocalSpacing
+import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun OnePlayer(
@@ -25,7 +25,6 @@ fun OnePlayer(
     tactics: List<Any>,
     maxWidth: Dp
 ) {
-    val spacing = LocalSpacing.current
     val colorJersey = viewModel.colorJersey.value
     val colorStripes = viewModel.colorStripes.value
     val playerInfo = remember { mutableStateOf("") }
@@ -50,11 +49,11 @@ fun OnePlayer(
             }
             .width(maxWidth / 5)
             .border(
-                width = spacing.spaceExtraSmall,
+                width = AppTheme.dimens.spaceExtraSmall,
                 color = borderColor,
-                shape = RoundedCornerShape(spacing.spaceSmall)
+                shape = RoundedCornerShape(AppTheme.dimens.spaceSmall)
             )
-            .padding(spacing.spaceSuperSmall)
+            .padding(AppTheme.dimens.spaceSuperSmall)
     ) {
         Box(
             modifier = Modifier
@@ -66,11 +65,11 @@ fun OnePlayer(
                 colorBorder = MaterialTheme.colors.onBackground,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(spacing.spaceSmall)
+                    .padding(AppTheme.dimens.spaceSmall)
             )
         }
 
-        Spacer(modifier = Modifier.height(spacing.spaceExtraSmall))
+        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceSuperSmall))
 
         playerInfo.value = viewModel
             .getPlayerInfo(players, tactics, item1, item2)
