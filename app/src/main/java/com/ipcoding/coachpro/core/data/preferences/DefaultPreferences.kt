@@ -42,6 +42,27 @@ class DefaultPreferences (
             .apply()
     }
 
+    override fun saveRoundNumber(round: Int) {
+        sharedPreferences
+            .edit()
+            .putInt(Preferences.ROUND_NUMBER, round)
+            .apply()
+    }
+
+    override fun saveYear(year: Int) {
+        sharedPreferences
+            .edit()
+            .putInt(Preferences.YEAR, year)
+            .apply()
+    }
+
+    override fun saveWeek(week: Int) {
+        sharedPreferences
+            .edit()
+            .putInt(Preferences.WEEK, week)
+            .apply()
+    }
+
     override fun loadClubName(): String? {
         return sharedPreferences.getString(Preferences.CLUB_NAME, null)
     }
@@ -60,5 +81,17 @@ class DefaultPreferences (
 
     override fun loadTactics(): String? {
         return sharedPreferences.getString(Preferences.SELECTED_TACTICS, "4-4-2")
+    }
+
+    override fun loadRoundNumber(): Int {
+        return sharedPreferences.getInt(Preferences.ROUND_NUMBER, -1)
+    }
+
+    override fun loadYear(): Int {
+        return sharedPreferences.getInt(Preferences.YEAR, -1)
+    }
+
+    override fun loadWeek(): Int {
+        return sharedPreferences.getInt(Preferences.WEEK, -1)
     }
 }

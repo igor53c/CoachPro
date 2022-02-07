@@ -21,5 +21,7 @@ data class AllUseCases (
     val getPlayersRating: GetPlayersRating,
     val getClubRating: GetClubRating,
     val makeSchedule: MakeSchedule,
-    val getAllMatches: GetAllMatches
+    val getAllMatches: GetAllMatches,
+    val getMonth: GetMonth,
+    val getWeekTypeText: GetWeekTypeText
 )

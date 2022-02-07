@@ -23,6 +23,8 @@ class ChooseColorJerseyViewModel @Inject constructor(
     init {
         saveColorJersey(_colorJersey.value)
         saveColorStripes(_colorStripes.value)
+        saveYear()
+        saveWeek()
     }
 
     fun saveColorJersey(color: Color)  {
@@ -33,5 +35,13 @@ class ChooseColorJerseyViewModel @Inject constructor(
     fun saveColorStripes(color: Color)  {
         _colorStripes.value = color
         preferences.saveColorStripes(Colors.colorToIndex(color))
+    }
+
+    fun saveYear()  {
+        preferences.saveYear(2022)
+    }
+
+    fun saveWeek()  {
+        preferences.saveWeek(24)
     }
 }

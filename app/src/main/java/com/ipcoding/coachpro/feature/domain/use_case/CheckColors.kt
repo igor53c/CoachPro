@@ -6,7 +6,10 @@ class CheckColors {
 
     operator fun invoke(colorJersey: Color, colorStripes: Color): Color {
         return if(colorJersey == colorStripes) {
-            if(colorJersey == Color.Black)  Color.White else  Color.Black
+            when(colorJersey) {
+                Color.Black -> Color.White
+                else -> Color.Black
+            }
         } else  colorStripes
     }
 }

@@ -7,12 +7,18 @@ interface Preferences {
     fun saveColorJersey(color: Int)
     fun saveColorStripes(color: Int)
     fun saveTactics(tactics: String)
+    fun saveRoundNumber(round: Int)
+    fun saveYear(year: Int)
+    fun saveWeek(week: Int)
 
     fun loadClubName(): String?
     fun loadSelectedLeague(): String?
     fun loadColorJersey(): Int
     fun loadColorStripes(): Int
     fun loadTactics(): String?
+    fun loadRoundNumber(): Int
+    fun loadYear(): Int
+    fun loadWeek(): Int
 
     companion object {
         const val CLUB_NAME = "club_name"
@@ -20,5 +26,8 @@ interface Preferences {
         const val SELECTED_COLOR_JERSEY = "selected_color_jersey"
         const val SELECTED_COLOR_STRIPES = "selected_color_stripes"
         const val SELECTED_TACTICS = "selected_tactics"
+        const val ROUND_NUMBER = "round_number"
+        const val YEAR = "year"
+        const val WEEK = "week"
     }
 }

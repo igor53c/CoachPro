@@ -25,8 +25,7 @@ fun ButtonBack(
     ) {
         Text(
             text = stringResource(id = R.string.back),
-            color = AppTheme.colors.onPrimary,
-            style = AppTheme.typography.body1,
+            style = AppTheme.typography.body1
         )
     }
 }

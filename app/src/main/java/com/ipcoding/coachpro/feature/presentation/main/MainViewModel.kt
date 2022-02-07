@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
+import com.ipcoding.coachpro.feature.domain.util.WeekType
 import com.ipcoding.coachpro.ui.theme.Colors.indexToColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -40,8 +41,28 @@ class MainViewModel @Inject constructor(
     private var _playersRating = mutableStateOf(0.0)
     val playersRating: State<Double> = _playersRating
 
+    private var _roundNumber = mutableStateOf(0)
+    val roundNumber: State<Int> = _roundNumber
+
+    private var _year = mutableStateOf(0)
+    val year: State<Int> = _year
+
+    private var _week = mutableStateOf(0)
+    val week: State<Int> = _week
+
+    private var _month = mutableStateOf("")
+    val month: State<String> = _month
+
+    private var _info = mutableStateOf<WeekType?>(null)
+    val info: State<WeekType?> = _info
+
     init {
         loadClubName()
+        loadRoundNumber()
+        loadYear()
+        loadWeek()
+        getMonth()
+        getInfoText()
         loadColorJersey()
         loadColorStripes()
         getPlayersRating()
@@ -51,8 +72,35 @@ class MainViewModel @Inject constructor(
         getClubPositionString()
     }
 
+    private fun getInfoText() {
+        _info.value = allUseCases.getWeekTypeText.invoke(_week.value + 1)
+    }
+
     private fun loadClubName() {
         _clubName.value = preferences.loadClubName().toString()
+    }
+
+    private fun loadRoundNumber() {
+        _roundNumber.value = preferences.loadRoundNumber()
+    }
+
+    private fun loadYear() {
+        _year.value = preferences.loadYear()
+    }
+
+    private fun loadWeek() {
+        _week.value = preferences.loadWeek()
+    }
+
+    fun saveWeekYear()  {
+        if(_week.value == 52) {
+            preferences.saveYear(_year.value + 1)
+            _week.value = 0
+        }
+        preferences.saveWeek(_week.value + 1)
+        loadWeek()
+        loadYear()
+        getMonth()
     }
 
     private fun loadColorJersey() {
@@ -74,7 +122,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun getPlayersRating() {
+    private fun getPlayersRating() {
         viewModelScope.launch {
             allUseCases.getPlayersRating.invoke(_clubName.value)?.let {
                 _playersRating.value = it
@@ -82,11 +130,15 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun getClubRating() {
+    private fun getClubRating() {
         viewModelScope.launch {
             allUseCases.getClubRating.invoke(_clubName.value)?.let {
                 _clubRating.value = it
             }
         }
+    }
+
+    private fun getMonth() {
+        _month.value = allUseCases.getMonth.invoke(_week.value, _year.value)
     }
 }

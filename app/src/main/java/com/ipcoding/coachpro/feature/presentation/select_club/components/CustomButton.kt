@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
-import androidx.compose.ui.graphics.compositeOver
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -28,16 +27,16 @@ fun CustomButton(
     elevation: ButtonElevation? = ButtonDefaults.elevation(),
     shape: Shape = AppTheme.shapes.medium,
     border: BorderStroke? = null,
-    colors: ButtonColors = ButtonDefaults.buttonColors(),
+    color: Color = AppTheme.colors.primary,
+    contentColor: Color = AppTheme.colors.background,
     contentPadding: PaddingValues = ButtonDefaults.ContentPadding,
     content: @Composable RowScope.() -> Unit
 ) {
-    val contentColor by colors.contentColor(enabled)
     Surface(
         modifier = modifier,
         shape = shape,
-        color = colors.backgroundColor(enabled).value,
-        contentColor = contentColor.copy(alpha = 1f),
+        color = color,
+        contentColor = contentColor,
         border = border,
         elevation = elevation?.elevation(enabled, interactionSource)?.value ?: 0.dp,
         onClick = onClick,
@@ -46,7 +45,7 @@ fun CustomButton(
         interactionSource = interactionSource,
         indication = rememberRipple()
     ) {
-        CompositionLocalProvider(LocalContentAlpha provides contentColor.alpha) {
+        CompositionLocalProvider {
             ProvideTextStyle(
                 value = AppTheme.typography.button
             ) {
@@ -96,60 +95,6 @@ object ButtonDefaults {
         }
     }
 
-    @Composable
-    fun buttonColors(
-        backgroundColor: Color = AppTheme.colors.primary,
-        contentColor: Color = contentColorFor(backgroundColor),
-        disabledBackgroundColor: Color = AppTheme.colors.onSurface.copy(alpha = 0.12f)
-            .compositeOver(AppTheme.colors.surface),
-        disabledContentColor: Color = AppTheme.colors.onSurface
-            .copy(alpha = ContentAlpha.disabled)
-    ): ButtonColors = DefaultButtonColors(
-        backgroundColor = backgroundColor,
-        contentColor = contentColor,
-        disabledBackgroundColor = disabledBackgroundColor,
-        disabledContentColor = disabledContentColor
-    )
-}
-
-@Immutable
-private class DefaultButtonColors(
-    private val backgroundColor: Color,
-    private val contentColor: Color,
-    private val disabledBackgroundColor: Color,
-    private val disabledContentColor: Color
-) : ButtonColors {
-    @Composable
-    override fun backgroundColor(enabled: Boolean): State<Color> {
-        return rememberUpdatedState(if (enabled) backgroundColor else disabledBackgroundColor)
-    }
-
-    @Composable
-    override fun contentColor(enabled: Boolean): State<Color> {
-        return rememberUpdatedState(if (enabled) contentColor else disabledContentColor)
-    }
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other == null || this::class != other::class) return false
-
-        other as DefaultButtonColors
-
-        if (backgroundColor != other.backgroundColor) return false
-        if (contentColor != other.contentColor) return false
-        if (disabledBackgroundColor != other.disabledBackgroundColor) return false
-        if (disabledContentColor != other.disabledContentColor) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = backgroundColor.hashCode()
-        result = 31 * result + contentColor.hashCode()
-        result = 31 * result + disabledBackgroundColor.hashCode()
-        result = 31 * result + disabledContentColor.hashCode()
-        return result
-    }
 }
 
 @Stable

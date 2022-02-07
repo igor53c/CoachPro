@@ -12,6 +12,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
@@ -19,19 +20,20 @@ import com.ipcoding.coachpro.ui.theme.AppTheme
 fun Item(
     modifier: Modifier = Modifier,
     title: String,
+    style: TextStyle = AppTheme.typography.h6,
     colorText: Color = AppTheme.colors.primary,
     colorBackground: Color = AppTheme.colors.background
 ) {
     Box(modifier = modifier) {
         Text(
             text = title,
-            style = AppTheme.typography.h6,
+            style = style,
             color = colorText,
             modifier = Modifier
                 .border(
                     border = BorderStroke(
                         width = AppTheme.dimensions.spaceSuperSmall,
-                        color = AppTheme.colors.primary
+                        color = colorText
                     ),
                     shape = AppTheme.shapes.medium
                 )

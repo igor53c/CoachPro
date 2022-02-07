@@ -1,18 +1,18 @@
 package com.ipcoding.coachpro.feature.presentation.main
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
-import com.ipcoding.coachpro.feature.presentation.main.components.ClubName
-import com.ipcoding.coachpro.feature.presentation.main.components.MainButton
+import com.ipcoding.coachpro.feature.domain.util.WeekType
+import com.ipcoding.coachpro.feature.presentation.main.components.*
+import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.AppTheme
-import kotlin.math.round
 
 @Composable
 fun MainScreen(
@@ -21,74 +21,60 @@ fun MainScreen(
 ) {
     val colorText = viewModel.colorStripes.value
     val colorBackground = viewModel.colorJersey.value
-    val clubPosition =  viewModel.clubPosition.value
-    val clubRating =  viewModel.clubRating.value
-    val playersRating =  viewModel.playersRating.value
+    val info = viewModel.info.value
 
-    Column {
-        ClubName(
-            name = viewModel.clubName.value,
-            colorBackground = colorBackground,
-            colorText = colorText
-        )
-        Row (
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(
+                start = AppTheme.dimensions.spaceMedium,
+                end = AppTheme.dimensions.spaceMedium,
+                top = AppTheme.dimensions.spaceSmall,
+                bottom = AppTheme.dimensions.spaceSmall
+            )
+    ) {
+        Column (
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(AppTheme.dimensions.spaceMedium)
+                .weight(1f)
         ) {
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .clickable { navController.navigate(Screen.PlayersScreen.route) }
-            ) {
-                MainButton(
-                    rowOne = stringResource(id = R.string.squad),
-                    rowTwo = round(playersRating).toInt().toString(),
-                    colorText = colorText,
-                    background = colorBackground
-                )
-            }
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .clickable { navController.navigate(Screen.TableScreen.route) }
-            ) {
-                if(clubPosition == "nullth") viewModel.getClubPositionString()
-                MainButton(
-                    rowOne = viewModel.getStringLeague(),
-                    rowTwo = clubPosition,
-                    colorText = colorText,
-                    background = colorBackground
-                )
-            }
+            ClubName(
+                name = viewModel.clubName.value,
+                colorBackground = colorBackground,
+                colorText = colorText
+            )
+
+            DateRow(viewModel = viewModel)
+
+            CentralPart(
+                viewModel = viewModel,
+                navController = navController,
+                colorBackground = colorBackground,
+                colorText = colorText
+            )
         }
-        Row (
+        CustomButton(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(AppTheme.dimensions.spaceMedium)
-        ) {
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .clickable { navController.navigate(Screen.TacticsScreen.route) }
-            ) {
-                MainButton(
-                    rowOne = stringResource(id = R.string.tactics),
-                    rowTwo = round(clubRating).toInt().toString(),
-                    colorText = colorText,
-                    background = colorBackground
-                )
+                .height(AppTheme.dimensions.spaceLarge)
+                .fillMaxWidth(),
+            onClick = {
+                viewModel.saveWeekYear()
+                navController.navigate(Screen.InfoScreen.route)
             }
-            Box(
-                modifier = Modifier
-                    .weight(1f)
-                    .clickable { navController.navigate(Screen.ScheduleScreen.route) }
-            ) {
-                MainButton(
-                    rowOne = stringResource(id = R.string.schedule),
-                    rowTwo = "39",
-                    colorText = colorText,
-                    background = colorBackground
+        ) {
+            info?.let { weekType ->
+                when(weekType) {
+                    is WeekType.Schedule ->
+                        weekType.text = stringResource(id = R.string.next_week)
+                    is WeekType.Transfers ->
+                        weekType.text = stringResource(id = R.string.transfers)
+                    is WeekType.Tactics ->
+                        weekType.text = stringResource(id = R.string.match)
+                    is WeekType.Else ->
+                        weekType.text = stringResource(id = R.string.next_week)
+                }
+                Text(
+                    text = weekType.text,
+                    style = AppTheme.typography.body1
                 )
             }
         }

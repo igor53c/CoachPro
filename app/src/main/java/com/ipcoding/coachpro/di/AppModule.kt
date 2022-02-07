@@ -108,7 +108,9 @@ object AppModule {
             getPlayersRating = GetPlayersRating(clubRepository),
             getClubRating = GetClubRating(clubRepository),
             makeSchedule = MakeSchedule(clubRepository, matchRepository),
-            getAllMatches = GetAllMatches(matchRepository)
+            getAllMatches = GetAllMatches(matchRepository),
+            getMonth = GetMonth(),
+            getWeekTypeText = GetWeekTypeText()
         )
     }
 }

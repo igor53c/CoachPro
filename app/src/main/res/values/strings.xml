@@ -27,4 +27,8 @@
     <string name="tactics">Tactics</string>
     <string name="schedule">Schedule</string>
     <string name="confirm">Confirm</string>
+    <string name="week">Week</string>
+    <string name="transfers">Transfers</string>
+    <string name="match">Match</string>
+    <string name="next_week">Next week</string>
 </resources>
