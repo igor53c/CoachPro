@@ -3,7 +3,6 @@ package com.ipcoding.coachpro.feature.presentation.select_club
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,15 +24,15 @@ fun SelectClubScreen (
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(AppTheme.dimens.spaceMedium),
+            .padding(AppTheme.dimensions.spaceMedium),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
         Text(
             text = stringResource(id = R.string.select_club),
-            color = MaterialTheme.colors.primary,
-            style = MaterialTheme.typography.h5
+            color = AppTheme.colors.primary,
+            style = AppTheme.typography.h5
         )
-        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceMedium))
+        Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceMedium))
         LazyColumn (verticalArrangement = Arrangement.Center) {
             items(clubs.size) { item ->
                 val name = clubs[item]
@@ -47,7 +46,7 @@ fun SelectClubScreen (
                         )
                     }
                 )
-                Spacer(modifier = Modifier.height(AppTheme.dimens.spaceSmall))
+                Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
             }
         }
     }

@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -25,21 +24,21 @@ fun ClubName(
     Text(
         text = name,
         color = colorText,
-        style = MaterialTheme.typography.h6,
+        style = AppTheme.typography.h6,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .fillMaxWidth()
-            .padding(AppTheme.dimens.spaceMedium)
+            .padding(AppTheme.dimensions.spaceMedium)
             .border(
                 border = BorderStroke(
-                    width = AppTheme.dimens.spaceSuperSmall,
-                    color = MaterialTheme.colors.onBackground
+                    width = AppTheme.dimensions.spaceSuperSmall,
+                    color = AppTheme.colors.onBackground
                 ),
-                shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
+                shape = AppTheme.shapes.medium
             )
             .background(
                 color = colorBackground,
-                shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
+                shape = AppTheme.shapes.medium
             )
             .padding(16.dp)
     )

@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
-import com.ipcoding.coachpro.core.util.Colors
+import com.ipcoding.coachpro.ui.theme.Colors
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -27,11 +27,11 @@ class ChooseColorJerseyViewModel @Inject constructor(
 
     fun saveColorJersey(color: Color)  {
         _colorJersey.value = color
-        preferences.saveColorJersey(Colors().colorToIndex(color))
+        preferences.saveColorJersey(Colors.colorToIndex(color))
     }
 
     fun saveColorStripes(color: Color)  {
         _colorStripes.value = color
-        preferences.saveColorStripes(Colors().colorToIndex(color))
+        preferences.saveColorStripes(Colors.colorToIndex(color))
     }
 }

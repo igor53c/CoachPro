@@ -19,6 +19,7 @@ import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.select_league.SelectLeagueScreen
 import com.ipcoding.coachpro.feature.presentation.tactics.TacticsScreen
 import com.ipcoding.coachpro.feature.presentation.util.Screen
+import com.ipcoding.coachpro.ui.theme.AppTheme
 import com.ipcoding.coachpro.ui.theme.CoachProTheme
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -35,7 +36,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             CoachProTheme {
                 Surface(
-                    color = MaterialTheme.colors.background
+                    color = AppTheme.colors.background
                 ) {
                     val navController = rememberNavController()
                     NavHost(

@@ -3,24 +3,18 @@ package com.ipcoding.coachpro.feature.presentation.tactics
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import com.ipcoding.coachpro.R
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.tactics.components.*
-import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
@@ -39,7 +33,7 @@ fun TacticsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(AppTheme.dimens.spaceSmall)
+            .padding(AppTheme.dimensions.spaceSmall)
     ) {
         TacticsPicker(
             allTactics = allTactics,
@@ -48,19 +42,24 @@ fun TacticsScreen(
             tactics = tactics,
             viewModel = viewModel
         )
+        Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
+
         rating.value =
             String.format("%.1f", viewModel.calculatingFirstTeamRating(players, tactics))
-
-        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceSmall))
 
         BoxWithConstraints(
             modifier = Modifier
                 .weight(1f)
-                .padding(bottom = AppTheme.dimens.spaceSmall)
+                .padding(bottom = AppTheme.dimensions.spaceSmall),
+            contentAlignment = Alignment.TopCenter
         )  {
-            maxWidth.value = this.maxWidth
+            if(this.maxHeight / this.maxWidth < 1.39)
+                maxWidth.value = this.maxHeight / 1.39f else maxWidth.value = this.maxWidth
 
-            FootballField(colorLine = MaterialTheme.colors.onBackground)
+            FootballField(
+                colorLine = MaterialTheme.colors.onBackground,
+                width = maxWidth.value
+            )
             LazyColumn(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
@@ -85,31 +84,19 @@ fun TacticsScreen(
                 }
             }
         }
-        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceSmall))
+        Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
         Row(
             modifier = Modifier
-                .height(AppTheme.dimens.spaceLarge)
+                .height(AppTheme.dimensions.spaceLarge)
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
         ) {
-            Button(
+            ButtonBack(
+                navController = navController,
                 modifier = Modifier
                     .fillMaxHeight()
-                    .weight(1f),
-                onClick = {
-                    navController.navigate(
-                        Screen.MainScreen.route
-                    )
-                }
-            ) {
-                Text(
-                    text = stringResource(id = R.string.back),
-                    color = MaterialTheme.colors.onPrimary,
-                    style = MaterialTheme.typography.body1,
-                )
-            }
-            Spacer(modifier = Modifier.width(AppTheme.dimens.spaceSmall))
+                    .weight(1f)
+            )
+            Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
             RatingText(
                 modifier = Modifier
                     .fillMaxHeight()

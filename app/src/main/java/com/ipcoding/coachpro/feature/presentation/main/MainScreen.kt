@@ -34,7 +34,7 @@ fun MainScreen(
         Row (
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(AppTheme.dimens.spaceMedium)
+                .padding(AppTheme.dimensions.spaceMedium)
         ) {
             Box(
                 modifier = Modifier
@@ -65,7 +65,7 @@ fun MainScreen(
         Row (
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(AppTheme.dimens.spaceMedium)
+                .padding(AppTheme.dimensions.spaceMedium)
         ) {
             Box(
                 modifier = Modifier

@@ -4,7 +4,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -30,7 +29,7 @@ fun OnePlayer(
     val playerInfo = remember { mutableStateOf("") }
     val previouslyClickedInfo  = viewModel.previouslyClickedInfo.value
     var borderColor = Color.Transparent
-    val colorPrimary = MaterialTheme.colors.primary
+    val colorPrimary = AppTheme.colors.primary
     if(previouslyClickedInfo.item1 == item1
         &&  previouslyClickedInfo.item2 == item2) {
         borderColor = previouslyClickedInfo.color
@@ -49,11 +48,11 @@ fun OnePlayer(
             }
             .width(maxWidth / 5)
             .border(
-                width = AppTheme.dimens.spaceExtraSmall,
+                width = AppTheme.dimensions.spaceExtraSmall,
                 color = borderColor,
-                shape = RoundedCornerShape(AppTheme.dimens.spaceSmall)
+                shape = AppTheme.shapes.medium
             )
-            .padding(AppTheme.dimens.spaceSuperSmall)
+            .padding(AppTheme.dimensions.spaceSuperSmall)
     ) {
         Box(
             modifier = Modifier
@@ -62,18 +61,18 @@ fun OnePlayer(
             Jersey(
                 colorJersey = colorJersey,
                 colorStripes = colorStripes,
-                colorBorder = MaterialTheme.colors.onBackground,
+                colorBorder = AppTheme.colors.onBackground,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(AppTheme.dimens.spaceSmall)
+                    .padding(AppTheme.dimensions.spaceExtraSmall)
             )
         }
 
-        Spacer(modifier = Modifier.height(AppTheme.dimens.spaceSuperSmall))
+        Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSuperSmall))
 
         playerInfo.value = viewModel
             .getPlayerInfo(players, tactics, item1, item2)
-        PlayerInfo(
+        TextUnderJersey(
             playerInfo = playerInfo.value,
             viewModel = viewModel,
             item1 = item1,

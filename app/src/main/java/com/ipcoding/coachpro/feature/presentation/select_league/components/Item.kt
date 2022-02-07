@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -20,27 +19,27 @@ import com.ipcoding.coachpro.ui.theme.AppTheme
 fun Item(
     modifier: Modifier = Modifier,
     title: String,
-    colorText: Color = MaterialTheme.colors.primary,
-    colorBackground: Color = MaterialTheme.colors.background
+    colorText: Color = AppTheme.colors.primary,
+    colorBackground: Color = AppTheme.colors.background
 ) {
     Box(modifier = modifier) {
         Text(
             text = title,
-            style = MaterialTheme.typography.h6,
+            style = AppTheme.typography.h6,
             color = colorText,
             modifier = Modifier
                 .border(
                     border = BorderStroke(
-                        width = AppTheme.dimens.spaceSuperSmall,
-                        color = MaterialTheme.colors.primary
+                        width = AppTheme.dimensions.spaceSuperSmall,
+                        color = AppTheme.colors.primary
                     ),
-                    shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
+                    shape = AppTheme.shapes.medium
                 )
                 .background(
                     color = colorBackground,
-                    shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
+                    shape = AppTheme.shapes.medium
                 )
-                .padding(AppTheme.dimens.spaceMedium)
+                .padding(AppTheme.dimensions.spaceMedium)
                 .fillMaxWidth(),
             textAlign = TextAlign.Center
         )

@@ -18,8 +18,8 @@ fun OneColor(
 ) {
     Box(
         modifier = modifier
-            .size(AppTheme.dimens.spaceExtraLarge, AppTheme.dimens.spaceExtraLarge)
-            .padding(AppTheme.dimens.spaceExtraSmall)
+            .size(AppTheme.dimensions.spaceLarge, AppTheme.dimensions.spaceLarge)
+            .padding(AppTheme.dimensions.spaceExtraSmall)
             .drawBehind {
                 drawCircle(color = color)
                 drawCircle(color = border, style = Stroke(3f))

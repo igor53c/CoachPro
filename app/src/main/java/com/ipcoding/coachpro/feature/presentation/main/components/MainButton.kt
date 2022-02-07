@@ -6,7 +6,6 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,31 +24,31 @@ fun MainButton(
     Column (
         modifier = Modifier
             .fillMaxWidth()
-            .padding(AppTheme.dimens.spaceExtraSmall)
+            .padding(AppTheme.dimensions.spaceExtraSmall)
             .border(
                 border = BorderStroke(
-                    width = AppTheme.dimens.spaceSuperSmall,
-                    color = MaterialTheme.colors.onBackground
+                    width = AppTheme.dimensions.spaceSuperSmall,
+                    color = AppTheme.colors.onBackground
                 ),
-                shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
+                shape = AppTheme.shapes.medium
             )
             .background(
                 color = background,
-                shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
+                shape = AppTheme.shapes.medium
             )
-            .padding(AppTheme.dimens.spaceMedium),
+            .padding(AppTheme.dimensions.spaceMedium),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = rowOne,
             color = colorText,
-            style = MaterialTheme.typography.body1,
+            style = AppTheme.typography.body1,
             textAlign = TextAlign.Center
         )
         Text(
             text = rowTwo,
             color = colorText,
-            style = MaterialTheme.typography.h5,
+            style = AppTheme.typography.h5,
             textAlign = TextAlign.Center
         )
     }

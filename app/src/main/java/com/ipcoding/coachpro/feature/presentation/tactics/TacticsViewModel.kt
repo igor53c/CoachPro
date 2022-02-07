@@ -7,10 +7,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.util.AllTactics
-import com.ipcoding.coachpro.core.util.Colors
 import com.ipcoding.coachpro.feature.domain.model.MarkedPlayer
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
+import com.ipcoding.coachpro.ui.theme.Colors
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.launchIn
@@ -64,11 +64,11 @@ class TacticsViewModel @Inject constructor(
     }
 
     private fun loadColorJersey() {
-        _colorJersey.value = Colors().indexToColor(preferences.loadColorJersey())
+        _colorJersey.value = Colors.indexToColor(preferences.loadColorJersey())
     }
 
     private fun loadColorStripes() {
-        _colorStripes.value = Colors().indexToColor(preferences.loadColorStripes())
+        _colorStripes.value = Colors.indexToColor(preferences.loadColorStripes())
     }
 
     private fun loadTactics() {

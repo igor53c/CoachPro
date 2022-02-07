@@ -6,14 +6,16 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.LinearProgressIndicator
+import androidx.compose.material.Slider
+import androidx.compose.material.SliderDefaults
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.presentation.players.PlayersViewModel
@@ -33,67 +35,48 @@ fun OnePLayer(
             .border(
                 border = BorderStroke(
                     width = 1.dp,
-                    color = MaterialTheme.colors.primary
+                    color = AppTheme.colors.primary
                 ),
-                shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
+                shape = AppTheme.shapes.medium
             )
             .background(
                 color = color,
-                shape = RoundedCornerShape(corner = CornerSize(AppTheme.dimens.spaceSmall))
+                shape = AppTheme.shapes.medium
             )
-            .padding(AppTheme.dimens.spaceSmall)
+            .padding(AppTheme.dimensions.spaceSmall)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
             maxLines = 1,
             text = player.name,
-            color = MaterialTheme.colors.primary,
-            style = MaterialTheme.typography.body2,
+            color = AppTheme.colors.primary,
+            style = AppTheme.typography.body2,
             modifier = Modifier
                 .weight(1f)
         )
         if(!isShowTraining) {
-            Text(
-                text = player.position,
-                color = MaterialTheme.colors.primary,
-                style = MaterialTheme.typography.body2,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .width(AppTheme.dimens.spaceExtraLarge)
-            )
-            Text(
-                text = player.rating.toString(),
-                color = MaterialTheme.colors.primary,
-                style = MaterialTheme.typography.body2,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .width(AppTheme.dimens.spaceExtraLarge)
-            )
-            Text(
-                text = player.age.toString(),
-                color = MaterialTheme.colors.primary,
-                style = MaterialTheme.typography.body2,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .width(AppTheme.dimens.spaceLarge)
-            )
+           PlayerInfo(
+               positionText = player.position,
+               ratingText = player.rating.toString(),
+               ageText = player.age.toString()
+           )
             LinearProgressIndicator(
                 modifier = Modifier
-                    .width(AppTheme.dimens.spaceExtraLarge),
+                    .width(AppTheme.dimensions.spaceExtraLarge),
                 backgroundColor = Color.LightGray,
-                color = MaterialTheme.colors.primary,
+                color = AppTheme.colors.primary,
                 progress = player.motivation * 0.01f
             )
         } else {
             LinearProgressIndicator(
                 modifier = Modifier
-                    .width(AppTheme.dimens.spaceExtraLarge),
+                    .width(AppTheme.dimensions.spaceExtraLarge),
                 backgroundColor = Color.LightGray,
-                color = MaterialTheme.colors.primary,
+                color = AppTheme.colors.primary,
                 progress = player.fitness * 0.01f
             )
-            Spacer(modifier = Modifier.width(AppTheme.dimens.spaceSmall))
+            Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
             Slider(
                 value = valueTraining.value,
                 onValueChange = {
@@ -106,13 +89,13 @@ fun OnePLayer(
                 },
                 steps = 4,
                 colors = SliderDefaults.colors(
-                    thumbColor = MaterialTheme.colors.primary,
-                    activeTrackColor = MaterialTheme.colors.primary,
+                    thumbColor = AppTheme.colors.primary,
+                    activeTrackColor = AppTheme.colors.primary,
                     inactiveTrackColor = Color.LightGray
                 ),
                 modifier = Modifier
-                    .width(AppTheme.dimens.spaceSuperLarge)
-                    .height(AppTheme.dimens.spaceSmall)
+                    .width(AppTheme.dimensions.spaceSuperLarge)
+                    .height(AppTheme.dimensions.spaceSmall)
             )
         }
 

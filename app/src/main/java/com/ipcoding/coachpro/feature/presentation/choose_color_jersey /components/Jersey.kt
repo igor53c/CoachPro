@@ -21,57 +21,76 @@ fun Jersey(
         modifier = modifier
     ) {
 
+        val width = size.width
+
         val clipPath = Path().apply {
-            moveTo(size.width * 0.3714f, 0f)
-            lineTo(size.width * 0.39f, 0f)
-            lineTo(size.width * 0.45f, size.width * 0.00857f)
-            lineTo(size.width - size.width * 0.45f, size.width * 0.00857f)
-            lineTo(size.width - size.width * 0.39f, 0f)
-            lineTo(size.width - size.width * 0.3714f, 0f)
-            lineTo(size.width * 0.7071f, size.width * 0.0643f)
-            lineTo(size.width * 0.8714f, size.width * 0.1429f)
-            lineTo(size.width * 0.9429f, size.width * 0.2357f)
-            lineTo(size.width, size.width * 0.46f)
-            lineTo(size.width, size.width * 0.4929f)
-            lineTo(size.width * 0.7929f, size.width * 0.5214f)
-            lineTo(size.width * 0.7714f, size.width * 0.4214f)
-            lineTo(size.width * 0.7571f, size.width * 0.4714f)
-            lineTo(size.width * 0.7571f, size.width * 0.5357f)
-            lineTo(size.width * 0.7643f, size.width * 1.0714f)
-            lineTo(size.width * 0.5929f, size.width * 1.1071f)
-            lineTo(size.width - size.width * 0.5929f, size.width * 1.1071f)
-            lineTo(size.width - size.width * 0.7643f, size.width * 1.0714f)
-            lineTo(size.width - size.width * 0.7571f, size.width * 0.5357f)
-            lineTo(size.width - size.width * 0.7571f, size.width * 0.4714f)
-            lineTo(size.width - size.width * 0.7714f, size.width * 0.4214f)
-            lineTo(size.width - size.width * 0.7929f, size.width * 0.5214f)
-            lineTo(0f, size.width * 0.4929f)
-            lineTo(0f, size.width * 0.46f)
-            lineTo(size.width - size.width * 0.9429f, size.width * 0.2357f)
-            lineTo(size.width - size.width * 0.8714f, size.width * 0.1429f)
-            lineTo(size.width - size.width * 0.7071f, size.width * 0.0643f)
-            close()
+
+            moveTo(width.times( 0.45f), width.times( 0.00857f))
+            lineTo(width.times( 0.55f), width.times( 0.00857f))
+            cubicTo(
+                width.times( 0.6286f), 0f,
+                width.times( 0.61f), 0f,
+                width.times( 0.7071f), width.times(0.0643f) //1
+            )
+            cubicTo(
+                width.times( 0.89f), width.times(0.1429f), //2
+                width.times( 0.95f), width.times(0.2357f), //3
+                width, width.times(0.46f)//4
+            )
+            lineTo(width, width.times(0.4929f)) //5
+            lineTo(width.times(0.7929f), width.times(0.5214f)) //6
+            lineTo(width.times(0.7714f), width.times(0.4214f)) //7
+            cubicTo(
+                width.times(0.7571f), width.times(0.4714f), //8
+                width.times(0.7571f), width.times(0.5357f), //9
+                width.times(0.7571f), width.times(0.6f) //10
+            )
+            lineTo(width.times(0.7643f), width.times(1.0714f)) //11
+            cubicTo(
+                width.times(0.5929f), width.times(1.1071f), //12
+                width.times(0.4071f), width.times(1.1071f), //12
+                width.times(0.2357f), width.times(1.0714f) //11
+            )
+            lineTo(width.times(0.2429f), width.times(0.6f)) //10
+            cubicTo(
+                width.times(0.2429f), width.times(0.5357f), //9
+                width.times(0.2429f), width.times(0.4714f), //8
+                width.times(0.2286f), width.times(0.4214f) //7
+            )
+            lineTo(width.times(0.2071f), width.times(0.5214f)) //6
+            lineTo(0f, width.times(0.4929f)) //5
+            lineTo(0f, width.times(0.46f)) //4
+            cubicTo(
+                width.times(0.05f), width.times(0.2357f), //3
+                width.times(0.11f), width.times(0.1429f), //2
+                width.times(0.2929f), width.times(0.0643f) //1
+            )
+            cubicTo(
+                width.times( 0.39f), 0f,
+                width.times( 0.3714f), 0f,
+                width.times( 0.45f), width.times( 0.00857f)
+            )
         }
 
         clipPath(clipPath) {
             drawRoundRect(
                 color = colorJersey,
-                size = Size(size.width, size.width * 1.1071f)
+                size = Size(width, width.times(1.1071f))
             )
             drawRect(
-                topLeft = Offset(size.width * 0.45715f, 0f),
+                topLeft = Offset(width.times(0.45715f), 0f),
                 color = colorStripes,
-                size = Size(size.width * 0.0857f, size.width * 1.1071f)
+                size = Size(width.times(0.0857f), width.times( 1.1071f))
             )
             drawRect(
-                topLeft = Offset(size.width * 0.28575f, 0f),
+                topLeft = Offset(width.times( 0.28575f), 0f),
                 color = colorStripes,
-                size = Size(size.width * 0.0857f, size.width * 1.1071f)
+                size = Size(width.times( 0.0857f), width.times( 1.1071f))
             )
             drawRect(
-                topLeft = Offset(size.width * 0.62855f, 0f),
+                topLeft = Offset(width.times( 0.62855f), 0f),
                 color = colorStripes,
-                size = Size(size.width * 0.0857f, size.width * 1.1071f)
+                size = Size(width.times( 0.0857f), width.times( 1.1071f))
             )
         }
 

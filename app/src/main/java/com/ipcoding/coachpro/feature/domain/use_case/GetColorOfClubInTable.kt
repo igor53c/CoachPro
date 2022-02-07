@@ -1,8 +1,8 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
 import androidx.compose.ui.graphics.Color
-import com.ipcoding.coachpro.core.util.Colors
 import com.ipcoding.coachpro.feature.domain.model.Club
+import com.ipcoding.coachpro.ui.theme.Colors
 
 class GetColorOfClubInTable {
 

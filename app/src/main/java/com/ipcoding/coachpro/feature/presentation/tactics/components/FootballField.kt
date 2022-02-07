@@ -1,7 +1,7 @@
 package com.ipcoding.coachpro.feature.presentation.tactics.components
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -10,15 +10,17 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.graphics.drawscope.clipPath
-import com.ipcoding.coachpro.core.util.Colors
+import androidx.compose.ui.unit.Dp
+import com.ipcoding.coachpro.ui.theme.Colors
 
 @Composable
 fun FootballField(
-    colorLine: Color
+    colorLine: Color,
+    width: Dp
 ) {
     Canvas(
         modifier = Modifier
-            .fillMaxSize()
+            .width(width)
     ) {
 
         val clipPath = Path().apply {

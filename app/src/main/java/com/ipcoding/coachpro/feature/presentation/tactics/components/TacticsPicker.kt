@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -30,24 +29,20 @@ fun TacticsPicker(
 ) {
     LazyRow(
         modifier = Modifier
-            .padding(
-                top = AppTheme.dimens.spaceSmall,
-                bottom = AppTheme.dimens.spaceSmall
-            )
     ) {
         items(allTactics.size) { item ->
             val currentTactics = allTactics[item][0]
             if(tactics[0] != currentTactics) {
-                colorText.value = MaterialTheme.colors.primary
-                colorTextBackground.value = MaterialTheme.colors.background
+                colorText.value = AppTheme.colors.primary
+                colorTextBackground.value = AppTheme.colors.background
             } else {
-                colorText.value = MaterialTheme.colors.background
-                colorTextBackground.value = MaterialTheme.colors.primary
+                colorText.value = AppTheme.colors.background
+                colorTextBackground.value = AppTheme.colors.primary
             }
-            Spacer(modifier = Modifier.width(AppTheme.dimens.spaceSmall))
+            Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
             Text(
                 text = currentTactics.toString(),
-                style = MaterialTheme.typography.h5,
+                style = AppTheme.typography.body1,
                 color = colorText.value,
                 modifier = Modifier
                     .clickable {
@@ -55,23 +50,19 @@ fun TacticsPicker(
                     }
                     .background(
                         color = colorTextBackground.value,
-                        shape = RoundedCornerShape(
-                            corner = CornerSize(AppTheme.dimens.spaceSmall)
-                        )
+                        shape = AppTheme.shapes.medium
                     )
                     .border(
                         border = BorderStroke(
-                            width = AppTheme.dimens.spaceSuperSmall,
-                            color = MaterialTheme.colors.primary
+                            width = AppTheme.dimensions.spaceSuperSmall,
+                            color = AppTheme.colors.primary
                         ),
-                        shape = RoundedCornerShape(
-                            corner = CornerSize(AppTheme.dimens.spaceSmall)
-                        )
+                        shape = AppTheme.shapes.medium
                     )
-                    .padding(AppTheme.dimens.spaceSmall),
+                    .padding(AppTheme.dimensions.spaceSmall),
                 textAlign = TextAlign.Center
             )
-            Spacer(modifier = Modifier.width(AppTheme.dimens.spaceSmall))
+            Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
         }
     }
 }

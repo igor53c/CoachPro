@@ -4,18 +4,17 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
-import com.ipcoding.coachpro.core.util.Colors
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.presentation.tactics.TacticsViewModel
 import com.ipcoding.coachpro.ui.theme.AppTheme
+import com.ipcoding.coachpro.ui.theme.Colors
 
 @Composable
-fun PlayerInfo(
+fun TextUnderJersey(
     playerInfo: String,
     viewModel: TacticsViewModel,
     item1: Int,
@@ -23,8 +22,7 @@ fun PlayerInfo(
     tactics: List<Any>,
     players: List<Player>
 ) {
-
-    var colorBackground = MaterialTheme.colors.background
+    var colorBackground = AppTheme.colors.background
 
     if(viewModel.checkPlayerInRightPosition(
             viewModel.getPlayer(players, tactics, item1, item2),
@@ -34,15 +32,15 @@ fun PlayerInfo(
     } else colorBackground = Colors.LightRed10
     Text(
         text = playerInfo,
-        style = MaterialTheme.typography.caption,
-        color = MaterialTheme.colors.primary,
+        style = AppTheme.typography.caption,
+        color = AppTheme.colors.primary,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .background(
                 color = colorBackground,
-                shape = RoundedCornerShape(AppTheme.dimens.spaceSmall)
+                shape = AppTheme.shapes.medium
             )
             .fillMaxWidth()
-            .padding(AppTheme.dimens.spaceExtraSmall)
+            .padding(AppTheme.dimensions.spaceSuperSmall)
     )
 }

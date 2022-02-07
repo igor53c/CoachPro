@@ -1,7 +1,5 @@
 package com.ipcoding.coachpro.ui.theme
 
-import androidx.compose.material.Typography
-import androidx.compose.runtime.*
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -17,19 +15,21 @@ class Dimensions(
     val spaceExtraLarge: Dp = 64.dp,
     val spaceSuperLarge: Dp = 96.dp
 )
-val normalDimensions = Dimensions()
 
-val smallDimensions = Dimensions(
-    spaceExtraSmall = 2.dp,
-    spaceSmall = 4.dp,
-    spaceMedium = 8.dp,
-    spaceExtraMedium = 16.dp,
-    spaceLarge = 32.dp,
+val NormalDimensions = Dimensions()
+
+val SmallDimensions = Dimensions(
+    spaceSuperSmall = 2.dp,
+    spaceExtraSmall = 3.dp,
+    spaceSmall = 6.dp,
+    spaceMedium = 12.dp,
+    spaceExtraMedium = 24.dp,
+    spaceLarge = 36.dp,
     spaceExtraLarge = 48.dp,
-    spaceSuperLarge = 64.dp
+    spaceSuperLarge = 72.dp
 )
 
-val largeTDimensions = Dimensions(
+val LargeDimensions = Dimensions(
     spaceSuperSmall = 3.dp,
     spaceExtraSmall = 6.dp,
     spaceSmall = 12.dp,
@@ -40,7 +40,7 @@ val largeTDimensions = Dimensions(
     spaceSuperLarge = 112.dp
 )
 
-val extraLargeDimensions = Dimensions(
+val ExtraLargeDimensions = Dimensions(
     spaceSuperSmall = 4.dp,
     spaceExtraSmall = 8.dp,
     spaceSmall = 16.dp,

@@ -2,7 +2,7 @@ package com.ipcoding.coachpro.feature.domain.use_case
 
 import androidx.compose.ui.graphics.Color
 import com.ipcoding.coachpro.core.util.AllPosition
-import com.ipcoding.coachpro.core.util.Colors
+import com.ipcoding.coachpro.ui.theme.Colors
 
 class GetColorDependingOnPosition {
 
