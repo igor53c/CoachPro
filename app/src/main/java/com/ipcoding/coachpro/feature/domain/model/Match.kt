@@ -8,7 +8,7 @@ data class Match(
     val round: Int,
     val host: String,
     val guest: String,
-    val goalsHost: Int,
-    val goalsGuest: Int,
+    var goalsHost: Int,
+    var goalsGuest: Int,
     @PrimaryKey val id: Int? = null
 )

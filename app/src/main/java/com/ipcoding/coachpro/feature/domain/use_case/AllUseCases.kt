@@ -23,5 +23,6 @@ data class AllUseCases (
     val makeSchedule: MakeSchedule,
     val getAllMatches: GetAllMatches,
     val getMonth: GetMonth,
-    val getWeekTypeText: GetWeekTypeText
+    val getWeekTypeText: GetWeekTypeText,
+    val playRound: PlayRound
 )

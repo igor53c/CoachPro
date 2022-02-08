@@ -83,7 +83,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideAndroidResouce(context: Context): ResourceProvider {
+    fun provideAndroidResources(context: Context): ResourceProvider {
         return AndroidResourceProvider(context)
     }
 
@@ -132,7 +132,8 @@ object AppModule {
                 matchRepository,
                 clubRepository,
                 resourceProvider
-            )
+            ),
+            playRound = PlayRound(matchRepository, clubRepository, preferences)
         )
     }
 }

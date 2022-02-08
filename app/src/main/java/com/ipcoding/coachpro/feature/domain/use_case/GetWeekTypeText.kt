@@ -29,7 +29,7 @@ class GetWeekTypeText(
             val host = match?.host?.let { clubRepository.getClub(it) }
             val guest = match?.guest?.let { clubRepository.getClub(it) }
 
-           tacticsText = resourceProvider.getString(R.string.league) + "$league\n\n" +
+           tacticsText = "${resourceProvider.getString(R.string.league)} $league\n\n" +
                     "${resourceProvider.getString(R.string.round)}: $round\n\n\n" +
                     "${match?.host}" + "\n" +
                     host?.position?.let { positionString(it) } + "\n\n" +

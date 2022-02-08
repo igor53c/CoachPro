@@ -50,15 +50,16 @@ fun ScheduleScreen(
         ) {
             maxWidth.value = this.maxWidth
 
+            coroutineScope.launch {
+                listState.scrollToItem(roundNumber - 1)
+            }
+
             LazyRow(
                 verticalAlignment = Alignment.Top,
                 modifier = Modifier,
                 state = listState
             ) {
                 items(38) { item1 ->
-                    coroutineScope.launch {
-                        listState.scrollToItem(roundNumber - 1)
-                    }
                     Column(
                         modifier = Modifier
                             .width(maxWidth.value)

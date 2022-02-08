@@ -14,7 +14,7 @@ interface MatchDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM match_table WHERE round = :round ORDER BY host ASC")
-    fun getMatchesFromRound(round: Int): Flow<List<Match>>
+    suspend fun getMatchesFromRound(round: Int): List<Match>
 
     @Query("SELECT * FROM match_table ORDER BY round ASC, host ASC")
     fun getAllMatches(): Flow<List<Match>>

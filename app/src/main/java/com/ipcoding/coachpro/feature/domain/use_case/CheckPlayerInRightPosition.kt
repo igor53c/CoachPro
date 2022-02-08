@@ -8,7 +8,7 @@ class CheckPlayerInRightPosition {
        var isCorrect = false
         player?.let {
             when(item1) {
-                0 -> isCorrect = player.position == "GK"
+                0 -> if(item2 == 0) isCorrect = player.position == "GK"
                 1 -> {
                     //defense
                     when(tactics[2]) {
@@ -104,7 +104,7 @@ class CheckPlayerInRightPosition {
                         }
                     }
                 }
-                4 -> isCorrect = true
+                4 -> isCorrect = false
             }
         }
         return isCorrect

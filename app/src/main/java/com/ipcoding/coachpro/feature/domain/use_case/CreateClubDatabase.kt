@@ -17,7 +17,7 @@ class CreateClubDatabase(
     private val matchRepository: MatchRepository,
     private val matchesRepository: MatchesRepository
 ) {
-    private val players = mutableListOf<Player>()
+    private var players = mutableListOf<Player>()
     private var myLeague = ""
 
     suspend operator fun invoke(clubName: String) {
@@ -26,6 +26,8 @@ class CreateClubDatabase(
 
     private suspend fun insertAllClubsInDatabase(clubName: String) {
 
+        players = mutableListOf()
+        playerRepository.deleteAll()
         clubRepository.deleteAll()
         matchRepository.deleteAll()
         historyRepository.deleteAll()
@@ -82,8 +84,6 @@ class CreateClubDatabase(
     }
 
     private suspend fun insertAllPlayersInDatabase(clubRating: Double) {
-
-        playerRepository.deleteAll()
 
         for (number in 0..17) {
             var position = ""

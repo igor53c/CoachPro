@@ -8,6 +8,6 @@ class GetClubs(
 ) {
 
     suspend operator fun invoke(league: String): List<Club> {
-        return clubRepository.getClubsFromLeagueByPosition(league)
+        return clubRepository.getClubsFromLeague(league)
     }
 }

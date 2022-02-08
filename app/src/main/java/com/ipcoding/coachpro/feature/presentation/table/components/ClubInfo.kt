@@ -20,7 +20,7 @@ fun ClubInfo(
         style = AppTheme.typography.body2,
         textAlign = TextAlign.Center,
         modifier = Modifier
-            .width(AppTheme.dimensions.spaceExtraMedium)
+            .width(AppTheme.dimensions.spaceLarge)
     )
     Text(
         text = text2,
@@ -28,7 +28,7 @@ fun ClubInfo(
         style = AppTheme.typography.body2,
         textAlign = TextAlign.Center,
         modifier = Modifier
-            .width(AppTheme.dimensions.spaceExtraMedium)
+            .width(AppTheme.dimensions.spaceLarge)
     )
     Text(
         text = text3,
@@ -36,7 +36,7 @@ fun ClubInfo(
         style = AppTheme.typography.body2,
         textAlign = TextAlign.Center,
         modifier = Modifier
-            .width(AppTheme.dimensions.spaceExtraMedium)
+            .width(AppTheme.dimensions.spaceLarge)
     )
     Text(
         text = pointsText,
@@ -44,6 +44,6 @@ fun ClubInfo(
         style = AppTheme.typography.body2,
         textAlign = TextAlign.Center,
         modifier = Modifier
-            .width(AppTheme.dimensions.spaceExtraMedium)
+            .width(AppTheme.dimensions.spaceLarge)
     )
 }

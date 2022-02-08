@@ -7,15 +7,15 @@ import androidx.room.PrimaryKey
 data class Club(
     val name: String,
     val league: String,
-    val position: Int,
+    var position: Int,
     var rating: Double,
-    val win: Int,
-    val draw: Int,
-    val lose: Int,
-    val goalsFor: Int,
-    val goalsAgainst: Int,
-    val goalDifference: Int,
-    val points: Int,
+    var win: Int,
+    var draw: Int,
+    var lose: Int,
+    var goalsFor: Int,
+    var goalsAgainst: Int,
+    var goalDifference: Int,
+    var points: Int,
     var playersRating: Double,
     @PrimaryKey val id: Int? = null
 )

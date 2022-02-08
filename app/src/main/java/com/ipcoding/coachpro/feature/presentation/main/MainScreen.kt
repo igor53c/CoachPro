@@ -37,13 +37,28 @@ fun MainScreen(
             modifier = Modifier
                 .weight(1f)
         ) {
+            CustomButton(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = AppTheme.dimensions.spaceExtraMedium),
+                onClick = {
+                    navController.navigate(Screen.SelectLeagueScreen.route)
+                }
+            ) {
+                Text(
+                    text = "CoachPro",
+                    style = AppTheme.typography.h5,
+                    color = AppTheme.colors.background
+                )
+            }
+
+            DateRow(viewModel = viewModel)
+
             ClubName(
                 name = viewModel.clubName.value,
                 colorBackground = colorBackground,
                 colorText = colorText
             )
-
-            DateRow(viewModel = viewModel)
 
             CentralPart(
                 viewModel = viewModel,

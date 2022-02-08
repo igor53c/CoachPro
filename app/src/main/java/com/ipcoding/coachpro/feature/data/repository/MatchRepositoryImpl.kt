@@ -17,7 +17,7 @@ class MatchRepositoryImpl(
         dao.deleteAll()
     }
 
-    override fun getMatchesFromRound(round: Int): Flow<List<Match>> {
+    override suspend fun getMatchesFromRound(round: Int): List<Match> {
         return dao.getMatchesFromRound(round)
     }
 

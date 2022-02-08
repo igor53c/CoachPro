@@ -9,7 +9,7 @@ interface MatchRepository {
 
     suspend fun deleteAll()
 
-    fun getMatchesFromRound(round: Int): Flow<List<Match>>
+    suspend fun getMatchesFromRound(round: Int): List<Match>
 
     fun getAllMatches(): Flow<List<Match>>
 
