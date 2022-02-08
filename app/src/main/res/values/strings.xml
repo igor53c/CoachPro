@@ -31,4 +31,10 @@
     <string name="transfers">Transfers</string>
     <string name="match">Match</string>
     <string name="next_week">Next week</string>
+    <string name="round">Round</string>
+    <string name="vs">VS</string>
+    <string name="schedule_text">The schedule for the new season has come out!</string>
+    <string name="season_over">The season is over!</string>
+    <string name="won">won</string>
+    <string name="player_transfer">Player transfer!</string>
 </resources>

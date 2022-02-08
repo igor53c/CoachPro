@@ -1,11 +1,14 @@
 package com.ipcoding.coachpro.di
 
 import android.app.Application
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.room.Room
 import com.ipcoding.coachpro.core.data.preferences.DefaultPreferences
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
+import com.ipcoding.coachpro.core.data.resources.AndroidResourceProvider
+import com.ipcoding.coachpro.core.domain.resources.ResourceProvider
 import com.ipcoding.coachpro.feature.data.data_source.CoachDatabase
 import com.ipcoding.coachpro.feature.data.repository.*
 import com.ipcoding.coachpro.feature.domain.repository.*
@@ -74,12 +77,26 @@ object AppModule {
 
     @Provides
     @Singleton
+    fun provideContext(app: Application): Context {
+        return app.applicationContext
+    }
+
+    @Provides
+    @Singleton
+    fun provideAndroidResouce(context: Context): ResourceProvider {
+        return AndroidResourceProvider(context)
+    }
+
+    @Provides
+    @Singleton
     fun provideUseCases(
         playerRepository: PlayerRepository,
         clubRepository: ClubRepository,
         historyRepository: HistoryRepository,
         matchRepository: MatchRepository,
-        matchesRepository: MatchesRepository
+        matchesRepository: MatchesRepository,
+        preferences: Preferences,
+        resourceProvider: ResourceProvider
     ): AllUseCases {
         return AllUseCases(
             getClubsFromLeague = GetClubsFromLeague(),
@@ -110,7 +127,12 @@ object AppModule {
             makeSchedule = MakeSchedule(clubRepository, matchRepository),
             getAllMatches = GetAllMatches(matchRepository),
             getMonth = GetMonth(),
-            getWeekTypeText = GetWeekTypeText()
+            getWeekTypeText = GetWeekTypeText(
+                preferences,
+                matchRepository,
+                clubRepository,
+                resourceProvider
+            )
         )
     }
 }

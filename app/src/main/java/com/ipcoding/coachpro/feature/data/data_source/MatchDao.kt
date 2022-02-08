@@ -21,5 +21,5 @@ interface MatchDao {
 
     @Query("SELECT * FROM match_table WHERE " +
             "(round = :round AND (host = :club OR guest = :club))")
-    suspend fun getClubMatchFromNextRound (round: Int, club: String?): Match?
+    suspend fun getClubMatchFromNextRound(round: Int, club: String?): Match?
 }

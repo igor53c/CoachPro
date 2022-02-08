@@ -39,6 +39,6 @@ class SelectClubViewModel @Inject constructor(
             preferences.loadClubName()?.let { allUseCases.createClubDatabase.invoke(it) }
         }
 
-        saveRoundNumber(1)
+        saveRoundNumber(0)
     }
 }

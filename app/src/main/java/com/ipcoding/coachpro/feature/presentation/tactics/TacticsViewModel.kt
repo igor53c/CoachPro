@@ -3,7 +3,6 @@ package com.ipcoding.coachpro.feature.presentation.tactics
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
@@ -124,5 +123,14 @@ class TacticsViewModel @Inject constructor(
         viewModelScope.launch {
             allUseCases.saveFirstTeamRating.invoke(preferences.loadClubName(), rating)
         }
+    }
+
+    fun increaseRound(): Int {
+        val round = preferences.loadRoundNumber()
+        if(round < 38) {
+            preferences.saveRoundNumber( round + 1)
+            return round + 1
+        }
+        return round
     }
 }

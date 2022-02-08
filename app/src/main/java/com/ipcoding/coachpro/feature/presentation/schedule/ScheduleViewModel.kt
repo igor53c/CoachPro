@@ -21,12 +21,20 @@ class ScheduleViewModel @Inject constructor(
     private var _clubName = mutableStateOf("")
     val clubName: State<String> = _clubName
 
+    private var _round = mutableStateOf(-1)
+    val round: State<Int> = _round
+
     private val _matches = mutableStateOf<List<Match>>(emptyList())
     val matches: State<List<Match>> = _matches
 
     init {
         getAllMatches()
         loadClubName()
+        loadRoundNumber()
+    }
+
+    private fun loadRoundNumber() {
+        _round.value = preferences.loadRoundNumber()
     }
 
     private fun loadClubName() {

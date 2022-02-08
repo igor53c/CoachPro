@@ -25,7 +25,7 @@ import com.ipcoding.coachpro.ui.theme.AppTheme
 @Composable
 fun TacticsScreen(
     navController: NavController,
-    nextIsMatch: Int,
+    nextIsMatch: String,
     viewModel: TacticsViewModel = hiltViewModel()
 ) {
     val players = viewModel.players.value
@@ -96,7 +96,7 @@ fun TacticsScreen(
                 .height(AppTheme.dimensions.spaceLarge)
                 .fillMaxWidth(),
         ) {
-            if(nextIsMatch == 0) {
+            if(nextIsMatch == "no") {
                 ButtonBack(
                     navController = navController,
                     modifier = Modifier
@@ -111,14 +111,16 @@ fun TacticsScreen(
                     .weight(1f),
                 title = "Rating: ${rating.value}"
             )
-            if(nextIsMatch == 1) {
+            if(nextIsMatch == "yes") {
                 Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
                 CustomButton(
                     modifier = Modifier
                         .fillMaxHeight()
                         .weight(1f),
                     onClick = {
-                        navController.navigate(Screen.ScheduleScreen.route)
+                        navController.navigate(
+                            Screen.ScheduleScreen.route +
+                                    "?roundNumber=${viewModel.increaseRound()}")
                     }
                 ) {
                     Text(

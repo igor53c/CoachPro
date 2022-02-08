@@ -1,11 +1,9 @@
 package com.ipcoding.coachpro.feature.presentation
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.activity.compose.setContent
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -78,21 +76,32 @@ class MainActivity : ComponentActivity() {
                             route = Screen.TacticsScreen.route + "?nextIsMatch={nextIsMatch}",
                             arguments = listOf(
                                 navArgument(name = "nextIsMatch") {
-                                    type = NavType.IntType
-                                    defaultValue = -1
+                                    type = NavType.StringType
+                                    defaultValue = ""
                                 }
                             )
                         ) {
-                            val nextIsMatch = it.arguments?.getInt("nextIsMatch") ?: -1
-                            Log.d("nextIsMatch", "nextIsMatch: $nextIsMatch")
+                            val nextIsMatch = it.arguments?.getString("nextIsMatch") ?: ""
                             TacticsScreen(
                                 navController = navController,
                                 nextIsMatch = nextIsMatch
                             )
                             BackHandler(true) {}
                         }
-                        composable(route = Screen.ScheduleScreen.route) {
-                            ScheduleScreen(navController = navController)
+                        composable(
+                            route = Screen.ScheduleScreen.route + "?roundNumber={roundNumber}",
+                            arguments = listOf(
+                                navArgument(name = "roundNumber") {
+                                    type = NavType.IntType
+                                    defaultValue = -1
+                                }
+                            )
+                        ) {
+                            val roundNumber = it.arguments?.getInt("roundNumber") ?: -1
+                            ScheduleScreen(
+                                navController = navController,
+                                roundNumber = roundNumber
+                            )
                             BackHandler(true) {}
                         }
                         composable(route = Screen.InfoScreen.route) {

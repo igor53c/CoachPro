@@ -73,7 +73,10 @@ class MainViewModel @Inject constructor(
     }
 
     private fun getInfoText() {
-        _info.value = allUseCases.getWeekTypeText.invoke(_week.value + 1)
+        viewModelScope.launch {
+            _info.value =
+                allUseCases.getWeekTypeText.invoke(_week.value + 1, false)
+        }
     }
 
     private fun loadClubName() {

@@ -55,12 +55,13 @@ fun InfoScreen(
                 info?.let { weekType ->
                     when(weekType) {
                         is WeekType.Schedule ->
-                            navController.navigate(Screen.ScheduleScreen.route)
+                            navController.navigate(
+                                Screen.ScheduleScreen.route + "?roundNumber=${1}")
                         is WeekType.Transfers ->
                             navController.navigate(Screen.TransfersScreen.route)
                         is WeekType.Tactics ->
                             navController.navigate(
-                                Screen.TacticsScreen.route + "?nextIsMatch=${1}")
+                                Screen.TacticsScreen.route + "?nextIsMatch=yes")
                         is WeekType.Else ->
                             navController.navigate(Screen.MainScreen.route)
                     }

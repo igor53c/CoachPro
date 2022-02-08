@@ -3,10 +3,12 @@ package com.ipcoding.coachpro.feature.presentation.info
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import com.ipcoding.coachpro.feature.domain.util.WeekType
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -27,7 +29,9 @@ class InfoViewModel @Inject constructor(
     }
 
     private fun getInfoText() {
-        _info.value = allUseCases.getWeekTypeText.invoke(_week.value)
+        viewModelScope.launch {
+            _info.value = allUseCases.getWeekTypeText.invoke(_week.value, true)
+        }
     }
 
     private fun loadWeek() {

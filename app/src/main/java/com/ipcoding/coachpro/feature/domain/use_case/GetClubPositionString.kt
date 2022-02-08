@@ -7,14 +7,17 @@ class GetClubPositionString(
 ) {
 
     suspend operator fun invoke(name: String): String {
-        val end: String
-        val position = clubRepository.getClub(name)?.position.toString()
-        end = when(position) {
-            "1" -> "st"
-            "2" -> "nd"
-            "3" -> "rd"
-            else -> "th"
-        }
-        return position + end
+        return clubRepository.getClub(name)?.position?.let {
+            positionString(it)
+        }.toString()
+    }
+}
+
+fun positionString(position: Int): String {
+    return when(position) {
+        1 -> "${position}st"
+        2 -> "${position}nd"
+        3 -> "${position}rd"
+        else -> "${position}th"
     }
 }

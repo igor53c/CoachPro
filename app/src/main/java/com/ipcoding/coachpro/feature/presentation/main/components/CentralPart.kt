@@ -63,7 +63,7 @@ fun CentralPart(
             background = colorBackground,
             modifier = Modifier.weight(1f),
             onClick = { navController.navigate(
-                Screen.TacticsScreen.route + "?nextIsMatch=${0}")
+                Screen.TacticsScreen.route + "?nextIsMatch=no")
             }
         )
 
@@ -71,11 +71,14 @@ fun CentralPart(
 
         MainButton(
             rowOne = stringResource(id = R.string.schedule),
-            rowTwo = roundNumber.toString(),
+            rowTwo = if(roundNumber == 38)
+                roundNumber.toString() else (roundNumber + 1).toString(),
             colorText = colorText,
             background = colorBackground,
             modifier = Modifier.weight(1f),
-            onClick = { navController.navigate(Screen.ScheduleScreen.route) }
+            onClick = { navController.navigate(
+                Screen.ScheduleScreen.route + "?roundNumber=${roundNumber + 1}")
+            }
         )
     }
 }

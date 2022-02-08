@@ -3,9 +3,11 @@ package com.ipcoding.coachpro.feature.presentation.schedule
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -15,15 +17,19 @@ import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.schedule.components.OneMatch
 import com.ipcoding.coachpro.feature.presentation.select_league.components.Item
 import com.ipcoding.coachpro.ui.theme.AppTheme
+import kotlinx.coroutines.launch
 
 @Composable
 fun ScheduleScreen(
     navController: NavController,
+    roundNumber: Int,
     viewModel: ScheduleViewModel = hiltViewModel()
 ) {
     val maxWidth = remember { mutableStateOf(0.dp) }
     val matches = viewModel.matches.value
     val clubName = viewModel.clubName.value
+    val coroutineScope = rememberCoroutineScope()
+    val listState = rememberLazyListState()
 
     Column(
         modifier = Modifier
@@ -46,9 +52,13 @@ fun ScheduleScreen(
 
             LazyRow(
                 verticalAlignment = Alignment.Top,
-                modifier = Modifier
+                modifier = Modifier,
+                state = listState
             ) {
                 items(38) { item1 ->
+                    coroutineScope.launch {
+                        listState.scrollToItem(roundNumber - 1)
+                    }
                     Column(
                         modifier = Modifier
                             .width(maxWidth.value)
