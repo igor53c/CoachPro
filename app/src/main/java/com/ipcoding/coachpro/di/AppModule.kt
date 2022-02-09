@@ -134,7 +134,12 @@ object AppModule {
                 resourceProvider
             ),
             playRound = PlayRound(matchRepository, clubRepository, preferences),
-            preparingForNewSeason = PreparingForNewSeason(clubRepository, preferences)
+            preparingForNewSeason = PreparingForNewSeason(clubRepository, preferences),
+            preparationOfClubsAndScheduling = PreparationOfClubsAndScheduling(
+                clubRepository, matchRepository
+            ),
+            changeHistory = ChangeHistory(clubRepository, historyRepository),
+            changePlayersYear = ChangePlayersYear(playerRepository)
         )
     }
 }

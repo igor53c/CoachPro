@@ -6,7 +6,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
-import com.ipcoding.coachpro.feature.domain.model.Club
+import com.ipcoding.coachpro.core.util.Constants.CHANGE_HISTORY
+import com.ipcoding.coachpro.core.util.Constants.CHANGE_PLAYERS_YEAR
+import com.ipcoding.coachpro.core.util.Constants.PREPARATION_OF_CLUBS_AND_SCHEDULING
+import com.ipcoding.coachpro.core.util.Constants.PREPARING_FOR_NEW_SEASON
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import com.ipcoding.coachpro.feature.domain.util.WeekType
 import com.ipcoding.coachpro.ui.theme.Colors.indexToColor
@@ -20,6 +23,8 @@ class MainViewModel @Inject constructor(
     private val allUseCases: AllUseCases
 ): ViewModel() {
 
+    private var _league = mutableStateOf("")
+
     private var _clubName = mutableStateOf("")
     val clubName: State<String> = _clubName
 
@@ -30,9 +35,6 @@ class MainViewModel @Inject constructor(
 
     private var _colorText = mutableStateOf(Color.White)
     val colorText: State<Color> = _colorText
-
-    private var _club = mutableStateOf<Club?>(null)
-    val club: State<Club?> = _club
 
     private var _clubPosition = mutableStateOf("")
     val clubPosition: State<String> = _clubPosition
@@ -60,6 +62,7 @@ class MainViewModel @Inject constructor(
 
     init {
         loadClubName()
+        loadSelectedLeague()
         loadRoundNumber()
         loadYear()
         loadWeek()
@@ -101,14 +104,44 @@ class MainViewModel @Inject constructor(
     }
 
     fun saveWeekYear()  {
-        if(_week.value == 52) {
-            preferences.saveYear(_year.value + 1)
-            _week.value = 0
+        when(_week.value) {
+            PREPARING_FOR_NEW_SEASON -> preparingForNewSeason()
+            PREPARATION_OF_CLUBS_AND_SCHEDULING -> preparationOfClubsAndScheduling()
+            CHANGE_HISTORY -> changeHistory()
+            CHANGE_PLAYERS_YEAR -> changePlayersYear()
+            52 -> {
+                preferences.saveYear(_year.value + 1)
+                _week.value = 0
+            }
         }
         preferences.saveWeek(_week.value + 1)
         loadWeek()
         loadYear()
         getMonth()
+    }
+
+    private fun changePlayersYear() {
+        viewModelScope.launch {
+            allUseCases.changePlayersYear.invoke()
+        }
+    }
+
+    private fun changeHistory() {
+        viewModelScope.launch {
+            allUseCases.changeHistory.invoke(_league.value, _year.value, _clubName.value)
+        }
+    }
+
+    private fun preparationOfClubsAndScheduling() {
+        viewModelScope.launch {
+            allUseCases.preparationOfClubsAndScheduling.invoke(_league.value)
+        }
+    }
+
+    private fun preparingForNewSeason() {
+        viewModelScope.launch {
+            allUseCases.preparingForNewSeason.invoke(_clubName.value, _league.value.toInt())
+        }
     }
 
     private fun loadColorJersey() {
@@ -119,8 +152,12 @@ class MainViewModel @Inject constructor(
         _colorStripes.value = indexToColor(preferences.loadColorStripes())
     }
 
+    private fun loadSelectedLeague() {
+        _league.value = preferences.loadSelectedLeague().toString()
+    }
+
     fun getStringLeague(): String {
-       return allUseCases.getStringLeague(preferences.loadSelectedLeague().toString())
+       return allUseCases.getStringLeague(_league.value)
     }
 
     fun getClubPositionString() {

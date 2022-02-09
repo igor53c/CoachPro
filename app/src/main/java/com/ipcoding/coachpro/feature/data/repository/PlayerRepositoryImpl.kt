@@ -24,7 +24,7 @@ class PlayerRepositoryImpl(
         return dao.getPlayerById(id)
     }
 
-    override fun getPlayers(): Flow<List<Player>> {
+    override suspend fun getPlayers(): List<Player> {
         return dao.getPlayers()
     }
 

@@ -5,6 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
+import com.ipcoding.coachpro.core.util.Constants.START_SEASON_WEEK
+import com.ipcoding.coachpro.core.util.Constants.START_SEASON_YEAR
 import com.ipcoding.coachpro.ui.theme.Colors
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -38,10 +40,10 @@ class ChooseColorJerseyViewModel @Inject constructor(
     }
 
     fun saveYear()  {
-        preferences.saveYear(2022)
+        preferences.saveYear(START_SEASON_YEAR)
     }
 
     fun saveWeek()  {
-        preferences.saveWeek(24)
+        preferences.saveWeek(START_SEASON_WEEK)
     }
 }

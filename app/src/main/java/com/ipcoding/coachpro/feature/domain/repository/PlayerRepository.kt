@@ -13,7 +13,7 @@ interface PlayerRepository {
 
     suspend fun getPlayerById(id: Int?): Player?
 
-    fun getPlayers(): Flow<List<Player>>
+    suspend fun getPlayers(): List<Player>
 
     fun getPlayersSortByNumber(): Flow<List<Player>>
 
