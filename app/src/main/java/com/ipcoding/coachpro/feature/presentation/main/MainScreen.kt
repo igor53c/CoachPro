@@ -19,7 +19,7 @@ fun MainScreen(
     navController: NavController,
     viewModel: MainViewModel = hiltViewModel()
 ) {
-    val colorText = viewModel.colorStripes.value
+    val colorText = viewModel.colorText.value
     val colorBackground = viewModel.colorJersey.value
     val info = viewModel.info.value
 

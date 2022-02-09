@@ -104,7 +104,7 @@ class CheckPlayerInRightPosition {
                         }
                     }
                 }
-                4 -> isCorrect = false
+                4 -> isCorrect = true
             }
         }
         return isCorrect

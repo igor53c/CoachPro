@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "clubs_table")
 data class Club(
     val name: String,
-    val league: String,
+    var league: String,
     var position: Int,
     var rating: Double,
     var win: Int,

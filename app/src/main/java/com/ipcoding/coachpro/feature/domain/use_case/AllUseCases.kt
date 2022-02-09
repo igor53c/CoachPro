@@ -24,5 +24,6 @@ data class AllUseCases (
     val getAllMatches: GetAllMatches,
     val getMonth: GetMonth,
     val getWeekTypeText: GetWeekTypeText,
-    val playRound: PlayRound
+    val playRound: PlayRound,
+    val preparingForNewSeason: PreparingForNewSeason
 )

@@ -3,7 +3,6 @@ package com.ipcoding.coachpro.feature.presentation.tactics.components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -32,7 +31,7 @@ fun TextUnderJersey(
     } else colorBackground = Colors.LightRed10
     Text(
         text = playerInfo,
-        style = AppTheme.typography.caption,
+        style = AppTheme.typography.overline,
         color = AppTheme.colors.primary,
         textAlign = TextAlign.Center,
         modifier = Modifier

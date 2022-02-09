@@ -37,4 +37,5 @@
     <string name="season_over">The season is over!</string>
     <string name="won">won</string>
     <string name="player_transfer">Player transfer!</string>
+    <string name="place">place</string>
 </resources>

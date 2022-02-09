@@ -133,7 +133,8 @@ object AppModule {
                 clubRepository,
                 resourceProvider
             ),
-            playRound = PlayRound(matchRepository, clubRepository, preferences)
+            playRound = PlayRound(matchRepository, clubRepository, preferences),
+            preparingForNewSeason = PreparingForNewSeason(clubRepository, preferences)
         )
     }
 }

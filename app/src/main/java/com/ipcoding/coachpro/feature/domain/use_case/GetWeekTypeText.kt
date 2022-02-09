@@ -44,7 +44,8 @@ class GetWeekTypeText(
                     "${resourceProvider.getString(R.string.season_over)}\n\n\n" +
                     "$clubName\n" +
                     "${resourceProvider.getString(R.string.won)}\n" +
-                    myClub?.position?.let { positionString(it) }
+                    myClub?.position?.let { positionString(it) } +
+                    " ${resourceProvider.getString(R.string.place)}\n"
         }
 
         val weekType: WeekType = when(if(weekParameter == 53) 1 else weekParameter) {

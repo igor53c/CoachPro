@@ -27,7 +27,9 @@ class MainViewModel @Inject constructor(
     val colorJersey: State<Color> = _colorJersey
 
     private var _colorStripes = mutableStateOf(Color.White)
-    val colorStripes: State<Color> = _colorStripes
+
+    private var _colorText = mutableStateOf(Color.White)
+    val colorText: State<Color> = _colorText
 
     private var _club = mutableStateOf<Club?>(null)
     val club: State<Club?> = _club
@@ -67,9 +69,12 @@ class MainViewModel @Inject constructor(
         loadColorStripes()
         getPlayersRating()
         getClubRating()
-        _colorStripes.value =
-            allUseCases.checkColors(_colorJersey.value, _colorStripes.value)
+        checkColors()
         getClubPositionString()
+    }
+
+    private fun checkColors() {
+        _colorText.value = allUseCases.checkColors(_colorJersey.value, _colorStripes.value)
     }
 
     private fun getInfoText() {

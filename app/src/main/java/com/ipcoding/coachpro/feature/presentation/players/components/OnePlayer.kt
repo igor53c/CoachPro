@@ -4,8 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
@@ -76,7 +74,7 @@ fun OnePLayer(
                 color = AppTheme.colors.primary,
                 progress = player.fitness * 0.01f
             )
-            Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
+            Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceExtraMedium))
             Slider(
                 value = valueTraining.value,
                 onValueChange = {

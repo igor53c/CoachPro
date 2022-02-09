@@ -50,8 +50,6 @@ class TacticsViewModel @Inject constructor(
         loadColorStripes()
         loadTactics()
         loadAllTactics()
-        _colorStripes.value =
-            allUseCases.checkColors(_colorJersey.value, _colorStripes.value)
     }
 
     private fun getPlayers() {

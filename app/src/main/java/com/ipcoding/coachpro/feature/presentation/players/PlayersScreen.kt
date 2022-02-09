@@ -73,7 +73,7 @@ fun PlayersScreen (
                     modifier = Modifier
                         .width(AppTheme.dimensions.spaceExtraLarge)
                 )
-                Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
+                Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceExtraMedium))
                 Text(
                     text = stringResource(id = R.string.training),
                     color = AppTheme.colors.primary,
