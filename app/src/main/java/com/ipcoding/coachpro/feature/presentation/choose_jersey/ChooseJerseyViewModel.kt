@@ -1,4 +1,4 @@
-package com.ipcoding.coachpro.feature.presentation.choose_color_jersey
+package com.ipcoding.coachpro.feature.presentation.choose_jersey
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
@@ -12,7 +12,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ChooseColorJerseyViewModel @Inject constructor(
+class ChooseJerseyViewModel @Inject constructor(
     private val preferences: Preferences
 ): ViewModel() {
 
@@ -39,11 +39,11 @@ class ChooseColorJerseyViewModel @Inject constructor(
         preferences.saveColorStripes(Colors.colorToIndex(color))
     }
 
-    fun saveYear()  {
+    private fun saveYear()  {
         preferences.saveYear(START_SEASON_YEAR)
     }
 
-    fun saveWeek()  {
+    private fun saveWeek()  {
         preferences.saveWeek(START_SEASON_WEEK)
     }
 }

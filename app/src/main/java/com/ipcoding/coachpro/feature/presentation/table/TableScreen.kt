@@ -2,18 +2,21 @@ package com.ipcoding.coachpro.feature.presentation.table
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
 import com.ipcoding.coachpro.feature.presentation.table.components.ClubInfo
+import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.feature.presentation.table.components.OneClub
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
@@ -28,6 +31,7 @@ fun TableScreen(
     val text1 = remember { mutableStateOf("") }
     val text2 = remember { mutableStateOf("") }
     val text3 = remember { mutableStateOf("") }
+
     if(!goalsView.value) {
         buttonGoalsText.value = stringResource(id = R.string.goals)
         text1.value = stringResource(id = R.string.win)
@@ -43,22 +47,28 @@ fun TableScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(
-                start = AppTheme.dimensions.spaceMedium,
-                end = AppTheme.dimensions.spaceMedium,
                 top = AppTheme.dimensions.spaceSmall,
                 bottom = AppTheme.dimensions.spaceSmall
             )
     ) {
         Row(
             modifier = Modifier
-                .padding(AppTheme.dimensions.spaceSmall)
                 .fillMaxWidth()
         ) {
-            Text(
-                text = viewModel.getStringLeague(),
-                color = AppTheme.colors.primary,
+            CustomText(
+                text = "#",
                 style = AppTheme.typography.body2,
+                textAlign = TextAlign.Center,
                 modifier = Modifier
+                    .padding(start = AppTheme.dimensions.spaceSmall)
+                    .width(AppTheme.dimensions.spaceExtraMedium)
+            )
+            CustomText(
+                text = viewModel.getStringLeague(),
+                style = AppTheme.typography.body2,
+                textAlign = TextAlign.Start,
+                modifier = Modifier
+                    .padding(start = AppTheme.dimensions.spaceExtraSmall)
                     .weight(1f)
             )
             ClubInfo(
@@ -73,20 +83,33 @@ fun TableScreen(
             modifier = Modifier.weight(1f)
         ) {
             items(clubs.size) { item ->
-                val club = clubs[item]
+                if(item == 0) {
+                    Divider(
+                        color = AppTheme.colors.primary,
+                        thickness = AppTheme.dimensions.spaceSuperSmall
+                    )
+                }
                 OneClub(
-                    club = club,
-                    color = viewModel.getColor(club),
+                    clubName = viewModel.getClubName(),
+                    club = clubs[item],
+                    color = viewModel.getColorOfClubInTable(item + 1),
                     isShowGoals = goalsView.value
                 )
-                Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceExtraSmall))
+                Divider(
+                    color = AppTheme.colors.primary,
+                    thickness = AppTheme.dimensions.spaceSuperSmall
+                )
             }
         }
         Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
         Row(
             modifier = Modifier
                 .height(AppTheme.dimensions.spaceLarge)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(
+                    start = AppTheme.dimensions.spaceSmall,
+                    end = AppTheme.dimensions.spaceSmall
+                ),
         ) {
             ButtonBack(
                 navController = navController,

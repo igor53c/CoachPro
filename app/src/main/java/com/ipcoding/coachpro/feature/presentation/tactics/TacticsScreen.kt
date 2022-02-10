@@ -1,5 +1,6 @@
 package com.ipcoding.coachpro.feature.presentation.tactics
 
+import androidx.compose.animation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -21,6 +22,7 @@ import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomB
 import com.ipcoding.coachpro.feature.presentation.tactics.components.*
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.AppTheme
+
 
 @Composable
 fun TacticsScreen(
@@ -69,9 +71,9 @@ fun TacticsScreen(
             LazyColumn(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
+                    .animateContentSize()
             ) {
                 items(5) { item1 ->
-
                     LazyRow(modifier = Modifier.height(height = maxWidth.value / 3.6f)) {
                         val numberItem2 =
                             if(item1 == 4) players.size - 11 else tactics[item1 + 1] as Int

@@ -44,7 +44,7 @@ class PreparingForNewSeason(
         if (club == clubList[i].name) preferences.saveSelectedLeague(leagueString)
         currentClub = resetClubInfo(currentClub, leagueString, 17 + i)
         clubRepository.insertClub(currentClub)
-        nextClub.league = league.toString()
+        nextClub.league = "League $league"
         nextClub.position = i + 1
         clubRepository.insertClub(nextClub)
     }
@@ -58,7 +58,7 @@ class PreparingForNewSeason(
         if (club == clubList[i].name) preferences.saveSelectedLeague(leagueString)
         currentClub = resetClubInfo(currentClub, leagueString, i - 15)
         clubRepository.insertClub(currentClub)
-        nextClub.league = league.toString()
+        nextClub.league = "League $league"
         nextClub.position = i - 16 + 1
         clubRepository.insertClub(nextClub)
     }
@@ -68,7 +68,7 @@ class PreparingForNewSeason(
 
 private fun resetClubInfo(club: Club, leagueNumber: String, positionNumber: Int): Club {
     return club.apply {
-        league = leagueNumber
+        league = "League $leagueNumber"
         position = positionNumber
         win = 0
         draw = 0

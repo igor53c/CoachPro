@@ -2,6 +2,7 @@ package com.ipcoding.coachpro.feature.presentation.players
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Divider
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -14,8 +15,8 @@ import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.players.components.OnePLayer
-import com.ipcoding.coachpro.feature.presentation.players.components.PlayerInfo
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
+import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
@@ -27,37 +28,54 @@ fun PlayersScreen (
     val trainingView = remember { mutableStateOf(false) }
     val buttonTrainingText = remember { mutableStateOf("") }
     Column(
+        verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
             .padding(
-                start = AppTheme.dimensions.spaceMedium,
-                end = AppTheme.dimensions.spaceMedium,
                 top = AppTheme.dimensions.spaceSmall,
                 bottom = AppTheme.dimensions.spaceSmall
             )
     ) {
         Row(
             modifier = Modifier
-                .padding(AppTheme.dimensions.spaceSmall)
+                .padding(
+                    start = AppTheme.dimensions.spaceSmall,
+                    end = AppTheme.dimensions.spaceSmall
+                )
                 .fillMaxWidth()
         ) {
-            Text(
+            CustomText(
                 text = stringResource(id = R.string.name),
-                color = AppTheme.colors.primary,
+                textAlign = TextAlign.Start,
                 style = AppTheme.typography.body2,
                 modifier = Modifier
                     .weight(1f)
             )
             if(!trainingView.value) {
                 buttonTrainingText.value = stringResource(id = R.string.training)
-                PlayerInfo(
-                    positionText = stringResource(id = R.string.position),
-                    ratingText = stringResource(id = R.string.rating),
-                    ageText = stringResource(id = R.string.age)
+                CustomText(
+                    text = stringResource(id = R.string.position),
+                    style = AppTheme.typography.body2,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .width(AppTheme.dimensions.spaceExtraLarge)
                 )
-                Text(
+                CustomText(
+                    text = stringResource(id = R.string.rating),
+                    style = AppTheme.typography.body2,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .width(AppTheme.dimensions.spaceExtraLarge)
+                )
+                CustomText(
+                    text = stringResource(id = R.string.age),
+                    style = AppTheme.typography.body2,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .width(AppTheme.dimensions.spaceLarge)
+                )
+                CustomText(
                     text = stringResource(id = R.string.motivation),
-                    color = AppTheme.colors.primary,
                     style = AppTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -65,18 +83,16 @@ fun PlayersScreen (
                 )
             } else {
                 buttonTrainingText.value = stringResource(id = R.string.general)
-                Text(
+                CustomText(
                     text = stringResource(id = R.string.fitness),
-                    color = AppTheme.colors.primary,
                     style = AppTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .width(AppTheme.dimensions.spaceExtraLarge)
                 )
                 Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceExtraMedium))
-                Text(
+                CustomText(
                     text = stringResource(id = R.string.training),
-                    color = AppTheme.colors.primary,
                     style = AppTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier
@@ -85,8 +101,11 @@ fun PlayersScreen (
             }
 
         }
+        Divider(
+            color = AppTheme.colors.primary,
+            thickness = AppTheme.dimensions.spaceSuperSmall
+        )
         LazyColumn (
-            verticalArrangement = Arrangement.Center,
             modifier = Modifier.weight(1f)
         ) {
             items(players.size) { item ->
@@ -98,14 +117,21 @@ fun PlayersScreen (
                     playerTraining = player.training.toFloat(),
                     viewModel = viewModel
                 )
-                Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceExtraSmall))
+                Divider(
+                    color = AppTheme.colors.primary,
+                    thickness = AppTheme.dimensions.spaceSuperSmall
+                )
             }
         }
         Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
         Row(
             modifier = Modifier
                 .height(AppTheme.dimensions.spaceLarge)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .padding(
+                    start = AppTheme.dimensions.spaceSmall,
+                    end = AppTheme.dimensions.spaceSmall
+                )
         ) {
             ButtonBack(
                 modifier = Modifier

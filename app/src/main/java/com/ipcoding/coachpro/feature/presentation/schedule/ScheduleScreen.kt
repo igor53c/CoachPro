@@ -4,10 +4,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -34,12 +31,7 @@ fun ScheduleScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(
-                start = AppTheme.dimensions.spaceMedium,
-                end = AppTheme.dimensions.spaceMedium,
-                top = AppTheme.dimensions.spaceSmall,
-                bottom = AppTheme.dimensions.spaceSmall
-            )
+            .padding(AppTheme.dimensions.spaceSmall)
     ) {
         Item(title = viewModel.getStringLeague())
         Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceMedium))
@@ -71,6 +63,7 @@ fun ScheduleScreen(
                             modifier = Modifier.fillMaxWidth()
                         )
                         Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
+
                         LazyColumn(
                             modifier = Modifier
                                 .fillMaxWidth()

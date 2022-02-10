@@ -32,7 +32,7 @@ private val defaultTypography = Typography()
     body1 = defaultTypography.body1.copy(fontFamily = appFontFamily),
     body2 = defaultTypography.body2.copy(fontFamily = appFontFamily),
     button = defaultTypography.button.copy(fontFamily = appFontFamily),
-    caption = defaultTypography.caption.copy(fontFamily = appFontFamily),
+    caption = defaultTypography.caption.copy(fontFamily = appFontFamily, letterSpacing = 0.sp),
     overline = defaultTypography.overline.copy(fontFamily = appFontFamily)
 )
 

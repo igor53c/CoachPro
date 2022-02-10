@@ -3,11 +3,11 @@ package com.ipcoding.coachpro.feature.domain.use_case
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.domain.resources.ResourceProvider
-import com.ipcoding.coachpro.core.util.Constants
 import com.ipcoding.coachpro.core.util.Constants.END_MATCHES_ONE
 import com.ipcoding.coachpro.core.util.Constants.END_MATCHES_TWO
 import com.ipcoding.coachpro.core.util.Constants.END_TRANSFERS_ONE
 import com.ipcoding.coachpro.core.util.Constants.END_TRANSFERS_TWO
+import com.ipcoding.coachpro.core.util.Constants.PREPARATION_OF_CLUBS_AND_SCHEDULING
 import com.ipcoding.coachpro.core.util.Constants.SEASON_HAS_BEGUN
 import com.ipcoding.coachpro.core.util.Constants.SEASON_IS_OVER
 import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_ONE
@@ -63,10 +63,11 @@ class GetWeekTypeText(
             in START_TRANSFERS_TWO..END_TRANSFERS_TWO -> WeekType.Transfers(resourceProvider.getString(R.string.player_transfer))
             in START_MATCHES_TWO..END_MATCHES_TWO -> WeekType.Tactics(tacticsText)
             SEASON_IS_OVER -> WeekType.Else(seasonOverText)
-            SEASON_HAS_BEGUN -> {
+            PREPARATION_OF_CLUBS_AND_SCHEDULING -> {
                 preferences.saveRoundNumber(0)
-                WeekType.Schedule(scheduleText)
+                WeekType.Else("")
             }
+            SEASON_HAS_BEGUN -> WeekType.Schedule(scheduleText)
             in START_TRANSFERS_ONE..END_TRANSFERS_ONE -> WeekType.Transfers(resourceProvider.getString(R.string.player_transfer))
             in START_MATCHES_ONE..END_MATCHES_ONE -> WeekType.Tactics(tacticsText)
             else -> WeekType.Else("Else")

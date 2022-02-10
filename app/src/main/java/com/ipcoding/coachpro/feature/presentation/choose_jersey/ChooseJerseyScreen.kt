@@ -1,12 +1,7 @@
-package com.ipcoding.coachpro.feature.presentation.choose_color_jersey
+package com.ipcoding.coachpro.feature.presentation.choose_jersey
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.FloatingActionButton
-import androidx.compose.material.Icon
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,17 +11,16 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
-import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.components.ColorPicker
-import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.components.Jersey
-import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
+import com.ipcoding.coachpro.feature.presentation.choose_jersey.components.ColorPicker
+import com.ipcoding.coachpro.feature.presentation.choose_jersey.components.Jersey
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
-fun ChooseColorJerseyScreen (
+fun ChooseJerseyScreen (
     navController: NavController,
-    viewModel: ChooseColorJerseyViewModel = hiltViewModel()
+    viewModel: ChooseJerseyViewModel = hiltViewModel()
 ) {
     val colorJersey = viewModel.colorJersey.value
     val colorStripes = viewModel.colorStripes.value

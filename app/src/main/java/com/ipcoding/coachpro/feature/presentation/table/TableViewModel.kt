@@ -25,16 +25,19 @@ class TableViewModel @Inject constructor(
         getClubs()
     }
 
-    fun getColor(club: Club): Color {
-        return allUseCases.getColorOfClubInTable.invoke(
-            club = club,
-            selectedClub = preferences.loadClubName().toString()
-        )
+    fun getColorOfClubInTable(position: Int): Color {
+        return allUseCases.getColorOfClubInTable.invoke(position)
+    }
+
+    fun getClubName(): String {
+        return preferences.loadClubName().toString()
     }
 
     private fun getClubs() {
         viewModelScope.launch {
-            _clubs.value = allUseCases.getClubs.invoke(getStringLeague())
+            if(preferences.loadRoundNumber() != 0)
+                _clubs.value = allUseCases.getClubs.invoke(getStringLeague()) else
+                _clubs.value = allUseCases.getClubsFromLeagueByPosition.invoke(getStringLeague())
         }
     }
 

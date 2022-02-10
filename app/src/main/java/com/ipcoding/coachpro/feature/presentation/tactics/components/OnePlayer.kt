@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import com.ipcoding.coachpro.feature.domain.model.Player
-import com.ipcoding.coachpro.feature.presentation.choose_color_jersey.components.Jersey
+import com.ipcoding.coachpro.feature.presentation.choose_jersey.components.Jersey
 import com.ipcoding.coachpro.feature.presentation.tactics.TacticsViewModel
 import com.ipcoding.coachpro.ui.theme.AppTheme
 

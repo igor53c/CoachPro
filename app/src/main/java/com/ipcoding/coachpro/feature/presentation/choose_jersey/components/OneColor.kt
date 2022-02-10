@@ -1,4 +1,4 @@
-package com.ipcoding.coachpro.feature.presentation.choose_color_jersey.components
+package com.ipcoding.coachpro.feature.presentation.choose_jersey.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding

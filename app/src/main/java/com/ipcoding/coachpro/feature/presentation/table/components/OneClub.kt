@@ -1,33 +1,36 @@
 package com.ipcoding.coachpro.feature.presentation.table.components
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CornerSize
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.style.TextAlign
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.ui.theme.AppTheme
+import com.ipcoding.coachpro.ui.theme.Colors
 
 @Composable
 fun OneClub(
     club: Club,
     color: Color,
-    isShowGoals: Boolean
+    isShowGoals: Boolean,
+    clubName: String,
+    modifier: Modifier = Modifier
 ) {
     val text1 = remember { mutableStateOf("") }
     val text2 = remember { mutableStateOf("") }
     val text3 = remember { mutableStateOf("") }
+    val backgroundColor = remember { mutableStateOf(Color.Transparent) }
+
+    if(clubName == club.name) backgroundColor.value = Colors.LightGray10
+
     if(!isShowGoals) {
         text1.value = club.win.toString()
         text2.value = club.draw.toString()
@@ -38,28 +41,26 @@ fun OneClub(
         text3.value = club.goalDifference.toString()
     }
     Row(
-        modifier = Modifier
-            .border(
-                border = BorderStroke(
-                    width = 1.dp,
-                    color = AppTheme.colors.primary
-                ),
-                shape = AppTheme.shapes.medium
-            )
-            .background(
-                color = color,
-                shape = AppTheme.shapes.medium
-            )
-            .padding(AppTheme.dimensions.spaceSmall)
+        modifier = modifier
+            .background(color = backgroundColor.value)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            maxLines = 1,
-            text = club.name,
-            color = AppTheme.colors.primary,
+        CustomText(
+            text = club.position.toString(),
             style = AppTheme.typography.body2,
+            textAlign = TextAlign.Center,
+            backgroundColor = color,
             modifier = Modifier
+                .padding(start = AppTheme.dimensions.spaceSmall)
+                .width(AppTheme.dimensions.spaceExtraMedium)
+        )
+        CustomText(
+            text = club.name,
+            style = AppTheme.typography.body2,
+            textAlign = TextAlign.Start,
+            modifier = Modifier
+                .padding(start = AppTheme.dimensions.spaceExtraSmall)
                 .weight(1f)
         )
 

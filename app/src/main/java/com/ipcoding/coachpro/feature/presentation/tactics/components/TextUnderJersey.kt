@@ -31,7 +31,7 @@ fun TextUnderJersey(
     } else colorBackground = Colors.LightRed10
     Text(
         text = playerInfo,
-        style = AppTheme.typography.overline,
+        style = AppTheme.typography.caption,
         color = AppTheme.colors.primary,
         textAlign = TextAlign.Center,
         modifier = Modifier

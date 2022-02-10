@@ -18,7 +18,6 @@ class InfoViewModel @Inject constructor(
 ): ViewModel() {
 
     private var _week = mutableStateOf(0)
-    val week: State<Int> = _week
 
     private var _info = mutableStateOf<WeekType?>(null)
     val info: State<WeekType?> = _info
@@ -26,6 +25,13 @@ class InfoViewModel @Inject constructor(
     init {
         loadWeek()
         getInfoText()
+    }
+
+    fun preparationOfClubsAndScheduling() {
+        viewModelScope.launch {
+            allUseCases.preparationOfClubsAndScheduling
+                .invoke(preferences.loadSelectedLeague().toString())
+        }
     }
 
     private fun getInfoText() {

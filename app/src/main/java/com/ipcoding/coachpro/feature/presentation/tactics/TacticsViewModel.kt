@@ -133,7 +133,7 @@ class TacticsViewModel @Inject constructor(
         return round
     }
 
-    fun playRound(round: Int) {
+    private fun playRound(round: Int) {
         viewModelScope.launch {
             allUseCases.playRound.invoke(round)
         }

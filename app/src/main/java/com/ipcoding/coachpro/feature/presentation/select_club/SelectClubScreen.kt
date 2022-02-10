@@ -42,7 +42,7 @@ fun SelectClubScreen (
                         viewModel.saveClubName(name)
                         viewModel.createClubDatabase()
                         navController.navigate(
-                            Screen.ChooseColorJerseyScreen.route
+                            Screen.ChooseJerseyScreen.route
                         )
                     }
                 )

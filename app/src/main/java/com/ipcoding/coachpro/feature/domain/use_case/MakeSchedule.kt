@@ -44,22 +44,22 @@ class MakeSchedule(
                 }
                 matchRepository.insertMatch(
                     Match( round1, teams[teamIdx].name,
-                        tempClubList[0].name, 0, 0)
+                        tempClubList[0].name, -1, -1)
                 )
                 matchRepository.insertMatch(
                     Match( round2, tempClubList[0].name, teams[teamIdx].name,
-                        0, 0)
+                        -1, -1)
                 )
                 for (idx in 1 until halfSize) {
                     val firstTeam = (day + idx) % teamsSize
                     val secondTeam = (day + teamsSize - idx) % teamsSize
                     matchRepository.insertMatch(
                         Match( round1, teams[firstTeam].name, teams[secondTeam].name,
-                            0, 0)
+                            -1, -1)
                     )
                     matchRepository.insertMatch(
                         Match(round2, teams[secondTeam].name, teams[firstTeam].name,
-                            0, 0)
+                            -1, -1)
                     )
                 }
             }

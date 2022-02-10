@@ -10,27 +10,26 @@ class PreparationOfClubsAndScheduling(
 
     suspend fun invoke(league: String) {
 
-        val leagueList: MutableList<String> = mutableListOf()
-        leagueList[0] = league
         var rating = 95.0
         for (i in 1..7) {
             val currentLeague = i.toString()
-            if (leagueList[0] != currentLeague) {
-                val clubs = clubRepository.getClubsFromLeagueByRating(currentLeague)
+            if (league != currentLeague) {
+                val clubs =
+                    clubRepository.getClubsFromLeagueByRating("League $currentLeague")
                 var position = 0
                 for (club in clubs) {
                     position++
                     club.position = position
                     club.rating = rating
                     clubRepository.insertClub(club)
-                    rating = rating - 0.5
+                    rating -= 0.5
                 }
             } else {
-                rating = rating - 10.0
+                rating -= 10.0
             }
         }
         matchRepository.deleteAll()
-        val clubs = clubRepository.getClubsFromLeague(leagueList[0])
+        val clubs = clubRepository.getClubsFromLeague("League $league")
         for (club in clubs) {
             club.apply {
                 win = 0
@@ -43,6 +42,6 @@ class PreparationOfClubsAndScheduling(
             }
             clubRepository.insertClub(club)
         }
-        MakeSchedule(clubRepository, matchRepository).invoke(leagueList.get(0))
+        MakeSchedule(clubRepository, matchRepository).invoke("League $league")
     }
 }

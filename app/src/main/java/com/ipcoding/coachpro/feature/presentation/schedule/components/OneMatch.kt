@@ -2,7 +2,6 @@ package com.ipcoding.coachpro.feature.presentation.schedule.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -45,16 +44,18 @@ fun OneMatch(
             textAlign = TextAlign.End
         )
         Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceExtraSmall))
+        val goalsHostString = if(match.goalsHost == -1) "" else match.goalsHost.toString()
         Text(
-            text = match.goalsHost.toString(),
+            text = goalsHostString,
             color = AppTheme.colors.primary,
             style = AppTheme.typography.body2,
             modifier = Modifier.width(AppTheme.dimensions.spaceMedium),
             textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceExtraSmall))
+        val goalsGuestString = if(match.goalsHost == -1) "" else match.goalsGuest.toString()
         Text(
-            text = match.goalsGuest.toString(),
+            text = goalsGuestString,
             color = AppTheme.colors.primary,
             style = AppTheme.typography.body2,
             modifier = Modifier.width(AppTheme.dimensions.spaceMedium),

@@ -1,7 +1,6 @@
 package com.ipcoding.coachpro.feature.presentation.table.components
 
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
@@ -14,33 +13,29 @@ fun ClubInfo(
     text3: String,
     pointsText: String
 ) {
-    Text(
+    CustomText(
         text = text1,
-        color = AppTheme.colors.primary,
         style = AppTheme.typography.body2,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .width(AppTheme.dimensions.spaceLarge)
     )
-    Text(
+    CustomText(
         text = text2,
-        color = AppTheme.colors.primary,
         style = AppTheme.typography.body2,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .width(AppTheme.dimensions.spaceLarge)
     )
-    Text(
+    CustomText(
         text = text3,
-        color = AppTheme.colors.primary,
         style = AppTheme.typography.body2,
         textAlign = TextAlign.Center,
         modifier = Modifier
             .width(AppTheme.dimensions.spaceLarge)
     )
-    Text(
+    CustomText(
         text = pointsText,
-        color = AppTheme.colors.primary,
         style = AppTheme.typography.body2,
         textAlign = TextAlign.Center,
         modifier = Modifier

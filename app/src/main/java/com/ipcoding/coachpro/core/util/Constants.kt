@@ -2,7 +2,7 @@ package com.ipcoding.coachpro.core.util
 
 object Constants {
 
-    const val START_SEASON_WEEK = 28
+    const val START_SEASON_WEEK = 27
     const val START_SEASON_YEAR = 2022
     const val START_TRANSFERS_TWO = 1
     const val END_TRANSFERS_TWO = 3

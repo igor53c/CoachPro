@@ -28,5 +28,6 @@ data class AllUseCases (
     val preparingForNewSeason: PreparingForNewSeason,
     val preparationOfClubsAndScheduling: PreparationOfClubsAndScheduling,
     val changeHistory: ChangeHistory,
-    val changePlayersYear: ChangePlayersYear
+    val changePlayersYear: ChangePlayersYear,
+    val getClubsFromLeagueByPosition: GetClubsFromLeagueByPosition
 )

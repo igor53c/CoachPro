@@ -8,7 +8,6 @@ import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.util.Constants.CHANGE_HISTORY
 import com.ipcoding.coachpro.core.util.Constants.CHANGE_PLAYERS_YEAR
-import com.ipcoding.coachpro.core.util.Constants.PREPARATION_OF_CLUBS_AND_SCHEDULING
 import com.ipcoding.coachpro.core.util.Constants.PREPARING_FOR_NEW_SEASON
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import com.ipcoding.coachpro.feature.domain.util.WeekType
@@ -106,7 +105,6 @@ class MainViewModel @Inject constructor(
     fun saveWeekYear()  {
         when(_week.value) {
             PREPARING_FOR_NEW_SEASON -> preparingForNewSeason()
-            PREPARATION_OF_CLUBS_AND_SCHEDULING -> preparationOfClubsAndScheduling()
             CHANGE_HISTORY -> changeHistory()
             CHANGE_PLAYERS_YEAR -> changePlayersYear()
             52 -> {
@@ -129,12 +127,6 @@ class MainViewModel @Inject constructor(
     private fun changeHistory() {
         viewModelScope.launch {
             allUseCases.changeHistory.invoke(_league.value, _year.value, _clubName.value)
-        }
-    }
-
-    private fun preparationOfClubsAndScheduling() {
-        viewModelScope.launch {
-            allUseCases.preparationOfClubsAndScheduling.invoke(_league.value)
         }
     }
 

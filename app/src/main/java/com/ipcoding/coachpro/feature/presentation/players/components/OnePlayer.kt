@@ -1,22 +1,19 @@
 package com.ipcoding.coachpro.feature.presentation.players.components
 
-import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.material.Slider
 import androidx.compose.material.SliderDefaults
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.text.style.TextAlign
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.presentation.players.PlayersViewModel
+import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
@@ -30,25 +27,16 @@ fun OnePLayer(
     val valueTraining = remember { mutableStateOf(playerTraining)}
     Row(
         modifier = Modifier
-            .border(
-                border = BorderStroke(
-                    width = 1.dp,
-                    color = AppTheme.colors.primary
-                ),
-                shape = AppTheme.shapes.medium
+            .padding(
+                start = AppTheme.dimensions.spaceSmall,
+                end = AppTheme.dimensions.spaceSmall
             )
-            .background(
-                color = color,
-                shape = AppTheme.shapes.medium
-            )
-            .padding(AppTheme.dimensions.spaceSmall)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(
-            maxLines = 1,
+        CustomText(
             text = player.name,
-            color = AppTheme.colors.primary,
+            textAlign = TextAlign.Start,
             style = AppTheme.typography.body2,
             modifier = Modifier
                 .weight(1f)
@@ -57,7 +45,8 @@ fun OnePLayer(
            PlayerInfo(
                positionText = player.position,
                ratingText = player.rating.toString(),
-               ageText = player.age.toString()
+               ageText = player.age.toString(),
+               positionBackgroundColor = color
            )
             LinearProgressIndicator(
                 modifier = Modifier
@@ -96,6 +85,5 @@ fun OnePLayer(
                     .height(AppTheme.dimensions.spaceSmall)
             )
         }
-
     }
 }
