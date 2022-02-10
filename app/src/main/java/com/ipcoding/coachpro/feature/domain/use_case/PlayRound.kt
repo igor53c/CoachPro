@@ -4,6 +4,7 @@ import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.repository.ClubRepository
 import com.ipcoding.coachpro.feature.domain.repository.MatchRepository
+import kotlin.math.ceil
 import kotlin.random.Random
 
 class PlayRound(
@@ -74,9 +75,9 @@ fun changeClubDetails(club: Club?, goalsFor: Int, goalsAgainst: Int): Club? {
 
 fun numberGoals(ratingDifference: Double): Int {
     val number = Random.nextInt(100)
-    val max0 = 26 - ratingDifference.toInt()
-    val max1 = max0 + 36 - (ratingDifference / 2.5).toInt()
-    val max2 = max1 + 24 + (ratingDifference / 1.5).toInt()
+    val max0 = 30 - (ratingDifference * 2.5).toInt()
+    val max1 = max0 + 32 - (ratingDifference / 2.5).toInt()
+    val max2 = max1 + 21 + (ratingDifference / 1.5).toInt()
     val max = 100 - max2
 
     when {
@@ -84,18 +85,17 @@ fun numberGoals(ratingDifference: Double): Int {
         number < max1 -> return 1
         number < max2 -> return 2
         else -> {
-            val number2 = Random.nextInt(max)
-            val max3 = max / 2
-            val max4 = max3 + max3 / 2
-            val max5 = max4 + (max - max4) / 2
-            val max6 = max5 + (max - max5) / 2
-            val max7 = max6 + (max - max6) / 2
+            val max3 = max2 + ceil(max / 2.0)
+            val max4 = max3 + ceil(max / 4.0)
+            val max5 = max4 + ceil(max / 8.0)
+            val max6 = max5 + ceil(max / 16.0)
+            val max7 = max6 + ceil(max / 32.0)
             return when {
-                number2 < max3 -> 3
-                number2 < max4 -> 4
-                number2 < max5 -> 5
-                number2 < max6 -> 6
-                number2 < max7 -> 7
+                number < max3 -> 3
+                number < max4 -> 4
+                number < max5 -> 5
+                number < max6 -> 6
+                number < max7 -> 7
                 else -> 8
             }
         }

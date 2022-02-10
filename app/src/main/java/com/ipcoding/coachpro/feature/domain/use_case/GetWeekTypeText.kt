@@ -36,7 +36,7 @@ class GetWeekTypeText(
             val round = preferences.loadRoundNumber() + 1
             val clubName = preferences.loadClubName()
             val myClub = clubName?.let { clubRepository.getClub(it) }
-            val match = matchRepository.getClubMatchFromNextRound(round, clubName)
+            val match = matchRepository.getClubMatch(round, clubName)
             val host = match?.host?.let { clubRepository.getClub(it) }
             val guest = match?.guest?.let { clubRepository.getClub(it) }
 

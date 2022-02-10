@@ -7,6 +7,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -49,7 +50,9 @@ fun TableScreen(
             .padding(
                 top = AppTheme.dimensions.spaceSmall,
                 bottom = AppTheme.dimensions.spaceSmall
-            )
+            ),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
             modifier = Modifier
@@ -79,7 +82,6 @@ fun TableScreen(
             )
         }
         LazyColumn (
-            verticalArrangement = Arrangement.Center,
             modifier = Modifier.weight(1f)
         ) {
             items(clubs.size) { item ->

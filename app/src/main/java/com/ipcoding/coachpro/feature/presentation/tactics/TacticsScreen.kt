@@ -120,9 +120,8 @@ fun TacticsScreen(
                         .fillMaxHeight()
                         .weight(1f),
                     onClick = {
-                        navController.navigate(
-                            Screen.ScheduleScreen.route +
-                                    "?roundNumber=${viewModel.increaseRound()}")
+                        viewModel.increaseRound()
+                        navController.navigate(Screen.ResultScreen.route)
                     }
                 ) {
                     Text(

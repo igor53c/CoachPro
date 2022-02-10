@@ -20,6 +20,10 @@ interface MatchDao {
     fun getAllMatches(): Flow<List<Match>>
 
     @Query("SELECT * FROM match_table WHERE " +
-            "(round = :round AND (host = :club OR guest = :club))")
-    suspend fun getClubMatchFromNextRound(round: Int, club: String?): Match?
+            "(round = :round AND (host = :clubName OR guest = :clubName))")
+    fun getClubMatchFromNextRound(round: Int, clubName: String?): Flow<Match?>
+
+    @Query("SELECT * FROM match_table WHERE " +
+            "(round = :round AND (host = :clubName OR guest = :clubName))")
+    suspend fun getClubMatch(round: Int, clubName: String?): Match?
 }

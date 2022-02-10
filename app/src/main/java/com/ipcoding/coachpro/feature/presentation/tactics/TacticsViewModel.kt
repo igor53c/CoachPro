@@ -123,14 +123,12 @@ class TacticsViewModel @Inject constructor(
         }
     }
 
-    fun increaseRound(): Int {
+    fun increaseRound() {
         val round = preferences.loadRoundNumber()
         playRound(round + 1)
         if(round < 38) {
             preferences.saveRoundNumber( round + 1)
-            return round + 1
         }
-        return round
     }
 
     private fun playRound(round: Int) {

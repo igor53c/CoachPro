@@ -17,11 +17,7 @@ fun ButtonBack(
 ) {
     CustomButton(
         modifier = modifier,
-        onClick = {
-            navController.navigate(
-                Screen.MainScreen.route
-            )
-        }
+        onClick = { navController.navigate(Screen.MainScreen.route) }
     ) {
         Text(
             text = stringResource(id = R.string.back),
