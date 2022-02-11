@@ -2,14 +2,17 @@ package com.ipcoding.coachpro.feature.domain.use_case
 
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.domain.model.Club
+import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.repository.ClubRepository
 import com.ipcoding.coachpro.feature.domain.repository.MatchRepository
+import com.ipcoding.coachpro.feature.domain.repository.PlayerRepository
 import kotlin.math.ceil
 import kotlin.random.Random
 
 class PlayRound(
     private val matchRepository: MatchRepository,
     private val clubRepository: ClubRepository,
+    private val playerRepository: PlayerRepository,
     private val preferences: Preferences
 ) {
 
@@ -20,11 +23,18 @@ class PlayRound(
         matchList.forEach { match ->
             val host = clubRepository.getClub(match.host)
             val guest = clubRepository.getClub(match.guest)
+            val clubName = preferences.loadClubName()
             val ratingDifference = guest?.rating?.let { host?.rating?.minus(it) }
 
             if (ratingDifference != null) {
                 match.goalsHost = numberGoals(ratingDifference + 2)
                 match.goalsGuest = numberGoals(- ratingDifference - 2)
+
+                if(host?.name == clubName)
+                    changePlayerRatingBasedOnResult(match.goalsHost, match.goalsGuest)
+
+                if(guest.name == clubName)
+                    changePlayerRatingBasedOnResult(match.goalsGuest, match.goalsHost)
             }
             matchRepository.insertMatch(match)
             changeClubDetails(host, match.goalsHost, match.goalsGuest)?.let {
@@ -49,6 +59,37 @@ class PlayRound(
 
                 clubRepository.insertClub(clubList[i])
             }
+        }
+    }
+
+    private suspend fun changePlayerRatingBasedOnResult(goalsFor: Int, goalsAgainst: Int) {
+
+        val players: List<Player> = playerRepository.getPlayers()
+
+        for (i in 0..10) {
+            if (goalsFor > goalsAgainst) {
+                players[i].rating += (36 - players[i].age) * 0.005
+                if (players[i].rating > 99) players[i].rating = 99.0
+                players[i].motivation += 20
+                if (players[i].motivation > 100) players[i].motivation = 100
+            } else {
+                if (goalsFor < goalsAgainst) {
+
+                    players[i].rating -= (players[i].age - 16) * 0.005
+                    if (players[i].rating < 1) players[i].rating = 1.0
+
+                    players[i].motivation -= 20
+                    if (players[i].motivation < 0) players[i].motivation = 0
+                }
+            }
+            players[i].fitness -= 20
+            if (players[i].fitness < 0) players[i].fitness = 0
+            playerRepository.insertPlayer(players[i])
+        }
+        for (i in 11 until players.size) {
+            players[i].motivation += 20
+            if (players[i].motivation > 100) players[i].motivation = 100
+            playerRepository.insertPlayer(players[i])
         }
     }
 }

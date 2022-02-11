@@ -86,10 +86,8 @@ class TacticsViewModel @Inject constructor(
         return allUseCases.getPlayer.invoke(players, tactics, item1, item2)
     }
 
-    fun getPlayerInfo(players: List<Player>, tactics: List<Any>, item1: Int, item2: Int): String {
-        return allUseCases.getPlayerInfo.invoke(
-            allUseCases.getPlayer.invoke(players, tactics, item1, item2)
-        )
+    fun getPlayerInfo(player: Player?): String {
+        return allUseCases.getPlayerInfo.invoke(player)
     }
 
     fun replaceTwoPlayers(

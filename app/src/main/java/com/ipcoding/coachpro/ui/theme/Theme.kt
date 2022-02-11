@@ -34,10 +34,10 @@ fun CoachProTheme(
             LocalDensity.current.density
 
     val typography = when(screenWidth) {
-        in 0.dp..390.dp -> smallTypography
+        in 0.dp..390.dp -> SmallTypography
         in 391.dp..500.dp -> NormalTypography
-        in 501.dp..700.dp -> largeTypography
-        else -> extraLargeTypography
+        in 501.dp..700.dp -> LargeTypography
+        else -> ExtraLargeTypography
     }
 
     val dimensions = when(screenWidth) {

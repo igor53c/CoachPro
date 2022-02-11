@@ -19,7 +19,7 @@ interface PlayerDao {
     @Query("SELECT * FROM players_table WHERE id = :id")
     suspend fun getPlayerById(id: Int?): Player?
 
-    @Query("SELECT * FROM players_table")
+    @Query("SELECT * FROM players_table ORDER BY number ASC")
     suspend fun getPlayers(): List<Player>
 
     @Query("SELECT * FROM players_table ORDER BY number ASC")

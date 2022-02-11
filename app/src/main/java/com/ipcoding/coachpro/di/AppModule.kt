@@ -133,7 +133,7 @@ object AppModule {
                 clubRepository,
                 resourceProvider
             ),
-            playRound = PlayRound(matchRepository, clubRepository, preferences),
+            playRound = PlayRound(matchRepository, clubRepository, playerRepository, preferences),
             preparingForNewSeason = PreparingForNewSeason(clubRepository, preferences),
             preparationOfClubsAndScheduling = PreparationOfClubsAndScheduling(
                 clubRepository, matchRepository
@@ -141,7 +141,8 @@ object AppModule {
             changeHistory = ChangeHistory(clubRepository, historyRepository),
             changePlayersYear = ChangePlayersYear(playerRepository),
             getClubsFromLeagueByPosition = GetClubsFromLeagueByPosition(clubRepository),
-            getClubMatchFromNextRound = GetClubMatchFromNextRound(matchRepository)
+            getClubMatchFromNextRound = GetClubMatchFromNextRound(matchRepository),
+            trainingCalculation = TrainingCalculation(playerRepository)
         )
     }
 }

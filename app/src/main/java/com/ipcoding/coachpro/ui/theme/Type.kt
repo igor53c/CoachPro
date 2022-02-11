@@ -8,7 +8,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.ipcoding.coachpro.R
 
-private val appFontFamily = FontFamily(
+private val AppFontFamily = FontFamily(
     fonts = listOf(
         Font(R.font.montserrat_black),
         Font(R.font.montserrat_bold, weight = FontWeight.Bold),
@@ -18,25 +18,25 @@ private val appFontFamily = FontFamily(
     )
 )
 
-private val defaultTypography = Typography()
+private val DefaultTypography = Typography()
 
  val NormalTypography = Typography(
-    h1 = defaultTypography.h1.copy(fontFamily = appFontFamily),
-    h2 = defaultTypography.h2.copy(fontFamily = appFontFamily),
-    h3 = defaultTypography.h3.copy(fontFamily = appFontFamily),
-    h4 = defaultTypography.h4.copy(fontFamily = appFontFamily),
-    h5 = defaultTypography.h5.copy(fontFamily = appFontFamily),
-    h6 = defaultTypography.h6.copy(fontFamily = appFontFamily),
-    subtitle1 = defaultTypography.subtitle1.copy(fontFamily = appFontFamily),
-    subtitle2 = defaultTypography.subtitle2.copy(fontFamily = appFontFamily),
-    body1 = defaultTypography.body1.copy(fontFamily = appFontFamily),
-    body2 = defaultTypography.body2.copy(fontFamily = appFontFamily),
-    button = defaultTypography.button.copy(fontFamily = appFontFamily),
-    caption = defaultTypography.caption.copy(fontFamily = appFontFamily, letterSpacing = 0.sp),
-    overline = defaultTypography.overline.copy(fontFamily = appFontFamily)
+    h1 = DefaultTypography.h1.copy(fontFamily = AppFontFamily),
+    h2 = DefaultTypography.h2.copy(fontFamily = AppFontFamily),
+    h3 = DefaultTypography.h3.copy(fontFamily = AppFontFamily),
+    h4 = DefaultTypography.h4.copy(fontFamily = AppFontFamily),
+    h5 = DefaultTypography.h5.copy(fontFamily = AppFontFamily),
+    h6 = DefaultTypography.h6.copy(fontFamily = AppFontFamily),
+    subtitle1 = DefaultTypography.subtitle1.copy(fontFamily = AppFontFamily),
+    subtitle2 = DefaultTypography.subtitle2.copy(fontFamily = AppFontFamily),
+    body1 = DefaultTypography.body1.copy(fontFamily = AppFontFamily),
+    body2 = DefaultTypography.body2.copy(fontFamily = AppFontFamily),
+    button = DefaultTypography.button.copy(fontFamily = AppFontFamily),
+    caption = DefaultTypography.caption.copy(fontFamily = AppFontFamily, letterSpacing = 0.sp),
+    overline = DefaultTypography.overline.copy(fontFamily = AppFontFamily)
 )
 
-val smallTypography = Typography(
+val SmallTypography = Typography(
     h1 = NormalTypography.h1.copy(fontSize = 72.sp),
     h2 = NormalTypography.h2.copy(fontSize = 45.sp),
     h3 = NormalTypography.h3.copy(fontSize = 36.sp),
@@ -52,7 +52,7 @@ val smallTypography = Typography(
     overline = NormalTypography.overline.copy(fontSize = 7.sp)
 )
 
-val largeTypography = Typography(
+val LargeTypography = Typography(
     h1 = NormalTypography.h1.copy(fontSize = 144.sp),
     h2 = NormalTypography.h2.copy(fontSize = 90.sp),
     h3 = NormalTypography.h3.copy(fontSize = 72.sp),
@@ -68,7 +68,7 @@ val largeTypography = Typography(
     overline = NormalTypography.overline.copy(fontSize = 15.sp)
 )
 
-val extraLargeTypography = Typography(
+val ExtraLargeTypography = Typography(
     h1 = NormalTypography.h1.copy(fontSize = 192.sp),
     h2 = NormalTypography.h2.copy(fontSize = 120.sp),
     h3 = NormalTypography.h3.copy(fontSize = 96.sp),

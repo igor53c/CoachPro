@@ -11,7 +11,7 @@ class CalculationFirstTeamRating {
             for (i2 in 0..max) {
                 GetPlayer().invoke(players, tactics, i1, i2)?.let { player ->
                     if(CheckPlayerInRightPosition().invoke(player, i1, i2, tactics)) {
-                        rating +=  player.rating
+                        rating +=  player.rating - (100.0 - player.motivation) / 50.0
                     }
                 }
             }

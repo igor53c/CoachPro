@@ -44,7 +44,7 @@ fun OnePLayer(
         if(!isShowTraining) {
            PlayerInfo(
                positionText = player.position,
-               ratingText = player.rating.toString(),
+               ratingText = String.format("%.1f", player.rating),
                ageText = player.age.toString(),
                positionBackgroundColor = color
            )

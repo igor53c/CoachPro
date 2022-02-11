@@ -48,7 +48,7 @@ fun ResultScreen(
     ) {
         OneBox(
             modifier = Modifier.weight(1f),
-            showText = time.value > 2,
+            showText = time.value > 7,
             text = "${match?.host}",
             style = AppTheme.typography.h4
         )
@@ -60,7 +60,7 @@ fun ResultScreen(
         )
         OneBox(
             modifier = Modifier.weight(1f),
-            showText = time.value > 7,
+            showText = time.value > 2,
             text = stringResource(id = R.string.vs),
             style = AppTheme.typography.h3
         )

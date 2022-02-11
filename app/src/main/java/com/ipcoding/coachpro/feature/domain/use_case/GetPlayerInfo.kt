@@ -7,7 +7,7 @@ class GetPlayerInfo {
     operator fun invoke(player: Player?): String {
         var playerInfo = ""
         player?.let {
-            playerInfo = player.position + " " +  player.rating.toString()
+            playerInfo = player.position + " " +  String.format("%.1f", player.rating)
         }
         return playerInfo
     }

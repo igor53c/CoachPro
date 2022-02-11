@@ -30,5 +30,6 @@ data class AllUseCases (
     val changeHistory: ChangeHistory,
     val changePlayersYear: ChangePlayersYear,
     val getClubsFromLeagueByPosition: GetClubsFromLeagueByPosition,
-    val getClubMatchFromNextRound: GetClubMatchFromNextRound
+    val getClubMatchFromNextRound: GetClubMatchFromNextRound,
+    val trainingCalculation: TrainingCalculation
 )

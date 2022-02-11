@@ -7,11 +7,11 @@ import androidx.room.PrimaryKey
 data class Player(
     val name: String,
     val position: String,
-    val rating: Double,
+    var rating: Double,
     var age: Int,
     var number: Int,
-    val motivation: Int,
-    val fitness: Int,
+    var motivation: Int,
+    var fitness: Int,
     var training: Int,
     @PrimaryKey val id: Int? = null
 )

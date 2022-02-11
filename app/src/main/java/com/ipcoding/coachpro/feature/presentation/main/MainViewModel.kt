@@ -6,9 +6,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
-import com.ipcoding.coachpro.core.util.Constants.CHANGE_HISTORY
-import com.ipcoding.coachpro.core.util.Constants.CHANGE_PLAYERS_YEAR
+import com.ipcoding.coachpro.core.util.Constants.CHANGE_HISTORY_AND_PLAYERS_YEAR
+import com.ipcoding.coachpro.core.util.Constants.END_MATCHES_ONE
+import com.ipcoding.coachpro.core.util.Constants.END_MATCHES_TWO
 import com.ipcoding.coachpro.core.util.Constants.PREPARING_FOR_NEW_SEASON
+import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_ONE
+import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_TWO
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import com.ipcoding.coachpro.feature.domain.util.WeekType
 import com.ipcoding.coachpro.ui.theme.Colors.indexToColor
@@ -105,17 +108,28 @@ class MainViewModel @Inject constructor(
     fun saveWeekYear()  {
         when(_week.value) {
             PREPARING_FOR_NEW_SEASON -> preparingForNewSeason()
-            CHANGE_HISTORY -> changeHistory()
-            CHANGE_PLAYERS_YEAR -> changePlayersYear()
+            CHANGE_HISTORY_AND_PLAYERS_YEAR -> {
+                changeHistory()
+                changePlayersYear()
+            }
             52 -> {
                 preferences.saveYear(_year.value + 1)
                 _week.value = 0
             }
         }
+        trainingCalculation()
         preferences.saveWeek(_week.value + 1)
-        loadWeek()
-        loadYear()
-        getMonth()
+    }
+
+    private fun trainingCalculation() {
+        val playersPlayedMatch = when(_week.value) {
+            in START_MATCHES_ONE..END_MATCHES_ONE -> true
+            in START_MATCHES_TWO..END_MATCHES_TWO -> true
+            else -> false
+        }
+        viewModelScope.launch {
+            allUseCases.trainingCalculation.invoke(playersPlayedMatch)
+        }
     }
 
     private fun changePlayersYear() {
