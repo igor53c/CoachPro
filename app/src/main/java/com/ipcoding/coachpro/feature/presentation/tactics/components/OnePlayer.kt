@@ -30,23 +30,21 @@ fun OnePlayer(
     val colorJersey = viewModel.colorJersey.value
     val colorStripes = viewModel.colorStripes.value
     val playerInfo = remember { mutableStateOf("") }
-    val showCompleteInfo  = remember { mutableStateOf(false) }
     val previouslyClickedInfo  = viewModel.previouslyClickedInfo.value
-    val borderColor = remember { mutableStateOf(Color.Transparent) }
+    var showCompleteInfo  = false
+    var borderColor = Color.Transparent
     val colorPrimary = AppTheme.colors.primary
     val player = viewModel.getPlayer(players, tactics, item1, item2)
 
     if(previouslyClickedInfo.item1 == item1 && previouslyClickedInfo.item2 == item2) {
-        borderColor.value = previouslyClickedInfo.color
-        showCompleteInfo.value = true
-    } else {
-        borderColor.value = Color.Transparent
-        showCompleteInfo.value = false
+        borderColor = previouslyClickedInfo.color
+        showCompleteInfo = true
     }
+
     Box(modifier = Modifier
         .clickable {
-            previouslyClickedInfo.newPlayer =
-                viewModel.getPlayer(players, tactics, item1, item2)
+            previouslyClickedInfo.newPlayer = viewModel.getPlayer(players, tactics, item1, item2)
+
             viewModel.replaceTwoPlayers(
                 previouslyClickedInfo = previouslyClickedInfo,
                 item1 = item1,
@@ -57,7 +55,7 @@ fun OnePlayer(
         .width(maxWidth / 5)
         .border(
             width = AppTheme.dimensions.spaceExtraSmall,
-            color = borderColor.value,
+            color = borderColor,
             shape = AppTheme.shapes.medium
         )
         .padding(AppTheme.dimensions.spaceSuperSmall)
@@ -90,7 +88,7 @@ fun OnePlayer(
                 players = players
             )
         }
-        if(showCompleteInfo.value) {
+        if(showCompleteInfo) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()

@@ -20,12 +20,7 @@ fun TransfersScreen(
 ) {
     Column(
         modifier = Modifier
-            .padding(
-                start = AppTheme.dimensions.spaceMedium,
-                end = AppTheme.dimensions.spaceMedium,
-                top = AppTheme.dimensions.spaceSmall,
-                bottom = AppTheme.dimensions.spaceSmall
-            )
+            .padding(AppTheme.dimensions.spaceSmall)
             .fillMaxSize()
     ) {
         Box(

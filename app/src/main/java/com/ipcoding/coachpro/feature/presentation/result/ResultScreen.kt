@@ -56,7 +56,7 @@ fun ResultScreen(
             modifier = Modifier.weight(1f),
             showText = time.value > 17,
             text = "${match?.goalsHost}",
-            style = AppTheme.typography.h3
+            style = AppTheme.typography.h1
         )
         OneBox(
             modifier = Modifier.weight(1f),
@@ -68,7 +68,7 @@ fun ResultScreen(
             modifier = Modifier.weight(1f),
             showText = time.value > 22,
             text = "${match?.goalsGuest}",
-            style = AppTheme.typography.h3
+            style = AppTheme.typography.h1
         )
         OneBox(
             modifier = Modifier.weight(1f),

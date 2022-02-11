@@ -10,6 +10,7 @@ import com.ipcoding.coachpro.core.util.AllTactics
 import com.ipcoding.coachpro.feature.domain.model.MarkedPlayer
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
+import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.Colors
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -50,6 +51,10 @@ class TacticsViewModel @Inject constructor(
         loadColorStripes()
         loadTactics()
         loadAllTactics()
+    }
+
+    fun saveNextDestinationScreen() {
+        preferences.saveDestinationScreen(destinationScreen = Screen.MainScreen.route)
     }
 
     private fun getPlayers() {

@@ -142,7 +142,7 @@ object AppModule {
             changePlayersYear = ChangePlayersYear(playerRepository),
             getClubsFromLeagueByPosition = GetClubsFromLeagueByPosition(clubRepository),
             getClubMatchFromNextRound = GetClubMatchFromNextRound(matchRepository),
-            trainingCalculation = TrainingCalculation(playerRepository)
+            trainingCalculation = TrainingCalculation(playerRepository, clubRepository)
         )
     }
 }

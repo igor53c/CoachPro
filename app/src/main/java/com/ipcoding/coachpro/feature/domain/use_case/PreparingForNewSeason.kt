@@ -30,19 +30,27 @@ class PreparingForNewSeason(
 
     private suspend fun organizeLeagues(hasLowerLeague: Boolean,  hasMajorLeague: Boolean) {
         for (i in 0..19) {
-            if (i > 15 && hasLowerLeague) lowerLeague(i)
-            if (i < 4 && hasMajorLeague) majorLeague(i)
+            when(i) {
+                in 0..3 -> if(hasMajorLeague) majorLeague(i) else resetCurrentClub(i)
+                in 4..15 -> resetCurrentClub(i)
+                in 16..19 -> if(hasLowerLeague) lowerLeague(i) else resetCurrentClub(i)
+            }
         }
+    }
+
+    private suspend fun resetCurrentClub(i: Int) {
+        val currentClub =
+            resetClubInfo(clubList[i], league.toString(), i + 1)
+        clubRepository.insertClub(currentClub)
     }
 
     private suspend fun majorLeague(i: Int) {
         val leagueString = (league - 1).toString()
         val clubListMajorLeague: List<Club> =
             clubRepository.getClubsFromLeagueByPosition("League $leagueString")
-        var currentClub = clubList[i]
         val nextClub = clubListMajorLeague[16 + i]
         if (club == clubList[i].name) preferences.saveSelectedLeague(leagueString)
-        currentClub = resetClubInfo(currentClub, leagueString, 17 + i)
+        val currentClub = resetClubInfo( clubList[i], leagueString, 17 + i)
         clubRepository.insertClub(currentClub)
         nextClub.league = "League $league"
         nextClub.position = i + 1
@@ -53,13 +61,12 @@ class PreparingForNewSeason(
         val leagueString = (league + 1).toString()
         val clubListLowerLeague: List<Club> =
             clubRepository.getClubsFromLeagueByPosition("League $leagueString")
-        var currentClub = clubList[i]
         val nextClub = clubListLowerLeague[i - 16]
         if (club == clubList[i].name) preferences.saveSelectedLeague(leagueString)
-        currentClub = resetClubInfo(currentClub, leagueString, i - 15)
+        val currentClub = resetClubInfo(clubList[i], leagueString, i - 15)
         clubRepository.insertClub(currentClub)
         nextClub.league = "League $league"
-        nextClub.position = i - 16 + 1
+        nextClub.position = i + 1
         clubRepository.insertClub(nextClub)
     }
 }

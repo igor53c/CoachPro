@@ -118,6 +118,7 @@ fun TacticsScreen(
                         .weight(1f),
                     onClick = {
                         viewModel.increaseRound()
+                        viewModel.saveNextDestinationScreen()
                         navController.navigate(Screen.ResultScreen.route)
                     }
                 ) {

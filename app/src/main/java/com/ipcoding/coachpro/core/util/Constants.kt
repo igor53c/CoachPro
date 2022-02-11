@@ -9,8 +9,8 @@ object Constants {
     const val START_MATCHES_TWO = 5
     const val END_MATCHES_TWO = 23
     const val SEASON_IS_OVER = 24
-    const val CHANGE_HISTORY_AND_PLAYERS_YEAR = 24
-    const val PREPARING_FOR_NEW_SEASON = 25
+    const val CHANGE_HISTORY_AND_PLAYERS_YEAR = 23
+    const val PREPARING_FOR_NEW_SEASON = 24
     const val PREPARATION_OF_CLUBS_AND_SCHEDULING  = 26
     const val START_TRANSFERS_ONE = 27
     const val END_TRANSFERS_ONE = 33

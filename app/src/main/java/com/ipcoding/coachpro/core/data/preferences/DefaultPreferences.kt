@@ -2,6 +2,7 @@ package com.ipcoding.coachpro.core.data.preferences
 
 import android.content.SharedPreferences
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
+import com.ipcoding.coachpro.feature.presentation.util.Screen
 
 class DefaultPreferences (
     private val sharedPreferences: SharedPreferences
@@ -63,6 +64,13 @@ class DefaultPreferences (
             .apply()
     }
 
+    override fun saveDestinationScreen(destinationScreen: String) {
+        sharedPreferences
+            .edit()
+            .putString(Preferences.DESTINATION_SCREEN, destinationScreen)
+            .apply()
+    }
+
     override fun loadClubName(): String? {
         return sharedPreferences.getString(Preferences.CLUB_NAME, null)
     }
@@ -93,5 +101,10 @@ class DefaultPreferences (
 
     override fun loadWeek(): Int {
         return sharedPreferences.getInt(Preferences.WEEK, -1)
+    }
+
+    override fun loadDestinationScreen(): String? {
+        return sharedPreferences
+            .getString(Preferences.DESTINATION_SCREEN, Screen.SelectLeagueScreen.route)
     }
 }

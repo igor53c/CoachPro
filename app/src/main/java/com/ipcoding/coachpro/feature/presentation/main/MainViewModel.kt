@@ -14,6 +14,7 @@ import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_ONE
 import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_TWO
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import com.ipcoding.coachpro.feature.domain.util.WeekType
+import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.Colors.indexToColor
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -63,6 +64,7 @@ class MainViewModel @Inject constructor(
     val info: State<WeekType?> = _info
 
     init {
+        saveDestinationScreen()
         loadClubName()
         loadSelectedLeague()
         loadRoundNumber()
@@ -76,6 +78,10 @@ class MainViewModel @Inject constructor(
         getClubRating()
         checkColors()
         getClubPositionString()
+    }
+
+    private fun saveDestinationScreen() {
+       preferences.saveDestinationScreen(destinationScreen = Screen.MainScreen.route)
     }
 
     private fun checkColors() {
@@ -107,17 +113,15 @@ class MainViewModel @Inject constructor(
 
     fun saveWeekYear()  {
         when(_week.value) {
+            CHANGE_HISTORY_AND_PLAYERS_YEAR -> changeHistoryAndPlayersYear()
             PREPARING_FOR_NEW_SEASON -> preparingForNewSeason()
-            CHANGE_HISTORY_AND_PLAYERS_YEAR -> {
-                changeHistory()
-                changePlayersYear()
-            }
             52 -> {
                 preferences.saveYear(_year.value + 1)
                 _week.value = 0
+                trainingCalculation()
             }
+            else ->  trainingCalculation()
         }
-        trainingCalculation()
         preferences.saveWeek(_week.value + 1)
     }
 
@@ -128,18 +132,13 @@ class MainViewModel @Inject constructor(
             else -> false
         }
         viewModelScope.launch {
-            allUseCases.trainingCalculation.invoke(playersPlayedMatch)
+            allUseCases.trainingCalculation.invoke(playersPlayedMatch, _clubName.value)
         }
     }
 
-    private fun changePlayersYear() {
+    private fun changeHistoryAndPlayersYear() {
         viewModelScope.launch {
             allUseCases.changePlayersYear.invoke()
-        }
-    }
-
-    private fun changeHistory() {
-        viewModelScope.launch {
             allUseCases.changeHistory.invoke(_league.value, _year.value, _clubName.value)
         }
     }

@@ -10,14 +10,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun TextOnJersey(
     text: String,
-    progress: Float = 0f,
-    maxWidth: Dp = 0.dp
+    progress: Float = -1f,
+    maxWidth: Dp = AppTheme.dimensions.default
 ) {
     Row(
         modifier = Modifier
@@ -33,7 +32,7 @@ fun TextOnJersey(
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
-        if(progress != 0f) {
+        if(progress != -1f) {
             Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSuperSmall))
             LinearProgressIndicator(
                 modifier = Modifier.width(maxWidth / 12f),

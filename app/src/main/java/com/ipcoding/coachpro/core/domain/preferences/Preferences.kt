@@ -10,6 +10,7 @@ interface Preferences {
     fun saveRoundNumber(round: Int)
     fun saveYear(year: Int)
     fun saveWeek(week: Int)
+    fun saveDestinationScreen(destinationScreen: String)
 
     fun loadClubName(): String?
     fun loadSelectedLeague(): String?
@@ -19,6 +20,7 @@ interface Preferences {
     fun loadRoundNumber(): Int
     fun loadYear(): Int
     fun loadWeek(): Int
+    fun loadDestinationScreen(): String?
 
     companion object {
         const val CLUB_NAME = "club_name"
@@ -29,5 +31,6 @@ interface Preferences {
         const val ROUND_NUMBER = "round_number"
         const val YEAR = "year"
         const val WEEK = "week"
+        const val DESTINATION_SCREEN  = "destination_screen"
     }
 }

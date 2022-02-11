@@ -21,8 +21,8 @@ private val AppFontFamily = FontFamily(
 private val DefaultTypography = Typography()
 
  val NormalTypography = Typography(
-    h1 = DefaultTypography.h1.copy(fontFamily = AppFontFamily),
-    h2 = DefaultTypography.h2.copy(fontFamily = AppFontFamily),
+    h1 = DefaultTypography.h1.copy(fontFamily = AppFontFamily, fontWeight = FontWeight.Normal),
+    h2 = DefaultTypography.h2.copy(fontFamily = AppFontFamily, fontWeight = FontWeight.Normal),
     h3 = DefaultTypography.h3.copy(fontFamily = AppFontFamily),
     h4 = DefaultTypography.h4.copy(fontFamily = AppFontFamily),
     h5 = DefaultTypography.h5.copy(fontFamily = AppFontFamily),

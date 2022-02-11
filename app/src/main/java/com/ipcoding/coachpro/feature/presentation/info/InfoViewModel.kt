@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import com.ipcoding.coachpro.feature.domain.util.WeekType
+import com.ipcoding.coachpro.feature.presentation.util.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -23,8 +24,13 @@ class InfoViewModel @Inject constructor(
     val info: State<WeekType?> = _info
 
     init {
+        saveDestinationScreen()
         loadWeek()
         getInfoText()
+    }
+
+    private fun saveDestinationScreen() {
+        preferences.saveDestinationScreen(destinationScreen = Screen.InfoScreen.route)
     }
 
     fun preparationOfClubsAndScheduling() {

@@ -36,7 +36,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val shouldShowSelectScreen = preferences.loadYear()
+        val startDestination = preferences.loadDestinationScreen()
         setContent {
             CoachProTheme {
                 Surface(
@@ -45,9 +45,7 @@ class MainActivity : ComponentActivity() {
                     val navController = rememberNavController()
                     NavHost(
                         navController = navController,
-                        startDestination = if(shouldShowSelectScreen == -1) {
-                            Screen.SelectLeagueScreen.route
-                        } else Screen.MainScreen.route
+                        startDestination = startDestination.toString()
                     ) {
                         composable(route = Screen.SelectLeagueScreen.route) {
                             SelectLeagueScreen(navController = navController)
