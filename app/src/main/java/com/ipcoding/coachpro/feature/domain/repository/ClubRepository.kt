@@ -18,5 +18,5 @@ interface ClubRepository {
 
     suspend fun getClubsFromLeagueByRating(league: String): List<Club>
 
-    suspend fun getClub(club: String): Club?
+    suspend fun getClub(name: String): Club?
 }

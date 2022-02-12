@@ -24,7 +24,7 @@ class GetWeekTypeText(
     private val resourceProvider: ResourceProvider
 ) {
 
-    suspend operator fun invoke(weekParameter: Int, withText: Boolean): WeekType {
+    suspend operator fun invoke(week: Int, withText: Boolean): WeekType {
 
         var tacticsText = ""
         var seasonOverText = ""
@@ -54,7 +54,7 @@ class GetWeekTypeText(
                     " ${resourceProvider.getString(R.string.place)}\n"
         }
 
-        val weekType: WeekType = when(if(weekParameter == 53) 1 else weekParameter) {
+        val weekType: WeekType = when(if(week == 53) 1 else week) {
             in START_TRANSFERS_TWO..END_TRANSFERS_TWO -> WeekType.Transfers(resourceProvider.getString(R.string.player_transfer))
             in START_MATCHES_TWO..END_MATCHES_TWO -> WeekType.Tactics(tacticsText)
             SEASON_IS_OVER -> WeekType.Else(seasonOverText)

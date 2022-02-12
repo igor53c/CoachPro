@@ -1,42 +1,41 @@
 package com.ipcoding.coachpro.feature.data.repository
 
-import com.ipcoding.coachpro.feature.data.data_source.ClubDao
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.repository.ClubRepository
 
-class ClubRepositoryImpl(
-    private val dao: ClubDao
-): ClubRepository {
+class FakeClubRepository : ClubRepository {
+
+    private var clubs = mutableListOf<Club>()
 
     override suspend fun insertClub(club: Club) {
-        dao.insertClub(club)
+        clubs.add(club)
     }
 
     override suspend fun deleteAll() {
-        dao.deleteAll()
+       clubs.clear()
     }
 
     override suspend fun getRatingFromClub(name: String): Double {
-        return dao.getRatingFromClub(name)
+        return clubs.find { it.name == name }?.rating ?: 0.0
     }
 
     override suspend fun getPlayersRating(name: String): Double {
-        return dao.getPlayersRating(name)
+        return clubs.find { it.name == name }?.playersRating ?: 0.0
     }
 
     override suspend fun getClubsFromLeague(league: String): List<Club> {
-        return dao.getClubsFromLeague(league)
+        return clubs.filter { it.league == league }
     }
 
     override suspend fun getClubsFromLeagueByPosition(league: String): List<Club> {
-        return dao.getClubsFromLeagueByPosition(league)
+        return clubs.filter { it.league == league }.sortedBy { it.position }
     }
 
     override suspend fun getClubsFromLeagueByRating(league: String): List<Club> {
-        return dao.getClubsFromLeagueByRating(league)
+        return clubs.filter { it.league == league }.sortedBy { it.rating }
     }
 
     override suspend fun getClub(name: String): Club? {
-        return dao.getClub(name)
+        return clubs.find { it.name == name }
     }
 }

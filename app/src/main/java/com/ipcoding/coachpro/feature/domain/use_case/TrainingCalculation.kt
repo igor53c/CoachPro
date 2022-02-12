@@ -32,7 +32,6 @@ class TrainingCalculation(
             playerRepository.insertPlayer(player)
         }
 
-
         if (club != null) {
             club.playersRating = CalculationTeamRating().invoke(players)
             clubRepository.insertClub(club)
