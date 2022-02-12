@@ -39,7 +39,7 @@ class GetClubPositionStringTest {
     @Test
     fun `checking that the text of the club's position is correct`() {
 
-        var result = ""
+        var result: String
 
         runBlocking {
             fakeClubRepository.insertClub(club)
@@ -52,7 +52,7 @@ class GetClubPositionStringTest {
     @Test
     fun `checking that the text of the club in the first position is correct`() {
 
-        var result = ""
+        var result: String
         club.position = 1
 
         runBlocking {
@@ -66,7 +66,7 @@ class GetClubPositionStringTest {
     @Test
     fun `check that the text of the club in the second position is correct`() {
 
-        var result = ""
+        var result: String
         club.position = 2
 
         runBlocking {
@@ -78,9 +78,9 @@ class GetClubPositionStringTest {
     }
 
     @Test
-    fun `checking that the text of the club in the third position is correct `() {
+    fun `checking that the text of the club in the third position is correct`() {
 
-        var result = ""
+        var result: String
         club.position = 3
 
         runBlocking {
@@ -89,5 +89,22 @@ class GetClubPositionStringTest {
         }
 
         assertThat(result).isEqualTo("3rd")
+    }
+
+    @Test
+    fun `checking whether the text of the club in the fourth or higher position is correct`() {
+
+        var result: String
+
+        for(i in 4..18) {
+            club.position = i
+
+            runBlocking {
+                fakeClubRepository.insertClub(club)
+                result = getClubPositionString.invoke(name)
+            }
+
+            assertThat(result).isEqualTo("${i}th")
+        }
     }
 }

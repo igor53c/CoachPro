@@ -1,17 +1,19 @@
-package com.ipcoding.coachpro.feature.presentation.players
+package com.ipcoding.coachpro.feature.presentation.select_league
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.common.truth.Truth.assertThat
-import com.ipcoding.coachpro.core.util.TestTags
 import com.ipcoding.coachpro.di.AppModule
 import com.ipcoding.coachpro.feature.presentation.MainActivity
+import com.ipcoding.coachpro.feature.presentation.choose_jersey.ChooseJerseyScreen
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
+import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.CoachProTheme
 import dagger.hilt.android.testing.HiltAndroidRule
@@ -23,7 +25,7 @@ import org.junit.Test
 
 @HiltAndroidTest
 @UninstallModules(AppModule::class)
-class PlayersScreenTest {
+class SelectLeagueScreenTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -41,10 +43,18 @@ class PlayersScreenTest {
                 navController = rememberNavController()
                 NavHost(
                     navController = navController,
-                    startDestination = Screen.PlayersScreen.route
+                    startDestination = Screen.SelectLeagueScreen.route
                 ) {
-                    composable(route = Screen.PlayersScreen.route) {
-                        PlayersScreen(navController = navController)
+                    composable(route = Screen.SelectLeagueScreen.route) {
+                        SelectLeagueScreen(navController = navController)
+                        BackHandler(true) {}
+                    }
+                    composable(route = Screen.SelectClubScreen.route) {
+                        SelectClubScreen(navController = navController)
+                        BackHandler(true) {}
+                    }
+                    composable(route = Screen.ChooseJerseyScreen.route) {
+                        ChooseJerseyScreen(navController = navController)
                         BackHandler(true) {}
                     }
                     composable(route = Screen.MainScreen.route) {
@@ -57,20 +67,30 @@ class PlayersScreenTest {
     }
 
     @Test
-    fun trainingText_isVisible() {
-        composeRule.onNodeWithTag(TestTags.TRAINING_TEXT).assertDoesNotExist()
-        composeRule.onNodeWithTag(TestTags.TRAINING_BUTTON).performClick()
-        composeRule.onNodeWithTag(TestTags.TRAINING_TEXT).assertIsDisplayed()
-        composeRule.onNodeWithTag(TestTags.TRAINING_BUTTON).performClick()
-        composeRule.onNodeWithTag(TestTags.TRAINING_TEXT).assertDoesNotExist()
-    }
+    fun testingRouteToMainscreen_isCorrect() {
 
-    @Test
-    fun backButton_isCorrect() {
+        composeRule.onNodeWithText("League 1").performClick()
 
-        composeRule.onNodeWithText("Back").performClick()
+        assertThat(
+            navController.currentDestination?.route?.startsWith(
+                Screen.SelectClubScreen.route
+            )
+        ).isTrue()
 
-        assertThat(navController.currentDestination?.route?.startsWith(
-            Screen.MainScreen.route)).isTrue()
+        composeRule.onNodeWithText("Bayern Munich").performClick()
+
+        assertThat(
+            navController.currentDestination?.route?.startsWith(
+                Screen.ChooseJerseyScreen.route
+            )
+        ).isTrue()
+
+        composeRule.onNodeWithText("Confirm").performClick()
+
+        assertThat(
+            navController.currentDestination?.route?.startsWith(
+                Screen.MainScreen.route
+            )
+        ).isTrue()
     }
 }

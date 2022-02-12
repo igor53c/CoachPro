@@ -1,5 +1,6 @@
 package com.ipcoding.coachpro.feature.presentation.schedule
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
@@ -7,15 +8,18 @@ import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.ipcoding.coachpro.core.util.TestTags
 import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.schedule.components.OneMatch
 import com.ipcoding.coachpro.feature.presentation.select_league.components.Item
 import com.ipcoding.coachpro.ui.theme.AppTheme
 import kotlinx.coroutines.launch
 
+@SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun ScheduleScreen(
     navController: NavController,
@@ -48,7 +52,8 @@ fun ScheduleScreen(
 
             LazyRow(
                 verticalAlignment = Alignment.Top,
-                modifier = Modifier,
+                modifier = Modifier
+                    .testTag(TestTags.LAZY_ROW_SCHEDULESCREEN),
                 state = listState
             ) {
                 items(38) { item1 ->

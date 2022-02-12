@@ -1,4 +1,4 @@
-package com.ipcoding.coachpro.feature.presentation.players
+package com.ipcoding.coachpro.feature.presentation.schedule
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.ui.test.*
@@ -23,7 +23,7 @@ import org.junit.Test
 
 @HiltAndroidTest
 @UninstallModules(AppModule::class)
-class PlayersScreenTest {
+class ScheduleScreenTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -32,6 +32,7 @@ class PlayersScreenTest {
     val composeRule = createAndroidComposeRule<MainActivity>()
 
     private lateinit var navController: NavHostController
+    private var roundNumber = 10
 
     @Before
     fun setUp() {
@@ -41,10 +42,10 @@ class PlayersScreenTest {
                 navController = rememberNavController()
                 NavHost(
                     navController = navController,
-                    startDestination = Screen.PlayersScreen.route
+                    startDestination = Screen.ScheduleScreen.route
                 ) {
-                    composable(route = Screen.PlayersScreen.route) {
-                        PlayersScreen(navController = navController)
+                    composable(route = Screen.ScheduleScreen.route) {
+                        ScheduleScreen(navController = navController, roundNumber = roundNumber)
                         BackHandler(true) {}
                     }
                     composable(route = Screen.MainScreen.route) {
@@ -57,12 +58,15 @@ class PlayersScreenTest {
     }
 
     @Test
-    fun trainingText_isVisible() {
-        composeRule.onNodeWithTag(TestTags.TRAINING_TEXT).assertDoesNotExist()
-        composeRule.onNodeWithTag(TestTags.TRAINING_BUTTON).performClick()
-        composeRule.onNodeWithTag(TestTags.TRAINING_TEXT).assertIsDisplayed()
-        composeRule.onNodeWithTag(TestTags.TRAINING_BUTTON).performClick()
-        composeRule.onNodeWithTag(TestTags.TRAINING_TEXT).assertDoesNotExist()
+    fun checkIfSpecifiedRound_isVisible() {
+
+        composeRule.onNodeWithText("Round 10").assertIsDisplayed()
+    }
+
+    @Test
+    fun checkIfSpecifiedRound_scroll() {
+
+        composeRule.onNodeWithTag(TestTags.LAZY_ROW_SCHEDULESCREEN).assert(hasScrollAction())
     }
 
     @Test
@@ -70,7 +74,10 @@ class PlayersScreenTest {
 
         composeRule.onNodeWithText("Back").performClick()
 
-        assertThat(navController.currentDestination?.route?.startsWith(
-            Screen.MainScreen.route)).isTrue()
+        assertThat(
+            navController.currentDestination?.route?.startsWith(
+                Screen.MainScreen.route
+            )
+        ).isTrue()
     }
 }
