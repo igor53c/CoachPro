@@ -4,10 +4,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
+import com.ipcoding.coachpro.core.util.TestTags
 import com.ipcoding.coachpro.feature.domain.util.WeekType
 import com.ipcoding.coachpro.feature.presentation.main.components.*
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
@@ -65,7 +67,8 @@ fun MainScreen(
         CustomButton(
             modifier = Modifier
                 .height(AppTheme.dimensions.spaceLarge)
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .testTag(TestTags.MAINSCREEN_BUTTON_CONFIRM),
             onClick = {
                 viewModel.saveWeekYear()
                 navController.navigate(Screen.InfoScreen.route)

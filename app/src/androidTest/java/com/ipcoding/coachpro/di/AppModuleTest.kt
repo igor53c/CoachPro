@@ -27,11 +27,11 @@ object AppModuleTest {
     fun provideCoachDatabase(app: Application): CoachDatabase {
         return Room.inMemoryDatabaseBuilder(
             app,
-            CoachDatabase::class.java
+            CoachDatabase::class.java,
         ).build()
     }
 
-    @Provides
+   @Provides
     @Singleton
     fun providePlayerRepository(db: CoachDatabase): PlayerRepository {
         return PlayerRepositoryImpl(db.playerDao)

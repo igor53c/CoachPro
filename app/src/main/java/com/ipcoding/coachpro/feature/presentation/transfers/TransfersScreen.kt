@@ -15,8 +15,7 @@ import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun TransfersScreen(
-    navController: NavController,
-    viewModel: TransfersViewModel = hiltViewModel()
+    navController: NavController
 ) {
     Column(
         modifier = Modifier

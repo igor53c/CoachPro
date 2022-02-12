@@ -9,11 +9,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
+import com.ipcoding.coachpro.core.util.TestTags
 import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.players.components.OnePLayer
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
@@ -99,6 +101,7 @@ fun PlayersScreen (
                     textAlign = TextAlign.Center,
                     modifier = Modifier
                         .width(AppTheme.dimensions.spaceSuperLarge)
+                        .testTag(TestTags.TRAINING_TEXT)
                 )
             }
 
@@ -145,7 +148,8 @@ fun PlayersScreen (
             CustomButton(
                 modifier = Modifier
                     .fillMaxHeight()
-                    .weight(1f),
+                    .weight(1f)
+                    .testTag(TestTags.TRAINING_BUTTON),
                 onClick = {
                     trainingView.value = !trainingView.value
                 }
