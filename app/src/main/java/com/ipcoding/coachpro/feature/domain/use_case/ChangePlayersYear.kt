@@ -6,7 +6,7 @@ class ChangePlayersYear(
     private val playerRepository: PlayerRepository
 ) {
 
-    suspend fun invoke() {
+    suspend operator fun invoke() {
 
         val players = playerRepository.getPlayers()
         for (player in players) {

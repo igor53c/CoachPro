@@ -53,7 +53,7 @@ fun InfoScreen(
                             navController.navigate(
                                 Screen.ScheduleScreen.route + "?roundNumber=${1}")
                         is WeekType.Transfers ->
-                            navController.navigate(Screen.TransfersScreen.route)
+                            navController.navigate(Screen.SaleScreen.route)
                         is WeekType.Tactics ->
                             navController.navigate(
                                 Screen.TacticsScreen.route + "?nextIsMatch=yes")

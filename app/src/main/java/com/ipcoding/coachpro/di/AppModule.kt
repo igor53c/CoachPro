@@ -106,7 +106,8 @@ object AppModule {
                 clubRepository,
                 historyRepository,
                 matchRepository,
-                matchesRepository
+                matchesRepository,
+                preferences
             ),
             getPlayers = GetPlayers(playerRepository),
             getColorDependingOnPosition = GetColorDependingOnPosition(),
@@ -144,7 +145,12 @@ object AppModule {
             getClubMatchFromNextRound = GetClubMatchFromNextRound(matchRepository),
             trainingCalculation = TrainingCalculation(playerRepository, clubRepository),
             getHistory = GetHistory(historyRepository),
-            getNumberOfYears = GetNumberOfYears(historyRepository)
+            getNumberOfYears = GetNumberOfYears(historyRepository),
+            valueString = ValueString(),
+            insertTransferPlayers = InsertTransferPlayers(playerRepository),
+            getTactics = GetTactics(),
+            getTransferPlayers = GetTransferPlayers(playerRepository),
+            getNumberOfPlayers = GetNumberOfPlayers(playerRepository)
         )
     }
 }

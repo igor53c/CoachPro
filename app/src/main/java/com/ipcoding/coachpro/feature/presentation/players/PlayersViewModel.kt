@@ -29,12 +29,12 @@ class PlayersViewModel @Inject constructor(
     }
 
     fun getColor(position: String): Color {
-        return allUseCases.getColorDependingOnPosition.invoke(position)
+        return allUseCases.getColorDependingOnPosition(position)
     }
 
     private fun getPlayers() {
         getPlayersJob?.cancel()
-        getPlayersJob = allUseCases.getPlayers.invoke()
+        getPlayersJob = allUseCases.getPlayers()
             .onEach { items ->
                 _players.value = items
             }

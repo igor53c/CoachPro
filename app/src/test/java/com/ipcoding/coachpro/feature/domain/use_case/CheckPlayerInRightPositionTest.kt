@@ -1,6 +1,6 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
-import com.ipcoding.coachpro.core.util.AllTactics
+import com.ipcoding.coachpro.core.util.Constants.T_433
 import com.ipcoding.coachpro.feature.domain.model.Player
 import org.junit.Assert.*
 import org.junit.Before
@@ -29,8 +29,8 @@ class CheckPlayerInRightPositionTest {
     @Test
     fun `check if goalkeeper is in the right position`() {
 
-        val tactics = AllTactics.T_433
-        val result = checkPlayerInRightPosition.invoke(player, 0, 0, tactics)
+        val tactics = T_433
+        val result = checkPlayerInRightPosition(player, 0, 0, tactics)
 
         assertTrue(result)
     }
@@ -38,8 +38,8 @@ class CheckPlayerInRightPositionTest {
     @Test
     fun `check if goalkeeper is not in the right position`() {
 
-        val tactics = AllTactics.T_433
-        val result = checkPlayerInRightPosition.invoke(player, 1, 0, tactics)
+        val tactics = T_433
+        val result = checkPlayerInRightPosition(player, 1, 0, tactics)
 
         assertFalse(result)
     }
@@ -48,8 +48,8 @@ class CheckPlayerInRightPositionTest {
     fun `check if DC is in the right position`() {
 
         player.position = "DC"
-        val tactics = AllTactics.T_433
-        val result = checkPlayerInRightPosition.invoke(player, 1, 1, tactics)
+        val tactics = T_433
+        val result = checkPlayerInRightPosition(player, 1, 1, tactics)
 
         assertTrue(result)
     }
@@ -58,8 +58,8 @@ class CheckPlayerInRightPositionTest {
     fun `check if DC is not in the right position`() {
 
         player.position = "DC"
-        val tactics = AllTactics.T_433
-        val result = checkPlayerInRightPosition.invoke(player, 0, 0, tactics)
+        val tactics = T_433
+        val result = checkPlayerInRightPosition(player, 0, 0, tactics)
 
         assertFalse(result)
     }

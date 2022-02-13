@@ -18,6 +18,7 @@ import com.ipcoding.coachpro.feature.presentation.main.MainScreen
 import com.ipcoding.coachpro.feature.presentation.table.TableScreen
 import com.ipcoding.coachpro.feature.presentation.players.PlayersScreen
 import com.ipcoding.coachpro.feature.presentation.result.ResultScreen
+import com.ipcoding.coachpro.feature.presentation.sale.SaleScreen
 import com.ipcoding.coachpro.feature.presentation.schedule.ScheduleScreen
 import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.select_league.SelectLeagueScreen
@@ -118,6 +119,10 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(route = Screen.HistoryScreen.route) {
                             HistoryScreen(navController = navController)
+                            BackHandler(true) {}
+                        }
+                        composable(route = Screen.SaleScreen.route) {
+                            SaleScreen(navController = navController)
                             BackHandler(true) {}
                         }
                     }

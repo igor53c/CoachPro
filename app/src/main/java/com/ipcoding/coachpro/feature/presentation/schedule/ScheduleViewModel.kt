@@ -46,7 +46,7 @@ class ScheduleViewModel @Inject constructor(
     }
 
     private fun getAllMatches() {
-        allUseCases.getAllMatches.invoke()
+        allUseCases.getAllMatches()
             .onEach { items ->
                 _matches.value = items
             }

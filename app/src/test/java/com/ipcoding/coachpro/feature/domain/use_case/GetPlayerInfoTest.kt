@@ -30,7 +30,7 @@ class GetPlayerInfoTest {
     @Test
     fun `check the text is correct`() {
 
-        val result = getPlayerInfo.invoke(player)
+        val result = getPlayerInfo(player)
 
         assertThat(result).isEqualTo("GK 85.5")
     }

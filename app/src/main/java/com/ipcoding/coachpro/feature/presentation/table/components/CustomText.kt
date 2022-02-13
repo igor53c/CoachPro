@@ -18,6 +18,7 @@ fun CustomText(
     text: String,
     style: TextStyle,
     textAlign: TextAlign?,
+    maxLines: Int = 1,
     backgroundColor: Color = Color.Transparent
 ) {
     Box(
@@ -37,7 +38,7 @@ fun CustomText(
         ) {
             Text(
                 text = text,
-                maxLines = 1,
+                maxLines = maxLines,
                 overflow = TextOverflow.Ellipsis,
                 color = AppTheme.colors.primary,
                 style = style,

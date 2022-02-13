@@ -1,10 +1,10 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
 import androidx.compose.ui.graphics.Color
-import com.ipcoding.coachpro.core.util.AllPosition.Companion.DEF
-import com.ipcoding.coachpro.core.util.AllPosition.Companion.FOR
-import com.ipcoding.coachpro.core.util.AllPosition.Companion.GK
-import com.ipcoding.coachpro.core.util.AllPosition.Companion.MID
+import com.ipcoding.coachpro.core.util.Constants.DEF
+import com.ipcoding.coachpro.core.util.Constants.FOR
+import com.ipcoding.coachpro.core.util.Constants.GK
+import com.ipcoding.coachpro.core.util.Constants.MID
 import com.ipcoding.coachpro.ui.theme.Colors
 
 class GetColorDependingOnPosition {

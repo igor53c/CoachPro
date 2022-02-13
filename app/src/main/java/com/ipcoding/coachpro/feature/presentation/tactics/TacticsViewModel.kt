@@ -6,7 +6,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
-import com.ipcoding.coachpro.core.util.AllTactics
+import com.ipcoding.coachpro.core.util.Constants.ALL_TACTICS
 import com.ipcoding.coachpro.feature.domain.model.MarkedPlayer
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
@@ -59,7 +59,7 @@ class TacticsViewModel @Inject constructor(
 
     private fun getPlayers() {
         getPlayersJob?.cancel()
-        getPlayersJob = allUseCases.getPlayers.invoke()
+        getPlayersJob = allUseCases.getPlayers()
             .onEach { items ->
                 _players.value = items
             }
@@ -75,11 +75,11 @@ class TacticsViewModel @Inject constructor(
     }
 
     private fun loadTactics() {
-        _tactics.value = AllTactics().getTactics(preferences.loadTactics().toString())
+        _tactics.value = allUseCases.getTactics(preferences.loadTactics().toString())
     }
 
     private fun loadAllTactics() {
-        _allTactics.value = AllTactics().allTactics()
+        _allTactics.value = ALL_TACTICS
     }
 
     fun saveTactics(tactics: List<Any>) {
@@ -88,11 +88,11 @@ class TacticsViewModel @Inject constructor(
     }
 
     fun getPlayer(players: List<Player>, tactics: List<Any>, item1: Int, item2: Int): Player? {
-        return allUseCases.getPlayer.invoke(players, tactics, item1, item2)
+        return allUseCases.getPlayer(players, tactics, item1, item2)
     }
 
     fun getPlayerInfo(player: Player?): String {
-        return allUseCases.getPlayerInfo.invoke(player)
+        return allUseCases.getPlayerInfo(player)
     }
 
     fun replaceTwoPlayers(
@@ -103,7 +103,7 @@ class TacticsViewModel @Inject constructor(
     ) {
         viewModelScope.launch {
             _previouslyClickedInfo.value =
-                allUseCases.replaceTwoPlayers.invoke(previouslyClickedInfo, item1, item2, color)
+                allUseCases.replaceTwoPlayers(previouslyClickedInfo, item1, item2, color)
             getPlayers()
         }
     }
@@ -111,18 +111,18 @@ class TacticsViewModel @Inject constructor(
     fun checkPlayerInRightPosition(
         player: Player?, item1: Int, item2: Int,  tactics: List<Any>
     ): Boolean {
-        return allUseCases.checkPlayerInRightPosition.invoke(player, item1, item2,  tactics)
+        return allUseCases.checkPlayerInRightPosition(player, item1, item2,  tactics)
     }
 
     fun calculatingFirstTeamRating(players: List<Player>, tactics: List<Any>): Double {
-        val rating = allUseCases.CalculationFirstTeamRating.invoke(players, tactics)
+        val rating = allUseCases.CalculationFirstTeamRating(players, tactics)
         saveFirstTeamRating(rating)
         return rating
     }
 
     private fun saveFirstTeamRating(rating: Double) {
         viewModelScope.launch {
-            allUseCases.saveFirstTeamRating.invoke(preferences.loadClubName(), rating)
+            allUseCases.saveFirstTeamRating(preferences.loadClubName(), rating)
         }
     }
 
@@ -136,7 +136,7 @@ class TacticsViewModel @Inject constructor(
 
     private fun playRound(round: Int) {
         viewModelScope.launch {
-            allUseCases.playRound.invoke(round)
+            allUseCases.playRound(round)
         }
     }
 }

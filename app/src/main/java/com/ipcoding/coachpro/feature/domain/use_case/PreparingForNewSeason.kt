@@ -12,7 +12,7 @@ class PreparingForNewSeason(
     private var club = ""
     private var league = 0
 
-    suspend fun invoke(clubName: String, leagueNumber: Int) {
+    suspend operator fun invoke(clubName: String, leagueNumber: Int) {
             club = clubName
             league = leagueNumber
             clubList = clubRepository.getClubsFromLeague("League $league")

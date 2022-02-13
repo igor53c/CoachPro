@@ -29,7 +29,7 @@ class CalculationTeamRatingTest {
             )
         }
 
-        val result = calculationTeamRating.invoke(players)
+        val result = calculationTeamRating(players)
         var expectedResult = 0.0
 
         for (i in 0..17) { expectedResult += (i + 1).toDouble() }

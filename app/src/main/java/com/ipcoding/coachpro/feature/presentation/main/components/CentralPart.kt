@@ -90,13 +90,11 @@ fun CentralPart(
     ) {
         MainButton(
             rowOne = stringResource(id = R.string.transfers),
-            rowTwo = "budzet",
+            rowTwo = viewModel.valueString(),
             colorText = colorText,
             background = colorBackground,
             modifier = Modifier.weight(1f),
-            onClick = { navController.navigate(
-                    Screen.TacticsScreen.route + "?nextIsMatch=no")
-            }
+            onClick = { navController.navigate(Screen.TransfersScreen.route) }
         )
 
         Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceMedium))

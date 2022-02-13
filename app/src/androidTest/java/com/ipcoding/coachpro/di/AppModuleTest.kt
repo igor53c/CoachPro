@@ -104,7 +104,8 @@ object AppModuleTest {
                 clubRepository,
                 historyRepository,
                 matchRepository,
-                matchesRepository
+                matchesRepository,
+                preferences
             ),
             getPlayers = GetPlayers(playerRepository),
             getColorDependingOnPosition = GetColorDependingOnPosition(),
@@ -140,7 +141,12 @@ object AppModuleTest {
             changePlayersYear = ChangePlayersYear(playerRepository),
             getClubsFromLeagueByPosition = GetClubsFromLeagueByPosition(clubRepository),
             getClubMatchFromNextRound = GetClubMatchFromNextRound(matchRepository),
-            trainingCalculation = TrainingCalculation(playerRepository, clubRepository)
+            trainingCalculation = TrainingCalculation(playerRepository, clubRepository),
+            getHistory = GetHistory(historyRepository),
+            getNumberOfYears = GetNumberOfYears(historyRepository),
+            valueString = ValueString(),
+            insertTransferPlayers = InsertTransferPlayers(playerRepository),
+            getTactics = GetTactics()
         )
     }
 }

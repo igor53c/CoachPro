@@ -23,9 +23,7 @@ fun ColorPicker(
                 color = color,
                 border = AppTheme.colors.onBackground,
                 modifier = Modifier
-                    .clickable {
-                        onColorSelected.invoke(color)
-                    }
+                    .clickable { onColorSelected(color) }
             )
         }
     }

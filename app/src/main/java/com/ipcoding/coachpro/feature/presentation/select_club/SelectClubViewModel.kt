@@ -36,7 +36,7 @@ class SelectClubViewModel @Inject constructor(
 
     fun createClubDatabase() {
         viewModelScope.launch {
-            preferences.loadClubName()?.let { allUseCases.createClubDatabase.invoke(it) }
+            preferences.loadClubName()?.let { allUseCases.createClubDatabase(it) }
         }
 
         saveRoundNumber()

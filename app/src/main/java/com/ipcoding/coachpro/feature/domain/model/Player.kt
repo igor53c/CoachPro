@@ -10,8 +10,10 @@ data class Player(
     var rating: Double,
     var age: Int,
     var number: Int,
-    var motivation: Int,
-    var fitness: Int,
-    var training: Int,
+    var motivation: Int = 100,
+    var fitness: Int = 100,
+    var training: Int = 0,
+    var transferPlayer: Boolean = false,
+    var value: Double = 0.0,
     @PrimaryKey val id: Int? = null
 )

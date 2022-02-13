@@ -47,7 +47,7 @@ class PlayRound(
 
         // set the positions of the clubs on the table
         val clubList = preferences.loadSelectedLeague()?.let {
-            GetStringLeague().invoke(it)
+            GetStringLeague()(it)
         }?.let {
             clubRepository.getClubsFromLeague(it)
         }

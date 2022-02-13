@@ -8,7 +8,7 @@ class PreparationOfClubsAndScheduling(
     private val matchRepository: MatchRepository
 ) {
 
-    suspend fun invoke(league: String) {
+    suspend operator fun invoke(league: String) {
 
         var rating = 95.0
         for (i in 1..7) {
@@ -42,6 +42,6 @@ class PreparationOfClubsAndScheduling(
             }
             clubRepository.insertClub(club)
         }
-        MakeSchedule(clubRepository, matchRepository).invoke("League $league")
+        MakeSchedule(clubRepository, matchRepository)("League $league")
     }
 }

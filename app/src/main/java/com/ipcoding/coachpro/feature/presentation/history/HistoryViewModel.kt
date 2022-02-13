@@ -24,7 +24,7 @@ class HistoryViewModel @Inject constructor(
 
     private fun getHistory() {
         viewModelScope.launch {
-            _history.value = allUseCases.getHistory.invoke()
+            _history.value = allUseCases.getHistory()
          }
     }
 }

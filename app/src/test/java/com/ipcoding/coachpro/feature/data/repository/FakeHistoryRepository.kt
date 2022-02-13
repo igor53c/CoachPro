@@ -2,8 +2,6 @@ package com.ipcoding.coachpro.feature.data.repository
 
 import com.ipcoding.coachpro.feature.domain.model.History
 import com.ipcoding.coachpro.feature.domain.repository.HistoryRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 
 class FakeHistoryRepository : HistoryRepository {
 
@@ -17,7 +15,11 @@ class FakeHistoryRepository : HistoryRepository {
         historyList.clear()
     }
 
-    override fun getAllHistory(): Flow<List<History>> {
-        return flow { emit(historyList) }
+    override suspend fun getAllHistory(): List<History> {
+        return historyList
+    }
+
+    override suspend fun numberOfYears(): Int {
+        return historyList.size
     }
 }

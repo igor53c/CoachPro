@@ -35,14 +35,13 @@ class InfoViewModel @Inject constructor(
 
     fun preparationOfClubsAndScheduling() {
         viewModelScope.launch {
-            allUseCases.preparationOfClubsAndScheduling
-                .invoke(preferences.loadSelectedLeague().toString())
+            allUseCases.preparationOfClubsAndScheduling(preferences.loadSelectedLeague().toString())
         }
     }
 
     private fun getInfoText() {
         viewModelScope.launch {
-            _info.value = allUseCases.getWeekTypeText.invoke(_week.value, true)
+            _info.value = allUseCases.getWeekTypeText(_week.value, true)
         }
     }
 

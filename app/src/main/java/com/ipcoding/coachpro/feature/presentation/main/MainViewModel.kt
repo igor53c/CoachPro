@@ -63,7 +63,7 @@ class MainViewModel @Inject constructor(
     private var _info = mutableStateOf<WeekType?>(null)
     val info: State<WeekType?> = _info
 
-    private var _history = mutableStateOf<Int>(0)
+    private var _history = mutableStateOf(0)
     val history: State<Int> = _history
 
     init {
@@ -95,7 +95,7 @@ class MainViewModel @Inject constructor(
     private fun getInfoText() {
         viewModelScope.launch {
             _info.value =
-                allUseCases.getWeekTypeText.invoke(_week.value + 1, false)
+                allUseCases.getWeekTypeText(_week.value + 1, false)
         }
     }
 
@@ -136,20 +136,20 @@ class MainViewModel @Inject constructor(
             else -> false
         }
         viewModelScope.launch {
-            allUseCases.trainingCalculation.invoke(playersPlayedMatch, _clubName.value)
+            allUseCases.trainingCalculation(playersPlayedMatch, _clubName.value)
         }
     }
 
     private fun changeHistoryAndPlayersYear() {
         viewModelScope.launch {
-            allUseCases.changePlayersYear.invoke()
-            allUseCases.changeHistory.invoke(_league.value, _year.value, _clubName.value)
+            allUseCases.changePlayersYear()
+            allUseCases.changeHistory(_league.value, _year.value, _clubName.value)
         }
     }
 
     private fun preparingForNewSeason() {
         viewModelScope.launch {
-            allUseCases.preparingForNewSeason.invoke(_clubName.value, _league.value.toInt())
+            allUseCases.preparingForNewSeason(_clubName.value, _league.value.toInt())
         }
     }
 
@@ -172,13 +172,13 @@ class MainViewModel @Inject constructor(
     fun getClubPositionString() {
         viewModelScope.launch {
             _clubPosition.value =
-                allUseCases.getClubPositionString.invoke(_clubName.value)
+                allUseCases.getClubPositionString(_clubName.value)
         }
     }
 
     private fun getPlayersRating() {
         viewModelScope.launch {
-            allUseCases.getPlayersRating.invoke(_clubName.value)?.let {
+            allUseCases.getPlayersRating(_clubName.value)?.let {
                 _playersRating.value = it
             }
         }
@@ -186,19 +186,23 @@ class MainViewModel @Inject constructor(
 
     private fun getClubRating() {
         viewModelScope.launch {
-            allUseCases.getClubRating.invoke(_clubName.value)?.let {
+            allUseCases.getClubRating(_clubName.value)?.let {
                 _clubRating.value = it
             }
         }
     }
 
     private fun getMonth() {
-        _month.value = allUseCases.getMonth.invoke(_week.value, _year.value)
+        _month.value = allUseCases.getMonth(_week.value, _year.value)
     }
 
     private fun getNumberOfYears() {
         viewModelScope.launch {
-            _history.value = allUseCases.getNumberOfYears.invoke()
+            _history.value = allUseCases.getNumberOfYears()
         }
+    }
+
+    fun valueString(): String {
+        return allUseCases.valueString(preferences.loadBudget())
     }
 }

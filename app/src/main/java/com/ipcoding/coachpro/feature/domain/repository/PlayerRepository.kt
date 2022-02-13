@@ -18,4 +18,8 @@ interface PlayerRepository {
     fun getPlayersSortByNumber(): Flow<List<Player>>
 
     fun getPlayersSortByRating(): Flow<List<Player>>
+
+    fun getTransferPlayersSortByNumber(): Flow<List<Player>>
+
+    suspend fun numberOfPlayers(): Int
 }

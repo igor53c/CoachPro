@@ -40,4 +40,9 @@
     <string name="history">History</string>
     <string name="year">Year</string>
     <string name="position">Position</string>
+    <string name="meuro">M€</string>
+    <string name="buy">Buy</string>
+    <string name="cancel">Cancel</string>
+    <string name="enough_money">You do not have enough money for this player!</string>
+    <string name="ok">OK</string>
 </resources>

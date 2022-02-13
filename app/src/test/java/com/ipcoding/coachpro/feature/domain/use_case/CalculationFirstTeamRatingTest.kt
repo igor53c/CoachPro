@@ -1,7 +1,7 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
 import com.google.common.truth.Truth.assertThat
-import com.ipcoding.coachpro.core.util.AllTactics
+import com.ipcoding.coachpro.core.util.Constants.T_433
 import com.ipcoding.coachpro.feature.domain.model.Player
 import org.junit.Before
 import org.junit.Test
@@ -32,8 +32,8 @@ class CalculationFirstTeamRatingTest {
             )
         }
 
-        val tactics = AllTactics.T_433
-        val result = calculationFirstTeamRating.invoke(players, tactics)
+        val tactics = T_433
+        val result = calculationFirstTeamRating(players, tactics)
         var expectedResult = 0.0
 
         for (i in 0..10) { expectedResult += (i + 1).toDouble() }

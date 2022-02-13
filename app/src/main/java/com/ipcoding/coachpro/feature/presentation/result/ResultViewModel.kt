@@ -38,7 +38,7 @@ class ResultViewModel @Inject constructor(
 
     private fun getClubMatchFromNextRound() {
         matchJob?.cancel()
-        matchJob = allUseCases.getClubMatchFromNextRound.invoke(_roundNumber.value, _clubName.value)
+        matchJob = allUseCases.getClubMatchFromNextRound(_roundNumber.value, _clubName.value)
             .onEach { match ->
                 _match.value = match
             }

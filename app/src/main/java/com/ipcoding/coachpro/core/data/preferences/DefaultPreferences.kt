@@ -71,6 +71,13 @@ class DefaultPreferences (
             .apply()
     }
 
+    override fun saveBudget(budget: Float) {
+        sharedPreferences
+            .edit()
+            .putFloat(Preferences.BUDGET, budget)
+            .apply()
+    }
+
     override fun loadClubName(): String? {
         return sharedPreferences.getString(Preferences.CLUB_NAME, null)
     }
@@ -106,5 +113,9 @@ class DefaultPreferences (
     override fun loadDestinationScreen(): String? {
         return sharedPreferences
             .getString(Preferences.DESTINATION_SCREEN, Screen.SelectLeagueScreen.route)
+    }
+
+    override fun loadBudget(): Float {
+        return sharedPreferences.getFloat(Preferences.BUDGET, 0f)
     }
 }

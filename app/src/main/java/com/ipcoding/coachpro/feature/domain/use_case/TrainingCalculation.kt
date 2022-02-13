@@ -33,7 +33,7 @@ class TrainingCalculation(
         }
 
         if (club != null) {
-            club.playersRating = CalculationTeamRating().invoke(players)
+            club.playersRating = CalculationTeamRating()(players)
             clubRepository.insertClub(club)
         }
     }

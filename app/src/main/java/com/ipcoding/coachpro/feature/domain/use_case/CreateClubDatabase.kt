@@ -1,13 +1,17 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
-import com.ipcoding.coachpro.core.util.AllClubs
-import com.ipcoding.coachpro.core.util.AllPlayers
-import com.ipcoding.coachpro.core.util.AllPosition
-import com.ipcoding.coachpro.core.util.AllTactics
+import com.ipcoding.coachpro.core.domain.preferences.Preferences
+import com.ipcoding.coachpro.core.util.Constants.ALL_CLUBS
+import com.ipcoding.coachpro.core.util.Constants.ALL_PLAYERS
+import com.ipcoding.coachpro.core.util.Constants.DEF
+import com.ipcoding.coachpro.core.util.Constants.FOR
+import com.ipcoding.coachpro.core.util.Constants.GK
+import com.ipcoding.coachpro.core.util.Constants.MID
+import com.ipcoding.coachpro.core.util.Constants.T_442
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.repository.*
-import kotlin.math.round
+import kotlin.math.pow
 import kotlin.random.Random
 
 class CreateClubDatabase(
@@ -15,7 +19,8 @@ class CreateClubDatabase(
     private val clubRepository: ClubRepository,
     private val historyRepository: HistoryRepository,
     private val matchRepository: MatchRepository,
-    private val matchesRepository: MatchesRepository
+    private val matchesRepository: MatchesRepository,
+    private val preferences: Preferences
 ) {
     private var players = mutableListOf<Player>()
     private var myLeague = ""
@@ -66,21 +71,23 @@ class CreateClubDatabase(
                     rating = 25 + 10 - i % 20.0 / 2
                 }
             }
-            val currentClubName : String = AllClubs().getClub(i)
-            val club = Club(currentClubName, league, i % 20 + 1, rating, 0,
-                0, 0, 0, 0, 0, 0, rating)
+            val currentClubName : String = ALL_CLUBS[i]
+            val club = Club(currentClubName, league, i % 20 + 1, rating,
+                playersRating = rating)
             if (currentClubName == clubName) {
                 myLeague = league
                 insertAllPlayersInDatabase(rating)
-                club.playersRating = CalculationTeamRating().invoke(players)
-                club.rating = CalculationFirstTeamRating().invoke(
+                InsertTransferPlayers(playerRepository)(rating)
+                club.playersRating = CalculationTeamRating()(players)
+                club.rating = CalculationFirstTeamRating()(
                     players = players,
-                    tactics = AllTactics.T_442
+                    tactics = T_442
                 )
+                preferences.saveBudget((1.06421f).pow(rating.toFloat() - 25f) * 0.5f)
                 clubRepository.insertClub(club)
             } else clubRepository.insertClub(club)
         }
-        MakeSchedule(clubRepository, matchRepository).invoke(myLeague)
+        MakeSchedule(clubRepository, matchRepository)(myLeague)
     }
 
     private suspend fun insertAllPlayersInDatabase(clubRating: Double) {
@@ -88,41 +95,35 @@ class CreateClubDatabase(
         for (number in 0..17) {
             var position = ""
             when(number) {
-                in 0..1 -> position = AllPosition.GK
-                in 2..7 -> position = AllPosition.DEF[Random.nextInt(6)]
-                in 8..13 -> position = AllPosition.MID[Random.nextInt(6)]
-                in 14..17 -> position = AllPosition.FOR[Random.nextInt(6)]
+                in 0..1 -> position = GK
+                in 2..7 -> position = DEF.random()
+                in 8..13 -> position = MID.random()
+                in 14..17 -> position = FOR.random()
             }
-            val rating = takeRandomNumberFromRange(
-                round(clubRating - 8).toInt(),
-                round(clubRating + 4).toInt()
-            )
-            val age = if (clubRating - rating < 0) {
-                takeRandomNumberFromRange(31, 36)
-            } else {
-                if (clubRating - rating < 4) {
-                    takeRandomNumberFromRange(24, 30)
-                } else {
-                    takeRandomNumberFromRange(18, 23)
-                }
+
+            val rating = randomDouble(clubRating - 8, clubRating + 4)
+
+            val age = when {
+                rating > clubRating -> (31..36).random()
+                rating > clubRating - 4 -> (24..30).random()
+                else -> (18..23).random()
             }
-            val player = Player(makeName(), position, rating.toDouble(),
-                age, number, 100, 100, 0)
+
+            val player = Player(makeName(), position, rating, age, number)
             players.add(player)
             playerRepository.insertPlayer(player)
         }
     }
+}
 
-    private fun makeName(): String {
-        return takeRandomLetter().toString() + " " +
-                AllPlayers().players[Random.nextInt(AllPlayers().playersSize())]
+fun randomDouble(min: Double, max: Double) : Double {
+    val value = ((min * 10).toInt()..(max * 10).toInt()).random() / 10.0
+    return when {
+        value > 99.0 -> 99.0
+        else -> value
     }
+}
 
-    private fun takeRandomNumberFromRange(min: Int, max: Int): Int {
-        return (Math.random() * (max - min + 1)).toInt() + min
-    }
-
-    private fun takeRandomLetter(): Char {
-        return ('A'.code + Random.nextInt(26)).toChar()
-    }
+fun makeName(): String {
+    return ALL_PLAYERS[Random.nextInt(ALL_PLAYERS.size)] + " " + ('A'..'Z').random()
 }

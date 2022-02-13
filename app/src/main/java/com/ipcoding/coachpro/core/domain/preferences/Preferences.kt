@@ -11,6 +11,7 @@ interface Preferences {
     fun saveYear(year: Int)
     fun saveWeek(week: Int)
     fun saveDestinationScreen(destinationScreen: String)
+    fun saveBudget(budget: Float)
 
     fun loadClubName(): String?
     fun loadSelectedLeague(): String?
@@ -21,6 +22,7 @@ interface Preferences {
     fun loadYear(): Int
     fun loadWeek(): Int
     fun loadDestinationScreen(): String?
+    fun loadBudget(): Float
 
     companion object {
         const val CLUB_NAME = "club_name"
@@ -32,5 +34,6 @@ interface Preferences {
         const val YEAR = "year"
         const val WEEK = "week"
         const val DESTINATION_SCREEN  = "destination_screen"
+        const val BUDGET = "budget"
     }
 }

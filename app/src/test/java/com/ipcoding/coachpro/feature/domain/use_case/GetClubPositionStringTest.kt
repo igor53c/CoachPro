@@ -43,7 +43,7 @@ class GetClubPositionStringTest {
 
         runBlocking {
             fakeClubRepository.insertClub(club)
-            result = getClubPositionString.invoke(name)
+            result = getClubPositionString(name)
         }
 
         assertThat(result).isEqualTo("10th")
@@ -57,7 +57,7 @@ class GetClubPositionStringTest {
 
         runBlocking {
             fakeClubRepository.insertClub(club)
-            result = getClubPositionString.invoke(name)
+            result = getClubPositionString(name)
         }
 
         assertThat(result).isEqualTo("1st")
@@ -71,7 +71,7 @@ class GetClubPositionStringTest {
 
         runBlocking {
             fakeClubRepository.insertClub(club)
-            result = getClubPositionString.invoke(name)
+            result = getClubPositionString(name)
         }
 
         assertThat(result).isEqualTo("2nd")
@@ -85,7 +85,7 @@ class GetClubPositionStringTest {
 
         runBlocking {
             fakeClubRepository.insertClub(club)
-            result = getClubPositionString.invoke(name)
+            result = getClubPositionString(name)
         }
 
         assertThat(result).isEqualTo("3rd")
@@ -101,7 +101,7 @@ class GetClubPositionStringTest {
 
             runBlocking {
                 fakeClubRepository.insertClub(club)
-                result = getClubPositionString.invoke(name)
+                result = getClubPositionString(name)
             }
 
             assertThat(result).isEqualTo("${i}th")

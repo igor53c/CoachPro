@@ -19,7 +19,7 @@ class GetColorDependingOnPositionTest {
 
         val position = "GK"
 
-        val result = getColorDependingOnPosition.invoke(position)
+        val result = getColorDependingOnPosition(position)
 
         assertThat(result).isEqualTo(Colors.LightGreen10)
     }
@@ -29,7 +29,7 @@ class GetColorDependingOnPositionTest {
 
         val position = "DR"
 
-        val result = getColorDependingOnPosition.invoke(position)
+        val result = getColorDependingOnPosition(position)
 
         assertThat(result).isEqualTo(Colors.LightBlue)
     }
@@ -39,7 +39,7 @@ class GetColorDependingOnPositionTest {
 
         val position = "ML"
 
-        val result = getColorDependingOnPosition.invoke(position)
+        val result = getColorDependingOnPosition(position)
 
         assertThat(result).isEqualTo(Colors.LightYellow)
     }
@@ -49,7 +49,7 @@ class GetColorDependingOnPositionTest {
 
         val position = "FRC"
 
-        val result = getColorDependingOnPosition.invoke(position)
+        val result = getColorDependingOnPosition(position)
 
         assertThat(result).isEqualTo(Colors.LightRed10)
     }

@@ -21,7 +21,7 @@ class GetColorOfClubInTableTest {
 
         val position = (1..4).random()
 
-        val result = getColorOfClubInTable.invoke(position)
+        val result = getColorOfClubInTable(position)
 
        assertThat(result).isEqualTo(Colors.LightGreen20)
     }
@@ -31,7 +31,7 @@ class GetColorOfClubInTableTest {
 
         val position = (17..20).random()
 
-        val result = getColorOfClubInTable.invoke(position)
+        val result = getColorOfClubInTable(position)
 
         assertThat(result).isEqualTo(Colors.LightRed20)
     }
@@ -41,7 +41,7 @@ class GetColorOfClubInTableTest {
 
         val position = (5..16).random()
 
-        val result = getColorOfClubInTable.invoke(position)
+        val result = getColorOfClubInTable(position)
 
         assertThat(result).isEqualTo(Color.Transparent)
     }

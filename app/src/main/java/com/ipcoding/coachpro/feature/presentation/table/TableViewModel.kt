@@ -26,7 +26,7 @@ class TableViewModel @Inject constructor(
     }
 
     fun getColorOfClubInTable(position: Int): Color {
-        return allUseCases.getColorOfClubInTable.invoke(position)
+        return allUseCases.getColorOfClubInTable(position)
     }
 
     fun getClubName(): String {
@@ -36,8 +36,8 @@ class TableViewModel @Inject constructor(
     private fun getClubs() {
         viewModelScope.launch {
             if(preferences.loadRoundNumber() != 0)
-                _clubs.value = allUseCases.getClubs.invoke(getStringLeague()) else
-                _clubs.value = allUseCases.getClubsFromLeagueByPosition.invoke(getStringLeague())
+                _clubs.value = allUseCases.getClubs(getStringLeague()) else
+                _clubs.value = allUseCases.getClubsFromLeagueByPosition(getStringLeague())
         }
     }
 

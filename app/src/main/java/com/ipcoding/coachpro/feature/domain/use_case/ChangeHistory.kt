@@ -9,7 +9,7 @@ class ChangeHistory(
     private val historyRepository: HistoryRepository
 ) {
 
-    suspend fun invoke(league: String, year: Int, clubName: String) {
+    suspend operator fun invoke(league: String, year: Int, clubName: String) {
 
         clubRepository.getClub(clubName)
             ?.let { History(year, "League $league", it.position) }?.let {

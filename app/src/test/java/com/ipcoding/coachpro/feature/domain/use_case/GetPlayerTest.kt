@@ -1,7 +1,7 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
 import com.google.common.truth.Truth.assertThat
-import com.ipcoding.coachpro.core.util.AllTactics
+import com.ipcoding.coachpro.core.util.Constants.T_433
 import com.ipcoding.coachpro.feature.domain.model.Player
 import org.junit.Before
 import org.junit.Test
@@ -33,9 +33,9 @@ class GetPlayerTest {
     @Test
     fun `check that the correct player has been taken`() {
 
-        val tactics = AllTactics.T_433
+        val tactics = T_433
 
-        val result = getPlayer.invoke(players, tactics, 1, 3)
+        val result = getPlayer(players, tactics, 1, 3)
 
         assertThat(result).isEqualTo(players[4])
     }
