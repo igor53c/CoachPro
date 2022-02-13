@@ -3,7 +3,6 @@ package com.ipcoding.coachpro.feature.data.repository
 import com.ipcoding.coachpro.feature.data.data_source.HistoryDao
 import com.ipcoding.coachpro.feature.domain.model.History
 import com.ipcoding.coachpro.feature.domain.repository.HistoryRepository
-import kotlinx.coroutines.flow.Flow
 
 class HistoryRepositoryImpl(
     private val dao: HistoryDao
@@ -17,7 +16,11 @@ class HistoryRepositoryImpl(
         dao.deleteAll()
     }
 
-    override fun getAllHistory(): Flow<List<History>> {
+    override suspend fun getAllHistory(): List<History> {
         return dao.getAllHistory()
+    }
+
+    override suspend fun numberOfYears(): Int {
+        return dao.numberOfYears()
     }
 }

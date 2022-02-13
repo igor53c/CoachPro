@@ -58,7 +58,7 @@ fun PlayersScreen (
             if(!trainingView.value) {
                 buttonTrainingText.value = stringResource(id = R.string.training)
                 CustomText(
-                    text = stringResource(id = R.string.position),
+                    text = stringResource(id = R.string.pos),
                     style = AppTheme.typography.body2,
                     textAlign = TextAlign.Center,
                     modifier = Modifier

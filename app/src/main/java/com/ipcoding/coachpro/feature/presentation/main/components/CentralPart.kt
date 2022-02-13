@@ -23,6 +23,7 @@ fun CentralPart(
     val clubRating =  viewModel.clubRating.value
     val playersRating =  viewModel.playersRating.value
     val roundNumber = viewModel.roundNumber.value
+    val history = viewModel.history.value
 
     Row(
         modifier = Modifier
@@ -79,6 +80,34 @@ fun CentralPart(
             onClick = { navController.navigate(
                 Screen.ScheduleScreen.route + "?roundNumber=${roundNumber + 1}")
             }
+        )
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = AppTheme.dimensions.spaceMedium)
+    ) {
+        MainButton(
+            rowOne = stringResource(id = R.string.transfers),
+            rowTwo = "budzet",
+            colorText = colorText,
+            background = colorBackground,
+            modifier = Modifier.weight(1f),
+            onClick = { navController.navigate(
+                    Screen.TacticsScreen.route + "?nextIsMatch=no")
+            }
+        )
+
+        Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceMedium))
+
+        MainButton(
+            rowOne = stringResource(id = R.string.history),
+            rowTwo = history.toString(),
+            colorText = colorText,
+            background = colorBackground,
+            modifier = Modifier.weight(1f),
+            onClick = { navController.navigate(Screen.HistoryScreen.route) }
         )
     }
 }

@@ -1,7 +1,6 @@
 package com.ipcoding.coachpro.feature.domain.repository
 
 import com.ipcoding.coachpro.feature.domain.model.History
-import kotlinx.coroutines.flow.Flow
 
 interface HistoryRepository {
 
@@ -9,5 +8,7 @@ interface HistoryRepository {
 
     suspend fun deleteAll()
 
-    fun getAllHistory(): Flow<List<History>>
+    suspend fun getAllHistory():List<History>
+
+    suspend fun numberOfYears(): Int
 }

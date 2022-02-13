@@ -2,7 +2,6 @@ package com.ipcoding.coachpro.feature.data.data_source
 
 import androidx.room.*
 import com.ipcoding.coachpro.feature.domain.model.History
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface HistoryDao {
@@ -14,5 +13,8 @@ interface HistoryDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM history_table ORDER BY year DESC")
-    fun getAllHistory(): Flow<List<History>>
+    suspend fun getAllHistory(): List<History>
+
+    @Query("SELECT COUNT(*) FROM history_table")
+    suspend fun numberOfYears(): Int
 }

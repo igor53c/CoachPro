@@ -23,8 +23,8 @@ class TrainingCalculation(
             if (player.fitness > 100) player.fitness = 100 else
                 if (player.fitness < 0) player.fitness = 0
 
-            player.rating += player.training * ((36 - player.age) / 800.0) *
-                    (player.fitness / 100.0) * (player.motivation / 100.0) - 0.03
+            player.rating += player.training * ((38 - player.age) / 800.0) *
+                    (player.fitness / 100.0) * (player.motivation / 100.0) - player.age / 1000
 
             if (player.rating > 99) player.rating = 99.0 else
                 if (player.rating < 1) player.rating = 1.0

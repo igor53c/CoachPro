@@ -63,6 +63,9 @@ class MainViewModel @Inject constructor(
     private var _info = mutableStateOf<WeekType?>(null)
     val info: State<WeekType?> = _info
 
+    private var _history = mutableStateOf<Int>(0)
+    val history: State<Int> = _history
+
     init {
         saveDestinationScreen()
         loadClubName()
@@ -78,6 +81,7 @@ class MainViewModel @Inject constructor(
         getClubRating()
         checkColors()
         getClubPositionString()
+        getNumberOfYears()
     }
 
     private fun saveDestinationScreen() {
@@ -190,5 +194,11 @@ class MainViewModel @Inject constructor(
 
     private fun getMonth() {
         _month.value = allUseCases.getMonth.invoke(_week.value, _year.value)
+    }
+
+    private fun getNumberOfYears() {
+        viewModelScope.launch {
+            _history.value = allUseCases.getNumberOfYears.invoke()
+        }
     }
 }

@@ -7,7 +7,7 @@
     <string name="select_color_stripes">Select the color of the stripes:</string>
     <string name="league">League</string>
     <string name="name">Name</string>
-    <string name="position">Pos</string>
+    <string name="pos">Pos</string>
     <string name="rating">Rat</string>
     <string name="age">Age</string>
     <string name="back">Back</string>
@@ -37,4 +37,7 @@
     <string name="won">won</string>
     <string name="player_transfer">Player transfer!</string>
     <string name="place">place</string>
+    <string name="history">History</string>
+    <string name="year">Year</string>
+    <string name="position">Position</string>
 </resources>
