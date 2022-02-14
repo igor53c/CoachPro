@@ -35,7 +35,6 @@
     <string name="vs">VS</string>
     <string name="season_over">The season is over!</string>
     <string name="won">won</string>
-    <string name="player_transfer">Player transfer!</string>
     <string name="place">place</string>
     <string name="history">History</string>
     <string name="year">Year</string>
@@ -46,4 +45,8 @@
     <string name="enough_money">You do not have enough money for this player!</string>
     <string name="ok">OK</string>
     <string name="transfer_closed">The transfer window is closed!</string>
+    <string name="sell">Sell</string>
+    <string name="offer_arrived">An offer has arrived for this player in the amount of:</string>
+    <string name="offer_player">Offer for the player!</string>
+    <string name="continue_">Continue</string>
 </resources>

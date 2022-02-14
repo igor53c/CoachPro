@@ -39,5 +39,7 @@ data class AllUseCases (
     val getTactics: GetTactics,
     val getTransferPlayers: GetTransferPlayers,
     val getNumberOfPlayers: GetNumberOfPlayers,
-    val transferWindow: TransferWindow
+    val transferWindow: TransferWindow,
+    val randomPlayer: RandomPlayer,
+    val deletePlayer: DeletePlayer
 )

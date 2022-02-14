@@ -151,7 +151,9 @@ object AppModule {
             getTactics = GetTactics(),
             getTransferPlayers = GetTransferPlayers(playerRepository),
             getNumberOfPlayers = GetNumberOfPlayers(playerRepository),
-            transferWindow = TransferWindow()
+            transferWindow = TransferWindow(),
+            randomPlayer = RandomPlayer(playerRepository),
+            deletePlayer = DeletePlayer(playerRepository)
         )
     }
 }

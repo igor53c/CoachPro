@@ -66,7 +66,7 @@ fun InfoScreen(
             }
         ) {
             Text(
-                text = stringResource(id = R.string.confirm),
+                text = stringResource(id = R.string.continue_),
                 style = AppTheme.typography.body1
             )
         }

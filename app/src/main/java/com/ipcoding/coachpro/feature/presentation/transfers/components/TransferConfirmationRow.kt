@@ -13,6 +13,7 @@ import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun TransferConfirmationRow(
+    modifier: Modifier = Modifier,
     textPosition: String,
     textRating: String,
     textAge: String,
@@ -20,7 +21,7 @@ fun TransferConfirmationRow(
     color: Color = Color.Transparent
 ) {
     Row(
-        modifier = Modifier
+        modifier = modifier
             .padding(
                 start = AppTheme.dimensions.spaceSmall,
                 end = AppTheme.dimensions.spaceSmall

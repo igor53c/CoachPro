@@ -37,10 +37,12 @@ class InsertTransferPlayers(
         }
 
         repeat(5) {
-            val player = players[(0 until players.size).random()]
-            playerRepository.deletePlayer(player)
-            players.remove(player)
-            insertRandomTransferPlayer()
+            if(players.size > 0) {
+                val player = players[players.indices.random()]
+                playerRepository.deletePlayer(player)
+                players.remove(player)
+                insertRandomTransferPlayer()
+            }
         }
     }
 
@@ -71,14 +73,15 @@ class InsertTransferPlayers(
                 age = age,
                 number = 0,
                 transferPlayer = true,
-                value = getPlayerValue(ratingPlayer, age)
+                value = getRandomPlayerValue(ratingPlayer, age)
             )
         )
     }
 }
 
-fun getPlayerValue(rating: Double, age: Int) : Double {
-    val value = (1.06421).pow(rating - 25.0) * (1.0 +  (18.0 - age.toDouble()) / 20.0)
+fun getRandomPlayerValue(rating: Double, age: Int) : Double {
+    var value = (1.06421).pow(rating - 25.0) * (1.0 +  (18.0 - age.toDouble()) / 20.0)
+    value *= (5..15).random() / 10.0
     return when {
         value < 0.0 -> 0.0
         else -> value

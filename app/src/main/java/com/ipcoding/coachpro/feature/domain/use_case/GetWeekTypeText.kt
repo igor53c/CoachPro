@@ -55,14 +55,21 @@ class GetWeekTypeText(
         }
 
         val weekType: WeekType = when(if(week == 53) 1 else week) {
-            in START_TRANSFERS_TWO..END_TRANSFERS_TWO -> WeekType.Transfers(resourceProvider.getString(R.string.player_transfer))
-            in START_MATCHES_TWO..END_MATCHES_TWO -> WeekType.Tactics(tacticsText)
+
+            in START_TRANSFERS_TWO..END_TRANSFERS_TWO -> {
+                WeekType.Transfers(resourceProvider.getString(R.string.offer_player))
+            }
+            in START_MATCHES_TWO..END_MATCHES_TWO -> {
+                WeekType.Tactics(tacticsText)
+            }
             SEASON_IS_OVER -> WeekType.Else(seasonOverText)
             PREPARATION_OF_CLUBS_AND_SCHEDULING -> {
                 preferences.saveRoundNumber(0)
                 WeekType.Else("")
             }
-            in START_TRANSFERS_ONE..END_TRANSFERS_ONE -> WeekType.Transfers(resourceProvider.getString(R.string.player_transfer))
+            in START_TRANSFERS_ONE..END_TRANSFERS_ONE -> {
+                WeekType.Transfers(resourceProvider.getString(R.string.offer_player))
+            }
             in START_MATCHES_ONE..END_MATCHES_ONE -> WeekType.Tactics(tacticsText)
             else -> WeekType.Else("Else")
         }
