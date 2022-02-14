@@ -9,6 +9,6 @@ class GetTransferPlayers(
 ) {
 
     operator fun invoke(): Flow<List<Player>> {
-        return playerRepository.getTransferPlayersSortByNumber()
+        return playerRepository.getTransferPlayersSortById()
     }
 }

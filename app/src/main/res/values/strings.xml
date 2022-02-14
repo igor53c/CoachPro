@@ -45,4 +45,5 @@
     <string name="cancel">Cancel</string>
     <string name="enough_money">You do not have enough money for this player!</string>
     <string name="ok">OK</string>
+    <string name="transfer_closed">The transfer window is closed!</string>
 </resources>

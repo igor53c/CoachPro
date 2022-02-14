@@ -27,11 +27,23 @@ class TransfersViewModel @Inject constructor(
     private val _numberOfPlayers = mutableStateOf(0)
     val numberOfPlayers: State<Int> = _numberOfPlayers
 
+    private var _week = mutableStateOf(0)
+    val week: State<Int> = _week
+
     private var getPlayersJob: Job? = null
 
     init {
         getPlayers()
         getNumberOfPlayers()
+        loadWeek()
+    }
+
+    fun transferWindow() : Boolean {
+        return allUseCases.transferWindow(week.value)
+    }
+
+    private fun loadWeek() {
+        _week.value = preferences.loadWeek()
     }
 
     fun getColor(position: String): Color {
@@ -62,7 +74,7 @@ class TransfersViewModel @Inject constructor(
         }
     }
 
-    fun getNumberOfPlayers() {
+    private fun getNumberOfPlayers() {
         viewModelScope.launch {
             _numberOfPlayers.value = allUseCases.getNumberOfPlayers()
         }

@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
@@ -54,7 +53,7 @@ fun TransferConfirmation (
                     CustomText(
                         text = stringResource(id = R.string.enough_money),
                         style = AppTheme.typography.subtitle1,
-                        maxLines = 5,
+                        maxLines = 3,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .padding(bottom = AppTheme.dimensions.spaceSmall)

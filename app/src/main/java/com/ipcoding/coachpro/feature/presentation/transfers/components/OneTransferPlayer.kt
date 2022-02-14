@@ -2,18 +2,12 @@ package com.ipcoding.coachpro.feature.presentation.transfers.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.LinearProgressIndicator
-import androidx.compose.material.Slider
-import androidx.compose.material.SliderDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.domain.model.Player
-import com.ipcoding.coachpro.feature.presentation.players.components.PlayerInfo
 import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.ui.theme.AppTheme
 

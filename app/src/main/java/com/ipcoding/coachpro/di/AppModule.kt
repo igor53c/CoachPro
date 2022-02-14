@@ -150,7 +150,8 @@ object AppModule {
             insertTransferPlayers = InsertTransferPlayers(playerRepository),
             getTactics = GetTactics(),
             getTransferPlayers = GetTransferPlayers(playerRepository),
-            getNumberOfPlayers = GetNumberOfPlayers(playerRepository)
+            getNumberOfPlayers = GetNumberOfPlayers(playerRepository),
+            transferWindow = TransferWindow()
         )
     }
 }

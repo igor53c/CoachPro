@@ -77,7 +77,6 @@ class CreateClubDatabase(
             if (currentClubName == clubName) {
                 myLeague = league
                 insertAllPlayersInDatabase(rating)
-                InsertTransferPlayers(playerRepository)(rating)
                 club.playersRating = CalculationTeamRating()(players)
                 club.rating = CalculationFirstTeamRating()(
                     players = players,

@@ -84,6 +84,12 @@ class MainViewModel @Inject constructor(
         getNumberOfYears()
     }
 
+    private fun insertTransferPlayers(rating: Double) {
+        viewModelScope.launch {
+            allUseCases.insertTransferPlayers(rating, _week.value)
+        }
+    }
+
     private fun saveDestinationScreen() {
        preferences.saveDestinationScreen(destinationScreen = Screen.MainScreen.route)
     }
@@ -180,6 +186,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             allUseCases.getPlayersRating(_clubName.value)?.let {
                 _playersRating.value = it
+                insertTransferPlayers(it)
             }
         }
     }

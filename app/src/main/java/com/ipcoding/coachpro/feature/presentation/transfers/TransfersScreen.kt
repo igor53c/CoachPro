@@ -8,10 +8,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
+import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.feature.presentation.transfers.components.OneTransferPlayer
 import com.ipcoding.coachpro.feature.presentation.transfers.components.TitleRow
 import com.ipcoding.coachpro.feature.presentation.transfers.components.TransferConfirmation
@@ -39,61 +43,82 @@ fun TransfersScreen(
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TitleRow()
+        if(viewModel.transferWindow()) {
+            TitleRow()
 
-        Divider(
-            color = AppTheme.colors.primary,
-            thickness = AppTheme.dimensions.spaceSuperSmall
-        )
+            Divider(
+                color = AppTheme.colors.primary,
+                thickness = AppTheme.dimensions.spaceSuperSmall
+            )
 
-        LazyColumn(
-            modifier = Modifier.weight(1f)
-        ) {
-            items(players.size) { item ->
-                val player = players[item]
-                OneTransferPlayer(
-                    player = player,
-                    color = viewModel.getColor(player.position),
-                    onClick = {
-                        openDialog.value = true
-                        selectedPlayer.value = player
+            LazyColumn(
+                modifier = Modifier.weight(1f)
+            ) {
+                items(players.size) { item ->
+                    val player = players[item]
+                    OneTransferPlayer(
+                        player = player,
+                        color = viewModel.getColor(player.position),
+                        onClick = {
+                            openDialog.value = true
+                            selectedPlayer.value = player
+                        }
+                    )
+                    Divider(
+                        color = AppTheme.colors.primary,
+                        thickness = AppTheme.dimensions.spaceSuperSmall
+                    )
+                }
+            }
+
+            if (openDialog.value) {
+                val budget = viewModel.getBudget()
+                TransferConfirmation(
+                    budget = budget,
+                    player = selectedPlayer.value,
+                    color = viewModel.getColor(selectedPlayer.value.position),
+                    onCancelClick = { openDialog.value = false },
+                    onBuyClick = {
+                        selectedPlayer.value.transferPlayer = false
+                        selectedPlayer.value.number = numberOfPlayers
+                        viewModel.saveBudget(budget - selectedPlayer.value.value.toFloat())
+                        viewModel.updatePlayer(selectedPlayer.value)
+                        openDialog.value = false
                     }
                 )
-                Divider(
-                    color = AppTheme.colors.primary,
-                    thickness = AppTheme.dimensions.spaceSuperSmall
-                )
             }
-        }
 
-        if (openDialog.value) {
-            val budget = viewModel.getBudget()
-            TransferConfirmation(
-                budget = budget,
-                player = selectedPlayer.value,
-                color = viewModel.getColor(selectedPlayer.value.position),
-                onCancelClick = { openDialog.value = false },
-                onBuyClick = {
-                    selectedPlayer.value.transferPlayer = false
-                    selectedPlayer.value.number = numberOfPlayers
-                    viewModel.saveBudget(budget - selectedPlayer.value.value.toFloat())
-                    viewModel.updatePlayer(selectedPlayer.value)
-                    openDialog.value = false
-                }
+            Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
+
+            ButtonBack(
+                navController = navController,
+                modifier = Modifier
+                    .height(AppTheme.dimensions.spaceLarge)
+                    .fillMaxWidth()
+                    .padding(
+                        start = AppTheme.dimensions.spaceSmall,
+                        end = AppTheme.dimensions.spaceSmall
+                    )
+            )
+        } else {
+            CustomText(
+                text = stringResource(id = R.string.transfer_closed),
+                textAlign = TextAlign.Center,
+                style = AppTheme.typography.h5,
+                modifier = Modifier
+                    .weight(1f)
+            )
+            ButtonBack(
+                navController = navController,
+                modifier = Modifier
+                    .height(AppTheme.dimensions.spaceLarge)
+                    .fillMaxWidth()
+                    .padding(
+                        start = AppTheme.dimensions.spaceSmall,
+                        end = AppTheme.dimensions.spaceSmall
+                    )
             )
         }
 
-        Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
-
-        ButtonBack(
-            navController = navController,
-            modifier = Modifier
-                .height(AppTheme.dimensions.spaceLarge)
-                .fillMaxWidth()
-                .padding(
-                    start = AppTheme.dimensions.spaceSmall,
-                    end = AppTheme.dimensions.spaceSmall
-                )
-        )
     }
 }

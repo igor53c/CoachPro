@@ -28,9 +28,15 @@ interface PlayerDao {
     @Query("SELECT * FROM players_table WHERE NOT transferPlayer ORDER BY rating DESC")
     fun getPlayersSortByRating(): Flow<List<Player>>
 
-    @Query("SELECT * FROM players_table WHERE transferPlayer ORDER BY number ASC")
-    fun getTransferPlayersSortByNumber(): Flow<List<Player>>
+    @Query("SELECT * FROM players_table WHERE transferPlayer ORDER BY id ASC")
+    fun getTransferPlayersSortById(): Flow<List<Player>>
+
+    @Query("SELECT * FROM players_table WHERE transferPlayer ORDER BY id ASC")
+    suspend fun getAllTransferPlayers(): List<Player>
 
     @Query("SELECT COUNT(*) FROM players_table WHERE NOT transferPlayer")
     suspend fun numberOfPlayers(): Int
+
+    @Query("DELETE FROM players_table WHERE transferPlayer")
+    suspend fun deleteAllTransferPlayers()
 }
