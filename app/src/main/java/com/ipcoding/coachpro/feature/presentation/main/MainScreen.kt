@@ -68,7 +68,7 @@ fun MainScreen(
             modifier = Modifier
                 .height(AppTheme.dimensions.spaceLarge)
                 .fillMaxWidth()
-                .testTag(TestTags.MAINSCREEN_BUTTON_CONFIRM),
+                .testTag(TestTags.BUTTON_CONFIRM_MAINSCREEN),
             onClick = {
                 viewModel.saveWeekYear()
                 navController.navigate(Screen.InfoScreen.route)

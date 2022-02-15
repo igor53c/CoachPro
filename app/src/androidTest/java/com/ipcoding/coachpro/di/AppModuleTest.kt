@@ -33,32 +33,32 @@ object AppModuleTest {
 
    @Provides
     @Singleton
-    fun providePlayerRepository(db: CoachDatabase): PlayerRepository {
-        return PlayerRepositoryImpl(db.playerDao)
+    fun providePlayerRepository(): PlayerRepository {
+        return PlayerRepositoryFake()
     }
 
     @Provides
     @Singleton
-    fun provideClubRepository(db: CoachDatabase): ClubRepository {
-        return ClubRepositoryImpl(db.clubDao)
+    fun provideClubRepository(): ClubRepository {
+        return ClubRepositoryFake()
     }
 
     @Provides
     @Singleton
-    fun provideHistoryRepository(db: CoachDatabase): HistoryRepository {
-        return HistoryRepositoryImpl(db.historyDao)
+    fun provideHistoryRepository(): HistoryRepository {
+        return HistoryRepositoryFake()
     }
 
     @Provides
     @Singleton
-    fun provideMatchRepository(db: CoachDatabase): MatchRepository {
-        return MatchRepositoryImpl(db.matchDao)
+    fun provideMatchRepository(): MatchRepository {
+        return MatchRepositoryFake()
     }
 
     @Provides
     @Singleton
-    fun provideMatchesRepository(db: CoachDatabase): MatchesRepository {
-        return MatchesRepositoryImpl(db.matchesDao)
+    fun provideMatchesRepository(): MatchesRepository {
+        return MatchesRepositoryFake()
     }
 
     @Provides

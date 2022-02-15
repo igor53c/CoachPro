@@ -1,7 +1,6 @@
 package com.ipcoding.coachpro.feature.presentation.history
 
 import androidx.activity.compose.BackHandler
-import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -9,7 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import com.ipcoding.coachpro.di.AppModule
 import com.ipcoding.coachpro.feature.presentation.MainActivity
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
@@ -63,7 +62,7 @@ class HistoryScreenTest {
 
         composeRule.onNodeWithText("Back").performClick()
 
-        Truth.assertThat(
+       assertThat(
             navController.currentDestination?.route?.startsWith(
                 Screen.MainScreen.route
             )
