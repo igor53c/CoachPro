@@ -1,4 +1,4 @@
-package com.ipcoding.coachpro.feature.presentation.transfers
+package com.ipcoding.coachpro.feature.presentation.sale
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
@@ -8,7 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.common.truth.Truth.assertThat
+import com.google.common.truth.Truth
 import com.ipcoding.coachpro.di.AppModule
 import com.ipcoding.coachpro.feature.presentation.MainActivity
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
@@ -23,7 +23,7 @@ import org.junit.Test
 
 @HiltAndroidTest
 @UninstallModules(AppModule::class)
-class TransfersScreenTest {
+class SaleScreenTest {
 
     @get:Rule(order = 0)
     val hiltRule = HiltAndroidRule(this)
@@ -41,10 +41,10 @@ class TransfersScreenTest {
                 navController = rememberNavController()
                 NavHost(
                     navController = navController,
-                    startDestination = Screen.TransfersScreen.route
+                    startDestination = Screen.SaleScreen.route
                 ) {
-                    composable(route = Screen.TransfersScreen.route) {
-                        TransfersScreen(navController = navController)
+                    composable(route = Screen.SaleScreen.route) {
+                        SaleScreen(navController = navController)
                         BackHandler(true) {}
                     }
                     composable(route = Screen.MainScreen.route) {
@@ -57,11 +57,23 @@ class TransfersScreenTest {
     }
 
     @Test
-    fun backButton_isCorrect() {
+    fun sellButton_isCorrect() {
 
-        composeRule.onNodeWithText("Back").performClick()
+        composeRule.onNodeWithText("Sell").performClick()
 
-        assertThat(
+        Truth.assertThat(
+            navController.currentDestination?.route?.startsWith(
+                Screen.MainScreen.route
+            )
+        ).isTrue()
+    }
+
+    @Test
+    fun rejectButton_isCorrect() {
+
+        composeRule.onNodeWithText("Reject").performClick()
+
+        Truth.assertThat(
             navController.currentDestination?.route?.startsWith(
                 Screen.MainScreen.route
             )

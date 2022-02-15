@@ -33,7 +33,9 @@ class SaleViewModel @Inject constructor(
 
     private fun getRandomPlayer() {
         viewModelScope.launch {
-            _player.value = allUseCases.randomPlayer()
+            allUseCases.randomPlayer()?.let {
+                _player.value = it
+            }
         }
     }
 

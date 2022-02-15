@@ -7,13 +7,17 @@ class RandomPlayer(
     private val playerRepository: PlayerRepository
 ) {
 
-    suspend operator fun invoke(): Player {
+    suspend operator fun invoke(): Player? {
 
         val players = playerRepository.getPlayers()
 
-        val player = players[players.indices.random()]
+        var player: Player? = null
 
-        player.value = getRandomPlayerValue(player.rating, player.age)
+        if(players.size > 0) player = players[players.indices.random()]
+
+        player?.let {
+            it.value = getRandomPlayerValue(it.rating, it.age)
+        }
 
         return player
     }
