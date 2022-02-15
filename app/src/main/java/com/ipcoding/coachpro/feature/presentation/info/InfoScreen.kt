@@ -52,13 +52,14 @@ fun InfoScreen(
                         is WeekType.Schedule ->
                             navController.navigate(
                                 Screen.ScheduleScreen.route + "?roundNumber=${1}")
-                        is WeekType.Transfers ->
+                        is WeekType.Transfers -> {
+                            viewModel.insertTransferPlayers()
                             navController.navigate(Screen.SaleScreen.route)
+                        }
                         is WeekType.Tactics ->
                             navController.navigate(
                                 Screen.TacticsScreen.route + "?nextIsMatch=yes")
                         is WeekType.Else -> {
-                            if(weekType.text == "") viewModel.preparationOfClubsAndScheduling()
                             navController.navigate(Screen.MainScreen.route)
                         }
                     }

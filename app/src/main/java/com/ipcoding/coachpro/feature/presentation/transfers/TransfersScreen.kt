@@ -80,7 +80,7 @@ fun TransfersScreen(
                     onCancelClick = { openDialog.value = false },
                     onBuyClick = {
                         selectedPlayer.value.transferPlayer = false
-                        selectedPlayer.value.number = numberOfPlayers
+                        selectedPlayer.value.number = numberOfPlayers + 1
                         viewModel.saveBudget(budget - selectedPlayer.value.value.toFloat())
                         viewModel.updatePlayer(selectedPlayer.value)
                         openDialog.value = false

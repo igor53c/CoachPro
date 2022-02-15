@@ -9,5 +9,11 @@ class DeletePlayer(
 
     suspend operator fun invoke(player: Player) {
         playerRepository.deletePlayer(player)
+        val players = playerRepository.getPlayers()
+        for(i in 1..players.size) {
+            val currentPlayer  = players[i - 1]
+            currentPlayer.number = i
+            playerRepository.insertPlayer(currentPlayer)
+        }
     }
 }

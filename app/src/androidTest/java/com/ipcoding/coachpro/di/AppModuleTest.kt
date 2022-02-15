@@ -145,8 +145,13 @@ object AppModuleTest {
             getHistory = GetHistory(historyRepository),
             getNumberOfYears = GetNumberOfYears(historyRepository),
             valueString = ValueString(),
-            insertTransferPlayers = InsertTransferPlayers(playerRepository),
-            getTactics = GetTactics()
+            insertTransferPlayers = InsertTransferPlayers(playerRepository, clubRepository),
+            getTactics = GetTactics(),
+            getTransferPlayers = GetTransferPlayers(playerRepository),
+            getNumberOfPlayers = GetNumberOfPlayers(playerRepository),
+            transferWindow = TransferWindow(),
+            randomPlayer = RandomPlayer(playerRepository),
+            deletePlayer = DeletePlayer(playerRepository)
         )
     }
 }

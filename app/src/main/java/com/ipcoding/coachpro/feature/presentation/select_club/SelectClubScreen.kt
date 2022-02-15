@@ -3,6 +3,7 @@ package com.ipcoding.coachpro.feature.presentation.select_club
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,6 +22,7 @@ fun SelectClubScreen (
     viewModel: SelectClubViewModel = hiltViewModel()
 ) {
     val clubs = viewModel.clubs.value
+
     Column(
         modifier = Modifier
             .fillMaxSize()

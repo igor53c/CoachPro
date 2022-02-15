@@ -13,19 +13,19 @@ class PreparingForNewSeason(
     private var league = 0
 
     suspend operator fun invoke(clubName: String, leagueNumber: Int) {
-            club = clubName
-            league = leagueNumber
-            clubList = clubRepository.getClubsFromLeague("League $league")
-            when (league) {
-                1 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = false)
-                2 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
-                3 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
-                4 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
-                5 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
-                6 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
-                7 -> organizeLeagues(hasLowerLeague = false,  hasMajorLeague = true)
-                else -> {}
-            }
+        club = clubName
+        league = leagueNumber
+        clubList = clubRepository.getClubsFromLeague("League $league")
+        when (league) {
+            1 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = false)
+            2 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
+            3 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
+            4 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
+            5 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
+            6 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
+            7 -> organizeLeagues(hasLowerLeague = false,  hasMajorLeague = true)
+            else -> {}
+        }
     }
 
     private suspend fun organizeLeagues(hasLowerLeague: Boolean,  hasMajorLeague: Boolean) {

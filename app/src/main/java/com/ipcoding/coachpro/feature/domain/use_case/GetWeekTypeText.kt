@@ -7,7 +7,7 @@ import com.ipcoding.coachpro.core.util.Constants.END_MATCHES_ONE
 import com.ipcoding.coachpro.core.util.Constants.END_MATCHES_TWO
 import com.ipcoding.coachpro.core.util.Constants.END_TRANSFERS_ONE
 import com.ipcoding.coachpro.core.util.Constants.END_TRANSFERS_TWO
-import com.ipcoding.coachpro.core.util.Constants.PREPARATION_OF_CLUBS_AND_SCHEDULING
+import com.ipcoding.coachpro.core.util.Constants.SCHEDULING_TEXT
 import com.ipcoding.coachpro.core.util.Constants.SEASON_IS_OVER
 import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_ONE
 import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_TWO
@@ -63,15 +63,16 @@ class GetWeekTypeText(
                 WeekType.Tactics(tacticsText)
             }
             SEASON_IS_OVER -> WeekType.Else(seasonOverText)
-            PREPARATION_OF_CLUBS_AND_SCHEDULING -> {
-                preferences.saveRoundNumber(0)
-                WeekType.Else("")
+            SCHEDULING_TEXT -> {
+                WeekType.Else(resourceProvider.getString(R.string.schedule_new_season))
             }
             in START_TRANSFERS_ONE..END_TRANSFERS_ONE -> {
                 WeekType.Transfers(resourceProvider.getString(R.string.offer_player))
             }
             in START_MATCHES_ONE..END_MATCHES_ONE -> WeekType.Tactics(tacticsText)
-            else -> WeekType.Else("Else")
+            else -> {
+                WeekType.Else(resourceProvider.getString(R.string.preparations_new_season))
+            }
         }
 
         return weekType

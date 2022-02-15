@@ -29,14 +29,16 @@ class InfoViewModel @Inject constructor(
         getInfoText()
     }
 
-    private fun saveDestinationScreen() {
-        preferences.saveDestinationScreen(destinationScreen = Screen.InfoScreen.route)
+    fun insertTransferPlayers() {
+        viewModelScope.launch {
+            preferences.loadClubName()?.let { clubName ->
+                allUseCases.insertTransferPlayers(clubName = clubName, week = _week.value)
+            }
+        }
     }
 
-    fun preparationOfClubsAndScheduling() {
-        viewModelScope.launch {
-            allUseCases.preparationOfClubsAndScheduling(preferences.loadSelectedLeague().toString())
-        }
+    private fun saveDestinationScreen() {
+        preferences.saveDestinationScreen(destinationScreen = Screen.InfoScreen.route)
     }
 
     private fun getInfoText() {

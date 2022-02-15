@@ -26,21 +26,21 @@ fun ItemHistory(
     ) {
         CustomText(
             text = history.year.toString(),
-            textAlign = TextAlign.Start,
+            textAlign = TextAlign.Center,
             style = AppTheme.typography.body2,
             modifier = Modifier
                 .weight(1f)
         )
         CustomText(
             text = history.league,
-            textAlign = TextAlign.Start,
+            textAlign = TextAlign.Center,
             style = AppTheme.typography.body2,
             modifier = Modifier
                 .weight(1f)
         )
         CustomText(
             text = history.position.toString(),
-            textAlign = TextAlign.Start,
+            textAlign = TextAlign.Center,
             style = AppTheme.typography.body2,
             modifier = Modifier
                 .weight(1f)

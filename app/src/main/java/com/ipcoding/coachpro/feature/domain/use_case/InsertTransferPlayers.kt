@@ -1,30 +1,31 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
 import com.ipcoding.coachpro.core.util.Constants.ALL_POSITION
-import com.ipcoding.coachpro.core.util.Constants.END_MATCHES_ONE
 import com.ipcoding.coachpro.core.util.Constants.END_TRANSFERS_ONE
 import com.ipcoding.coachpro.core.util.Constants.END_TRANSFERS_TWO
 import com.ipcoding.coachpro.core.util.Constants.START_TRANSFERS_ONE
 import com.ipcoding.coachpro.core.util.Constants.START_TRANSFERS_TWO
 import com.ipcoding.coachpro.feature.domain.model.Player
+import com.ipcoding.coachpro.feature.domain.repository.ClubRepository
 import com.ipcoding.coachpro.feature.domain.repository.PlayerRepository
 import kotlin.math.pow
 
 class InsertTransferPlayers(
-    private val playerRepository: PlayerRepository
+    private val playerRepository: PlayerRepository,
+    private val clubRepository: ClubRepository
 ) {
 
     private var clubRating = 0.0
 
-    suspend operator fun invoke(rating: Double, week: Int) {
+    suspend operator fun invoke(clubName: String, week: Int) {
 
-        clubRating = rating
+        clubRating = clubRepository.getPlayersRating(clubName)
 
         when(week) {
-            START_TRANSFERS_ONE - 1 -> insertAllTransferPlayers()
-            in START_TRANSFERS_ONE..END_TRANSFERS_ONE -> replaceTransferPlayers()
-            END_MATCHES_ONE -> insertAllTransferPlayers()
-            in START_TRANSFERS_TWO..END_TRANSFERS_TWO -> replaceTransferPlayers()
+            START_TRANSFERS_ONE-> insertAllTransferPlayers()
+            in START_TRANSFERS_ONE + 1..END_TRANSFERS_ONE -> replaceTransferPlayers()
+            START_TRANSFERS_TWO -> insertAllTransferPlayers()
+            in START_TRANSFERS_TWO + 1..END_TRANSFERS_TWO -> replaceTransferPlayers()
         }
     }
 
@@ -57,11 +58,11 @@ class InsertTransferPlayers(
 
     private suspend fun insertRandomTransferPlayer() {
         val position = ALL_POSITION.random()
-        val ratingPlayer =  randomDouble(clubRating - 8, clubRating + 4)
+        val ratingPlayer =  randomDouble(clubRating - 4, clubRating + 8)
 
         val age = when {
-            ratingPlayer > clubRating -> (31..36).random()
-            ratingPlayer > clubRating - 4 -> (24..30).random()
+            ratingPlayer > clubRating + 4 -> (31..36).random()
+            ratingPlayer > clubRating -> (24..30).random()
             else -> (18..23).random()
         }
 

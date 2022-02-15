@@ -13,14 +13,13 @@ interface ClubDao {
     suspend fun deleteAll()
 
     @Query("SELECT rating FROM clubs_table WHERE name = :name")
-    suspend fun getRatingFromClub (name: String): Double
+    suspend fun getRatingFromClub(name: String): Double
 
     @Query("SELECT playersRating FROM clubs_table WHERE name = :name")
-    suspend fun getPlayersRating (name: String): Double
+    suspend fun getPlayersRating(name: String): Double
 
-    @Query("SELECT * FROM clubs_table WHERE " +
-            "league = :league ORDER BY points DESC, goalDifference DESC")
-    suspend fun getClubsFromLeague (league: String): List<Club>
+    @Query("SELECT * FROM clubs_table WHERE league = :league ORDER BY points DESC, goalDifference DESC")
+    suspend fun getClubsFromLeague(league: String): List<Club>
 
     @Query("SELECT * FROM clubs_table WHERE league = :league ORDER BY position ASC")
     suspend fun getClubsFromLeagueByPosition(league: String): List<Club>

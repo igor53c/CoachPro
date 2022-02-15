@@ -147,7 +147,7 @@ object AppModule {
             getHistory = GetHistory(historyRepository),
             getNumberOfYears = GetNumberOfYears(historyRepository),
             valueString = ValueString(),
-            insertTransferPlayers = InsertTransferPlayers(playerRepository),
+            insertTransferPlayers = InsertTransferPlayers(playerRepository, clubRepository),
             getTactics = GetTactics(),
             getTransferPlayers = GetTransferPlayers(playerRepository),
             getNumberOfPlayers = GetNumberOfPlayers(playerRepository),

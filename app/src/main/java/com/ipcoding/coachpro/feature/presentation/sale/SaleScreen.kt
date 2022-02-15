@@ -116,7 +116,7 @@ fun SaleScreen(
                 }
             ) {
                 Text(
-                    text = stringResource(id = R.string.cancel),
+                    text = stringResource(id = R.string.reject),
                     style = AppTheme.typography.body1
                 )
             }

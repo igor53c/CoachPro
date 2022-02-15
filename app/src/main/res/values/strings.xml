@@ -49,4 +49,7 @@
     <string name="offer_arrived">An offer has arrived for this player in the amount of:</string>
     <string name="offer_player">Offer for the player!</string>
     <string name="continue_">Continue</string>
+    <string name="reject">Reject</string>
+    <string name="schedule_new_season">The schedule for the new season has come out!</string>
+    <string name="preparations_new_season">Preparations for the new season are underway!</string>
 </resources>

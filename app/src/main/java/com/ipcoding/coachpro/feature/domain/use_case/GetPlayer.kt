@@ -10,15 +10,15 @@ class GetPlayer {
         item1: Int,
         item2: Int
     ): Player? {
-        var player: Player? = null
-        if(players.isNotEmpty()) {
-            var num = 0
-            for (i in 0 until item1) {
-                num += tactics[i + 1] as Int
-            }
-            num += item2
-            player = players[num]
+
+        var num = 0
+        for (i in 0 until item1) {
+            num += tactics[i + 1] as Int
         }
-        return player
+        num += item2
+        return when {
+            num < players.size -> players[num]
+            else -> null
+        }
     }
 }

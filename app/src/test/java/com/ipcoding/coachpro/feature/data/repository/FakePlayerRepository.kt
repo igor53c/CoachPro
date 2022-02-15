@@ -26,14 +26,32 @@ class FakePlayerRepository : PlayerRepository {
     }
 
     override suspend fun getPlayers(): List<Player> {
-        return players
+        return players.filter { it.transferPlayer == false }
     }
 
     override fun getPlayersSortByNumber(): Flow<List<Player>> {
-        return flow { emit(players.sortedBy { it.number }) }
+        return flow { emit(players.filter { it.transferPlayer == false }.sortedBy { it.number }) }
     }
 
     override fun getPlayersSortByRating(): Flow<List<Player>> {
-        return flow { emit(players.sortedBy { it.rating }) }
+        return flow { emit(players.filter { it.transferPlayer == false }.sortedBy { it.rating }) }
+    }
+
+    override fun getTransferPlayersSortById(): Flow<List<Player>> {
+        return flow { emit(players.filter { it.transferPlayer == false }.sortedBy { it.id }) }
+    }
+
+    override suspend fun getAllTransferPlayers(): List<Player> {
+        return players.filter { it.transferPlayer == true }
+    }
+
+    override suspend fun numberOfPlayers(): Int {
+        return players.size
+    }
+
+    override suspend fun deleteAllTransferPlayers() {
+        players.filter { it.transferPlayer == true }.forEach {
+            players.remove(it)
+        }
     }
 }

@@ -9,6 +9,7 @@ import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.util.Constants.CHANGE_HISTORY_AND_PLAYERS_YEAR
 import com.ipcoding.coachpro.core.util.Constants.END_MATCHES_ONE
 import com.ipcoding.coachpro.core.util.Constants.END_MATCHES_TWO
+import com.ipcoding.coachpro.core.util.Constants.PREPARATION_OF_CLUBS_AND_SCHEDULING
 import com.ipcoding.coachpro.core.util.Constants.PREPARING_FOR_NEW_SEASON
 import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_ONE
 import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_TWO
@@ -84,12 +85,6 @@ class MainViewModel @Inject constructor(
         getNumberOfYears()
     }
 
-    private fun insertTransferPlayers(rating: Double) {
-        viewModelScope.launch {
-            allUseCases.insertTransferPlayers(rating, _week.value)
-        }
-    }
-
     private fun saveDestinationScreen() {
        preferences.saveDestinationScreen(destinationScreen = Screen.MainScreen.route)
     }
@@ -125,6 +120,7 @@ class MainViewModel @Inject constructor(
         when(_week.value) {
             CHANGE_HISTORY_AND_PLAYERS_YEAR -> changeHistoryAndPlayersYear()
             PREPARING_FOR_NEW_SEASON -> preparingForNewSeason()
+            PREPARATION_OF_CLUBS_AND_SCHEDULING -> preparationOfClubsAndScheduling()
             52 -> {
                 preferences.saveYear(_year.value + 1)
                 _week.value = 0
@@ -133,6 +129,13 @@ class MainViewModel @Inject constructor(
             else ->  trainingCalculation()
         }
         preferences.saveWeek(_week.value + 1)
+    }
+
+    fun preparationOfClubsAndScheduling() {
+        preferences.saveRoundNumber(0)
+        viewModelScope.launch {
+            allUseCases.preparationOfClubsAndScheduling(preferences.loadSelectedLeague().toString())
+        }
     }
 
     private fun trainingCalculation() {
@@ -186,7 +189,6 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             allUseCases.getPlayersRating(_clubName.value)?.let {
                 _playersRating.value = it
-                insertTransferPlayers(it)
             }
         }
     }

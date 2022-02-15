@@ -67,21 +67,24 @@ class PlayRound(
         val players: List<Player> = playerRepository.getPlayers()
 
         for (i in 0..10) {
-            if (goalsFor > goalsAgainst) {
-                players[i].rating += (36 - players[i].age) * 0.005
-                if (players[i].rating > 99) players[i].rating = 99.0
-                players[i].motivation += 20
-                if (players[i].motivation > 100) players[i].motivation = 100
-            } else {
-                if (goalsFor < goalsAgainst) {
 
-                    players[i].rating -= (players[i].age - 16) * 0.005
-                    if (players[i].rating < 1) players[i].rating = 1.0
-
+            when {
+                goalsFor > goalsAgainst -> {
+                    players[i].rating += 0.25
+                    players[i].motivation += 20
+                    if (players[i].motivation > 100) players[i].motivation = 100
+                }
+                goalsFor == goalsAgainst -> {
+                    players[i].rating += 0.2
+                }
+                goalsFor < goalsAgainst -> {
+                    players[i].rating += 0.15
                     players[i].motivation -= 20
                     if (players[i].motivation < 0) players[i].motivation = 0
                 }
             }
+            if (players[i].rating > 99) players[i].rating = 99.0
+
             players[i].fitness -= 20
             if (players[i].fitness < 0) players[i].fitness = 0
             playerRepository.insertPlayer(players[i])

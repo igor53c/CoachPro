@@ -42,7 +42,7 @@ class PlayersViewModel @Inject constructor(
     }
 
     fun updatePlayer(player: Player) {
-        viewModelScope.launch {
+       viewModelScope.launch {
             allUseCases.updatePlayer(player)
         }
     }
