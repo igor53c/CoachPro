@@ -1,5 +1,6 @@
 package com.ipcoding.coachpro.ui.theme
 
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
@@ -49,3 +50,5 @@ val ExtraLargeDimensions = Dimensions(
     spaceExtraLarge = 128.dp,
     spaceSuperLarge = 192.dp
 )
+
+val LocalAppDimens = staticCompositionLocalOf { NormalDimensions }

@@ -129,16 +129,12 @@ object AppModule {
             getAllMatches = GetAllMatches(matchRepository),
             getMonth = GetMonth(),
             getWeekTypeText = GetWeekTypeText(
-                preferences,
-                matchRepository,
-                clubRepository,
-                resourceProvider
-            ),
+                preferences, matchRepository, clubRepository, resourceProvider),
             playRound = PlayRound(matchRepository, clubRepository, playerRepository, preferences),
-            preparingForNewSeason = PreparingForNewSeason(clubRepository, preferences),
+            preparingForNewSeason = PreparingForNewSeason(
+                clubRepository, matchRepository, preferences),
             preparationOfClubsAndScheduling = PreparationOfClubsAndScheduling(
-                clubRepository, matchRepository
-            ),
+                clubRepository, matchRepository),
             changeHistory = ChangeHistory(clubRepository, historyRepository),
             changePlayersYear = ChangePlayersYear(playerRepository),
             getClubsFromLeagueByPosition = GetClubsFromLeagueByPosition(clubRepository),

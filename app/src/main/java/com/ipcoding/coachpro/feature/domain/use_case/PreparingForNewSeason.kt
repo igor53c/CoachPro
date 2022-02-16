@@ -3,9 +3,11 @@ package com.ipcoding.coachpro.feature.domain.use_case
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.repository.ClubRepository
+import com.ipcoding.coachpro.feature.domain.repository.MatchRepository
 
 class PreparingForNewSeason(
     private val clubRepository: ClubRepository,
+    private val matchRepository: MatchRepository,
     private val preferences: Preferences
 ) {
     private var clubList = emptyList<Club>()
@@ -26,6 +28,7 @@ class PreparingForNewSeason(
             7 -> organizeLeagues(hasLowerLeague = false,  hasMajorLeague = true)
             else -> {}
         }
+        matchRepository.deleteAll()
     }
 
     private suspend fun organizeLeagues(hasLowerLeague: Boolean,  hasMajorLeague: Boolean) {

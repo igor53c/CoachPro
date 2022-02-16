@@ -25,7 +25,7 @@ fun CustomButton(
     enabled: Boolean = true,
     interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     elevation: ButtonElevation? = ButtonDefaults.elevation(),
-    shape: Shape = AppTheme.shapes.medium,
+    shape: Shape = AppTheme.customShapes.roundedCornerShape,
     border: BorderStroke? = null,
     color: Color = AppTheme.colors.primary,
     contentColor: Color = AppTheme.colors.background,

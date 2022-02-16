@@ -19,7 +19,7 @@ fun DateRow(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = AppTheme.dimensions.spaceExtraMedium)
+            .padding(AppTheme.dimensions.spaceSmall)
     ) {
         DateText(
             text = month,

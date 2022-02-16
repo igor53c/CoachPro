@@ -28,7 +28,6 @@ fun MainScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(AppTheme.dimensions.spaceSmall)
     ) {
         Column (
             modifier = Modifier
@@ -37,10 +36,12 @@ fun MainScreen(
             CustomButton(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = AppTheme.dimensions.spaceExtraMedium),
+                    .height(AppTheme.dimensions.spaceExtraLarge)
+                    .padding(bottom = AppTheme.dimensions.spaceSmall),
                 onClick = {
                     navController.navigate(Screen.SelectLeagueScreen.route)
-                }
+                },
+                shape = AppTheme.customShapes.rectangleShape
             ) {
                 Text(
                     text = "CoachPro",
@@ -72,7 +73,8 @@ fun MainScreen(
             onClick = {
                 viewModel.saveWeekYear()
                 navController.navigate(Screen.InfoScreen.route)
-            }
+            },
+            shape = AppTheme.customShapes.rectangleShape
         ) {
             info?.let { weekType ->
                 when(weekType) {

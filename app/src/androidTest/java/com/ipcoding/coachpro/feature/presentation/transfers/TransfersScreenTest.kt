@@ -44,7 +44,7 @@ class TransfersScreenTest {
                     startDestination = Screen.TransfersScreen.route
                 ) {
                     composable(route = Screen.TransfersScreen.route) {
-                        TransfersScreen(navController = navController)
+                        TransfersScreen()
                         BackHandler(true) {}
                     }
                     composable(route = Screen.MainScreen.route) {
@@ -54,17 +54,5 @@ class TransfersScreenTest {
                 }
             }
         }
-    }
-
-    @Test
-    fun backButton_isCorrect() {
-
-        composeRule.onNodeWithText("Back").performClick()
-
-        assertThat(
-            navController.currentDestination?.route?.startsWith(
-                Screen.MainScreen.route
-            )
-        ).isTrue()
     }
 }

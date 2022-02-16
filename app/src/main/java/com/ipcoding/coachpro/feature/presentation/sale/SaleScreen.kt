@@ -26,11 +26,10 @@ fun SaleScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(AppTheme.dimensions.spaceSmall)
-
     ) {
         Column(
             modifier = Modifier
+                .padding(AppTheme.dimensions.spaceSmall)
                 .weight(1f),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
@@ -81,10 +80,8 @@ fun SaleScreen(
                     .weight(1f)
             )
         }
-
         Row(
             modifier = Modifier
-                .padding(bottom = AppTheme.dimensions.spaceExtraSmall)
                 .height(AppTheme.dimensions.spaceLarge)
                 .fillMaxWidth(),
         ) {
@@ -97,7 +94,8 @@ fun SaleScreen(
                     viewModel.deletePlayer(player)
                     viewModel.saveBudget(player.value.toFloat())
                     navController.navigate(Screen.MainScreen.route)
-                }
+                },
+                shape = AppTheme.customShapes.rectangleShape
             ) {
                 Text(
                     text = stringResource(id = R.string.sell),
@@ -105,15 +103,14 @@ fun SaleScreen(
                 )
             }
 
-            Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
-
             CustomButton(
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(1f),
                 onClick = {
                     navController.navigate(Screen.MainScreen.route)
-                }
+                },
+                shape = AppTheme.customShapes.rectangleShape
             ) {
                 Text(
                     text = stringResource(id = R.string.reject),

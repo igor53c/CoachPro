@@ -9,16 +9,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.history.components.ItemHistory
-import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun HistoryScreen(
-    navController: NavController,
     viewModel: HistoryViewModel = hiltViewModel()
 ) {
     val history = viewModel.history.value
@@ -27,10 +24,7 @@ fun HistoryScreen(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .padding(
-                top = AppTheme.dimensions.spaceSmall,
-                bottom = AppTheme.dimensions.spaceSmall
-            ),
+            .padding(top = AppTheme.dimensions.spaceSmall),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
@@ -81,16 +75,5 @@ fun HistoryScreen(
         }
 
         Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
-
-        ButtonBack(
-            navController = navController,
-            modifier = Modifier
-                .height(AppTheme.dimensions.spaceLarge)
-                .fillMaxWidth()
-                .padding(
-                    start = AppTheme.dimensions.spaceSmall,
-                    end = AppTheme.dimensions.spaceSmall
-                )
-        )
     }
 }

@@ -2,6 +2,11 @@
 <resources>
 
     <style name="Theme.CoachPro" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/purple_700</item>
+        <item name="android:statusBarColor">@color/dark_green</item>
+        <item name="android:windowBackground">@color/dark_green</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:navigationBarColor">@color/dark_green</item>
     </style>
+
 </resources>

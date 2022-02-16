@@ -133,7 +133,8 @@ object AppModuleTest {
                 resourceProvider
             ),
             playRound = PlayRound(matchRepository, clubRepository, playerRepository, preferences),
-            preparingForNewSeason = PreparingForNewSeason(clubRepository, preferences),
+            preparingForNewSeason = PreparingForNewSeason(
+                clubRepository, matchRepository,preferences),
             preparationOfClubsAndScheduling = PreparationOfClubsAndScheduling(
                 clubRepository, matchRepository
             ),

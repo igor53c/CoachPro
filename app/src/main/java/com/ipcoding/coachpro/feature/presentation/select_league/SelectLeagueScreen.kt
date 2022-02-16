@@ -1,6 +1,5 @@
 package com.ipcoding.coachpro.feature.presentation.select_league
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Text
@@ -11,7 +10,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
-import com.ipcoding.coachpro.feature.presentation.select_league.components.Item
+import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
@@ -36,15 +35,24 @@ fun SelectLeagueScreen (
             items(7) { item ->
                 val league = stringResource(id = R.string.league)
                 val numberLeague = (item + 1).toString()
-                Item(
-                    title = "$league $numberLeague",
-                    modifier = Modifier.clickable {
+                CustomButton(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .weight(1f),
+                    onClick = {
                         viewModel.saveSelectedLeague(numberLeague)
                         navController.navigate(
                             Screen.SelectClubScreen.route
                         )
-                    }
-                )
+                    },
+                    contentPadding = PaddingValues(AppTheme.dimensions.spaceMedium)
+                ) {
+                    Text(
+                        text = "$league $numberLeague",
+                        color = AppTheme.colors.onPrimary,
+                        style = AppTheme.typography.h6
+                    )
+                }
                 Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
             }
         }

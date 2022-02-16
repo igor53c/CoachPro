@@ -45,7 +45,7 @@ class HistoryScreenTest {
                     startDestination = Screen.HistoryScreen.route
                 ) {
                     composable(route = Screen.HistoryScreen.route) {
-                        HistoryScreen(navController = navController)
+                        HistoryScreen()
                         BackHandler(true) {}
                     }
                     composable(route = Screen.MainScreen.route) {
@@ -55,17 +55,5 @@ class HistoryScreenTest {
                 }
             }
         }
-    }
-
-    @Test
-    fun backButton_isCorrect() {
-
-        composeRule.onNodeWithText("Back").performClick()
-
-       assertThat(
-            navController.currentDestination?.route?.startsWith(
-                Screen.MainScreen.route
-            )
-        ).isTrue()
     }
 }

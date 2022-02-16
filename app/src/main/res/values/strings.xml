@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">CoachPro</string>
 
+    <string name="coach">Coach</string>
     <string name="select_league">Select league:</string>
     <string name="select_club">Select club:</string>
     <string name="select_color_jersey">Select the color of the jersey:</string>

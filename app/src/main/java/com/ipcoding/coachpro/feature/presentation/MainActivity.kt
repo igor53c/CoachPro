@@ -66,12 +66,16 @@ class MainActivity : ComponentActivity() {
                             BackHandler(true) {}
                         }
                         composable(route = Screen.PlayersScreen.route) {
-                            PlayersScreen(navController = navController)
-                            BackHandler(true) {}
+                            PlayersScreen()
+                            BackHandler(true) {
+                                navController.navigate(Screen.MainScreen.route)
+                            }
                         }
                         composable(route = Screen.TableScreen.route) {
-                            TableScreen(navController = navController)
-                            BackHandler(true) {}
+                            TableScreen()
+                            BackHandler(true) {
+                                navController.navigate(Screen.MainScreen.route)
+                            }
                         }
                         composable(
                             route = Screen.TacticsScreen.route + "?nextIsMatch={nextIsMatch}",
@@ -87,7 +91,9 @@ class MainActivity : ComponentActivity() {
                                 navController = navController,
                                 nextIsMatch = nextIsMatch
                             )
-                            BackHandler(true) {}
+                            BackHandler(true) {
+                                navController.navigate(Screen.MainScreen.route)
+                            }
                         }
                         composable(
                             route = Screen.ScheduleScreen.route + "?roundNumber={roundNumber}",
@@ -99,27 +105,30 @@ class MainActivity : ComponentActivity() {
                             )
                         ) {
                             val roundNumber = it.arguments?.getInt("roundNumber") ?: -1
-                            ScheduleScreen(
-                                navController = navController,
-                                roundNumber = roundNumber
-                            )
-                            BackHandler(true) {}
+                            ScheduleScreen(roundNumber = roundNumber)
+                            BackHandler(true) {
+                                navController.navigate(Screen.MainScreen.route)
+                            }
                         }
                         composable(route = Screen.InfoScreen.route) {
                             InfoScreen(navController = navController)
                             BackHandler(true) {}
                         }
                         composable(route = Screen.TransfersScreen.route) {
-                            TransfersScreen(navController = navController)
-                            BackHandler(true) {}
+                            TransfersScreen()
+                            BackHandler(true) {
+                                navController.navigate(Screen.MainScreen.route)
+                            }
                         }
                         composable(route = Screen.ResultScreen.route) {
                             ResultScreen(navController = navController)
                             BackHandler(true) {}
                         }
                         composable(route = Screen.HistoryScreen.route) {
-                            HistoryScreen(navController = navController)
-                            BackHandler(true) {}
+                            HistoryScreen()
+                            BackHandler(true) {
+                                navController.navigate(Screen.MainScreen.route)
+                            }
                         }
                         composable(route = Screen.SaleScreen.route) {
                             SaleScreen(navController = navController)

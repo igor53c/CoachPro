@@ -31,7 +31,7 @@ fun CustomText(
                 .padding(AppTheme.dimensions.spaceSuperSmall)
                 .background(
                     color = backgroundColor,
-                    shape = AppTheme.shapes.medium
+                    shape = AppTheme.customShapes.roundedCornerShape
                 )
                 .fillMaxSize(),
             contentAlignment = Alignment.Center

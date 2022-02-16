@@ -12,7 +12,7 @@ class MakeSchedule(
 
     suspend operator fun invoke(league: String) {
 
-        val tempClubList: List<Club> = clubRepository.getClubsFromLeague(league)
+        val tempClubList: List<Club> = clubRepository.getClubsFromLeagueByPosition(league)
 
         if(tempClubList.isNotEmpty()) {
             val numTeams = tempClubList.size

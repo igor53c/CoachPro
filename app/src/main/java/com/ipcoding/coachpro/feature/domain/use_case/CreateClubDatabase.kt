@@ -1,13 +1,13 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
-import com.ipcoding.coachpro.core.util.Constants.ALL_CLUBS
-import com.ipcoding.coachpro.core.util.Constants.ALL_PLAYERS
-import com.ipcoding.coachpro.core.util.Constants.DEF
-import com.ipcoding.coachpro.core.util.Constants.FOR
-import com.ipcoding.coachpro.core.util.Constants.GK
-import com.ipcoding.coachpro.core.util.Constants.MID
-import com.ipcoding.coachpro.core.util.Constants.T_442
+import com.ipcoding.coachpro.core.util.InputData.ALL_CLUBS
+import com.ipcoding.coachpro.core.util.InputData.ALL_PLAYERS
+import com.ipcoding.coachpro.core.util.InputData.DEF
+import com.ipcoding.coachpro.core.util.InputData.FOR
+import com.ipcoding.coachpro.core.util.InputData.GK
+import com.ipcoding.coachpro.core.util.InputData.MID
+import com.ipcoding.coachpro.core.util.InputData.T_442
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.repository.*

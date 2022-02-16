@@ -1,5 +1,6 @@
 package com.ipcoding.coachpro.ui.theme
 
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
 val Green = Color(0xFF4CAF50)
@@ -86,3 +87,9 @@ fun darkAppColors(
         onError,
         false
 )
+
+val DarkAppColorPalette = darkAppColors()
+
+val LightAppColorPalette = lightAppColors()
+
+val LocalAppColors = staticCompositionLocalOf { LightAppColorPalette }

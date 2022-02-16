@@ -64,7 +64,7 @@ class MainScreenTest {
                         BackHandler(true) {}
                     }
                     composable(route = Screen.PlayersScreen.route) {
-                        PlayersScreen(navController = navController)
+                        PlayersScreen()
                         BackHandler(true) {}
                     }
                     composable(
@@ -93,22 +93,19 @@ class MainScreenTest {
                         )
                     ) {
                         val roundNumber = it.arguments?.getInt("roundNumber") ?: -1
-                        ScheduleScreen(
-                            navController = navController,
-                            roundNumber = roundNumber
-                        )
+                        ScheduleScreen(roundNumber = roundNumber)
                         BackHandler(true) {}
                     }
                     composable(route = Screen.HistoryScreen.route) {
-                        HistoryScreen(navController = navController)
+                        HistoryScreen()
                         BackHandler(true) {}
                     }
                     composable(route = Screen.TransfersScreen.route) {
-                        TransfersScreen(navController = navController)
+                        TransfersScreen()
                         BackHandler(true) {}
                     }
                     composable(route = Screen.TableScreen.route) {
-                        TableScreen(navController = navController)
+                        TableScreen()
                         BackHandler(true) {}
                     }
                 }

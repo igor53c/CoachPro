@@ -45,7 +45,7 @@ class ScheduleScreenTest {
                     startDestination = Screen.ScheduleScreen.route
                 ) {
                     composable(route = Screen.ScheduleScreen.route) {
-                        ScheduleScreen(navController = navController, roundNumber = roundNumber)
+                        ScheduleScreen(roundNumber = roundNumber)
                         BackHandler(true) {}
                     }
                     composable(route = Screen.MainScreen.route) {
@@ -67,17 +67,5 @@ class ScheduleScreenTest {
     fun checkIfSpecifiedRound_scroll() {
 
         composeRule.onNodeWithTag(TestTags.LAZY_ROW_SCHEDULESCREEN).assert(hasScrollAction())
-    }
-
-    @Test
-    fun backButton_isCorrect() {
-
-        composeRule.onNodeWithText("Back").performClick()
-
-        assertThat(
-            navController.currentDestination?.route?.startsWith(
-                Screen.MainScreen.route
-            )
-        ).isTrue()
     }
 }

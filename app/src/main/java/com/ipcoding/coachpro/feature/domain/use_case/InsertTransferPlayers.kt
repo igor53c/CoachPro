@@ -1,6 +1,6 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
-import com.ipcoding.coachpro.core.util.Constants.ALL_POSITION
+import com.ipcoding.coachpro.core.util.InputData.ALL_POSITION
 import com.ipcoding.coachpro.core.util.Constants.END_TRANSFERS_ONE
 import com.ipcoding.coachpro.core.util.Constants.END_TRANSFERS_TWO
 import com.ipcoding.coachpro.core.util.Constants.START_TRANSFERS_ONE

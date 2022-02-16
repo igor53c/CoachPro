@@ -19,8 +19,8 @@ fun Item(
     modifier: Modifier = Modifier,
     title: String,
     style: TextStyle = AppTheme.typography.h6,
-    colorText: Color = AppTheme.colors.primary,
-    colorBackground: Color = AppTheme.colors.background
+    colorText: Color = AppTheme.colors.background,
+    colorBackground: Color = AppTheme.colors.primary
 ) {
     Box(modifier = modifier) {
         Text(
@@ -33,11 +33,11 @@ fun Item(
                         width = AppTheme.dimensions.spaceSuperSmall,
                         color = colorText
                     ),
-                    shape = AppTheme.shapes.medium
+                    shape = AppTheme.customShapes.roundedCornerShape
                 )
                 .background(
                     color = colorBackground,
-                    shape = AppTheme.shapes.medium
+                    shape = AppTheme.customShapes.roundedCornerShape
                 )
                 .padding(AppTheme.dimensions.spaceMedium)
                 .fillMaxWidth(),

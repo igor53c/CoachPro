@@ -31,7 +31,7 @@ fun CentralPart(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = AppTheme.dimensions.spaceMedium)
+            .padding(AppTheme.dimensions.spaceSmall)
     ) {
         MainButton(
             rowOne = stringResource(id = R.string.squad),
@@ -60,7 +60,7 @@ fun CentralPart(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = AppTheme.dimensions.spaceMedium)
+            .padding(AppTheme.dimensions.spaceSmall)
     ) {
         MainButton(
             rowOne = stringResource(id = R.string.tactics),
@@ -91,7 +91,7 @@ fun CentralPart(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = AppTheme.dimensions.spaceMedium)
+            .padding(AppTheme.dimensions.spaceSmall)
     ) {
         MainButton(
             rowOne = stringResource(id = R.string.transfers),

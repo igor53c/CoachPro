@@ -28,60 +28,67 @@ fun ChooseJerseyScreen (
 
     Column(
         modifier = Modifier
-            .padding(AppTheme.dimensions.spaceSmall)
             .fillMaxSize(),
         verticalArrangement = Arrangement.Center
     ) {
-        Text(
-            text = stringResource(id = R.string.select_color_jersey),
-            color = AppTheme.colors.secondaryVariant,
-            style = AppTheme.typography.h6,
-            textAlign = TextAlign.Center,
+        Column(
             modifier = Modifier
-                .fillMaxWidth()
-                .padding(AppTheme.dimensions.spaceMedium)
-        )
-        ColorPicker(onColorSelected = { color ->
-            viewModel.saveColorJersey(color)
-        })
-        Text(
-            text = stringResource(id = R.string.select_color_stripes),
-            color = AppTheme.colors.secondaryVariant,
-            style = AppTheme.typography.h6,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(AppTheme.dimensions.spaceMedium)
-        )
-        ColorPicker(onColorSelected = { color ->
-            viewModel.saveColorStripes(color)
-        })
-        Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceMedium))
-        BoxWithConstraints(
-            modifier = Modifier
-                .weight(1f)
-                .padding(bottom = AppTheme.dimensions.spaceSmall)
+                .padding(AppTheme.dimensions.spaceSmall)
+                .weight(1f),
+            verticalArrangement = Arrangement.Center
         ) {
-            if(this.maxHeight / this.maxWidth < 1.2)
-                maxWidth.value = this.maxHeight / 1.2f else maxWidth.value = this.maxWidth
-            Box(
-                contentAlignment = Alignment.TopCenter,
-                modifier = Modifier.fillMaxSize()
+            Text(
+                text = stringResource(id = R.string.select_color_jersey),
+                color = AppTheme.colors.primary,
+                style = AppTheme.typography.h6,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(AppTheme.dimensions.spaceMedium)
+            )
+            ColorPicker(onColorSelected = { color ->
+                viewModel.saveColorJersey(color)
+            })
+            Text(
+                text = stringResource(id = R.string.select_color_stripes),
+                color = AppTheme.colors.primary,
+                style = AppTheme.typography.h6,
+                textAlign = TextAlign.Center,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(AppTheme.dimensions.spaceMedium)
+            )
+            ColorPicker(onColorSelected = { color ->
+                viewModel.saveColorStripes(color)
+            })
+            Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceMedium))
+            BoxWithConstraints(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(bottom = AppTheme.dimensions.spaceSmall)
             ) {
-                Jersey(
-                    colorJersey = colorJersey,
-                    colorStripes = colorStripes,
-                    colorBorder = AppTheme.colors.onBackground,
-                    modifier = Modifier
-                        .width( maxWidth.value)
-                )
+                if(this.maxHeight / this.maxWidth < 1.2)
+                    maxWidth.value = this.maxHeight / 1.2f else maxWidth.value = this.maxWidth
+                Box(
+                    contentAlignment = Alignment.TopCenter,
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    Jersey(
+                        colorJersey = colorJersey,
+                        colorStripes = colorStripes,
+                        colorBorder = AppTheme.colors.onBackground,
+                        modifier = Modifier
+                            .width( maxWidth.value)
+                    )
+                }
             }
         }
         CustomButton(
             onClick = { navController.navigate(Screen.MainScreen.route) },
             modifier = Modifier
                 .height(AppTheme.dimensions.spaceLarge)
-                .fillMaxWidth()
+                .fillMaxWidth(),
+            shape = AppTheme.customShapes.rectangleShape
         ) {
             Text(
                 text = stringResource(id = R.string.confirm),

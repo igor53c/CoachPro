@@ -6,6 +6,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
+import com.ipcoding.coachpro.core.util.Constants.PREPARATION_OF_CLUBS_AND_SCHEDULING
+import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_ONE
 import com.ipcoding.coachpro.feature.domain.model.Club
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,9 +37,12 @@ class TableViewModel @Inject constructor(
 
     private fun getClubs() {
         viewModelScope.launch {
-            if(preferences.loadRoundNumber() != 0)
-                _clubs.value = allUseCases.getClubs(getStringLeague()) else
-                _clubs.value = allUseCases.getClubsFromLeagueByPosition(getStringLeague())
+            val league = getStringLeague()
+            _clubs.value = when(preferences.loadWeek()) {
+                in PREPARATION_OF_CLUBS_AND_SCHEDULING..START_MATCHES_ONE ->
+                    allUseCases.getClubsFromLeagueByPosition(league)
+                else -> allUseCases.getClubs(league)
+            }
         }
     }
 

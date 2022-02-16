@@ -1,6 +1,6 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
-import com.ipcoding.coachpro.core.util.Constants.ALL_CLUBS
+import com.ipcoding.coachpro.core.util.InputData.ALL_CLUBS
 
 class GetClubsFromLeague {
 

@@ -56,7 +56,7 @@ fun OnePlayer(
         .border(
             width = AppTheme.dimensions.spaceExtraSmall,
             color = borderColor,
-            shape = AppTheme.shapes.medium
+            shape = AppTheme.customShapes.roundedCornerShape
         )
         .padding(AppTheme.dimensions.spaceSuperSmall)
     ) {

@@ -12,12 +12,15 @@ fun RatingText(
     modifier: Modifier = Modifier
 ) {
     CustomButton(
-        modifier = modifier
+        modifier = modifier,
+        color = AppTheme.colors.background,
+        contentColor = AppTheme.colors.primary,
+        shape = AppTheme.customShapes.rectangleShape
     ) {
         Text(
             text = title,
             style = AppTheme.typography.body1,
-            color = AppTheme.colors.background
+            color = AppTheme.colors.primary
         )
     }
 }

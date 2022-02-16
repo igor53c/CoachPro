@@ -131,8 +131,7 @@ class MainViewModel @Inject constructor(
         preferences.saveWeek(_week.value + 1)
     }
 
-    fun preparationOfClubsAndScheduling() {
-        preferences.saveRoundNumber(0)
+    private fun preparationOfClubsAndScheduling() {
         viewModelScope.launch {
             allUseCases.preparationOfClubsAndScheduling(preferences.loadSelectedLeague().toString())
         }
@@ -157,6 +156,7 @@ class MainViewModel @Inject constructor(
     }
 
     private fun preparingForNewSeason() {
+        preferences.saveRoundNumber(0)
         viewModelScope.launch {
             allUseCases.preparingForNewSeason(_clubName.value, _league.value.toInt())
         }

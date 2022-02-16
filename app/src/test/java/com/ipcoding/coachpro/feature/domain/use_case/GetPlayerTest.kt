@@ -1,7 +1,7 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
 import com.google.common.truth.Truth.assertThat
-import com.ipcoding.coachpro.core.util.Constants.T_433
+import com.ipcoding.coachpro.core.util.InputData.T_433
 import com.ipcoding.coachpro.feature.domain.model.Player
 import org.junit.Before
 import org.junit.Test

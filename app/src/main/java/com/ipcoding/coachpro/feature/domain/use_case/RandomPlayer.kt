@@ -13,7 +13,7 @@ class RandomPlayer(
 
         var player: Player? = null
 
-        if(players.size > 0) player = players[players.indices.random()]
+        if(players.isNotEmpty()) player = players[players.indices.random()]
 
         player?.let {
             it.value = getRandomPlayerValue(it.rating, it.age)

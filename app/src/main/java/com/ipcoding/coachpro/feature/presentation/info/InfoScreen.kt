@@ -24,12 +24,13 @@ fun InfoScreen(
 
     Column(
         modifier = Modifier
-            .padding(AppTheme.dimensions.spaceSmall)
             .fillMaxSize()
     ) {
         Box(
             contentAlignment = Alignment.Center,
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .padding(AppTheme.dimensions.spaceSmall)
+                .weight(1f)
         ) {
             info?.let {
                 Text(
@@ -64,7 +65,8 @@ fun InfoScreen(
                         }
                     }
                 }
-            }
+            },
+            shape = AppTheme.customShapes.rectangleShape
         ) {
             Text(
                 text = stringResource(id = R.string.continue_),

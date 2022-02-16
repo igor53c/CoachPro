@@ -5,15 +5,16 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material.Divider
+import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.ipcoding.coachpro.core.util.TestTags
-import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.schedule.components.OneMatch
 import com.ipcoding.coachpro.feature.presentation.select_league.components.Item
 import com.ipcoding.coachpro.ui.theme.AppTheme
@@ -22,7 +23,6 @@ import kotlinx.coroutines.launch
 @SuppressLint("CoroutineCreationDuringComposition")
 @Composable
 fun ScheduleScreen(
-    navController: NavController,
     roundNumber: Int,
     viewModel: ScheduleViewModel = hiltViewModel()
 ) {
@@ -35,10 +35,23 @@ fun ScheduleScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(AppTheme.dimensions.spaceSmall)
     ) {
-        Item(title = viewModel.getStringLeague())
+        Text(
+            text = viewModel.getStringLeague(),
+            style = AppTheme.typography.h6,
+            color =AppTheme.colors.primary,
+            modifier = Modifier
+                .padding(AppTheme.dimensions.spaceMedium)
+                .fillMaxWidth(),
+            textAlign = TextAlign.Center
+        )
+        Divider(
+            color = AppTheme.colors.primary,
+            thickness = AppTheme.dimensions.spaceSuperSmall
+        )
+
         Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceMedium))
+
         BoxWithConstraints(
             modifier = Modifier
                 .weight(1f)
@@ -63,19 +76,22 @@ fun ScheduleScreen(
                     ) {
                         Item(
                             title = "Round ${item1 + 1}",
-                            colorText = AppTheme.colors.background,
-                            colorBackground = AppTheme.colors.primary,
-                            modifier = Modifier.fillMaxWidth()
+                            colorText = AppTheme.colors.primary,
+                            colorBackground = AppTheme.colors.background,
+                            modifier = Modifier
+                                .padding(
+                                   start = AppTheme.dimensions.spaceSmall,
+                                   end = AppTheme.dimensions.spaceSmall
+                                )
+                                .fillMaxWidth()
                         )
+
                         Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
 
                         LazyColumn(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(
-                                    top = AppTheme.dimensions.spaceSmall,
-                                    bottom = AppTheme.dimensions.spaceSmall
-                                )
+                                .padding(AppTheme.dimensions.spaceSmall)
                         ) {
                             items(10) { item2 ->
                                 if(matches.isNotEmpty()) {
@@ -93,11 +109,5 @@ fun ScheduleScreen(
                 }
             }
         }
-        ButtonBack(
-            navController = navController,
-            modifier = Modifier
-                .height(AppTheme.dimensions.spaceLarge)
-                .fillMaxWidth(),
-        )
     }
 }

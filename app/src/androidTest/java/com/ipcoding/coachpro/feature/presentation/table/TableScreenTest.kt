@@ -43,7 +43,7 @@ class TableScreenTest {
                     startDestination = Screen.TableScreen.route
                 ) {
                     composable(route = Screen.TableScreen.route) {
-                        TableScreen(navController = navController)
+                        TableScreen()
                         BackHandler(true) {}
                     }
                     composable(route = Screen.MainScreen.route) {
@@ -64,17 +64,5 @@ class TableScreenTest {
         composeRule.onNodeWithText("General").performClick()
         composeRule.onNodeWithText("F").assertDoesNotExist()
         composeRule.onNodeWithText("W").assertIsDisplayed()
-    }
-
-    @Test
-    fun backButton_isCorrect() {
-
-        composeRule.onNodeWithText("Back").performClick()
-
-        assertThat(
-            navController.currentDestination?.route?.startsWith(
-                Screen.MainScreen.route
-            )
-        ).isTrue()
     }
 }

@@ -5,22 +5,9 @@ import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
-
-private val DarkAppColorPalette = darkAppColors()
-
-private val LightAppColorPalette = lightAppColors()
-
-private val LocalAppTypography = staticCompositionLocalOf { NormalTypography }
-
-private val LocalAppColors = staticCompositionLocalOf { LightAppColorPalette }
-
-private val LocalAppDimens = staticCompositionLocalOf { NormalDimensions }
-
-private val LocalAppShapes = staticCompositionLocalOf { NormalShapes }
 
 @Composable
 fun CoachProTheme(
@@ -58,7 +45,7 @@ fun CoachProTheme(
         colors = colors,
         typography = typography,
         dimensions = dimensions,
-        shapes = shapes,
+        customShapes = shapes,
         content = content
     )
 }
@@ -68,7 +55,7 @@ fun AppTheme(
     colors: AppColors = AppTheme.colors,
     typography: Typography = AppTheme.typography,
     dimensions: Dimensions = AppTheme.dimensions,
-    shapes: Shapes = AppTheme.shapes,
+    customShapes: CustomShapes = AppTheme.customShapes,
     content: @Composable () -> Unit
 ) {
     val rememberedColors = remember { colors.copy() }.apply { updateColorsFrom(colors) }
@@ -76,7 +63,7 @@ fun AppTheme(
         LocalAppColors provides rememberedColors,
         LocalAppDimens provides dimensions,
         LocalAppTypography provides typography,
-        LocalAppShapes provides shapes
+        LocalAppShapes provides customShapes
     ) {
         content()
     }
@@ -96,7 +83,7 @@ object AppTheme {
         @Composable
         get() = LocalAppDimens.current
 
-    val shapes: Shapes
+    val customShapes: CustomShapes
         @Composable
         get() = LocalAppShapes.current
 }

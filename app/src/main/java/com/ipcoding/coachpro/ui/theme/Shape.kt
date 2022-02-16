@@ -1,29 +1,25 @@
 package com.ipcoding.coachpro.ui.theme
 
+import androidx.compose.foundation.shape.CornerBasedShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Shapes
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 
-val SmallShapes = Shapes(
-    small = RoundedCornerShape(3.dp),
-    medium = RoundedCornerShape(6.dp),
-    large = RoundedCornerShape(12.dp)
+val SmallShapes = CustomShapes(roundedCornerShape = RoundedCornerShape(6.dp))
+
+val NormalShapes = CustomShapes(roundedCornerShape = RoundedCornerShape(8.dp))
+
+val LargeShapes = CustomShapes(roundedCornerShape = RoundedCornerShape(12.dp))
+
+val ExtraLargeShapes = CustomShapes(roundedCornerShape = RoundedCornerShape(16.dp))
+
+@Immutable
+class CustomShapes(
+    val roundedCornerShape: CornerBasedShape = RoundedCornerShape(4.dp),
+    val rectangleShape: Shape  = RectangleShape
 )
 
-val NormalShapes = Shapes(
-    small = RoundedCornerShape(4.dp),
-    medium = RoundedCornerShape(8.dp),
-    large = RoundedCornerShape(16.dp)
-)
-
-val LargeShapes = Shapes(
-    small = RoundedCornerShape(6.dp),
-    medium = RoundedCornerShape(12.dp),
-    large = RoundedCornerShape(24.dp)
-)
-
-val ExtraLargeShapes = Shapes(
-    small = RoundedCornerShape(8.dp),
-    medium = RoundedCornerShape(16.dp),
-    large = RoundedCornerShape(32.dp)
-)
+val LocalAppShapes = staticCompositionLocalOf { NormalShapes }

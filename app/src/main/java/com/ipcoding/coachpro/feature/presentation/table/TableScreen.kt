@@ -12,9 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
-import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
 import com.ipcoding.coachpro.feature.presentation.table.components.ClubInfo
 import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
@@ -23,7 +21,6 @@ import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun TableScreen(
-    navController: NavController,
     viewModel: TableViewModel = hiltViewModel()
 ) {
     val clubs = viewModel.clubs.value
@@ -47,10 +44,7 @@ fun TableScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(
-                top = AppTheme.dimensions.spaceSmall,
-                bottom = AppTheme.dimensions.spaceSmall
-            ),
+            .padding(top = AppTheme.dimensions.spaceSmall),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -104,37 +98,21 @@ fun TableScreen(
             }
         }
         Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
-        Row(
+
+        CustomButton(
             modifier = Modifier
                 .height(AppTheme.dimensions.spaceLarge)
-                .fillMaxWidth()
-                .padding(
-                    start = AppTheme.dimensions.spaceSmall,
-                    end = AppTheme.dimensions.spaceSmall
-                ),
+                .fillMaxWidth(),
+            onClick = {
+                goalsView.value = !goalsView.value
+            },
+            shape = AppTheme.customShapes.rectangleShape
         ) {
-            ButtonBack(
-                navController = navController,
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(1f)
+            Text(
+                text = buttonGoalsText.value,
+                color = AppTheme.colors.onPrimary,
+                style = AppTheme.typography.body1
             )
-            Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
-            CustomButton(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(1f),
-                onClick = {
-                    goalsView.value = !goalsView.value
-                }
-            ) {
-                Text(
-                    text = buttonGoalsText.value,
-                    color = AppTheme.colors.onPrimary,
-                    style = AppTheme.typography.body1
-                )
-            }
         }
     }
-
 }

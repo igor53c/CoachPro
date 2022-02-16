@@ -70,15 +70,15 @@ class PlayRound(
 
             when {
                 goalsFor > goalsAgainst -> {
-                    players[i].rating += 0.25
+                    players[i].rating += 0.15
                     players[i].motivation += 20
                     if (players[i].motivation > 100) players[i].motivation = 100
                 }
                 goalsFor == goalsAgainst -> {
-                    players[i].rating += 0.2
+                    players[i].rating += 0.10
                 }
                 goalsFor < goalsAgainst -> {
-                    players[i].rating += 0.15
+                    players[i].rating += 0.05
                     players[i].motivation -= 20
                     if (players[i].motivation < 0) players[i].motivation = 0
                 }

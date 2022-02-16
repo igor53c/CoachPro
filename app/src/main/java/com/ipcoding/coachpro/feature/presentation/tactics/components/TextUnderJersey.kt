@@ -37,7 +37,7 @@ fun TextUnderJersey(
         modifier = Modifier
             .background(
                 color = colorBackground,
-                shape = AppTheme.shapes.medium
+                shape = AppTheme.customShapes.roundedCornerShape
             )
             .fillMaxWidth()
             .padding(AppTheme.dimensions.spaceSuperSmall)

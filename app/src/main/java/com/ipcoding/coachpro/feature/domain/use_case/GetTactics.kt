@@ -1,12 +1,12 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
-import com.ipcoding.coachpro.core.util.Constants.T_343
-import com.ipcoding.coachpro.core.util.Constants.T_352
-import com.ipcoding.coachpro.core.util.Constants.T_433
-import com.ipcoding.coachpro.core.util.Constants.T_442
-import com.ipcoding.coachpro.core.util.Constants.T_451
-import com.ipcoding.coachpro.core.util.Constants.T_532
-import com.ipcoding.coachpro.core.util.Constants.T_541
+import com.ipcoding.coachpro.core.util.InputData.T_343
+import com.ipcoding.coachpro.core.util.InputData.T_352
+import com.ipcoding.coachpro.core.util.InputData.T_433
+import com.ipcoding.coachpro.core.util.InputData.T_442
+import com.ipcoding.coachpro.core.util.InputData.T_451
+import com.ipcoding.coachpro.core.util.InputData.T_532
+import com.ipcoding.coachpro.core.util.InputData.T_541
 
 class GetTactics {
 

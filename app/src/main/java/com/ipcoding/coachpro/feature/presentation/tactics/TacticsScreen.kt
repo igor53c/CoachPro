@@ -16,7 +16,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
-import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
 import com.ipcoding.coachpro.feature.presentation.tactics.components.*
 import com.ipcoding.coachpro.feature.presentation.util.Screen
@@ -39,71 +38,66 @@ fun TacticsScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(AppTheme.dimensions.spaceSmall)
     ) {
-        TacticsPicker(
-            allTactics = allTactics,
-            colorText = colorText,
-            colorTextBackground = colorTextBackground,
-            tactics = tactics,
-            viewModel = viewModel
-        )
-        Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
-
-        rating.value =
-            String.format("%.1f", viewModel.calculatingFirstTeamRating(players, tactics))
-
-        BoxWithConstraints(
+        Column(
             modifier = Modifier
                 .weight(1f)
-                .padding(bottom = AppTheme.dimensions.spaceSmall),
-            contentAlignment = Alignment.TopCenter
-        )  {
-            if(this.maxHeight / this.maxWidth < 1.395)
-                maxWidth.value = this.maxHeight / 1.395f else maxWidth.value = this.maxWidth
-
-            FootballField(
-                colorLine = MaterialTheme.colors.onBackground,
-                width = maxWidth.value
+                .padding(AppTheme.dimensions.spaceSmall)
+        ) {
+            TacticsPicker(
+                allTactics = allTactics,
+                colorText = colorText,
+                colorTextBackground = colorTextBackground,
+                tactics = tactics,
+                viewModel = viewModel
             )
-            LazyColumn(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = Modifier
-            ) {
-                items(5) { item1 ->
-                    LazyRow(modifier = Modifier.height(height = maxWidth.value / 3.6f)) {
-                        val numberItem2 =
-                            if(item1 == 4) players.size - 11 else tactics[item1 + 1] as Int
-                        items(numberItem2) { item2 ->
+            Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
 
-                            OnePlayer(
-                                item1 = item1,
-                                item2 = item2,
-                                viewModel = viewModel,
-                                players = players,
-                                tactics = tactics,
-                                maxWidth = maxWidth.value
-                            )
+            rating.value =
+                String.format("%.1f", viewModel.calculatingFirstTeamRating(players, tactics))
+
+            BoxWithConstraints(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(bottom = AppTheme.dimensions.spaceSmall),
+                contentAlignment = Alignment.TopCenter
+            )  {
+                if(this.maxHeight / this.maxWidth < 1.395)
+                    maxWidth.value = this.maxHeight / 1.395f else maxWidth.value = this.maxWidth
+
+                FootballField(
+                    colorLine = MaterialTheme.colors.onBackground,
+                    width = maxWidth.value
+                )
+                LazyColumn(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                ) {
+                    items(5) { item1 ->
+                        LazyRow(modifier = Modifier.height(height = maxWidth.value / 3.6f)) {
+                            val numberItem2 =
+                                if(item1 == 4) players.size - 11 else tactics[item1 + 1] as Int
+                            items(numberItem2) { item2 ->
+
+                                OnePlayer(
+                                    item1 = item1,
+                                    item2 = item2,
+                                    viewModel = viewModel,
+                                    players = players,
+                                    tactics = tactics,
+                                    maxWidth = maxWidth.value
+                                )
+                            }
                         }
                     }
                 }
             }
         }
-        Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
         Row(
             modifier = Modifier
                 .height(AppTheme.dimensions.spaceLarge)
                 .fillMaxWidth(),
         ) {
-            if(nextIsMatch == "no") {
-                ButtonBack(
-                    navController = navController,
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .weight(1f)
-                )
-                Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
-            }
             RatingText(
                 modifier = Modifier
                     .fillMaxHeight()
@@ -111,7 +105,6 @@ fun TacticsScreen(
                 title = "Rating: ${rating.value}"
             )
             if(nextIsMatch == "yes") {
-                Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
                 CustomButton(
                     modifier = Modifier
                         .fillMaxHeight()
@@ -120,7 +113,8 @@ fun TacticsScreen(
                         viewModel.increaseRound()
                         viewModel.saveNextDestinationScreen()
                         navController.navigate(Screen.ResultScreen.route)
-                    }
+                    },
+                    shape = AppTheme.customShapes.rectangleShape
                 ) {
                     Text(
                         text = stringResource(id = R.string.confirm),

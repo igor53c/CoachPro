@@ -13,10 +13,8 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.core.util.TestTags
-import com.ipcoding.coachpro.feature.presentation.players.components.ButtonBack
 import com.ipcoding.coachpro.feature.presentation.players.components.OnePLayer
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
 import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
@@ -24,7 +22,6 @@ import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
 fun PlayersScreen (
-    navController: NavController,
     viewModel: PlayersViewModel = hiltViewModel()
 ) {
     val players = viewModel.players.value
@@ -34,10 +31,7 @@ fun PlayersScreen (
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .fillMaxSize()
-            .padding(
-                top = AppTheme.dimensions.spaceSmall,
-                bottom = AppTheme.dimensions.spaceSmall
-            ),
+            .padding(top = AppTheme.dimensions.spaceSmall),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Row(
@@ -129,37 +123,22 @@ fun PlayersScreen (
             }
         }
         Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceSmall))
-        Row(
+
+        CustomButton(
             modifier = Modifier
                 .height(AppTheme.dimensions.spaceLarge)
                 .fillMaxWidth()
-                .padding(
-                    start = AppTheme.dimensions.spaceSmall,
-                    end = AppTheme.dimensions.spaceSmall
-                )
+                .testTag(TestTags.TRAINING_BUTTON),
+            onClick = {
+                trainingView.value = !trainingView.value
+            },
+            shape = AppTheme.customShapes.rectangleShape
         ) {
-            ButtonBack(
-                modifier = Modifier
-                    .weight(1f)
-                    .fillMaxHeight(),
-                navController = navController
+            Text(
+                text = buttonTrainingText.value,
+                color = AppTheme.colors.onPrimary,
+                style = AppTheme.typography.body1,
             )
-            Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSmall))
-            CustomButton(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .weight(1f)
-                    .testTag(TestTags.TRAINING_BUTTON),
-                onClick = {
-                    trainingView.value = !trainingView.value
-                }
-            ) {
-                Text(
-                    text = buttonTrainingText.value,
-                    color = AppTheme.colors.onPrimary,
-                    style = AppTheme.typography.body1,
-                )
-            }
         }
     }
 }

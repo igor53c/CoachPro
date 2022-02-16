@@ -23,16 +23,16 @@ fun ClubName(
         style = AppTheme.typography.h6,
         textAlign = TextAlign.Center,
         modifier = Modifier
-            .padding(bottom = AppTheme.dimensions.spaceExtraMedium)
+            .padding(AppTheme.dimensions.spaceSmall)
             .fillMaxWidth()
             .border(
                 width = AppTheme.dimensions.spaceSuperSmall,
                 color = colorText,
-                shape = AppTheme.shapes.medium
+                shape = AppTheme.customShapes.roundedCornerShape
             )
             .background(
                 color = colorBackground,
-                shape = AppTheme.shapes.medium
+                shape = AppTheme.customShapes.roundedCornerShape
             )
             .padding(AppTheme.dimensions.spaceMedium)
     )

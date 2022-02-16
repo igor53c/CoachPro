@@ -28,7 +28,7 @@ class PreparationOfClubsAndScheduling(
                 rating -= 10.0
             }
         }
-        matchRepository.deleteAll()
+
         val clubs = clubRepository.getClubsFromLeague("League $league")
         for (club in clubs) {
             club.apply {

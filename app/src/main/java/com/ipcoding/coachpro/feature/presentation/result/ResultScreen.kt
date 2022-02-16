@@ -26,6 +26,11 @@ fun ResultScreen(
     val animationPlayed = remember { mutableStateOf(false) }
     val match = viewModel.match.value
     val roundNumber = viewModel.roundNumber.value
+    val goalsHost = remember { mutableStateOf("") }
+    val goalsGuest = remember { mutableStateOf("") }
+
+    if(match?.goalsHost != -1) goalsHost.value = match?.goalsHost.toString()
+    if(match?.goalsGuest != -1) goalsGuest.value = match?.goalsGuest.toString()
 
     val time = animateIntAsState(
         targetValue = if(animationPlayed.value) 24 else 0,
@@ -55,7 +60,7 @@ fun ResultScreen(
         OneBox(
             modifier = Modifier.weight(1f),
             showText = time.value > 17,
-            text = "${match?.goalsHost}",
+            text = goalsHost.value,
             style = AppTheme.typography.h1
         )
         OneBox(
@@ -67,7 +72,7 @@ fun ResultScreen(
         OneBox(
             modifier = Modifier.weight(1f),
             showText = time.value > 22,
-            text = "${match?.goalsGuest}",
+            text = goalsGuest.value,
             style = AppTheme.typography.h1
         )
         OneBox(

@@ -48,14 +48,14 @@ fun TacticsPicker(
                     }
                     .background(
                         color = colorTextBackground.value,
-                        shape = AppTheme.shapes.medium
+                        shape = AppTheme.customShapes.roundedCornerShape
                     )
                     .border(
                         border = BorderStroke(
                             width = AppTheme.dimensions.spaceSuperSmall,
                             color = AppTheme.colors.primary
                         ),
-                        shape = AppTheme.shapes.medium
+                        shape = AppTheme.customShapes.roundedCornerShape
                     )
                     .padding(AppTheme.dimensions.spaceSmall),
                 textAlign = TextAlign.Center

@@ -28,7 +28,7 @@ fun OneMatch(
         modifier = modifier
             .background(
                 color = colorBackground.value,
-                shape = AppTheme.shapes.medium
+                shape = AppTheme.customShapes.roundedCornerShape
             )
             .padding(
                 top = AppTheme.dimensions.spaceExtraSmall,

@@ -44,7 +44,7 @@ class PlayersScreenTest {
                     startDestination = Screen.PlayersScreen.route
                 ) {
                     composable(route = Screen.PlayersScreen.route) {
-                        PlayersScreen(navController = navController)
+                        PlayersScreen()
                         BackHandler(true) {}
                     }
                     composable(route = Screen.MainScreen.route) {
@@ -63,14 +63,5 @@ class PlayersScreenTest {
         composeRule.onNodeWithTag(TestTags.TRAINING_TEXT).assertIsDisplayed()
         composeRule.onNodeWithTag(TestTags.TRAINING_BUTTON).performClick()
         composeRule.onNodeWithTag(TestTags.TRAINING_TEXT).assertDoesNotExist()
-    }
-
-    @Test
-    fun backButton_isCorrect() {
-
-        composeRule.onNodeWithText("Back").performClick()
-
-        assertThat(navController.currentDestination?.route?.startsWith(
-            Screen.MainScreen.route)).isTrue()
     }
 }

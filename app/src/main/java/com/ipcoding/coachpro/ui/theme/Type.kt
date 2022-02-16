@@ -1,6 +1,7 @@
 package com.ipcoding.coachpro.ui.theme
 
 import androidx.compose.material.Typography
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontStyle
@@ -83,3 +84,5 @@ val ExtraLargeTypography = Typography(
     caption = NormalTypography.caption.copy(fontSize = 24.sp),
     overline = NormalTypography.overline.copy(fontSize = 20.sp)
 )
+
+val LocalAppTypography = staticCompositionLocalOf { NormalTypography }
