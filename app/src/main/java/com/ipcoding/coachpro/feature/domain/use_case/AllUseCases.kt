@@ -41,5 +41,6 @@ data class AllUseCases (
     val getNumberOfPlayers: GetNumberOfPlayers,
     val transferWindow: TransferWindow,
     val randomPlayer: RandomPlayer,
-    val deletePlayer: DeletePlayer
+    val deletePlayer: DeletePlayer,
+    val getFormMatches: GetFormMatches
 )

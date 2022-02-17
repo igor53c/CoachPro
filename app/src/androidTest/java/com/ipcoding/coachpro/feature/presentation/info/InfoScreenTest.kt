@@ -8,11 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.ipcoding.coachpro.core.data.resources.AndroidResourceProvider
-import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.di.AppModule
-import com.ipcoding.coachpro.feature.data.repository.*
-import com.ipcoding.coachpro.feature.domain.use_case.*
 import com.ipcoding.coachpro.feature.presentation.MainActivity
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
 import com.ipcoding.coachpro.feature.presentation.util.Screen
@@ -20,7 +16,6 @@ import com.ipcoding.coachpro.ui.theme.CoachProTheme
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
-import io.mockk.mockk
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

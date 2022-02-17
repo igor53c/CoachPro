@@ -2,9 +2,11 @@ package com.ipcoding.coachpro.feature.domain.use_case
 
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.domain.model.Club
+import com.ipcoding.coachpro.feature.domain.model.Matches
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.repository.ClubRepository
 import com.ipcoding.coachpro.feature.domain.repository.MatchRepository
+import com.ipcoding.coachpro.feature.domain.repository.MatchesRepository
 import com.ipcoding.coachpro.feature.domain.repository.PlayerRepository
 import kotlin.math.ceil
 import kotlin.random.Random
@@ -13,6 +15,7 @@ class PlayRound(
     private val matchRepository: MatchRepository,
     private val clubRepository: ClubRepository,
     private val playerRepository: PlayerRepository,
+    private val matchesRepository: MatchesRepository,
     private val preferences: Preferences
 ) {
 
@@ -30,11 +33,30 @@ class PlayRound(
                 match.goalsHost = numberGoals(ratingDifference + 2)
                 match.goalsGuest = numberGoals(- ratingDifference - 2)
 
-                if(host?.name == clubName)
-                    changePlayerRatingBasedOnResult(match.goalsHost, match.goalsGuest)
-
-                if(guest.name == clubName)
-                    changePlayerRatingBasedOnResult(match.goalsGuest, match.goalsHost)
+                when(clubName) {
+                    host?.name -> {
+                        changePlayerRatingBasedOnResult(match.goalsHost, match.goalsGuest)
+                        matchesRepository.insertMatches(
+                            Matches(
+                                opponent = match.guest,
+                                place = "host",
+                                goalsFor = match.goalsHost,
+                                goalsAgainst = match.goalsGuest
+                            )
+                        )
+                    }
+                    guest.name -> {
+                        changePlayerRatingBasedOnResult(match.goalsGuest, match.goalsHost)
+                        matchesRepository.insertMatches(
+                            Matches(
+                                opponent = match.host,
+                                place = "guest",
+                                goalsFor = match.goalsGuest,
+                                goalsAgainst = match.goalsHost
+                            )
+                        )
+                    }
+                }
             }
             matchRepository.insertMatch(match)
             changeClubDetails(host, match.goalsHost, match.goalsGuest)?.let {

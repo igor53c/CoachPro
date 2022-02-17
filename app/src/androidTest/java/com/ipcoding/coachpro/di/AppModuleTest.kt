@@ -132,7 +132,8 @@ object AppModuleTest {
                 clubRepository,
                 resourceProvider
             ),
-            playRound = PlayRound(matchRepository, clubRepository, playerRepository, preferences),
+            playRound = PlayRound(matchRepository, clubRepository, playerRepository,
+                matchesRepository, preferences),
             preparingForNewSeason = PreparingForNewSeason(
                 clubRepository, matchRepository,preferences),
             preparationOfClubsAndScheduling = PreparationOfClubsAndScheduling(
@@ -152,7 +153,8 @@ object AppModuleTest {
             getNumberOfPlayers = GetNumberOfPlayers(playerRepository),
             transferWindow = TransferWindow(),
             randomPlayer = RandomPlayer(playerRepository),
-            deletePlayer = DeletePlayer(playerRepository)
+            deletePlayer = DeletePlayer(playerRepository),
+            getFormMatches = GetFormMatches(matchesRepository)
         )
     }
 }

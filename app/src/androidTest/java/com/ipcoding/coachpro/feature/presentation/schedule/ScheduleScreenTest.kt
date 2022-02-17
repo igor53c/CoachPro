@@ -7,7 +7,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.common.truth.Truth.assertThat
 import com.ipcoding.coachpro.core.util.TestTags
 import com.ipcoding.coachpro.di.AppModule
 import com.ipcoding.coachpro.feature.presentation.MainActivity

@@ -14,6 +14,7 @@ import com.ipcoding.coachpro.core.util.Constants.PREPARING_FOR_NEW_SEASON
 import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_ONE
 import com.ipcoding.coachpro.core.util.Constants.START_MATCHES_TWO
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
+import com.ipcoding.coachpro.feature.domain.util.FormMatch
 import com.ipcoding.coachpro.feature.domain.util.WeekType
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.Colors.indexToColor
@@ -67,6 +68,9 @@ class MainViewModel @Inject constructor(
     private var _history = mutableStateOf(0)
     val history: State<Int> = _history
 
+    private var _formMatches = mutableStateOf<List<FormMatch>>(emptyList())
+    val formMatches: State<List<FormMatch>> = _formMatches
+
     init {
         saveDestinationScreen()
         loadClubName()
@@ -83,6 +87,13 @@ class MainViewModel @Inject constructor(
         checkColors()
         getClubPositionString()
         getNumberOfYears()
+        getFormMatches()
+    }
+
+    private fun getFormMatches() {
+        viewModelScope.launch {
+            _formMatches.value = allUseCases.getFormMatches()
+        }
     }
 
     private fun saveDestinationScreen() {

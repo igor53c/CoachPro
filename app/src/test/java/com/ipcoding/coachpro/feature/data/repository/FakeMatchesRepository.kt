@@ -17,7 +17,10 @@ class FakeMatchesRepository : MatchesRepository {
         matchesList.clear()
     }
 
-    override fun getLastTenMatches(): Flow<List<Matches>> {
-        return flow { emit(matchesList) }
+    override suspend fun getLastTenMatches(): List<Matches> {
+        return  when {
+            matchesList.size > 10 -> matchesList.sortedBy { it.id }.subList(0, 10)
+            else -> matchesList.sortedBy { it.id }
+        }
     }
 }

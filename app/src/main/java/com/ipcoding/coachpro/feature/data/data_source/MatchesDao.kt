@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
 import com.ipcoding.coachpro.feature.domain.model.Matches
-import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MatchesDao {
@@ -16,5 +15,5 @@ interface MatchesDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM matches_table ORDER BY id DESC LIMIT 10")
-    fun getLastTenMatches (): Flow<List<Matches>>
+    suspend fun getLastTenMatches (): List<Matches>
 }

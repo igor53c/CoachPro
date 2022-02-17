@@ -22,6 +22,7 @@ fun MainScreen(
     viewModel: MainViewModel = hiltViewModel()
 ) {
     val colorText = viewModel.colorText.value
+    val formMatches = viewModel.formMatches.value
     val colorBackground = viewModel.colorJersey.value
     val info = viewModel.info.value
 
@@ -64,6 +65,10 @@ fun MainScreen(
                 colorBackground = colorBackground,
                 colorText = colorText
             )
+
+            Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceMedium))
+
+            FormMatches(formMatches)
         }
         CustomButton(
             modifier = Modifier
