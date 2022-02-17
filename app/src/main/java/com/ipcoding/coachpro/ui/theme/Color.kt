@@ -26,7 +26,10 @@ object Colors {
         }
 
         fun indexToColor (index: Int): Color {
-                return AllColors[index]
+                return when(index) {
+                        in AllColors.indices -> AllColors[index]
+                        else -> Color.Transparent
+                }
         }
 }
 

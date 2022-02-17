@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.Dp
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.domain.model.Player
-import com.ipcoding.coachpro.feature.presentation.choose_jersey.components.Jersey
+import com.ipcoding.coachpro.feature.presentation.choose_jersey.components.jersey.Jersey
 import com.ipcoding.coachpro.feature.presentation.tactics.TacticsViewModel
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
@@ -29,6 +29,7 @@ fun OnePlayer(
 ) {
     val colorJersey = viewModel.colorJersey.value
     val colorStripes = viewModel.colorStripes.value
+    val numberJersey = viewModel.numberJersey.value
     val playerInfo = remember { mutableStateOf("") }
     val previouslyClickedInfo  = viewModel.previouslyClickedInfo.value
     var showCompleteInfo  = false
@@ -64,14 +65,13 @@ fun OnePlayer(
             Box(
                 modifier = Modifier
                     .height(maxWidth / 5f)
+                    .padding(AppTheme.dimensions.spaceExtraSmall)
             ) {
                 Jersey(
                     colorJersey = colorJersey,
                     colorStripes = colorStripes,
                     colorBorder = AppTheme.colors.onBackground,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(AppTheme.dimensions.spaceExtraSmall)
+                    numberJersey = numberJersey
                 )
             }
 

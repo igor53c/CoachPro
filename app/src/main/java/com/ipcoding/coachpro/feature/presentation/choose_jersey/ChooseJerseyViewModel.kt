@@ -29,6 +29,10 @@ class ChooseJerseyViewModel @Inject constructor(
         saveWeek()
     }
 
+    fun saveNumberJersey(numberJersey: Int) {
+        preferences.saveNumberJersey(numberJersey)
+    }
+
     fun saveColorJersey(color: Color)  {
         _colorJersey.value = color
         preferences.saveColorJersey(Colors.colorToIndex(color))

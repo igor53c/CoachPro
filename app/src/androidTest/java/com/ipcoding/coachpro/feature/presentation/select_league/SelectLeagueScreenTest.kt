@@ -12,7 +12,6 @@ import com.google.common.truth.Truth.assertThat
 import com.ipcoding.coachpro.di.AppModule
 import com.ipcoding.coachpro.feature.presentation.MainActivity
 import com.ipcoding.coachpro.feature.presentation.choose_jersey.ChooseJerseyScreen
-import com.ipcoding.coachpro.feature.presentation.main.MainScreen
 import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.CoachProTheme
@@ -57,17 +56,13 @@ class SelectLeagueScreenTest {
                         ChooseJerseyScreen(navController = navController)
                         BackHandler(true) {}
                     }
-                    composable(route = Screen.MainScreen.route) {
-                        MainScreen(navController = navController)
-                        BackHandler(true) {}
-                    }
                 }
             }
         }
     }
 
     @Test
-    fun testingRouteToMainscreen_isCorrect() {
+    fun testingRouteToChooseJerseyScreen_isCorrect() {
 
         composeRule.onNodeWithText("League 1").performClick()
 
@@ -82,14 +77,6 @@ class SelectLeagueScreenTest {
         assertThat(
             navController.currentDestination?.route?.startsWith(
                 Screen.ChooseJerseyScreen.route
-            )
-        ).isTrue()
-
-        composeRule.onNodeWithText("Confirm").performClick()
-
-        assertThat(
-            navController.currentDestination?.route?.startsWith(
-                Screen.MainScreen.route
             )
         ).isTrue()
     }

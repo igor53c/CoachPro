@@ -43,6 +43,9 @@ class TacticsViewModel @Inject constructor(
     private var _previouslyClickedInfo = mutableStateOf(MarkedPlayer())
     val previouslyClickedInfo: State<MarkedPlayer> = _previouslyClickedInfo
 
+    private var _numberJersey = mutableStateOf(1)
+    val numberJersey: State<Int> = _numberJersey
+
     private var getPlayersJob: Job? = null
 
     init {
@@ -51,6 +54,11 @@ class TacticsViewModel @Inject constructor(
         loadColorStripes()
         loadTactics()
         loadAllTactics()
+        loadNumberJersey()
+    }
+
+    private fun loadNumberJersey() {
+        _numberJersey.value = preferences.loadNumberJersey()
     }
 
     fun saveNextDestinationScreen() {

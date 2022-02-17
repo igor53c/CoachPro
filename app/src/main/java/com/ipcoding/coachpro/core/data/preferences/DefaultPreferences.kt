@@ -78,6 +78,13 @@ class DefaultPreferences (
             .apply()
     }
 
+    override fun saveNumberJersey(numberJersey: Int) {
+        sharedPreferences
+            .edit()
+            .putInt(Preferences.NUMBER_JERSEY, numberJersey)
+            .apply()
+    }
+
     override fun loadClubName(): String? {
         return sharedPreferences.getString(Preferences.CLUB_NAME, null)
     }
@@ -117,5 +124,9 @@ class DefaultPreferences (
 
     override fun loadBudget(): Float {
         return sharedPreferences.getFloat(Preferences.BUDGET, 0f)
+    }
+
+    override fun loadNumberJersey(): Int {
+        return sharedPreferences.getInt(Preferences.NUMBER_JERSEY, 1)
     }
 }

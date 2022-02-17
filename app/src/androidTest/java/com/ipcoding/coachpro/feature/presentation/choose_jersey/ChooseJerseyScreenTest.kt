@@ -2,13 +2,10 @@ package com.ipcoding.coachpro.feature.presentation.choose_jersey
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
-import androidx.compose.ui.test.onNodeWithText
-import androidx.compose.ui.test.performClick
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.common.truth.Truth
 import com.ipcoding.coachpro.di.AppModule
 import com.ipcoding.coachpro.feature.presentation.MainActivity
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
@@ -19,7 +16,6 @@ import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
 import org.junit.Before
 import org.junit.Rule
-import org.junit.Test
 
 @HiltAndroidTest
 @UninstallModules(AppModule::class)
@@ -54,17 +50,5 @@ class ChooseJerseyScreenTest {
                 }
             }
         }
-    }
-
-    @Test
-    fun confirmButton_isCorrect() {
-
-        composeRule.onNodeWithText("Confirm").performClick()
-
-        Truth.assertThat(
-            navController.currentDestination?.route?.startsWith(
-                Screen.MainScreen.route
-            )
-        ).isTrue()
     }
 }
