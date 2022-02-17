@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/compose-model-1643653386328.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.3175" />
+        <entry key="app/src/main/res/drawable/ic_lopta_4.xml" value="0.25" />
+        <entry key="app/src/main/res/drawable/ic_lopta_konacna.xml" value="0.3175" />
+        <entry key="app/src/main/res/drawable/icon_splash.xml" value="0.3175" />
+        <entry key="app/src/main/res/drawable/splash_drawable.xml" value="0.33" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.183" />
       </map>
     </option>
   </component>

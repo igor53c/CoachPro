@@ -14,7 +14,6 @@ fun CoachProTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
-
     val colors = if (darkTheme) DarkAppColorPalette else LightAppColorPalette
 
     val screenWidth = LocalContext.current.resources.displayMetrics.widthPixels.dp /
