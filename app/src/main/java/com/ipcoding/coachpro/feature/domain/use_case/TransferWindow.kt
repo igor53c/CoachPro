@@ -7,9 +7,9 @@ import com.ipcoding.coachpro.core.util.Constants.START_TRANSFERS_TWO
 
 class TransferWindow {
 
-    operator fun invoke(week: Int) : Boolean {
-        return when(week) {
-            in START_TRANSFERS_ONE.. END_TRANSFERS_ONE -> true
+    operator fun invoke(week: Int): Boolean {
+        return when (week) {
+            in START_TRANSFERS_ONE..END_TRANSFERS_ONE -> true
             in START_TRANSFERS_TWO..END_TRANSFERS_TWO -> true
             else -> false
         }

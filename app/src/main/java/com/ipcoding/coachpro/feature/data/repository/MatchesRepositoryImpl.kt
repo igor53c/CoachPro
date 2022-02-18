@@ -6,7 +6,7 @@ import com.ipcoding.coachpro.feature.domain.repository.MatchesRepository
 
 class MatchesRepositoryImpl(
     private val dao: MatchesDao
-): MatchesRepository {
+) : MatchesRepository {
 
     override suspend fun insertMatches(matches: Matches) {
         dao.insertMatches(matches)

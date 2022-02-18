@@ -32,7 +32,7 @@ fun TextOnJersey(
             maxLines = 1,
             overflow = TextOverflow.Ellipsis
         )
-        if(progress != -1f) {
+        if (progress != -1f) {
             Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceSuperSmall))
             LinearProgressIndicator(
                 modifier = Modifier.width(maxWidth / 12f),

@@ -6,9 +6,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.AppSettingsAlt
-import androidx.compose.material.icons.filled.NewLabel
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -18,8 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
@@ -27,7 +22,6 @@ import com.ipcoding.coachpro.core.util.TestTags
 import com.ipcoding.coachpro.feature.domain.util.WeekType
 import com.ipcoding.coachpro.feature.presentation.main.components.*
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
-import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
@@ -40,13 +34,13 @@ fun MainScreen(
     val formMatches = viewModel.formMatches.value
     val colorBackground = viewModel.colorJersey.value
     val info = viewModel.info.value
-    val openDialog = remember { mutableStateOf(false)  }
+    val openDialog = remember { mutableStateOf(false) }
 
     Column(
         modifier = Modifier
             .fillMaxSize()
     ) {
-        Column (
+        Column(
             modifier = Modifier
                 .weight(1f)
         ) {
@@ -111,7 +105,7 @@ fun MainScreen(
             shape = AppTheme.customShapes.rectangleShape
         ) {
             info?.let { weekType ->
-                when(weekType) {
+                when (weekType) {
                     is WeekType.Schedule ->
                         weekType.text = stringResource(id = R.string.next_week)
                     is WeekType.Transfers ->
@@ -129,7 +123,7 @@ fun MainScreen(
         }
     }
 
-    if(openDialog.value) {
+    if (openDialog.value) {
         NewGame(
             onNoClick = {
                 openDialog.value = false

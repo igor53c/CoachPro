@@ -26,9 +26,11 @@ class MatchRepositoryFake : MatchRepository {
     }
 
     override fun getClubMatchFromNextRound(round: Int, club: String?): Flow<Match?> {
-        return flow { emit(matches.find {
-            it.round == round && (it.host == club || it.guest == club)
-        }) }
+        return flow {
+            emit(matches.find {
+                it.round == round && (it.host == club || it.guest == club)
+            })
+        }
     }
 
     override suspend fun getClubMatch(round: Int, club: String?): Match? {

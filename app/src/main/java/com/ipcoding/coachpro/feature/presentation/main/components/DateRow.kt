@@ -12,9 +12,9 @@ import com.ipcoding.coachpro.ui.theme.AppTheme
 fun DateRow(
     viewModel: MainViewModel
 ) {
-    val year =  viewModel.year.value
-    val week =  viewModel.week.value
-    val month =  viewModel.month.value
+    val year = viewModel.year.value
+    val week = viewModel.week.value
+    val month = viewModel.month.value
 
     Row(
         modifier = Modifier

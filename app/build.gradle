@@ -12,7 +12,7 @@ android {
         applicationId "com.ipcoding.coachpro"
         minSdk 21
         targetSdk 31
-        versionCode 1
+        versionCode 4
         versionName "1.0"
 
         testInstrumentationRunner "com.ipcoding.coachpro.HiltTestRunner"
@@ -24,7 +24,8 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
+                    'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -109,6 +110,4 @@ dependencies {
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:4.9.3"
     androidTestImplementation "io.mockk:mockk-android:1.10.5"
     androidTestImplementation 'androidx.test:runner:1.4.0'
-
-    //debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.8.1'
 }

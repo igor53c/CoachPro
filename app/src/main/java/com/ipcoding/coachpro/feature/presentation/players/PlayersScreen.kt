@@ -21,7 +21,7 @@ import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
-fun PlayersScreen (
+fun PlayersScreen(
     viewModel: PlayersViewModel = hiltViewModel()
 ) {
     val players = viewModel.players.value
@@ -49,7 +49,7 @@ fun PlayersScreen (
                 modifier = Modifier
                     .weight(1f)
             )
-            if(!trainingView.value) {
+            if (!trainingView.value) {
                 buttonTrainingText.value = stringResource(id = R.string.training)
                 CustomText(
                     text = stringResource(id = R.string.pos),
@@ -104,7 +104,7 @@ fun PlayersScreen (
             color = AppTheme.colors.primary,
             thickness = AppTheme.dimensions.spaceSuperSmall
         )
-        LazyColumn (
+        LazyColumn(
             modifier = Modifier.weight(1f)
         ) {
             items(players.size) { item ->

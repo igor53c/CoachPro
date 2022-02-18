@@ -14,7 +14,7 @@ class GetClubPositionString(
 }
 
 fun positionString(position: Int): String {
-    return when(position) {
+    return when (position) {
         1 -> "${position}st"
         2 -> "${position}nd"
         3 -> "${position}rd"

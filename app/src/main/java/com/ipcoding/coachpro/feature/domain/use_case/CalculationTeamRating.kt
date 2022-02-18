@@ -7,7 +7,7 @@ class CalculationTeamRating {
     operator fun invoke(players: List<Player>): Double {
         var rating = 0.0
         for (player in players) {
-            rating +=  player.rating
+            rating += player.rating
         }
         return rating / players.size.toDouble()
     }

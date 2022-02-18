@@ -9,6 +9,6 @@ class GetMonth {
         val date = Calendar.getInstance()
         date.set(Calendar.YEAR, year)
         date.set(Calendar.DAY_OF_YEAR, week * 7)
-        return String.format(Locale.UK,"%tB",date)
+        return String.format(Locale.UK, "%tB", date)
     }
 }

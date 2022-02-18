@@ -24,7 +24,7 @@ fun TransfersScreen(
     viewModel: TransfersViewModel = hiltViewModel()
 ) {
     val players = viewModel.players.value
-    val openDialog = remember { mutableStateOf(false)  }
+    val openDialog = remember { mutableStateOf(false) }
     val selectedPlayer = remember {
         mutableStateOf(Player("", "", 0.0, 0, 0))
     }
@@ -36,7 +36,7 @@ fun TransfersScreen(
             .padding(top = AppTheme.dimensions.spaceSmall),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        if(viewModel.transferWindow()) {
+        if (viewModel.transferWindow()) {
             TitleRow()
 
             Divider(
@@ -85,6 +85,7 @@ fun TransfersScreen(
             CustomText(
                 text = stringResource(id = R.string.transfer_closed),
                 textAlign = TextAlign.Center,
+                maxLines = 3,
                 style = AppTheme.typography.h5,
                 modifier = Modifier
                     .weight(1f)

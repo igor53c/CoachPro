@@ -14,14 +14,14 @@ import com.ipcoding.coachpro.ui.theme.AppTheme
 fun OneBox(
     modifier: Modifier,
     showText: Boolean,
-    text:String,
+    text: String,
     style: TextStyle
 ) {
     Box(
         modifier = modifier,
         contentAlignment = Alignment.Center
     ) {
-        if(showText)
+        if (showText)
             Text(
                 text = text,
                 color = AppTheme.colors.primary,

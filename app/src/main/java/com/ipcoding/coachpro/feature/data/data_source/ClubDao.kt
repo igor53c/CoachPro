@@ -1,6 +1,9 @@
 package com.ipcoding.coachpro.feature.data.data_source
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.ipcoding.coachpro.feature.domain.model.Club
 
 @Dao
@@ -18,7 +21,10 @@ interface ClubDao {
     @Query("SELECT playersRating FROM clubs_table WHERE name = :name")
     suspend fun getPlayersRating(name: String): Double
 
-    @Query("SELECT * FROM clubs_table WHERE league = :league ORDER BY points DESC, goalDifference DESC")
+    @Query(
+        "SELECT * FROM clubs_table WHERE league = :league" +
+                " ORDER BY points DESC, goalDifference DESC"
+    )
     suspend fun getClubsFromLeague(league: String): List<Club>
 
     @Query("SELECT * FROM clubs_table WHERE league = :league ORDER BY position ASC")

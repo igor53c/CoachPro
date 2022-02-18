@@ -1,6 +1,9 @@
 package com.ipcoding.coachpro.feature.data.data_source
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.ipcoding.coachpro.feature.domain.model.Match
 import kotlinx.coroutines.flow.Flow
 
@@ -19,11 +22,15 @@ interface MatchDao {
     @Query("SELECT * FROM match_table ORDER BY round ASC, host ASC")
     fun getAllMatches(): Flow<List<Match>>
 
-    @Query("SELECT * FROM match_table WHERE " +
-            "(round = :round AND (host = :clubName OR guest = :clubName))")
+    @Query(
+        "SELECT * FROM match_table WHERE " +
+                "(round = :round AND (host = :clubName OR guest = :clubName))"
+    )
     fun getClubMatchFromNextRound(round: Int, clubName: String?): Flow<Match?>
 
-    @Query("SELECT * FROM match_table WHERE " +
-            "(round = :round AND (host = :clubName OR guest = :clubName))")
+    @Query(
+        "SELECT * FROM match_table WHERE " +
+                "(round = :round AND (host = :clubName OR guest = :clubName))"
+    )
     suspend fun getClubMatch(round: Int, clubName: String?): Match?
 }

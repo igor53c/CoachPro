@@ -10,7 +10,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
-import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable

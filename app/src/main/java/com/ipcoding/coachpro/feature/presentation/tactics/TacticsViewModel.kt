@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.util.InputData.ALL_TACTICS
-import com.ipcoding.coachpro.feature.domain.model.MarkedPlayer
+import com.ipcoding.coachpro.feature.domain.util.MarkedPlayer
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
 import com.ipcoding.coachpro.feature.domain.util.JerseyColors
@@ -24,7 +24,7 @@ import javax.inject.Inject
 class TacticsViewModel @Inject constructor(
     private val preferences: Preferences,
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private var _jerseyColors = mutableStateOf(JerseyColors())
     val jerseyColors: State<JerseyColors> = _jerseyColors
@@ -115,9 +115,9 @@ class TacticsViewModel @Inject constructor(
     }
 
     fun checkPlayerInRightPosition(
-        player: Player?, item1: Int, item2: Int,  tactics: List<Any>
+        player: Player?, item1: Int, item2: Int, tactics: List<Any>
     ): Boolean {
-        return allUseCases.checkPlayerInRightPosition(player, item1, item2,  tactics)
+        return allUseCases.checkPlayerInRightPosition(player, item1, item2, tactics)
     }
 
     fun calculatingFirstTeamRating(players: List<Player>, tactics: List<Any>): Double {
@@ -135,8 +135,8 @@ class TacticsViewModel @Inject constructor(
     fun increaseRound() {
         val round = preferences.loadRoundNumber()
         playRound(round + 1)
-        if(round < 38) {
-            preferences.saveRoundNumber( round + 1)
+        if (round < 38) {
+            preferences.saveRoundNumber(round + 1)
         }
     }
 

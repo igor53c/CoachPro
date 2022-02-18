@@ -8,7 +8,7 @@ interface HistoryRepository {
 
     suspend fun deleteAll()
 
-    suspend fun getAllHistory():List<History>
+    suspend fun getAllHistory(): List<History>
 
     suspend fun numberOfYears(): Int
 }

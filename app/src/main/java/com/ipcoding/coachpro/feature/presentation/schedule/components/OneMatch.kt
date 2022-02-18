@@ -19,9 +19,9 @@ fun OneMatch(
     modifier: Modifier = Modifier,
     clubName: String
 ) {
-    val colorBackground  = remember { mutableStateOf(Color.Transparent) }
+    val colorBackground = remember { mutableStateOf(Color.Transparent) }
 
-    if(clubName == match.host || clubName == match.guest)
+    if (clubName == match.host || clubName == match.guest)
         colorBackground.value = Colors.LightGray10 else
         colorBackground.value = AppTheme.colors.background
     Row(
@@ -44,7 +44,7 @@ fun OneMatch(
             textAlign = TextAlign.End
         )
         Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceExtraSmall))
-        val goalsHostString = if(match.goalsHost == -1) "" else match.goalsHost.toString()
+        val goalsHostString = if (match.goalsHost == -1) "" else match.goalsHost.toString()
         Text(
             text = goalsHostString,
             color = AppTheme.colors.primary,
@@ -53,7 +53,7 @@ fun OneMatch(
             textAlign = TextAlign.Center
         )
         Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceExtraSmall))
-        val goalsGuestString = if(match.goalsHost == -1) "" else match.goalsGuest.toString()
+        val goalsGuestString = if (match.goalsHost == -1) "" else match.goalsGuest.toString()
         Text(
             text = goalsGuestString,
             color = AppTheme.colors.primary,

@@ -17,8 +17,10 @@ class CalculationFirstTeamRatingTest {
 
     @Test
     fun `whether the rating of the first team was calculated correctly`() {
-        val position = listOf("GK", "DR", "DC", "DC", "DL", "MC", "MC", "MC", "FR", "FC", "FL",
-            "GK", "DR", "DC", "DC", "DL", "MC", "MC")
+        val position = listOf(
+            "GK", "DR", "DC", "DC", "DL", "MC", "MC", "MC", "FR", "FC", "FL",
+            "GK", "DR", "DC", "DC", "DL", "MC", "MC"
+        )
         val players = (0..17).map {
             Player(
                 name = "name",
@@ -36,7 +38,9 @@ class CalculationFirstTeamRatingTest {
         val result = calculationFirstTeamRating(players, tactics)
         var expectedResult = 0.0
 
-        for (i in 0..10) { expectedResult += (i + 1).toDouble() }
+        for (i in 0..10) {
+            expectedResult += (i + 1).toDouble()
+        }
         expectedResult /= 11.0
 
         assertThat(result).isEqualTo(expectedResult)

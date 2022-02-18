@@ -29,7 +29,7 @@ class GetWeekTypeText(
         var tacticsText = ""
         var seasonOverText = ""
 
-        if(withText) {
+        if (withText) {
             val league = preferences.loadSelectedLeague()
             val round = preferences.loadRoundNumber() + 1
             val clubName = preferences.loadClubName()
@@ -38,11 +38,11 @@ class GetWeekTypeText(
             val host = match?.host?.let { clubRepository.getClub(it) }
             val guest = match?.guest?.let { clubRepository.getClub(it) }
 
-           tacticsText = "${resourceProvider.getString(R.string.league)} $league\n\n" +
+            tacticsText = "${resourceProvider.getString(R.string.league)} $league\n\n" +
                     "${resourceProvider.getString(R.string.round)}: $round\n\n\n" +
                     "${match?.host}" + "\n" +
                     host?.position?.let { positionString(it) } + "\n\n" +
-                   resourceProvider.getString(R.string.vs) + "\n\n" +
+                    resourceProvider.getString(R.string.vs) + "\n\n" +
                     "${match?.guest}" + "\n" +
                     guest?.position?.let { positionString(it) }
 
@@ -54,7 +54,7 @@ class GetWeekTypeText(
                     " ${resourceProvider.getString(R.string.place)}\n"
         }
 
-        val weekType: WeekType = when(if(week == 53) 1 else week) {
+        val weekType: WeekType = when (if (week == 53) 1 else week) {
 
             in START_TRANSFERS_TWO..END_TRANSFERS_TWO -> {
                 WeekType.Transfers(resourceProvider.getString(R.string.offer_player))

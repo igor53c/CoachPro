@@ -6,8 +6,8 @@ import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import androidx.room.Room
 import com.ipcoding.coachpro.core.data.preferences.DefaultPreferences
-import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.data.resources.AndroidResourceProvider
+import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.domain.resources.ResourceProvider
 import com.ipcoding.coachpro.feature.data.data_source.CoachDatabase
 import com.ipcoding.coachpro.feature.data.repository.*
@@ -71,7 +71,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun providePreferences(sharedPreferences: SharedPreferences) : Preferences {
+    fun providePreferences(sharedPreferences: SharedPreferences): Preferences {
         return DefaultPreferences(sharedPreferences)
     }
 
@@ -129,13 +129,18 @@ object AppModule {
             getAllMatches = GetAllMatches(matchRepository),
             getMonth = GetMonth(),
             getWeekTypeText = GetWeekTypeText(
-                preferences, matchRepository, clubRepository, resourceProvider),
-            playRound = PlayRound(matchRepository, clubRepository, playerRepository,
-                matchesRepository, preferences),
+                preferences, matchRepository, clubRepository, resourceProvider
+            ),
+            playRound = PlayRound(
+                matchRepository, clubRepository, playerRepository,
+                matchesRepository, preferences
+            ),
             preparingForNewSeason = PreparingForNewSeason(
-                clubRepository, matchRepository, preferences),
+                clubRepository, matchRepository, preferences
+            ),
             preparationOfClubsAndScheduling = PreparationOfClubsAndScheduling(
-                clubRepository, matchRepository),
+                clubRepository, matchRepository
+            ),
             changeHistory = ChangeHistory(clubRepository, historyRepository),
             changePlayersYear = ChangePlayersYear(playerRepository),
             getClubsFromLeagueByPosition = GetClubsFromLeagueByPosition(clubRepository),

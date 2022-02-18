@@ -31,9 +31,9 @@ class PlayRound(
 
             if (ratingDifference != null) {
                 match.goalsHost = numberGoals(ratingDifference + 2)
-                match.goalsGuest = numberGoals(- ratingDifference - 2)
+                match.goalsGuest = numberGoals(-ratingDifference - 2)
 
-                when(clubName) {
+                when (clubName) {
                     host?.name -> {
                         changePlayerRatingBasedOnResult(match.goalsHost, match.goalsGuest)
                         matchesRepository.insertMatches(
@@ -120,7 +120,7 @@ class PlayRound(
 }
 
 fun changeClubDetails(club: Club?, goalsFor: Int, goalsAgainst: Int): Club? {
-     club?.let {
+    club?.let {
         club.goalsFor += goalsFor
         club.goalsAgainst += goalsAgainst
         club.goalDifference += goalsFor - goalsAgainst

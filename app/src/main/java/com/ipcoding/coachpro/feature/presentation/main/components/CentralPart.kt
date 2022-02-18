@@ -22,9 +22,9 @@ fun CentralPart(
     colorBackground: Color,
     colorText: Color
 ) {
-    val clubPosition =  viewModel.clubPosition.value
-    val clubRating =  viewModel.clubRating.value
-    val playersRating =  viewModel.playersRating.value
+    val clubPosition = viewModel.clubPosition.value
+    val clubRating = viewModel.clubRating.value
+    val playersRating = viewModel.playersRating.value
     val roundNumber = viewModel.roundNumber.value
     val history = viewModel.history.value
 
@@ -68,8 +68,10 @@ fun CentralPart(
             colorText = colorText,
             background = colorBackground,
             modifier = Modifier.weight(1f),
-            onClick = { navController.navigate(
-                Screen.TacticsScreen.route + "?nextIsMatch=no")
+            onClick = {
+                navController.navigate(
+                    Screen.TacticsScreen.route + "?nextIsMatch=no"
+                )
             }
         )
 
@@ -77,13 +79,15 @@ fun CentralPart(
 
         MainButton(
             rowOne = stringResource(id = R.string.schedule),
-            rowTwo = if(roundNumber == 38)
+            rowTwo = if (roundNumber == 38)
                 roundNumber.toString() else (roundNumber + 1).toString(),
             colorText = colorText,
             background = colorBackground,
             modifier = Modifier.weight(1f),
-            onClick = { navController.navigate(
-                Screen.ScheduleScreen.route + "?roundNumber=${roundNumber + 1}")
+            onClick = {
+                navController.navigate(
+                    Screen.ScheduleScreen.route + "?roundNumber=${roundNumber + 1}"
+                )
             }
         )
     }

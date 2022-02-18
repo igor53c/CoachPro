@@ -12,7 +12,7 @@ class DeletePlayer(
         val playerRating = player.rating
         playerRepository.deletePlayer(player)
 
-        if(playerRepository.numberOfPlayers() < 11)
+        if (playerRepository.numberOfPlayers() < 11)
             playerRepository.insertPlayer(
                 Player(
                     name = makeName(),
@@ -24,8 +24,8 @@ class DeletePlayer(
             )
 
         val players = playerRepository.getPlayers()
-        for(i in 1..players.size) {
-            val currentPlayer  = players[i - 1]
+        for (i in 1..players.size) {
+            val currentPlayer = players[i - 1]
             currentPlayer.number = i
             playerRepository.insertPlayer(currentPlayer)
         }

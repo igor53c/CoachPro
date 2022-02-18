@@ -19,7 +19,7 @@ val ExtraLargeShapes = CustomShapes(roundedCornerShape = RoundedCornerShape(16.d
 @Immutable
 class CustomShapes(
     val roundedCornerShape: CornerBasedShape = RoundedCornerShape(4.dp),
-    val rectangleShape: Shape  = RectangleShape
+    val rectangleShape: Shape = RectangleShape
 )
 
 val LocalAppShapes = staticCompositionLocalOf { NormalShapes }

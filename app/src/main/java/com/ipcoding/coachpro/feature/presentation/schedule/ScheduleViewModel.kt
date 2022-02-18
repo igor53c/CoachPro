@@ -16,7 +16,7 @@ import javax.inject.Inject
 class ScheduleViewModel @Inject constructor(
     private val preferences: Preferences,
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private var _clubName = mutableStateOf("")
     val clubName: State<String> = _clubName

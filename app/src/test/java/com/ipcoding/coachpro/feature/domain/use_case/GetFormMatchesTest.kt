@@ -52,9 +52,9 @@ class GetFormMatchesTest {
 
         val expectedResult = mutableListOf<FormMatch>()
 
-        repeat(10) { expectedResult.add(FormMatch("", Color.Transparent))}
+        repeat(10) { expectedResult.add(FormMatch("", Color.Transparent)) }
 
-       assertThat(result).isEqualTo(expectedResult)
+        assertThat(result).isEqualTo(expectedResult)
     }
 
     @Test
@@ -91,7 +91,7 @@ class GetFormMatchesTest {
 
         runBlocking {
 
-            repeat(4){
+            repeat(4) {
                 repeat(4) {
                     fakeMatchesRepository.insertMatches(winMatch)
                     fakeMatchesRepository.insertMatches(loseMatch)

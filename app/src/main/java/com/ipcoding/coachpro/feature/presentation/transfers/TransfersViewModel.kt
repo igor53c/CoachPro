@@ -19,7 +19,7 @@ import javax.inject.Inject
 class TransfersViewModel @Inject constructor(
     private val preferences: Preferences,
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private val _players = mutableStateOf<List<Player>>(emptyList())
     val players: State<List<Player>> = _players
@@ -34,7 +34,7 @@ class TransfersViewModel @Inject constructor(
         loadWeek()
     }
 
-    fun transferWindow() : Boolean {
+    fun transferWindow(): Boolean {
         return allUseCases.transferWindow(week.value)
     }
 
@@ -46,12 +46,12 @@ class TransfersViewModel @Inject constructor(
         return allUseCases.getColorDependingOnPosition(position)
     }
 
-    fun getBudget() : Float {
+    fun getBudget(): Float {
         return preferences.loadBudget()
     }
 
     fun saveBudget(budget: Float) {
-       preferences.saveBudget(budget)
+        preferences.saveBudget(budget)
     }
 
     private fun getPlayers() {

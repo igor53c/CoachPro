@@ -31,7 +31,7 @@ object AppModuleTest {
         ).build()
     }
 
-   @Provides
+    @Provides
     @Singleton
     fun providePlayerRepository(): PlayerRepository {
         return PlayerRepositoryFake()
@@ -69,7 +69,7 @@ object AppModuleTest {
 
     @Provides
     @Singleton
-    fun providePreferences(sharedPreferences: SharedPreferences) : Preferences {
+    fun providePreferences(sharedPreferences: SharedPreferences): Preferences {
         return DefaultPreferences(sharedPreferences)
     }
 
@@ -132,10 +132,13 @@ object AppModuleTest {
                 clubRepository,
                 resourceProvider
             ),
-            playRound = PlayRound(matchRepository, clubRepository, playerRepository,
-                matchesRepository, preferences),
+            playRound = PlayRound(
+                matchRepository, clubRepository, playerRepository,
+                matchesRepository, preferences
+            ),
             preparingForNewSeason = PreparingForNewSeason(
-                clubRepository, matchRepository,preferences),
+                clubRepository, matchRepository, preferences
+            ),
             preparationOfClubsAndScheduling = PreparationOfClubsAndScheduling(
                 clubRepository, matchRepository
             ),

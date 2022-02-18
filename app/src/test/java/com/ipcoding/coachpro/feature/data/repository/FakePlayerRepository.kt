@@ -22,7 +22,7 @@ class FakePlayerRepository : PlayerRepository {
     }
 
     override suspend fun getPlayerById(id: Int?): Player? {
-       return players.find { it.id == id }
+        return players.find { it.id == id }
     }
 
     override suspend fun getPlayers(): List<Player> {

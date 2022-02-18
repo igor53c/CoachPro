@@ -118,7 +118,7 @@ class MainScreenTest {
 
         composeRule.onNodeWithText("Squad").performClick()
 
-       assertThat(
+        assertThat(
             navController.currentDestination?.route?.startsWith(
                 Screen.PlayersScreen.route
             )

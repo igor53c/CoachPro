@@ -15,7 +15,7 @@ import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
-fun SelectClubScreen (
+fun SelectClubScreen(
     navController: NavController,
     viewModel: SelectClubViewModel = hiltViewModel()
 ) {
@@ -26,14 +26,14 @@ fun SelectClubScreen (
             .fillMaxSize()
             .padding(AppTheme.dimensions.spaceMedium),
         horizontalAlignment = Alignment.CenterHorizontally
-    ){
+    ) {
         Text(
             text = stringResource(id = R.string.select_club),
             color = AppTheme.colors.primary,
             style = AppTheme.typography.h5
         )
         Spacer(modifier = Modifier.height(AppTheme.dimensions.spaceMedium))
-        LazyColumn (verticalArrangement = Arrangement.Center) {
+        LazyColumn(verticalArrangement = Arrangement.Center) {
             items(clubs.size) { item ->
                 val name = clubs[item]
                 CustomButton(

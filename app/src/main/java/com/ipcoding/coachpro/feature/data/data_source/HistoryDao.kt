@@ -1,6 +1,9 @@
 package com.ipcoding.coachpro.feature.data.data_source
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.ipcoding.coachpro.feature.domain.model.History
 
 @Dao

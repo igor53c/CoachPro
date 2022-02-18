@@ -19,7 +19,7 @@ class GetFormMatches(
                     listMatch.add(FormMatch("W", Colors.LightGreen20))
                 match.goalsFor < match.goalsAgainst ->
                     listMatch.add(FormMatch("L", Colors.LightRed20))
-               else -> listMatch.add(FormMatch("D", Colors.LightYellow))
+                else -> listMatch.add(FormMatch("D", Colors.LightYellow))
             }
         }
 

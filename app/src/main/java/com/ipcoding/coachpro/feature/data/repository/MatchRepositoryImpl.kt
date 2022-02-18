@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 class MatchRepositoryImpl(
     private val dao: MatchDao
-): MatchRepository {
+) : MatchRepository {
 
     override suspend fun insertMatch(match: Match) {
         dao.insertMatch(match)

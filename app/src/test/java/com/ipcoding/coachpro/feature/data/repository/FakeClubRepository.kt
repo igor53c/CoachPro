@@ -12,7 +12,7 @@ class FakeClubRepository : ClubRepository {
     }
 
     override suspend fun deleteAll() {
-       clubs.clear()
+        clubs.clear()
     }
 
     override suspend fun getRatingFromClub(name: String): Double {

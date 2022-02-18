@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.Flow
 
 class PlayerRepositoryImpl(
     private val dao: PlayerDao
-): PlayerRepository {
+) : PlayerRepository {
     override suspend fun insertPlayer(player: Player) {
         dao.insertPlayer(player)
     }

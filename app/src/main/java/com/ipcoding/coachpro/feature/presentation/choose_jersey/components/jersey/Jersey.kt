@@ -8,7 +8,7 @@ fun Jersey(
     jerseyColors: JerseyColors,
     numberJersey: Int
 ) {
-    when(numberJersey) {
+    when (numberJersey) {
         1 -> Jersey1(jerseyColors)
         2 -> Jersey2(jerseyColors)
         3 -> Jersey3(jerseyColors)

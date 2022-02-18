@@ -4,9 +4,9 @@ import android.content.SharedPreferences
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 
-class DefaultPreferences (
+class DefaultPreferences(
     private val sharedPreferences: SharedPreferences
-    ) : Preferences {
+) : Preferences {
 
     override fun saveClubName(name: String) {
         sharedPreferences

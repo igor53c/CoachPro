@@ -4,7 +4,9 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -20,7 +22,7 @@ import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
-fun ChooseJerseyScreen (
+fun ChooseJerseyScreen(
     navController: NavController,
     viewModel: ChooseJerseyViewModel = hiltViewModel()
 ) {
@@ -64,7 +66,7 @@ fun ChooseJerseyScreen (
                 .weight(1f)
                 .padding(bottom = AppTheme.dimensions.spaceSmall)
         ) {
-            if(this.maxHeight / this.maxWidth < 1.2)
+            if (this.maxHeight / this.maxWidth < 1.2)
                 maxWidth.value = this.maxHeight / 1.2f else maxWidth.value = this.maxWidth
 
             val width = this.maxWidth

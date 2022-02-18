@@ -14,7 +14,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ChooseJerseyViewModel @Inject constructor(
     private val preferences: Preferences
-): ViewModel() {
+) : ViewModel() {
 
     private var _colorJersey = mutableStateOf(Color.Red)
     val colorJersey: State<Color> = _colorJersey
@@ -33,21 +33,21 @@ class ChooseJerseyViewModel @Inject constructor(
         preferences.saveNumberJersey(numberJersey)
     }
 
-    fun saveColorJersey(color: Color)  {
+    fun saveColorJersey(color: Color) {
         _colorJersey.value = color
         preferences.saveColorJersey(Colors.colorToIndex(color))
     }
 
-    fun saveColorStripes(color: Color)  {
+    fun saveColorStripes(color: Color) {
         _colorStripes.value = color
         preferences.saveColorStripes(Colors.colorToIndex(color))
     }
 
-    private fun saveYear()  {
+    private fun saveYear() {
         preferences.saveYear(START_SEASON_YEAR)
     }
 
-    private fun saveWeek()  {
+    private fun saveWeek() {
         preferences.saveWeek(START_SEASON_WEEK)
     }
 }

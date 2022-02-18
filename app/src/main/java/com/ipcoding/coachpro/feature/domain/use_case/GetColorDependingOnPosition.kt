@@ -14,7 +14,7 @@ import com.ipcoding.coachpro.ui.theme.Colors.LightYellow
 class GetColorDependingOnPosition {
 
     operator fun invoke(position: String): Color {
-        return when(position) {
+        return when (position) {
             GK -> LightGreen10
             in DEF -> LightBlue
             in MID -> LightYellow

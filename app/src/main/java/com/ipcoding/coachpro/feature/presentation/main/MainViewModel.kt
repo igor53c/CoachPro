@@ -26,7 +26,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val preferences: Preferences,
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private var _league = mutableStateOf("")
 
@@ -97,7 +97,7 @@ class MainViewModel @Inject constructor(
     }
 
     private fun saveDestinationScreen() {
-       preferences.saveDestinationScreen(destinationScreen = Screen.MainScreen.route)
+        preferences.saveDestinationScreen(destinationScreen = Screen.MainScreen.route)
     }
 
     private fun checkColors() {
@@ -127,8 +127,8 @@ class MainViewModel @Inject constructor(
         _week.value = preferences.loadWeek()
     }
 
-    fun saveWeekYear()  {
-        when(_week.value) {
+    fun saveWeekYear() {
+        when (_week.value) {
             CHANGE_HISTORY_AND_PLAYERS_YEAR -> changeHistoryAndPlayersYear()
             PREPARING_FOR_NEW_SEASON -> preparingForNewSeason()
             PREPARATION_OF_CLUBS_AND_SCHEDULING -> preparationOfClubsAndScheduling()
@@ -137,7 +137,7 @@ class MainViewModel @Inject constructor(
                 _week.value = 0
                 trainingCalculation()
             }
-            else ->  trainingCalculation()
+            else -> trainingCalculation()
         }
         preferences.saveWeek(_week.value + 1)
     }
@@ -149,7 +149,7 @@ class MainViewModel @Inject constructor(
     }
 
     private fun trainingCalculation() {
-        val playersPlayedMatch = when(_week.value) {
+        val playersPlayedMatch = when (_week.value) {
             in START_MATCHES_ONE..END_MATCHES_ONE -> true
             in START_MATCHES_TWO..END_MATCHES_TWO -> true
             else -> false
@@ -186,7 +186,7 @@ class MainViewModel @Inject constructor(
     }
 
     fun getStringLeague(): String {
-       return allUseCases.getStringLeague(_league.value)
+        return allUseCases.getStringLeague(_league.value)
     }
 
     fun getClubPositionString() {

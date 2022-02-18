@@ -24,7 +24,7 @@ fun OnePLayer(
     playerTraining: Float,
     viewModel: PlayersViewModel
 ) {
-    val valueTraining = remember { mutableStateOf(playerTraining)}
+    val valueTraining = remember { mutableStateOf(playerTraining) }
     Row(
         modifier = Modifier
             .padding(
@@ -41,13 +41,13 @@ fun OnePLayer(
             modifier = Modifier
                 .weight(1f)
         )
-        if(!isShowTraining) {
-           PlayerInfo(
-               positionText = player.position,
-               ratingText = String.format("%.1f", player.rating),
-               ageText = player.age.toString(),
-               positionBackgroundColor = color
-           )
+        if (!isShowTraining) {
+            PlayerInfo(
+                positionText = player.position,
+                ratingText = String.format("%.1f", player.rating),
+                ageText = player.age.toString(),
+                positionBackgroundColor = color
+            )
             LinearProgressIndicator(
                 modifier = Modifier
                     .width(AppTheme.dimensions.spaceExtraLarge),
@@ -68,7 +68,7 @@ fun OnePLayer(
                 value = valueTraining.value,
                 onValueChange = {
                     valueTraining.value = it
-                    },
+                },
                 valueRange = 0f..5f,
                 onValueChangeFinished = {
                     player.training = valueTraining.value.toInt()

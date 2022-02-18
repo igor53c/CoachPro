@@ -2,7 +2,8 @@ package com.ipcoding.coachpro.feature.domain.use_case
 
 import com.ipcoding.coachpro.core.util.InputData.T_433
 import com.ipcoding.coachpro.feature.domain.model.Player
-import org.junit.Assert.*
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 

@@ -6,16 +6,16 @@ fun jerseyShape(width: Float): Path {
 
     return Path().apply {
 
-        moveTo(width.times( 0.45f), width.times( 0.00857f))
-        lineTo(width.times( 0.55f), width.times( 0.00857f))
+        moveTo(width.times(0.45f), width.times(0.00857f))
+        lineTo(width.times(0.55f), width.times(0.00857f))
         cubicTo(
-            width.times( 0.6286f), 0f,
-            width.times( 0.61f), 0f,
-            width.times( 0.7071f), width.times(0.0643f) //1
+            width.times(0.6286f), 0f,
+            width.times(0.61f), 0f,
+            width.times(0.7071f), width.times(0.0643f) //1
         )
         cubicTo(
-            width.times( 0.89f), width.times(0.1429f), //2
-            width.times( 0.95f), width.times(0.2357f), //3
+            width.times(0.89f), width.times(0.1429f), //2
+            width.times(0.95f), width.times(0.2357f), //3
             width, width.times(0.46f)//4
         )
         lineTo(width, width.times(0.4929f)) //5
@@ -47,9 +47,9 @@ fun jerseyShape(width: Float): Path {
             width.times(0.2929f), width.times(0.0643f) //1
         )
         cubicTo(
-            width.times( 0.39f), 0f,
-            width.times( 0.3714f), 0f,
-            width.times( 0.45f), width.times( 0.00857f)
+            width.times(0.39f), 0f,
+            width.times(0.3714f), 0f,
+            width.times(0.45f), width.times(0.00857f)
         )
     }
 }

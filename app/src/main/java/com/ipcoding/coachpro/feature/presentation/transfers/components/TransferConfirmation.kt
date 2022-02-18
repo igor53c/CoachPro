@@ -15,7 +15,7 @@ import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
-fun TransferConfirmation (
+fun TransferConfirmation(
     budget: Float,
     player: Player,
     backgroundColor: Color,
@@ -29,7 +29,7 @@ fun TransferConfirmation (
             Column(
                 modifier = Modifier.padding(bottom = AppTheme.dimensions.spaceSmall)
             ) {
-                if(budget >= player.value) {
+                if (budget >= player.value) {
                     CustomText(
                         text = player.name,
                         style = AppTheme.typography.h6,
@@ -74,7 +74,7 @@ fun TransferConfirmation (
                     .height(AppTheme.dimensions.spaceLarge)
                     .fillMaxWidth(),
             ) {
-                if(budget >= player.value) {
+                if (budget >= player.value) {
                     CustomButton(
                         modifier = Modifier
                             .fillMaxHeight()

@@ -19,24 +19,24 @@ class PreparingForNewSeason(
         league = leagueNumber
         clubList = clubRepository.getClubsFromLeague("League $league")
         when (league) {
-            1 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = false)
-            2 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
-            3 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
-            4 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
-            5 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
-            6 -> organizeLeagues(hasLowerLeague = true,  hasMajorLeague = true)
-            7 -> organizeLeagues(hasLowerLeague = false,  hasMajorLeague = true)
+            1 -> organizeLeagues(hasLowerLeague = true, hasMajorLeague = false)
+            2 -> organizeLeagues(hasLowerLeague = true, hasMajorLeague = true)
+            3 -> organizeLeagues(hasLowerLeague = true, hasMajorLeague = true)
+            4 -> organizeLeagues(hasLowerLeague = true, hasMajorLeague = true)
+            5 -> organizeLeagues(hasLowerLeague = true, hasMajorLeague = true)
+            6 -> organizeLeagues(hasLowerLeague = true, hasMajorLeague = true)
+            7 -> organizeLeagues(hasLowerLeague = false, hasMajorLeague = true)
             else -> {}
         }
         matchRepository.deleteAll()
     }
 
-    private suspend fun organizeLeagues(hasLowerLeague: Boolean,  hasMajorLeague: Boolean) {
+    private suspend fun organizeLeagues(hasLowerLeague: Boolean, hasMajorLeague: Boolean) {
         for (i in 0..19) {
-            when(i) {
-                in 0..3 -> if(hasMajorLeague) majorLeague(i) else resetCurrentClub(i)
+            when (i) {
+                in 0..3 -> if (hasMajorLeague) majorLeague(i) else resetCurrentClub(i)
                 in 4..15 -> resetCurrentClub(i)
-                in 16..19 -> if(hasLowerLeague) lowerLeague(i) else resetCurrentClub(i)
+                in 16..19 -> if (hasLowerLeague) lowerLeague(i) else resetCurrentClub(i)
             }
         }
     }
@@ -53,7 +53,7 @@ class PreparingForNewSeason(
             clubRepository.getClubsFromLeagueByPosition("League $leagueString")
         val nextClub = clubListMajorLeague[16 + i]
         if (club == clubList[i].name) preferences.saveSelectedLeague(leagueString)
-        val currentClub = resetClubInfo( clubList[i], leagueString, 17 + i)
+        val currentClub = resetClubInfo(clubList[i], leagueString, 17 + i)
         clubRepository.insertClub(currentClub)
         nextClub.league = "League $league"
         nextClub.position = i + 1
@@ -75,8 +75,7 @@ class PreparingForNewSeason(
 }
 
 
-
-private fun resetClubInfo(club: Club, leagueNumber: String, positionNumber: Int): Club {
+fun resetClubInfo(club: Club, leagueNumber: String, positionNumber: Int): Club {
     return club.apply {
         league = "League $leagueNumber"
         position = positionNumber

@@ -1,10 +1,10 @@
 package com.ipcoding.coachpro.feature.domain.use_case
 
-import com.ipcoding.coachpro.core.util.InputData.ALL_POSITION
 import com.ipcoding.coachpro.core.util.Constants.END_TRANSFERS_ONE
 import com.ipcoding.coachpro.core.util.Constants.END_TRANSFERS_TWO
 import com.ipcoding.coachpro.core.util.Constants.START_TRANSFERS_ONE
 import com.ipcoding.coachpro.core.util.Constants.START_TRANSFERS_TWO
+import com.ipcoding.coachpro.core.util.InputData.ALL_POSITION
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.repository.ClubRepository
 import com.ipcoding.coachpro.feature.domain.repository.PlayerRepository
@@ -21,8 +21,8 @@ class InsertTransferPlayers(
 
         clubRating = clubRepository.getPlayersRating(clubName)
 
-        when(week) {
-            START_TRANSFERS_ONE-> insertAllTransferPlayers()
+        when (week) {
+            START_TRANSFERS_ONE -> insertAllTransferPlayers()
             in START_TRANSFERS_ONE + 1..END_TRANSFERS_ONE -> replaceTransferPlayers()
             START_TRANSFERS_TWO -> insertAllTransferPlayers()
             in START_TRANSFERS_TWO + 1..END_TRANSFERS_TWO -> replaceTransferPlayers()
@@ -38,7 +38,7 @@ class InsertTransferPlayers(
         }
 
         repeat(5) {
-            if(players.size > 0) {
+            if (players.size > 0) {
                 val player = players[players.indices.random()]
                 playerRepository.deletePlayer(player)
                 players.remove(player)
@@ -57,7 +57,7 @@ class InsertTransferPlayers(
     }
 
     private suspend fun insertRandomTransferPlayer() {
-        val ratingPlayer =  randomDouble(clubRating - 4, clubRating + 8)
+        val ratingPlayer = randomDouble(clubRating - 4, clubRating + 8)
 
         val age = when {
             ratingPlayer > clubRating + 4 -> (31..36).random()
@@ -79,8 +79,8 @@ class InsertTransferPlayers(
     }
 }
 
-fun getRandomPlayerValue(rating: Double, age: Int) : Double {
-    var value = (1.06421).pow(rating - 25.0) * (1.0 +  (18.0 - age.toDouble()) / 20.0)
+fun getRandomPlayerValue(rating: Double, age: Int): Double {
+    var value = (1.06421).pow(rating - 25.0) * (1.0 + (18.0 - age.toDouble()) / 20.0)
     value *= (5..15).random() / 10.0
     return when {
         value < 0.0 -> 0.0

@@ -23,7 +23,7 @@ class GetColorOfClubInTableTest {
 
         val result = getColorOfClubInTable(position)
 
-       assertThat(result).isEqualTo(Colors.LightGreen20)
+        assertThat(result).isEqualTo(Colors.LightGreen20)
     }
 
     @Test

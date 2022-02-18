@@ -30,7 +30,7 @@ fun TacticsPicker(
     ) {
         items(allTactics.size) { item ->
             val currentTactics = allTactics[item][0]
-            if(tactics[0] != currentTactics) {
+            if (tactics[0] != currentTactics) {
                 colorText.value = AppTheme.colors.primary
                 colorTextBackground.value = AppTheme.colors.background
             } else {

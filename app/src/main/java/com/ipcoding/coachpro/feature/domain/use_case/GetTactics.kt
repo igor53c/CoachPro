@@ -11,7 +11,7 @@ import com.ipcoding.coachpro.core.util.InputData.T_541
 class GetTactics {
 
     operator fun invoke(name: String): List<Any> {
-        return when(name) {
+        return when (name) {
             "5-4-1" -> T_541
             "5-3-2" -> T_532
             "4-5-1" -> T_451

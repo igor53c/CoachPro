@@ -8,5 +8,5 @@ interface MatchesRepository {
 
     suspend fun deleteAll()
 
-    suspend fun getLastTenMatches (): List<Matches>
+    suspend fun getLastTenMatches(): List<Matches>
 }

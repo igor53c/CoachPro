@@ -2,7 +2,9 @@ package com.ipcoding.coachpro.feature.presentation.result
 
 import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -29,11 +31,11 @@ fun ResultScreen(
     val goalsHost = remember { mutableStateOf("") }
     val goalsGuest = remember { mutableStateOf("") }
 
-    if(match?.goalsHost != -1) goalsHost.value = match?.goalsHost.toString()
-    if(match?.goalsGuest != -1) goalsGuest.value = match?.goalsGuest.toString()
+    if (match?.goalsHost != -1) goalsHost.value = match?.goalsHost.toString()
+    if (match?.goalsGuest != -1) goalsGuest.value = match?.goalsGuest.toString()
 
     val time = animateIntAsState(
-        targetValue = if(animationPlayed.value) 24 else 0,
+        targetValue = if (animationPlayed.value) 24 else 0,
         animationSpec = tween(
             durationMillis = 6000,
             delayMillis = 0

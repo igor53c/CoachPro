@@ -15,5 +15,5 @@ interface MatchesDao {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM matches_table ORDER BY id DESC LIMIT 10")
-    suspend fun getLastTenMatches (): List<Matches>
+    suspend fun getLastTenMatches(): List<Matches>
 }

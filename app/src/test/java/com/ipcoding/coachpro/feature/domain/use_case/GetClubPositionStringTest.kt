@@ -96,7 +96,7 @@ class GetClubPositionStringTest {
 
         var result: String
 
-        for(i in 4..18) {
+        for (i in 4..18) {
             club.position = i
 
             runBlocking {

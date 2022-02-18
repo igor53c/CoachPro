@@ -2,7 +2,7 @@ package com.ipcoding.coachpro.feature.presentation.choose_jersey.components.jers
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -28,7 +28,7 @@ fun Jersey3(jerseyColors: JerseyColors) {
             drawRoundRect(
                 color = jerseyColors.colorStripes,
                 size = Size(width.times(0.5f), width.times(1.1071f)),
-                topLeft = Offset(width.times( 0.5f), 0f)
+                topLeft = Offset(width.times(0.5f), 0f)
             )
             drawArc(
                 color = jerseyColors.colorStripes,
@@ -43,7 +43,7 @@ fun Jersey3(jerseyColors: JerseyColors) {
                 sweepAngle = 165f,
                 useCenter = true,
                 size = Size(width.times(0.4572f), width.times(0.8428f)),
-                topLeft = Offset(width.times( 0.5428f), 0f)
+                topLeft = Offset(width.times(0.5428f), 0f)
             )
         }
 

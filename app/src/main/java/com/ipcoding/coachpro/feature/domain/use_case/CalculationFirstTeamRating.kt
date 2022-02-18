@@ -10,8 +10,8 @@ class CalculationFirstTeamRating {
             val max = tactics[i1 + 1] as Int
             for (i2 in 0..max) {
                 GetPlayer()(players, tactics, i1, i2)?.let { player ->
-                    if(CheckPlayerInRightPosition()(player, i1, i2, tactics)) {
-                        rating +=  player.rating - (100.0 - player.motivation) / 50.0
+                    if (CheckPlayerInRightPosition()(player, i1, i2, tactics)) {
+                        rating += player.rating - (100.0 - player.motivation) / 50.0
                     }
                 }
             }

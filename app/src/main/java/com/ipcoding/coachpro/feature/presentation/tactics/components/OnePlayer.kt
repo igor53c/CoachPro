@@ -30,15 +30,15 @@ fun OnePlayer(
     val jerseyColors = viewModel.jerseyColors.value
     val numberJersey = viewModel.numberJersey.value
     val playerInfo = remember { mutableStateOf("") }
-    val previouslyClickedInfo  = viewModel.previouslyClickedInfo.value
-    var showCompleteInfo  = false
+    val previouslyClickedInfo = viewModel.previouslyClickedInfo.value
+    var showCompleteInfo = false
     var borderColor = Color.Transparent
     val colorPrimary = AppTheme.colors.primary
     val player = viewModel.getPlayer(players, tactics, item1, item2)
 
     jerseyColors.colorBorder = AppTheme.colors.onBackground
 
-    if(previouslyClickedInfo.item1 == item1 && previouslyClickedInfo.item2 == item2) {
+    if (previouslyClickedInfo.item1 == item1 && previouslyClickedInfo.item2 == item2) {
         borderColor = previouslyClickedInfo.color
         showCompleteInfo = true
     }
@@ -87,7 +87,7 @@ fun OnePlayer(
                 players = players
             )
         }
-        if(showCompleteInfo) {
+        if (showCompleteInfo) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()

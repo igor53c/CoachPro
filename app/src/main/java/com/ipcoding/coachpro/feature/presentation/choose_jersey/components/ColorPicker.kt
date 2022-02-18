@@ -13,9 +13,9 @@ import com.ipcoding.coachpro.ui.theme.Colors
 fun ColorPicker(
     onColorSelected: (Color) -> Unit
 ) {
-    
+
     val colorList = Colors.AllColors
-    
+
     LazyRow(horizontalArrangement = Arrangement.Center) {
         items(colorList.size) { item ->
             val color = colorList[item]

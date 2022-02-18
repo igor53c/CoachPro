@@ -20,7 +20,7 @@ fun InfoScreen(
     navController: NavController,
     viewModel: InfoViewModel = hiltViewModel()
 ) {
-    val info =  viewModel.info.value
+    val info = viewModel.info.value
 
     Column(
         modifier = Modifier
@@ -49,17 +49,19 @@ fun InfoScreen(
                 .fillMaxWidth(),
             onClick = {
                 info?.let { weekType ->
-                    when(weekType) {
+                    when (weekType) {
                         is WeekType.Schedule ->
                             navController.navigate(
-                                Screen.ScheduleScreen.route + "?roundNumber=${1}")
+                                Screen.ScheduleScreen.route + "?roundNumber=${1}"
+                            )
                         is WeekType.Transfers -> {
                             viewModel.insertTransferPlayers()
                             navController.navigate(Screen.SaleScreen.route)
                         }
                         is WeekType.Tactics ->
                             navController.navigate(
-                                Screen.TacticsScreen.route + "?nextIsMatch=yes")
+                                Screen.TacticsScreen.route + "?nextIsMatch=yes"
+                            )
                         is WeekType.Else -> {
                             navController.navigate(Screen.MainScreen.route)
                         }

@@ -73,7 +73,7 @@ class SaleScreenTest {
 
         composeRule.onNodeWithText("Reject").performClick()
 
-       assertThat(
+        assertThat(
             navController.currentDestination?.route?.startsWith(
                 Screen.MainScreen.route
             )

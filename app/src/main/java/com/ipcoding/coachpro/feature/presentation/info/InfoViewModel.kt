@@ -16,7 +16,7 @@ import javax.inject.Inject
 class InfoViewModel @Inject constructor(
     private val preferences: Preferences,
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private var _week = mutableStateOf(0)
 

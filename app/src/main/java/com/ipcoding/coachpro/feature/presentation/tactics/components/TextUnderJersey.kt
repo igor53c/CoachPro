@@ -23,11 +23,12 @@ fun TextUnderJersey(
 ) {
     var colorBackground = AppTheme.colors.background
 
-    if(viewModel.checkPlayerInRightPosition(
+    if (viewModel.checkPlayerInRightPosition(
             viewModel.getPlayer(players, tactics, item1, item2),
-            item1, item2, tactics)
+            item1, item2, tactics
+        )
     ) {
-        if(item1 != 4) colorBackground = Colors.LightGreen10
+        if (item1 != 4) colorBackground = Colors.LightGreen10
     } else colorBackground = Colors.LightRed10
     Text(
         text = playerInfo,

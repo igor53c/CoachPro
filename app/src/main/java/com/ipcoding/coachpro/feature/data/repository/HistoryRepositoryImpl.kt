@@ -6,7 +6,7 @@ import com.ipcoding.coachpro.feature.domain.repository.HistoryRepository
 
 class HistoryRepositoryImpl(
     private val dao: HistoryDao
-): HistoryRepository {
+) : HistoryRepository {
 
     override suspend fun insertHistory(history: History) {
         dao.insertHistory(history)

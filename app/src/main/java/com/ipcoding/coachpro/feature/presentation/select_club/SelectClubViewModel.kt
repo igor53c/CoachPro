@@ -14,7 +14,7 @@ import javax.inject.Inject
 class SelectClubViewModel @Inject constructor(
     private val preferences: Preferences,
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private var _clubs = mutableStateOf<Array<String>>(emptyArray())
     val clubs: State<Array<String>> = _clubs
@@ -26,18 +26,18 @@ class SelectClubViewModel @Inject constructor(
             )
     }
 
-    fun saveClubName(name: String)  {
+    fun saveClubName(name: String) {
         preferences.saveClubName(name)
     }
 
-    private fun saveRoundNumber()  {
+    private fun saveRoundNumber() {
         preferences.saveRoundNumber(0)
     }
 
     fun createClubDatabase() {
-       viewModelScope.launch {
+        viewModelScope.launch {
             preferences.loadClubName()?.let { allUseCases.createClubDatabase(it) }
-       }
+        }
 
         saveRoundNumber()
     }

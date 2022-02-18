@@ -8,9 +8,9 @@ import javax.inject.Inject
 @HiltViewModel
 class SelectLeagueViewModel @Inject constructor(
     private val preferences: Preferences
-): ViewModel() {
+) : ViewModel() {
 
-    fun saveSelectedLeague(name: String)  {
+    fun saveSelectedLeague(name: String) {
         preferences.saveSelectedLeague(name)
     }
 }

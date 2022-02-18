@@ -13,7 +13,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HistoryViewModel @Inject constructor(
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private val _history = mutableStateOf<List<History>>(emptyList())
     val history: State<List<History>> = _history
@@ -25,6 +25,6 @@ class HistoryViewModel @Inject constructor(
     private fun getHistory() {
         viewModelScope.launch {
             _history.value = allUseCases.getHistory()
-         }
+        }
     }
 }

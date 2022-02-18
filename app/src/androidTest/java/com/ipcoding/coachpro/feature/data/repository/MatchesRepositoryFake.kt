@@ -16,7 +16,7 @@ class MatchesRepositoryFake : MatchesRepository {
     }
 
     override suspend fun getLastTenMatches(): List<Matches> {
-        return  when {
+        return when {
             matchesList.size > 10 -> matchesList.sortedBy { it.id }.subList(0, 10)
             else -> matchesList.sortedBy { it.id }
         }

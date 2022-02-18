@@ -17,7 +17,10 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
-import com.ipcoding.coachpro.feature.presentation.tactics.components.*
+import com.ipcoding.coachpro.feature.presentation.tactics.components.FootballField
+import com.ipcoding.coachpro.feature.presentation.tactics.components.OnePlayer
+import com.ipcoding.coachpro.feature.presentation.tactics.components.RatingText
+import com.ipcoding.coachpro.feature.presentation.tactics.components.TacticsPicker
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
@@ -61,8 +64,8 @@ fun TacticsScreen(
                     .weight(1f)
                     .padding(bottom = AppTheme.dimensions.spaceSmall),
                 contentAlignment = Alignment.TopCenter
-            )  {
-                if(this.maxHeight / this.maxWidth < 1.395)
+            ) {
+                if (this.maxHeight / this.maxWidth < 1.395)
                     maxWidth.value = this.maxHeight / 1.395f else maxWidth.value = this.maxWidth
 
                 FootballField(
@@ -76,7 +79,7 @@ fun TacticsScreen(
                     items(5) { item1 ->
                         LazyRow(modifier = Modifier.height(height = maxWidth.value / 3.6f)) {
                             val numberItem2 =
-                                if(item1 == 4) players.size - 11 else tactics[item1 + 1] as Int
+                                if (item1 == 4) players.size - 11 else tactics[item1 + 1] as Int
                             items(numberItem2) { item2 ->
 
                                 OnePlayer(
@@ -104,7 +107,7 @@ fun TacticsScreen(
                     .weight(1f),
                 title = "Rating: ${rating.value}"
             )
-            if(nextIsMatch == "yes") {
+            if (nextIsMatch == "yes") {
                 CustomButton(
                     modifier = Modifier
                         .fillMaxHeight()

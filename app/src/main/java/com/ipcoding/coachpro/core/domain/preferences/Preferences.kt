@@ -35,7 +35,7 @@ interface Preferences {
         const val ROUND_NUMBER = "round_number"
         const val YEAR = "year"
         const val WEEK = "week"
-        const val DESTINATION_SCREEN  = "destination_screen"
+        const val DESTINATION_SCREEN = "destination_screen"
         const val BUDGET = "budget"
         const val NUMBER_JERSEY = "number_jersey"
     }

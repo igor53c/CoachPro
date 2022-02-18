@@ -25,7 +25,7 @@ fun FootballField(
 
         val clipPath = Path().apply {
             lineTo(size.width, 0f)
-            lineTo(size.width , size.width * 1.1071f)
+            lineTo(size.width, size.width * 1.1071f)
             lineTo(0f, size.width * 1.1071f)
             close()
         }

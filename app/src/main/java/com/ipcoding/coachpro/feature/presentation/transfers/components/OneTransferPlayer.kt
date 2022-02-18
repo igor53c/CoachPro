@@ -1,7 +1,10 @@
 package com.ipcoding.coachpro.feature.presentation.transfers.components
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -12,7 +15,7 @@ import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
 @Composable
-fun  OneTransferPlayer(
+fun OneTransferPlayer(
     player: Player,
     color: Color,
     onClick: () -> Unit
@@ -24,7 +27,7 @@ fun  OneTransferPlayer(
                 end = AppTheme.dimensions.spaceSmall
             )
             .fillMaxWidth()
-            .clickable (onClick = onClick),
+            .clickable(onClick = onClick),
         verticalAlignment = Alignment.CenterVertically
     ) {
         CustomText(

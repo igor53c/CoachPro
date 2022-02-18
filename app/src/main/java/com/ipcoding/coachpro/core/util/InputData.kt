@@ -2,7 +2,8 @@ package com.ipcoding.coachpro.core.util
 
 object InputData {
 
-    val ALL_PLAYERS = arrayOf("Mbappe", "Neymar", "Mane", "Salah", "Kane", "De Bruyne",
+    val ALL_PLAYERS = arrayOf(
+        "Mbappe", "Neymar", "Mane", "Salah", "Kane", "De Bruyne",
         "Alexander-Arnold", "Sterling", "Felix", "Haaland", "Sancho", "Fernandes", "Gnabry",
         "Oblak", "Lukaku", "Son", "Kimmich", "Havertz", "Fati", "Davis", "Rashford", "van Dijk",
         "Alisson", "Messi", "de Ligt", "Robertson", "Courtois", "ter Stegen", "Firmino",
@@ -36,7 +37,8 @@ object InputData {
         "Barnes", "Leao", "Ikone", "Torreira", "Bowen", "Tierney"
     )
 
-    val ALL_CLUBS = arrayOf("Bayern Munich", "FC Barcelona", "Juventus", "Real Madrid",
+    val ALL_CLUBS = arrayOf(
+        "Bayern Munich", "FC Barcelona", "Juventus", "Real Madrid",
         "Atlético Madrid", "Manchester City", "Paris Saint-Germain", "Manchester United",
         "Liverpool", "Sevilla", "Arsenal", "Borussia Dortmund", "FC Porto", "Chelsea",
         "Tottenham Hotspur", "Shakhtar Donetsk", "AS Roma", "Olympique Lyon", "Ajax",

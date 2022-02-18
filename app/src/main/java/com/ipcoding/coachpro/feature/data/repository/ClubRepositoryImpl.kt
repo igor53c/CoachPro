@@ -6,7 +6,7 @@ import com.ipcoding.coachpro.feature.domain.repository.ClubRepository
 
 class ClubRepositoryImpl(
     private val dao: ClubDao
-): ClubRepository {
+) : ClubRepository {
 
     override suspend fun insertClub(club: Club) {
         dao.insertClub(club)

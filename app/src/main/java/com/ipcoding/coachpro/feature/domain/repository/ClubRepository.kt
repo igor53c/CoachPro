@@ -8,11 +8,11 @@ interface ClubRepository {
 
     suspend fun deleteAll()
 
-    suspend fun getRatingFromClub (name: String): Double
+    suspend fun getRatingFromClub(name: String): Double
 
-    suspend fun getPlayersRating (name: String): Double
+    suspend fun getPlayersRating(name: String): Double
 
-    suspend fun getClubsFromLeague (league: String): List<Club>
+    suspend fun getClubsFromLeague(league: String): List<Club>
 
     suspend fun getClubsFromLeagueByPosition(league: String): List<Club>
 

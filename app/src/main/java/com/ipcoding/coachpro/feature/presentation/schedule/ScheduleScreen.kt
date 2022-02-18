@@ -7,7 +7,10 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material.Divider
 import androidx.compose.material.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
@@ -39,7 +42,7 @@ fun ScheduleScreen(
         Text(
             text = viewModel.getStringLeague(),
             style = AppTheme.typography.h6,
-            color =AppTheme.colors.primary,
+            color = AppTheme.colors.primary,
             modifier = Modifier
                 .padding(AppTheme.dimensions.spaceMedium)
                 .fillMaxWidth(),
@@ -80,8 +83,8 @@ fun ScheduleScreen(
                             colorBackground = AppTheme.colors.background,
                             modifier = Modifier
                                 .padding(
-                                   start = AppTheme.dimensions.spaceSmall,
-                                   end = AppTheme.dimensions.spaceSmall
+                                    start = AppTheme.dimensions.spaceSmall,
+                                    end = AppTheme.dimensions.spaceSmall
                                 )
                                 .fillMaxWidth()
                         )
@@ -94,7 +97,7 @@ fun ScheduleScreen(
                                 .padding(AppTheme.dimensions.spaceSmall)
                         ) {
                             items(10) { item2 ->
-                                if(matches.isNotEmpty()) {
+                                if (matches.isNotEmpty()) {
                                     val match = matches[item1 * 10 + item2]
                                     OneMatch(
                                         match = match,
@@ -104,7 +107,7 @@ fun ScheduleScreen(
                             }
                         }
                     }
-                    if(item1 != 37)
+                    if (item1 != 37)
                         Spacer(modifier = Modifier.width(AppTheme.dimensions.spaceExtraMedium))
                 }
             }

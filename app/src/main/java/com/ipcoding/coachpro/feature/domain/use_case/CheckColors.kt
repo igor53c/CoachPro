@@ -5,11 +5,11 @@ import androidx.compose.ui.graphics.Color
 class CheckColors {
 
     operator fun invoke(colorJersey: Color, colorStripes: Color): Color {
-        return if(colorJersey == colorStripes) {
-            when(colorJersey) {
+        return if (colorJersey == colorStripes) {
+            when (colorJersey) {
                 Color.Black -> Color.White
                 else -> Color.Black
             }
-        } else  colorStripes
+        } else colorStripes
     }
 }

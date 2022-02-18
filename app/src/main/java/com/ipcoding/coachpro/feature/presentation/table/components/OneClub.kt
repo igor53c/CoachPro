@@ -29,9 +29,9 @@ fun OneClub(
     val text3 = remember { mutableStateOf("") }
     val backgroundColor = remember { mutableStateOf(Color.Transparent) }
 
-    if(clubName == club.name) backgroundColor.value = Colors.LightGray10
+    if (clubName == club.name) backgroundColor.value = Colors.LightGray10
 
-    if(!isShowGoals) {
+    if (!isShowGoals) {
         text1.value = club.win.toString()
         text2.value = club.draw.toString()
         text3.value = club.lose.toString()

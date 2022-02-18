@@ -15,13 +15,13 @@ import com.ipcoding.coachpro.feature.presentation.choose_jersey.ChooseJerseyScre
 import com.ipcoding.coachpro.feature.presentation.history.HistoryScreen
 import com.ipcoding.coachpro.feature.presentation.info.InfoScreen
 import com.ipcoding.coachpro.feature.presentation.main.MainScreen
-import com.ipcoding.coachpro.feature.presentation.table.TableScreen
 import com.ipcoding.coachpro.feature.presentation.players.PlayersScreen
 import com.ipcoding.coachpro.feature.presentation.result.ResultScreen
 import com.ipcoding.coachpro.feature.presentation.sale.SaleScreen
 import com.ipcoding.coachpro.feature.presentation.schedule.ScheduleScreen
 import com.ipcoding.coachpro.feature.presentation.select_club.SelectClubScreen
 import com.ipcoding.coachpro.feature.presentation.select_league.SelectLeagueScreen
+import com.ipcoding.coachpro.feature.presentation.table.TableScreen
 import com.ipcoding.coachpro.feature.presentation.tactics.TacticsScreen
 import com.ipcoding.coachpro.feature.presentation.transfers.TransfersScreen
 import com.ipcoding.coachpro.feature.presentation.util.Screen

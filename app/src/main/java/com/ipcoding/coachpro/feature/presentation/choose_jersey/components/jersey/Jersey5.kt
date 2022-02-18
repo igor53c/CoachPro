@@ -2,7 +2,7 @@ package com.ipcoding.coachpro.feature.presentation.choose_jersey.components.jers
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.geometry.Size
@@ -28,7 +28,7 @@ fun Jersey5(jerseyColors: JerseyColors) {
             drawRect(
                 topLeft = Offset(width.times(0.33f), 0f),
                 color = jerseyColors.colorStripes,
-                size = Size(width.times(0.34f), width.times( 1.1071f))
+                size = Size(width.times(0.34f), width.times(1.1071f))
             )
         }
 

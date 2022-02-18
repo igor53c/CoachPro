@@ -1,7 +1,7 @@
 package com.ipcoding.coachpro.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.*
+import androidx.compose.material.Typography
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -19,21 +19,21 @@ fun CoachProTheme(
     val screenWidth = LocalContext.current.resources.displayMetrics.widthPixels.dp /
             LocalDensity.current.density
 
-    val typography = when(screenWidth) {
+    val typography = when (screenWidth) {
         in 0.dp..390.dp -> SmallTypography
         in 391.dp..500.dp -> NormalTypography
         in 501.dp..700.dp -> LargeTypography
         else -> ExtraLargeTypography
     }
 
-    val dimensions = when(screenWidth) {
+    val dimensions = when (screenWidth) {
         in 0.dp..390.dp -> SmallDimensions
         in 391.dp..500.dp -> NormalDimensions
         in 501.dp..700.dp -> LargeDimensions
         else -> ExtraLargeDimensions
     }
 
-    val shapes = when(screenWidth) {
+    val shapes = when (screenWidth) {
         in 0.dp..390.dp -> SmallShapes
         in 391.dp..500.dp -> NormalShapes
         in 501.dp..700.dp -> LargeShapes

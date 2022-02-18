@@ -32,7 +32,9 @@ class CalculationTeamRatingTest {
         val result = calculationTeamRating(players)
         var expectedResult = 0.0
 
-        for (i in 0..17) { expectedResult += (i + 1).toDouble() }
+        for (i in 0..17) {
+            expectedResult += (i + 1).toDouble()
+        }
         expectedResult /= 18.0
 
         assertThat(result).isEqualTo(expectedResult)

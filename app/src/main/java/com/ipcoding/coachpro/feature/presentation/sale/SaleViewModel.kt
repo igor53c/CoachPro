@@ -17,9 +17,9 @@ import javax.inject.Inject
 class SaleViewModel @Inject constructor(
     private val preferences: Preferences,
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
-    private val _player = mutableStateOf(Player("","",0.0,0,0))
+    private val _player = mutableStateOf(Player("", "", 0.0, 0, 0))
     val player: State<Player> = _player
 
     init {
@@ -40,14 +40,14 @@ class SaleViewModel @Inject constructor(
     }
 
     fun saveBudget(value: Float) {
-       preferences.saveBudget(preferences.loadBudget() + value)
+        preferences.saveBudget(preferences.loadBudget() + value)
     }
 
     fun getColor(position: String): Color {
         return allUseCases.getColorDependingOnPosition(position)
     }
 
-    fun valueString(value: Float) : String {
+    fun valueString(value: Float): String {
         return allUseCases.valueString(value)
     }
 

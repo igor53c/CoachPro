@@ -18,7 +18,7 @@ import javax.inject.Inject
 class TableViewModel @Inject constructor(
     private val preferences: Preferences,
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private var _clubs = mutableStateOf<List<Club>>(emptyList())
     val clubs: State<List<Club>> = _clubs
@@ -38,7 +38,7 @@ class TableViewModel @Inject constructor(
     private fun getClubs() {
         viewModelScope.launch {
             val league = getStringLeague()
-            _clubs.value = when(preferences.loadWeek()) {
+            _clubs.value = when (preferences.loadWeek()) {
                 in PREPARATION_OF_CLUBS_AND_SCHEDULING..START_MATCHES_ONE ->
                     allUseCases.getClubsFromLeagueByPosition(league)
                 else -> allUseCases.getClubs(league)

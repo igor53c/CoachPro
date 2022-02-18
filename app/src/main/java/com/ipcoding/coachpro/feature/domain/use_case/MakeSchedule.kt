@@ -14,7 +14,7 @@ class MakeSchedule(
 
         val tempClubList: List<Club> = clubRepository.getClubsFromLeagueByPosition(league)
 
-        if(tempClubList.isNotEmpty()) {
+        if (tempClubList.isNotEmpty()) {
             val numTeams = tempClubList.size
 
             // Days needed to complete tournament
@@ -43,23 +43,31 @@ class MakeSchedule(
                     round1 = day + 1 + 19
                 }
                 matchRepository.insertMatch(
-                    Match( round1, teams[teamIdx].name,
-                        tempClubList[0].name, -1, -1)
+                    Match(
+                        round1, teams[teamIdx].name,
+                        tempClubList[0].name, -1, -1
+                    )
                 )
                 matchRepository.insertMatch(
-                    Match( round2, tempClubList[0].name, teams[teamIdx].name,
-                        -1, -1)
+                    Match(
+                        round2, tempClubList[0].name, teams[teamIdx].name,
+                        -1, -1
+                    )
                 )
                 for (idx in 1 until halfSize) {
                     val firstTeam = (day + idx) % teamsSize
                     val secondTeam = (day + teamsSize - idx) % teamsSize
                     matchRepository.insertMatch(
-                        Match( round1, teams[firstTeam].name, teams[secondTeam].name,
-                            -1, -1)
+                        Match(
+                            round1, teams[firstTeam].name, teams[secondTeam].name,
+                            -1, -1
+                        )
                     )
                     matchRepository.insertMatch(
-                        Match(round2, teams[secondTeam].name, teams[firstTeam].name,
-                            -1, -1)
+                        Match(
+                            round2, teams[secondTeam].name, teams[firstTeam].name,
+                            -1, -1
+                        )
                     )
                 }
             }

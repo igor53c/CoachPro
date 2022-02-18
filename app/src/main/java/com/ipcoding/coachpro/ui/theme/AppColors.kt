@@ -77,6 +77,7 @@ class AppColors(
         onError,
         isLight
     )
+
     fun updateColorsFrom(other: AppColors) {
         primary = other.primary
         primaryVariant = other.primaryVariant

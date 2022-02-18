@@ -8,7 +8,7 @@ class GetClubsFromLeague {
 
         var clubs: Array<String> = emptyArray()
 
-        when(league) {
+        when (league) {
             "1" -> clubs = ALL_CLUBS.copyOfRange(0, 20)
             "2" -> clubs = ALL_CLUBS.copyOfRange(20, 40)
             "3" -> clubs = ALL_CLUBS.copyOfRange(40, 60)

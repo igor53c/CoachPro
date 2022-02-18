@@ -17,7 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PlayersViewModel @Inject constructor(
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private val _players = mutableStateOf<List<Player>>(emptyList())
     val players: State<List<Player>> = _players
@@ -42,7 +42,7 @@ class PlayersViewModel @Inject constructor(
     }
 
     fun updatePlayer(player: Player) {
-       viewModelScope.launch {
+        viewModelScope.launch {
             allUseCases.updatePlayer(player)
         }
     }

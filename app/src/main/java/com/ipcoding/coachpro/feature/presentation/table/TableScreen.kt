@@ -30,7 +30,7 @@ fun TableScreen(
     val text2 = remember { mutableStateOf("") }
     val text3 = remember { mutableStateOf("") }
 
-    if(!goalsView.value) {
+    if (!goalsView.value) {
         buttonGoalsText.value = stringResource(id = R.string.goals)
         text1.value = stringResource(id = R.string.win)
         text2.value = stringResource(id = R.string.draw)
@@ -75,11 +75,11 @@ fun TableScreen(
                 pointsText = stringResource(id = R.string.points)
             )
         }
-        LazyColumn (
+        LazyColumn(
             modifier = Modifier.weight(1f)
         ) {
             items(clubs.size) { item ->
-                if(item == 0) {
+                if (item == 0) {
                     Divider(
                         color = AppTheme.colors.primary,
                         thickness = AppTheme.dimensions.spaceSuperSmall

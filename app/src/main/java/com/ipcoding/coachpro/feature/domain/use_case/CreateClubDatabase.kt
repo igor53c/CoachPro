@@ -41,7 +41,7 @@ class CreateClubDatabase(
         for (i in 0..139) {
             var league = ""
             var rating = 0.0
-            when(i) {
+            when (i) {
                 in 0..19 -> {
                     league = "League 1"
                     rating = 85 + 10 - i % 20.0 / 2
@@ -71,9 +71,11 @@ class CreateClubDatabase(
                     rating = 25 + 10 - i % 20.0 / 2
                 }
             }
-            val currentClubName : String = ALL_CLUBS[i]
-            val club = Club(currentClubName, league, i % 20 + 1, rating,
-                playersRating = rating)
+            val currentClubName: String = ALL_CLUBS[i]
+            val club = Club(
+                currentClubName, league, i % 20 + 1, rating,
+                playersRating = rating
+            )
             if (currentClubName == clubName) {
                 myLeague = league
                 insertAllPlayersInDatabase(rating)
@@ -93,7 +95,7 @@ class CreateClubDatabase(
 
         for (number in 1..18) {
             var position = ""
-            when(number) {
+            when (number) {
                 in 1..2 -> position = GK
                 in 3..8 -> position = DEF.random()
                 in 9..14 -> position = MID.random()
@@ -115,7 +117,7 @@ class CreateClubDatabase(
     }
 }
 
-fun randomDouble(min: Double, max: Double) : Double {
+fun randomDouble(min: Double, max: Double): Double {
     val value = ((min * 10).toInt()..(max * 10).toInt()).random() / 10.0
     return when {
         value > 99.0 -> 99.0

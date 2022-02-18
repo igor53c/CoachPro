@@ -17,7 +17,7 @@ import javax.inject.Inject
 class ResultViewModel @Inject constructor(
     private val preferences: Preferences,
     private val allUseCases: AllUseCases
-): ViewModel() {
+) : ViewModel() {
 
     private var _roundNumber = mutableStateOf(0)
     val roundNumber: State<Int> = _roundNumber
