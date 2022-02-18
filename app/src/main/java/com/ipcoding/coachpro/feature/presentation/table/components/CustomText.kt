@@ -18,6 +18,7 @@ fun CustomText(
     text: String,
     style: TextStyle,
     textAlign: TextAlign?,
+    color: Color = AppTheme.colors.primary,
     maxLines: Int = 1,
     backgroundColor: Color = Color.Transparent
 ) {
@@ -40,7 +41,7 @@ fun CustomText(
                 text = text,
                 maxLines = maxLines,
                 overflow = TextOverflow.Ellipsis,
-                color = AppTheme.colors.primary,
+                color = color,
                 style = style,
                 textAlign = textAlign,
                 modifier = Modifier

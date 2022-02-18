@@ -24,9 +24,6 @@ class TransfersViewModel @Inject constructor(
     private val _players = mutableStateOf<List<Player>>(emptyList())
     val players: State<List<Player>> = _players
 
-    private val _numberOfPlayers = mutableStateOf(0)
-    val numberOfPlayers: State<Int> = _numberOfPlayers
-
     private var _week = mutableStateOf(0)
     val week: State<Int> = _week
 
@@ -34,7 +31,6 @@ class TransfersViewModel @Inject constructor(
 
     init {
         getPlayers()
-        getNumberOfPlayers()
         loadWeek()
     }
 
@@ -68,15 +64,10 @@ class TransfersViewModel @Inject constructor(
     }
 
     fun updatePlayer(player: Player) {
-        _numberOfPlayers.value += 1
         viewModelScope.launch {
+            player.transferPlayer = false
+            player.number = allUseCases.getNumberOfPlayers() + 1
             allUseCases.updatePlayer(player)
-        }
-    }
-
-    private fun getNumberOfPlayers() {
-        viewModelScope.launch {
-            _numberOfPlayers.value = allUseCases.getNumberOfPlayers()
         }
     }
 }

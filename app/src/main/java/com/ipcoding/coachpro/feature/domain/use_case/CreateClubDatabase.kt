@@ -91,13 +91,13 @@ class CreateClubDatabase(
 
     private suspend fun insertAllPlayersInDatabase(clubRating: Double) {
 
-        for (number in 0..17) {
+        for (number in 1..18) {
             var position = ""
             when(number) {
-                in 0..1 -> position = GK
-                in 2..7 -> position = DEF.random()
-                in 8..13 -> position = MID.random()
-                in 14..17 -> position = FOR.random()
+                in 1..2 -> position = GK
+                in 3..8 -> position = DEF.random()
+                in 9..14 -> position = MID.random()
+                in 15..18 -> position = FOR.random()
             }
 
             val rating = randomDouble(clubRating - 8, clubRating + 4)
@@ -119,6 +119,7 @@ fun randomDouble(min: Double, max: Double) : Double {
     val value = ((min * 10).toInt()..(max * 10).toInt()).random() / 10.0
     return when {
         value > 99.0 -> 99.0
+        value < 1.0 -> 1.0
         else -> value
     }
 }

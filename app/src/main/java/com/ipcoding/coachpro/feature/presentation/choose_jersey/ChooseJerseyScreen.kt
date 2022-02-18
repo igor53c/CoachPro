@@ -13,6 +13,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
+import com.ipcoding.coachpro.feature.domain.util.JerseyColors
 import com.ipcoding.coachpro.feature.presentation.choose_jersey.components.ColorPicker
 import com.ipcoding.coachpro.feature.presentation.choose_jersey.components.jersey.Jersey
 import com.ipcoding.coachpro.feature.presentation.util.Screen
@@ -69,7 +70,7 @@ fun ChooseJerseyScreen (
             val width = this.maxWidth
 
             LazyRow(horizontalArrangement = Arrangement.Center) {
-                items(5) { item ->
+                items(6) { item ->
 
                     Box(
                         modifier = Modifier
@@ -86,9 +87,11 @@ fun ChooseJerseyScreen (
                                 .width(maxWidth.value),
                         ) {
                             Jersey(
-                                colorJersey = colorJersey,
-                                colorStripes = colorStripes,
-                                colorBorder = AppTheme.colors.onBackground,
+                                jerseyColors = JerseyColors(
+                                    colorJersey = colorJersey,
+                                    colorStripes = colorStripes,
+                                    colorBorder = AppTheme.colors.onBackground,
+                                ),
                                 numberJersey = item + 1
                             )
                         }

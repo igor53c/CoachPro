@@ -18,7 +18,8 @@ fun TransferConfirmationRow(
     textRating: String,
     textAge: String,
     textValue: String,
-    color: Color = Color.Transparent
+    backgroundColor: Color = Color.Transparent,
+    color: Color = AppTheme.colors.primary
 ) {
     Row(
         modifier = modifier
@@ -32,7 +33,8 @@ fun TransferConfirmationRow(
         CustomText(
             text = textPosition,
             style = AppTheme.typography.body2,
-            backgroundColor = color,
+            backgroundColor = backgroundColor,
+            color = color,
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .weight(1f)
@@ -41,6 +43,7 @@ fun TransferConfirmationRow(
             text = textRating,
             style = AppTheme.typography.body2,
             textAlign = TextAlign.Center,
+            color = color,
             modifier = Modifier
                 .weight(1f)
         )
@@ -48,6 +51,7 @@ fun TransferConfirmationRow(
             text = textAge,
             style = AppTheme.typography.body2,
             textAlign = TextAlign.Center,
+            color = color,
             modifier = Modifier
                 .weight(1f)
         )
@@ -55,6 +59,7 @@ fun TransferConfirmationRow(
             text = textValue,
             style = AppTheme.typography.body2,
             textAlign = TextAlign.Center,
+            color = color,
             modifier = Modifier
                 .weight(1f)
         )

@@ -1,11 +1,25 @@
 package com.ipcoding.coachpro.feature.presentation.main
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.AppSettingsAlt
+import androidx.compose.material.icons.filled.NewLabel
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ipcoding.coachpro.R
@@ -13,6 +27,7 @@ import com.ipcoding.coachpro.core.util.TestTags
 import com.ipcoding.coachpro.feature.domain.util.WeekType
 import com.ipcoding.coachpro.feature.presentation.main.components.*
 import com.ipcoding.coachpro.feature.presentation.select_club.components.CustomButton
+import com.ipcoding.coachpro.feature.presentation.table.components.CustomText
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.AppTheme
 
@@ -25,6 +40,7 @@ fun MainScreen(
     val formMatches = viewModel.formMatches.value
     val colorBackground = viewModel.colorJersey.value
     val info = viewModel.info.value
+    val openDialog = remember { mutableStateOf(false)  }
 
     Column(
         modifier = Modifier
@@ -34,21 +50,34 @@ fun MainScreen(
             modifier = Modifier
                 .weight(1f)
         ) {
-            CustomButton(
+            Box(
                 modifier = Modifier
+                    .padding(bottom = AppTheme.dimensions.spaceSmall)
                     .fillMaxWidth()
                     .height(AppTheme.dimensions.spaceExtraLarge)
-                    .padding(bottom = AppTheme.dimensions.spaceSmall),
-                onClick = {
-                    navController.navigate(Screen.SelectLeagueScreen.route)
-                },
-                shape = AppTheme.customShapes.rectangleShape
+                    .background(AppTheme.colors.primary),
+                contentAlignment = Alignment.Center
             ) {
                 Text(
-                    text = "CoachPro",
+                    text = stringResource(id = R.string.app_name),
+                    color = AppTheme.colors.background,
                     style = AppTheme.typography.h5,
-                    color = AppTheme.colors.background
+                    textAlign = TextAlign.Center
                 )
+                IconButton(
+                    onClick = {
+                        openDialog.value = true
+                    },
+                    modifier = Modifier
+                        .fillMaxHeight()
+                        .align(alignment = Alignment.CenterEnd)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Settings,
+                        contentDescription = "NewGame",
+                        tint = AppTheme.colors.background
+                    )
+                }
             }
 
             DateRow(viewModel = viewModel)
@@ -98,5 +127,17 @@ fun MainScreen(
                 )
             }
         }
+    }
+
+    if(openDialog.value) {
+        NewGame(
+            onNoClick = {
+                openDialog.value = false
+            },
+            onYesClick = {
+                navController.navigate(Screen.SelectLeagueScreen.route)
+                openDialog.value = false
+            }
+        )
     }
 }

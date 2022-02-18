@@ -10,6 +10,7 @@ import com.ipcoding.coachpro.core.util.InputData.ALL_TACTICS
 import com.ipcoding.coachpro.feature.domain.model.MarkedPlayer
 import com.ipcoding.coachpro.feature.domain.model.Player
 import com.ipcoding.coachpro.feature.domain.use_case.AllUseCases
+import com.ipcoding.coachpro.feature.domain.util.JerseyColors
 import com.ipcoding.coachpro.feature.presentation.util.Screen
 import com.ipcoding.coachpro.ui.theme.Colors
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,11 +26,8 @@ class TacticsViewModel @Inject constructor(
     private val allUseCases: AllUseCases
 ): ViewModel() {
 
-    private var _colorJersey = mutableStateOf(Color.Red)
-    val colorJersey: State<Color> = _colorJersey
-
-    private var _colorStripes = mutableStateOf(Color.White)
-    val colorStripes: State<Color> = _colorStripes
+    private var _jerseyColors = mutableStateOf(JerseyColors())
+    val jerseyColors: State<JerseyColors> = _jerseyColors
 
     private var _tactics = mutableStateOf<List<Any>>(mutableListOf())
     val tactics: State<List<Any>> = _tactics
@@ -75,11 +73,11 @@ class TacticsViewModel @Inject constructor(
     }
 
     private fun loadColorJersey() {
-        _colorJersey.value = Colors.indexToColor(preferences.loadColorJersey())
+        _jerseyColors.value.colorJersey = Colors.indexToColor(preferences.loadColorJersey())
     }
 
     private fun loadColorStripes() {
-        _colorStripes.value = Colors.indexToColor(preferences.loadColorStripes())
+        _jerseyColors.value.colorStripes = Colors.indexToColor(preferences.loadColorStripes())
     }
 
     private fun loadTactics() {

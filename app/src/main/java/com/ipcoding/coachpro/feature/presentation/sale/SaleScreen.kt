@@ -58,7 +58,7 @@ fun SaleScreen(
                     textRating = String.format("%.1f", player.rating),
                     textAge = player.age.toString(),
                     textValue = String.format("%.1f", player.value),
-                    color = viewModel.getColor(player.position)
+                    backgroundColor = viewModel.getColor(player.position)
                 )
             }
             CustomText(

@@ -18,11 +18,12 @@ import com.ipcoding.coachpro.ui.theme.AppTheme
 fun TransferConfirmation (
     budget: Float,
     player: Player,
-    color: Color,
+    backgroundColor: Color,
     onCancelClick: () -> Unit,
     onBuyClick: () -> Unit
 ) {
     AlertDialog(
+        backgroundColor = AppTheme.colors.primary,
         onDismissRequest = {},
         title = {
             Column(
@@ -32,6 +33,7 @@ fun TransferConfirmation (
                     CustomText(
                         text = player.name,
                         style = AppTheme.typography.h6,
+                        color = AppTheme.colors.background,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
@@ -40,20 +42,23 @@ fun TransferConfirmation (
                         textPosition = stringResource(id = R.string.pos),
                         textRating = stringResource(id = R.string.rating),
                         textAge = stringResource(id = R.string.age),
-                        textValue = stringResource(id = R.string.meuro)
+                        textValue = stringResource(id = R.string.meuro),
+                        color = AppTheme.colors.background
                     )
                     TransferConfirmationRow(
                         textPosition = player.position,
                         textRating = String.format("%.1f", player.rating),
                         textAge = player.age.toString(),
                         textValue = String.format("%.1f", player.value),
-                        color = color
+                        backgroundColor = backgroundColor,
+                        color = AppTheme.colors.background
                     )
                 } else {
                     CustomText(
                         text = stringResource(id = R.string.enough_money),
                         style = AppTheme.typography.subtitle1,
                         maxLines = 3,
+                        color = AppTheme.colors.background,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .padding(bottom = AppTheme.dimensions.spaceSmall)
@@ -74,7 +79,9 @@ fun TransferConfirmation (
                         modifier = Modifier
                             .fillMaxHeight()
                             .weight(1f),
-                        onClick = onBuyClick
+                        onClick = onBuyClick,
+                        color = AppTheme.colors.background,
+                        contentColor = AppTheme.colors.primary
                     ) {
                         Text(
                             text = stringResource(id = R.string.buy),
@@ -88,7 +95,9 @@ fun TransferConfirmation (
                         modifier = Modifier
                             .fillMaxHeight()
                             .weight(1f),
-                        onClick = onCancelClick
+                        onClick = onCancelClick,
+                        color = AppTheme.colors.background,
+                        contentColor = AppTheme.colors.primary
                     ) {
                         Text(
                             text = stringResource(id = R.string.cancel),
@@ -100,7 +109,9 @@ fun TransferConfirmation (
                         modifier = Modifier
                             .fillMaxHeight()
                             .weight(1f),
-                        onClick = onCancelClick
+                        onClick = onCancelClick,
+                        color = AppTheme.colors.background,
+                        contentColor = AppTheme.colors.primary
                     ) {
                         Text(
                             text = stringResource(id = R.string.ok),

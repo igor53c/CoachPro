@@ -24,7 +24,6 @@ fun TransfersScreen(
     viewModel: TransfersViewModel = hiltViewModel()
 ) {
     val players = viewModel.players.value
-    val numberOfPlayers = viewModel.numberOfPlayers.value
     val openDialog = remember { mutableStateOf(false)  }
     val selectedPlayer = remember {
         mutableStateOf(Player("", "", 0.0, 0, 0))
@@ -70,11 +69,9 @@ fun TransfersScreen(
                 TransferConfirmation(
                     budget = budget,
                     player = selectedPlayer.value,
-                    color = viewModel.getColor(selectedPlayer.value.position),
+                    backgroundColor = viewModel.getColor(selectedPlayer.value.position),
                     onCancelClick = { openDialog.value = false },
                     onBuyClick = {
-                        selectedPlayer.value.transferPlayer = false
-                        selectedPlayer.value.number = numberOfPlayers + 1
                         viewModel.saveBudget(budget - selectedPlayer.value.value.toFloat())
                         viewModel.updatePlayer(selectedPlayer.value)
                         openDialog.value = false

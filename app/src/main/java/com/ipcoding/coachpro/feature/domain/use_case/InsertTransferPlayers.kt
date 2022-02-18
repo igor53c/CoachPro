@@ -57,7 +57,6 @@ class InsertTransferPlayers(
     }
 
     private suspend fun insertRandomTransferPlayer() {
-        val position = ALL_POSITION.random()
         val ratingPlayer =  randomDouble(clubRating - 4, clubRating + 8)
 
         val age = when {
@@ -69,7 +68,7 @@ class InsertTransferPlayers(
         playerRepository.insertPlayer(
             Player(
                 name = makeName(),
-                position = position,
+                position = ALL_POSITION.random(),
                 rating = ratingPlayer,
                 age = age,
                 number = 0,
