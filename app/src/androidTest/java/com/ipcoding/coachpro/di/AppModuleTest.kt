@@ -2,9 +2,8 @@ package com.ipcoding.coachpro.di
 
 import android.app.Application
 import android.content.Context
-import android.content.SharedPreferences
 import androidx.room.Room
-import com.ipcoding.coachpro.core.data.preferences.DefaultPreferences
+import com.ipcoding.coachpro.core.data.preferences.DefaultPreferencesFake
 import com.ipcoding.coachpro.core.data.resources.AndroidResourceProvider
 import com.ipcoding.coachpro.core.domain.preferences.Preferences
 import com.ipcoding.coachpro.core.domain.resources.ResourceProvider
@@ -63,14 +62,8 @@ object AppModuleTest {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(app: Application): SharedPreferences {
-        return app.getSharedPreferences("shared_pref", Context.MODE_PRIVATE)
-    }
-
-    @Provides
-    @Singleton
-    fun providePreferences(sharedPreferences: SharedPreferences): Preferences {
-        return DefaultPreferences(sharedPreferences)
+    fun providePreferences(): Preferences {
+        return DefaultPreferencesFake()
     }
 
     @Provides
